@@ -316,19 +316,21 @@
         
         @media (max-width: 768px) {
             .ai-badge-container {
-                bottom: 12px;
-                right: 12px;
+                bottom: auto;
+                top: 12px;
+                left: 12px;
+                right: auto;
             }
             .ai-badge {
-                padding: 8px 12px;
+                padding: 6px 10px;
             }
             .ai-badge-icon {
-                width: 20px;
-                height: 20px;
-                font-size: 10px;
+                width: 18px;
+                height: 18px;
+                font-size: 9px;
             }
             .ai-badge-text {
-                font-size: 9px;
+                font-size: 8px;
             }
             /* CTA MOBILE DROIT (pas penché) */
             .cta-main {
@@ -336,27 +338,86 @@
             }
         }
         
-        /* MINI CTA APRÈS SECTIONS */
+        /* MINI CTA APRÈS SECTIONS - CARTES ANIMÉES */
         .section-cta {
             text-align: center;
-            padding: 32px 16px;
-            margin-top: -20px;
+            padding: 40px 16px;
+            margin-top: 0;
         }
-        .section-cta a {
+        .section-cta-card {
             display: inline-block;
-            padding: 14px 32px;
-            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
-            color: black;
-            font-weight: 800;
-            font-size: 14px;
-            border-radius: 50px;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(20,20,20,0.95) 100%);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 16px;
             text-decoration: none;
-            box-shadow: 0 4px 20px rgba(212,175,55,0.3);
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3), 0 0 60px rgba(212,175,55,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
-        .section-cta a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(212,175,55,0.5);
+        .section-cta-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.1), transparent);
+            animation: ctaShimmer 3s ease-in-out infinite;
+        }
+        @keyframes ctaShimmer {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+        .section-cta-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(212,175,55,0.6);
+            box-shadow: 0 12px 60px rgba(0,0,0,0.4), 0 0 80px rgba(212,175,55,0.2);
+        }
+        .section-cta-card .cta-label {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #D4AF37;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .section-cta-card .cta-label::before,
+        .section-cta-card .cta-label::after {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #D4AF37);
+        }
+        .section-cta-card .cta-label::after {
+            background: linear-gradient(90deg, #D4AF37, transparent);
+        }
+        .section-cta-card .cta-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 4px;
+        }
+        .section-cta-card .cta-arrow {
+            display: inline-block;
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        .section-cta-card:hover .cta-arrow {
+            transform: translateX(4px);
+        }
+        .section-cta-card .cta-price {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+        .section-cta-card .cta-price span {
+            color: #D4AF37;
+            font-weight: 700;
         }
         
         /* EFFET TITRE HERO */
@@ -1032,32 +1093,32 @@
                 margin: 0 auto !important;
             }
             
-            /* Phone CENTRÉ et LUMINEUX (en appel) - STYLE OR */
+            /* Phone CENTRÉ et LUMINEUX (en appel) - STYLE OR - PLUS GROS */
             .phone-mockup {
                 position: absolute !important;
                 top: 50% !important;
                 left: 50% !important;
                 transform: translate(-50%, -50%) !important;
-                width: 180px !important;
-                height: 380px !important;
-                border-radius: 32px !important;
+                width: 300px !important;
+                height: 520px !important;
+                border-radius: 40px !important;
                 z-index: 10 !important;
                 opacity: 1 !important;
                 box-shadow: 
-                    0 0 60px rgba(212, 175, 55, 0.2),
-                    0 0 120px rgba(212, 175, 55, 0.08),
-                    0 20px 60px rgba(0,0,0,0.5) !important;
+                    0 0 80px rgba(212, 175, 55, 0.25),
+                    0 0 160px rgba(212, 175, 55, 0.1),
+                    0 25px 80px rgba(0,0,0,0.4) !important;
             }
             
             .phone-screen {
-                border-radius: 28px !important;
+                border-radius: 36px !important;
             }
             
             .dynamic-island {
-                width: 60px !important;
-                height: 18px !important;
+                width: 80px !important;
+                height: 22px !important;
                 background: #000 !important;
-                box-shadow: 0 0 10px rgba(212, 175, 55, 0.3) !important;
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4) !important;
             }
             
             /* Cacher la barre en bas du phone */
@@ -1065,14 +1126,24 @@
                 padding: 8px !important;
             }
             
+            /* Avatars plus gros */
+            .phone-mockup .voice-user-row .w-10 {
+                width: 44px !important;
+                height: 44px !important;
+            }
+            
+            /* Noms plus lisibles */
+            .phone-mockup .voice-user-row .font-medium {
+                font-size: 14px !important;
+            }
+            
+            .phone-mockup .voice-user-row .text-xs {
+                font-size: 11px !important;
+            }
+            
             /* Voice users avec indicateur LIVE */
             .phone-mockup .voice-user-row {
                 padding: 8px 10px !important;
-            }
-            
-            .phone-mockup .voice-user-row .w-10 {
-                width: 32px !important;
-                height: 32px !important;
             }
             
             .phone-mockup .voice-user-row.talking .avatar-ring {
@@ -1083,14 +1154,6 @@
             @keyframes talkingPulse {
                 0%, 100% { box-shadow: 0 0 0 2px #D4AF37, 0 0 10px rgba(212, 175, 55, 0.3); }
                 50% { box-shadow: 0 0 0 3px #D4AF37, 0 0 20px rgba(212, 175, 55, 0.6); }
-            }
-            
-            .phone-mockup .voice-user-row .text-sm {
-                font-size: 10px !important;
-            }
-            
-            .phone-mockup .voice-user-row .text-xs {
-                font-size: 8px !important;
             }
             
             /* Cacher les context-cards desktop */
@@ -1300,15 +1363,20 @@
         
         /* ========== EXPERT GRID - MOBILE CAROUSEL HORIZONTAL ========== */
         @media (max-width: 768px) {
+            .expert-grid-container {
+                position: relative;
+            }
+            
             .expert-grid {
                 display: flex !important;
                 overflow-x: auto !important;
                 overflow-y: hidden !important;
                 scroll-snap-type: x mandatory;
                 -webkit-overflow-scrolling: touch;
-                gap: 12px !important;
-                padding: 0 16px 20px 16px !important;
-                margin: 0 -16px !important;
+                gap: 16px !important;
+                padding: 0 40px 20px 40px !important;
+                margin: 0 !important;
+                scroll-behavior: smooth;
             }
             
             /* Cacher scrollbar */
@@ -1321,23 +1389,86 @@
             }
             
             .expert-card {
-                flex: 0 0 280px !important;
-                width: 280px !important;
-                height: 340px !important;
+                flex: 0 0 calc(100vw - 80px) !important;
+                width: calc(100vw - 80px) !important;
+                max-width: 320px !important;
+                height: 400px !important;
                 scroll-snap-align: center;
-                border-radius: 16px !important;
+                border-radius: 20px !important;
+            }
+            
+            /* Swipe indicator */
+            .swipe-indicator {
+                display: flex !important;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 20px;
+            }
+            .swipe-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(0,0,0,0.15);
+                transition: all 0.3s ease;
+            }
+            .swipe-dot.active {
+                width: 24px;
+                border-radius: 4px;
+                background: linear-gradient(90deg, #D4AF37, #FFD700);
+            }
+            
+            /* Boutons de navigation */
+            .carousel-nav {
+                display: flex !important;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                transform: translateY(-50%);
+                justify-content: space-between;
+                padding: 0 8px;
+                pointer-events: none;
+                z-index: 10;
+            }
+            .carousel-nav button {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.95);
+                border: 1px solid rgba(0,0,0,0.1);
+                color: #333;
+                font-size: 16px;
+                cursor: pointer;
+                pointer-events: auto;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;
+            }
+            .carousel-nav button:hover {
+                background: white;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            }
+            .carousel-nav button:disabled {
+                opacity: 0.3;
+                pointer-events: none;
             }
             
             .expert-card:first-child {
-                margin-left: 16px;
+                margin-left: 0;
             }
             
             .expert-card:last-child {
-                margin-right: 16px;
+                margin-right: 0;
             }
             
             .expert-card:hover {
                 transform: none !important;
+            }
+        }
+        
+        /* Desktop - Cacher nav carousel */
+        @media (min-width: 769px) {
+            .carousel-nav, .swipe-indicator {
+                display: none !important;
             }
             
             /* VISUEL BIEN VISIBLE */
@@ -4059,11 +4190,11 @@
                     <div class="text-[7px] text-gray-400 uppercase">Lives/Sem</div>
                     </div>
                 <div class="text-center">
-                    <div class="text-lg font-black text-gray-900 leading-none">∞</div>
-                    <div class="text-[7px] text-gray-400 uppercase">Replays</div>
+                    <div class="text-lg font-black text-gray-900 leading-none">1000+</div>
+                    <div class="text-[7px] text-gray-400 uppercase">Membres</div>
                     </div>
                 <div class="text-center">
-                    <div class="text-lg font-black text-gray-900 leading-none">1M+</div>
+                    <div class="text-lg font-black text-gray-900 leading-none">+10M</div>
                     <div class="text-[7px] text-gray-400 uppercase">CA Généré</div>
                 </div>
                 <div class="text-center">
@@ -4779,9 +4910,13 @@
             </div>
         </div>
         
-        <!-- CTA SECTION -->
+        <!-- CTA SECTION - CARTE ANIMÉE -->
         <div class="section-cta">
-            <a href="#pricing">Rejoindre Focus →</a>
+            <a href="#pricing" class="section-cta-card">
+                <div class="cta-label">Nos outils</div>
+                <div class="cta-title">Découvrir l'arsenal<span class="cta-arrow">→</span></div>
+                <div class="cta-price">Accès complet • <span>10€/mois</span></div>
+            </a>
         </div>
 
     </section>
@@ -5728,7 +5863,14 @@
             </p>
         </div>
 
-        <div class="expert-grid">
+        <div class="expert-grid-container relative">
+            <!-- Navigation Carousel Mobile -->
+            <div class="carousel-nav hidden">
+                <button onclick="scrollExperts(-1)" id="prev-expert">‹</button>
+                <button onclick="scrollExperts(1)" id="next-expert">›</button>
+            </div>
+            
+            <div class="expert-grid" id="expertGrid">
 
             <!-- 1. SNAPCHAT ADS - STYLE VIDÉO -->
             <div class="expert-card" data-tilt>
@@ -6053,11 +6195,61 @@
                 </div>
             </div>
 
+            </div>
+            
+            <!-- Indicateurs de Swipe -->
+            <div class="swipe-indicator hidden" id="expertDots"></div>
         </div>
         
-        <!-- CTA SECTION -->
+        <script>
+            // Expert Carousel Navigation
+            const expertGrid = document.getElementById('expertGrid');
+            const expertDots = document.getElementById('expertDots');
+            
+            if (expertGrid && window.innerWidth <= 768) {
+                const cards = expertGrid.querySelectorAll('.expert-card');
+                const totalCards = cards.length;
+                
+                // Create dots
+                for (let i = 0; i < totalCards; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'swipe-dot' + (i === 0 ? ' active' : '');
+                    dot.onclick = () => scrollToExpert(i);
+                    expertDots.appendChild(dot);
+                }
+                
+                // Update dots on scroll
+                expertGrid.addEventListener('scroll', () => {
+                    const scrollLeft = expertGrid.scrollLeft;
+                    const cardWidth = expertGrid.querySelector('.expert-card').offsetWidth + 16;
+                    const activeIndex = Math.round(scrollLeft / cardWidth);
+                    
+                    document.querySelectorAll('.swipe-dot').forEach((dot, i) => {
+                        dot.classList.toggle('active', i === activeIndex);
+                    });
+                });
+            }
+            
+            function scrollExperts(direction) {
+                const grid = document.getElementById('expertGrid');
+                const cardWidth = grid.querySelector('.expert-card').offsetWidth + 16;
+                grid.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+            }
+            
+            function scrollToExpert(index) {
+                const grid = document.getElementById('expertGrid');
+                const cardWidth = grid.querySelector('.expert-card').offsetWidth + 16;
+                grid.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+            }
+        </script>
+        
+        <!-- CTA SECTION - CARTE ANIMÉE -->
         <div class="section-cta">
-            <a href="#pricing">Rejoindre Focus →</a>
+            <a href="#pricing" class="section-cta-card">
+                <div class="cta-label">Notre équipe</div>
+                <div class="cta-title">Découvrir nos experts<span class="cta-arrow">→</span></div>
+                <div class="cta-price">Coaching inclus • <span>10€/mois</span></div>
+            </a>
         </div>
 
     </section>
@@ -6204,9 +6396,13 @@
 
         </div>
         
-        <!-- CTA SECTION -->
+        <!-- CTA SECTION - CARTE ANIMÉE -->
         <div class="section-cta">
-            <a href="#pricing">Rejoindre Focus →</a>
+            <a href="#pricing" class="section-cta-card">
+                <div class="cta-label">Communauté</div>
+                <div class="cta-title">Rejoindre le groupe<span class="cta-arrow">→</span></div>
+                <div class="cta-price">+1000 membres actifs • <span>10€/mois</span></div>
+            </a>
         </div>
 
     </section>
