@@ -215,40 +215,41 @@
     }
 }
 
-/* ========== ARSENAL CARDS MOBILE SWIPE ========== */
+/* ========== ARSENAL CARDS MOBILE SWIPE + AUTO SCROLL ========== */
 @media (max-width: 768px) {
     .marquee-wrapper {
-        overflow: visible !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .marquee-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .marquee-wrapper {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
     
     .marquee-track {
         display: flex !important;
         flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
         gap: 16px !important;
-        padding: 0 16px 16px 16px !important;
-        scroll-behavior: smooth;
-        animation: none !important;
-        width: auto !important;
-    }
-    
-    .marquee-track::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .marquee-track {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+        padding: 0 16px !important;
+        /* Animation auto-scroll conservée */
     }
     
     .marquee-track .card {
         flex: 0 0 280px !important;
         min-width: 280px !important;
         max-width: 280px !important;
-        scroll-snap-align: center;
+    }
+    
+    /* Pause l'animation au touch/hover */
+    .marquee-wrapper:hover .marquee-track,
+    .marquee-wrapper:active .marquee-track {
+        animation-play-state: paused !important;
     }
 }
 
