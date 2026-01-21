@@ -298,6 +298,54 @@
             .ai-badge-text {
                 font-size: 9px;
             }
+            /* CTA MOBILE DROIT (pas penché) */
+            .cta-main {
+                transform: rotate(0deg) !important;
+            }
+        }
+        
+        /* MINI CTA APRÈS SECTIONS */
+        .section-cta {
+            text-align: center;
+            padding: 32px 16px;
+            margin-top: -20px;
+        }
+        .section-cta a {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            color: black;
+            font-weight: 800;
+            font-size: 14px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+            transition: all 0.3s ease;
+        }
+        .section-cta a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(212,175,55,0.5);
+        }
+        
+        /* EFFET TITRE HERO */
+        .hero-title-effect {
+            text-shadow: 0 0 60px rgba(255,255,255,0.3), 0 0 120px rgba(255,255,255,0.1);
+            animation: heroTitleGlow 3s ease-in-out infinite alternate;
+        }
+        @keyframes heroTitleGlow {
+            0% { text-shadow: 0 0 40px rgba(255,255,255,0.2), 0 0 80px rgba(255,255,255,0.1); }
+            100% { text-shadow: 0 0 80px rgba(255,255,255,0.4), 0 0 150px rgba(255,255,255,0.2); }
+        }
+        
+        /* FOND TEXTE HERO MOBILE */
+        @media (max-width: 768px) {
+            .hero-subtitle-bg {
+                background: rgba(0,0,0,0.7);
+                backdrop-filter: blur(10px);
+                padding: 12px 20px;
+                border-radius: 12px;
+                border: 1px solid rgba(255,255,255,0.1);
+            }
         }
         
         /* --- PREMIUM LOADER NOIR/OR --- */
@@ -943,41 +991,60 @@
                 display: none !important;
             }
             
-            /* Conteneur global - hauteur fixe */
+            /* Conteneur global - hauteur fixe - ULTRA GRAND */
             .perspective-container {
                 position: relative !important;
                 width: 100% !important;
-                max-width: 360px !important;
-                height: 520px !important;
+                max-width: 100% !important;
+                height: 640px !important;
                 margin: 0 auto !important;
             }
             
-            /* Phone CENTRÉ et LUMINEUX (en appel) - STYLE OR */
+            /* Phone CENTRÉ et LUMINEUX (en appel) - STYLE OR - PLUS GROS */
             .phone-mockup {
                 position: absolute !important;
                 top: 50% !important;
                 left: 50% !important;
                 transform: translate(-50%, -50%) !important;
-                width: 180px !important;
-                height: 380px !important;
-                border-radius: 32px !important;
+                width: 300px !important;
+                height: 520px !important;
+                border-radius: 40px !important;
                 z-index: 10 !important;
                 opacity: 1 !important;
                 box-shadow: 
-                    0 0 60px rgba(212, 175, 55, 0.2),
-                    0 0 120px rgba(212, 175, 55, 0.08),
-                    0 20px 60px rgba(0,0,0,0.5) !important;
+                    0 0 80px rgba(212, 175, 55, 0.25),
+                    0 0 160px rgba(212, 175, 55, 0.1),
+                    0 30px 80px rgba(0,0,0,0.6),
+                    inset 0 0 1px rgba(255,255,255,0.1) !important;
+                border: 1px solid rgba(255,255,255,0.1) !important;
             }
             
             .phone-screen {
-                border-radius: 28px !important;
+                border-radius: 36px !important;
+                height: 100% !important;
             }
             
             .dynamic-island {
-                width: 60px !important;
-                height: 18px !important;
+                width: 90px !important;
+                height: 28px !important;
                 background: #000 !important;
-                box-shadow: 0 0 10px rgba(212, 175, 55, 0.3) !important;
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4) !important;
+                border-radius: 20px !important;
+            }
+            
+            /* Avatars plus gros */
+            .phone-mockup .voice-user-row .w-10 {
+                width: 44px !important;
+                height: 44px !important;
+            }
+            
+            /* Noms plus lisibles */
+            .phone-mockup .voice-user-row .font-medium {
+                font-size: 14px !important;
+            }
+            
+            .phone-mockup .voice-user-row .text-xs {
+                font-size: 11px !important;
             }
             
             /* Cacher la barre en bas du phone */
@@ -990,11 +1057,6 @@
                 padding: 8px 10px !important;
             }
             
-            .phone-mockup .voice-user-row .w-10 {
-                width: 32px !important;
-                height: 32px !important;
-            }
-            
             .phone-mockup .voice-user-row.talking .avatar-ring {
                 box-shadow: 0 0 0 2px #D4AF37, 0 0 15px rgba(212, 175, 55, 0.5) !important;
                 animation: talkingPulse 1s ease-in-out infinite !important;
@@ -1003,14 +1065,6 @@
             @keyframes talkingPulse {
                 0%, 100% { box-shadow: 0 0 0 2px #D4AF37, 0 0 10px rgba(212, 175, 55, 0.3); }
                 50% { box-shadow: 0 0 0 3px #D4AF37, 0 0 20px rgba(212, 175, 55, 0.6); }
-            }
-            
-            .phone-mockup .voice-user-row .text-sm {
-                font-size: 10px !important;
-            }
-            
-            .phone-mockup .voice-user-row .text-xs {
-                font-size: 8px !important;
             }
             
             /* Cacher les context-cards desktop */
@@ -3689,13 +3743,13 @@
             </div>
             
             <!-- TITRE COMME SCREENSHOT -->
-            <h1 class="hero-title text-5xl md:text-[8rem] lg:text-[10rem] font-black font-display tracking-tighter leading-[0.9] select-none text-white mb-4">
-                TOUS LES<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-amber-600">BUSINESS.</span>
+            <h1 class="hero-title hero-title-effect text-5xl md:text-[8rem] lg:text-[10rem] font-black font-display tracking-tighter leading-[0.9] select-none text-white mb-4">
+                <span class="inline-block" style="text-shadow: 0 0 60px rgba(255,255,255,0.4), 0 4px 0 rgba(212,175,55,0.3);">TOUS LES</span><br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-amber-600" style="filter: drop-shadow(0 0 30px rgba(212,175,55,0.5));">BUSINESS.</span>
             </h1>
             
             <!-- SOUS-TITRE -->
-            <p class="text-gray-400 text-sm md:text-lg mb-6 max-w-lg mx-auto px-4">
+            <p class="hero-subtitle-bg text-gray-400 text-sm md:text-lg mb-6 max-w-lg mx-auto px-4">
                 <strong class="text-white">Un groupe Discord.</strong> Tous les business models. <strong class="text-amber-400">Sans bullshit.</strong>
             </p>
             
@@ -4407,6 +4461,11 @@
 
             </div>
         </div>
+        
+        <!-- CTA SECTION -->
+        <div class="section-cta">
+            <a href="#pricing">Rejoindre Focus →</a>
+        </div>
 
     </section>
 
@@ -4725,102 +4784,141 @@
                         <!-- CHANNELS LIST -->
                         <div class="flex-1 overflow-y-auto discord-scrollbar p-2">
                             
-                            <!-- TEXT CHANNELS -->
+                            <!-- LIVES & REDIFFUSIONS -->
                             <div class="mb-3">
                                 <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
-                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
-                                    Channels Principaux
+                                    <span class="text-sm mr-1">🎬</span> Lives & Rediffusions
                                 </div>
                                 
                                 <div class="space-y-0.5" id="channels-main">
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="rediff-générale">
+                                        <span class="text-sm mr-2">📺</span>
+                                        <span class="text-sm font-medium">rediff-générale</span>
+                                    </div>
+                                    
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="live-public">
+                                        <span class="text-sm mr-2">🎥</span>
+                                        <span class="text-sm font-medium">Live Public</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- IMPORTANT -->
+                            <div class="mb-3">
+                                <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
+                                    <span class="text-sm mr-1">🔴</span> Important
+                                </div>
+                                
+                                <div class="space-y-0.5">
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="annonce">
+                                        <span class="text-sm mr-2">📢</span>
+                                        <span class="text-sm font-medium">annonce</span>
+                                    </div>
+                                    
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="annonce-public">
+                                        <span class="text-sm mr-2">📣</span>
+                                        <span class="text-sm font-medium">annonce-public</span>
+                                    </div>
+                                    
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="programme-live">
+                                        <span class="text-sm mr-2">📅</span>
+                                        <span class="text-sm font-medium">programme-live-semaine</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- GÉNÉRAL -->
+                            <div class="mb-3">
+                                <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
+                                    <span class="text-sm mr-1">💬</span> général
+                                </div>
+                                
+                                <div class="space-y-0.5">
                                     <div class="discord-channel active rounded px-2 py-1.5 flex items-center channel-item" data-channel="général">
                                         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"/></svg>
                                         <span class="text-sm font-medium">général</span>
                                     </div>
                                     
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="annonce">
-                                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"/></svg>
-                                        <span class="text-sm font-medium">annonce</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="concours">
+                                        <span class="text-sm mr-2">🏆</span>
+                                        <span class="text-sm font-medium">concours</span>
                                     </div>
                                     
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="résultats">
-                                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"/></svg>
-                                        <span class="text-sm font-medium">résultats</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="général-public">
+                                        <span class="text-sm mr-2">🌐</span>
+                                        <span class="text-sm font-medium">général-public</span>
+                                    </div>
+                                    
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="présentation">
+                                        <span class="text-sm mr-2">📝</span>
+                                        <span class="text-sm font-medium">présentation</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- BUSINESS CHANNELS -->
+                            <!-- INFORMATIONS -->
                             <div class="mb-3">
                                 <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
-                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
-                                    Business
+                                    <span class="text-sm mr-1">📁</span> Informations
                                 </div>
                                 
                                 <div class="space-y-0.5">
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="ecommerce">
-                                        <span class="text-sm mr-2">🛒</span>
-                                        <span class="text-sm font-medium">ecommerce</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="règlement">
+                                        <span class="text-sm mr-2">📋</span>
+                                        <span class="text-sm font-medium">règlement</span>
                                     </div>
                                     
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="smma">
-                                        <span class="text-sm mr-2">📱</span>
-                                        <span class="text-sm font-medium">smma</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="focus-coin">
+                                        <span class="text-sm mr-2">❤️</span>
+                                        <span class="text-sm font-medium">focus-coin</span>
                                     </div>
                                     
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="automobile">
-                                        <span class="text-sm mr-2">🚗</span>
-                                        <span class="text-sm font-medium">automobile</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="bienvenue">
+                                        <span class="text-sm mr-2">👋</span>
+                                        <span class="text-sm font-medium">bienvenue</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- VOCAL -->
+                            <div class="mb-3">
+                                <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
+                                    <span class="text-sm mr-1">🎤</span> Vocal
+                                </div>
+                                
+                                <div class="space-y-0.5">
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="commandes-vocaux">
+                                        <span class="text-sm mr-2">🎙️</span>
+                                        <span class="text-sm font-medium">commandes-vocaux</span>
                                     </div>
                                     
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="fiscalité">
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="vocal-public">
+                                        <span class="text-sm mr-2">🔊</span>
+                                        <span class="text-sm font-medium">Vocal Public</span>
+                                    </div>
+                                    
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="vocal-business">
                                         <span class="text-sm mr-2">💼</span>
-                                        <span class="text-sm font-medium">fiscalité</span>
+                                        <span class="text-sm font-medium">Vocal Business</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- MARKETING CHANNELS -->
+                            <!-- FOCUS -->
                             <div class="mb-3">
                                 <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
-                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
-                                    Marketing
+                                    <span class="text-sm mr-1">⭐</span> Focus
                                 </div>
                                 
                                 <div class="space-y-0.5">
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="meta-ads">
-                                        <span class="text-sm mr-2">📊</span>
-                                        <span class="text-sm font-medium">meta-ads</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="vos-chiffres">
+                                        <span class="text-sm mr-2">💰</span>
+                                        <span class="text-sm font-medium">vos-chiffres</span>
                                     </div>
                                     
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="google-ads">
-                                        <span class="text-sm mr-2">🎯</span>
-                                        <span class="text-sm font-medium">google-ads</span>
-                                    </div>
-                                    
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="seo">
-                                        <span class="text-sm mr-2">🔍</span>
-                                        <span class="text-sm font-medium">seo</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- TECH CHANNELS -->
-                            <div class="mb-3">
-                                <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
-                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
-                                    Tech
-                                </div>
-                                
-                                <div class="space-y-0.5">
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="ia">
-                                        <span class="text-sm mr-2">🤖</span>
-                                        <span class="text-sm font-medium">ia</span>
-                                    </div>
-                                    
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="dev-web">
-                                        <span class="text-sm mr-2">💻</span>
-                                        <span class="text-sm font-medium">dev-web</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="vos-avis">
+                                        <span class="text-sm mr-2">⭐</span>
+                                        <span class="text-sm font-medium">vos-avis</span>
                                     </div>
                                 </div>
                             </div>
@@ -4932,7 +5030,7 @@
 
         <!-- CTA BUTTON -->
         <div class="text-center mt-12 relative z-10">
-            <a href="#pricing" class="inline-block px-10 py-4 md:px-16 md:py-6 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-black text-2xl md:text-4xl transform -rotate-2 shadow-[0_0_60px_rgba(212,175,55,0.4)] animate-slam-in opacity-0 hover:scale-105 transition-transform cursor-pointer no-underline">
+            <a href="#pricing" class="cta-main inline-block px-10 py-4 md:px-16 md:py-6 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-black text-2xl md:text-4xl transform md:-rotate-2 shadow-[0_0_60px_rgba(212,175,55,0.4)] animate-slam-in opacity-0 hover:scale-105 transition-transform cursor-pointer no-underline">
                 REJOINDRE FOCUS BUSINESS
             </a>
         </div>
@@ -5319,29 +5417,29 @@
                     <div class="snap-video-header">
                         <div class="snap-video-progress">
                             <div class="snap-video-progress-fill"></div>
-                        </div>
+                            </div>
                         <div class="snap-video-user">
                             <div class="snap-video-avatar">🔥</div>
                             <div class="snap-video-info">
                                 <div class="snap-video-name">mentalite.focus</div>
                                 <div class="snap-video-time">Il y a 2h</div>
                             </div>
-                        </div>
-                    </div>
+                            </div>
+                                </div>
                     
                     <!-- CONTENU CENTRAL -->
                     <div class="snap-video-content">
                         <div class="snap-video-emoji">💰</div>
                         <div class="snap-video-text">+50K€ ce mois</div>
                         <div class="snap-video-subtext">Grâce aux Snap Ads</div>
-                    </div>
+                                </div>
                     
                     <!-- ACTIONS DROITE -->
                     <div class="snap-video-actions">
                         <div class="snap-video-action">❤️<span>24K</span></div>
                         <div class="snap-video-action">💬<span>1.2K</span></div>
                         <div class="snap-video-action">↗️<span>Share</span></div>
-                    </div>
+                            </div>
                     
                     <!-- STATS BAS -->
                     <div class="snap-video-stats">
@@ -5352,7 +5450,7 @@
                         <div class="snap-video-stat">
                             <span class="snap-video-stat-value">28.6K</span>
                             <span class="snap-video-stat-label">SWIPE UP</span>
-                        </div>
+                    </div>
                     </div>
                     
                     <!-- INDICATEUR SCROLL -->
@@ -5377,9 +5475,9 @@
                         <div class="ads-header-left">
                             <div class="ads-logo-icon">📊</div>
                             <span class="ads-title">Ads Dashboard</span>
-                        </div>
-                        <div class="ads-live-badge">● LIVE</div>
                     </div>
+                        <div class="ads-live-badge">● LIVE</div>
+                        </div>
                     
                     <!-- KPIs ANIMÉS -->
                     <div class="ads-kpi-grid">
@@ -5387,12 +5485,12 @@
                             <div class="ads-kpi-value" id="ads-spend">€12,847</div>
                             <div class="ads-kpi-label">Ad Spend</div>
                             <div class="ads-kpi-trend up">↑ 24%</div>
-                        </div>
+                            </div>
                         <div class="ads-kpi-card highlight">
                             <div class="ads-kpi-value" id="ads-revenue">€89,230</div>
                             <div class="ads-kpi-label">Revenue</div>
                             <div class="ads-kpi-trend up">↑ 67%</div>
-                        </div>
+                            </div>
                         <div class="ads-kpi-card">
                             <div class="ads-kpi-value" id="ads-roas">6.9x</div>
                             <div class="ads-kpi-label">ROAS</div>
@@ -5402,8 +5500,8 @@
                             <div class="ads-kpi-value" id="ads-conv">2,847</div>
                             <div class="ads-kpi-label">Conversions</div>
                             <div class="ads-kpi-trend up">↑ 340</div>
+                            </div>
                         </div>
-                    </div>
                     
                     <!-- GRAPHIQUE ANIMÉ -->
                     <div class="ads-chart">
@@ -5419,7 +5517,7 @@
                                 <path class="ads-chart-stroke" fill="none" stroke="#D4AF37" stroke-width="2" d="M0,50 Q20,45 40,35 T80,25 T120,15 T160,20 T200,10"/>
                             </svg>
                             <div class="ads-chart-dot"></div>
-                        </div>
+                            </div>
                         <div class="ads-chart-labels">
                             <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
                         </div>
@@ -5633,6 +5731,11 @@
             </div>
 
         </div>
+        
+        <!-- CTA SECTION -->
+        <div class="section-cta">
+            <a href="#pricing">Rejoindre Focus →</a>
+        </div>
 
     </section>
 <!-- ==================== SECTION NETWORKING ==================== -->
@@ -5777,10 +5880,15 @@
             </div>
 
         </div>
+        
+        <!-- CTA SECTION -->
+        <div class="section-cta">
+            <a href="#pricing">Rejoindre Focus →</a>
+        </div>
 
     </section>
 <!-- ==================== SECTION PRICING ==================== -->
-<section id="pricing" class="w-full max-w-[1400px] mx-auto py-10 md:py-12 relative">
+<section id="pricing" class="w-full max-w-[1400px] mx-auto py-6 md:py-10 relative">
         
         <!-- HEADER PRICING -->
         <div class="text-center mb-12 md:mb-16 relative z-10 px-4">
@@ -6613,7 +6721,7 @@ window.addEventListener('load', initTilt);
 <div class="ai-badge-container">
     <a href="#pricing" class="ai-badge">
         <div class="ai-badge-icon">⚡</div>
-        <div class="ai-badge-text">Ce site ? <span>0 ligne de code</span> • Comment j'ai fait →</div>
+        <div class="ai-badge-text">Ce site ? <span>0 ligne de code</span> • Comment j'ai fait !</div>
     </a>
 </div>
 
