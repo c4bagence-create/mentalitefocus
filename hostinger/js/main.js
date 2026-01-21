@@ -275,11 +275,31 @@ var data = [
                 });
             }, 5000);
 
-            // SEO
+            // SEO - Animation en boucle
+            function animateSEO() {
+                const seoFocus = document.querySelectorAll('.seo-focus');
+                const seoResults = document.querySelectorAll('.seo-r1, .seo-r2');
+                const seoStar = document.querySelectorAll('.seo-star');
+                
+                if (seoFocus.length === 0) return;
+                
+                // Phase 1: Montée de Focus + descente des autres
+                seoFocus.forEach(el => gsap.to(el, { y: -55, duration: 0.8, ease: 'power2.out' }));
+                seoResults.forEach(el => gsap.to(el, { y: 30, duration: 0.8, ease: 'power2.out' }));
+                setTimeout(() => seoStar.forEach(s => s.style.opacity = 1), 900);
+                
+                // Phase 2: Retour à la position initiale après 4s
+                setTimeout(() => {
+                    seoFocus.forEach(el => gsap.to(el, { y: 0, duration: 0.8, ease: 'power2.out' }));
+                    seoResults.forEach(el => gsap.to(el, { y: 0, duration: 0.8, ease: 'power2.out' }));
+                    seoStar.forEach(s => s.style.opacity = 0);
+                }, 4000);
+            }
+            
+            // Lancer l'animation SEO toutes les 6 secondes
             setTimeout(() => {
-                document.querySelectorAll('.seo-focus').forEach(el => gsap.to(el, { y: -55, duration: 0.8, ease: 'power2.out' }));
-                document.querySelectorAll('.seo-r1, .seo-r2').forEach(el => gsap.to(el, { y: 30, duration: 0.8, ease: 'power2.out' }));
-                setTimeout(() => document.querySelectorAll('.seo-star').forEach(s => s.style.opacity = 1), 900);
+                animateSEO();
+                setInterval(animateSEO, 6000);
             }, 2500);
 
             // Hearts - Optimisé (réduit fréquence + limite éléments)
