@@ -70,6 +70,24 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/additions.css">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '26364309749823828');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=26364309749823828&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body class="bg-black text-white">
 <!-- LOADER NOIR/OR -->
@@ -151,7 +169,7 @@
             
             <!-- BANDEAU INCLINÉ -->
             <div class="mt-4 mb-8 overflow-visible flex items-center justify-center">
-                <a href="#pricing" class="bandeau inline-block px-10 py-4 md:px-16 md:py-6 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-black text-2xl md:text-4xl transform -rotate-2 shadow-[0_0_60px_rgba(212,175,55,0.4)] whitespace-nowrap relative z-10 animate-slam-in opacity-0 hover:scale-105 transition-transform cursor-pointer no-underline">
+                <a href="#pricing" onclick="fbq('track', 'ViewContent', {content_name: 'Hero CTA', value: 10, currency: 'EUR'});" class="bandeau inline-block px-10 py-4 md:px-16 md:py-6 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-black text-2xl md:text-4xl transform -rotate-2 shadow-[0_0_60px_rgba(212,175,55,0.4)] whitespace-nowrap relative z-10 animate-slam-in opacity-0 hover:scale-105 transition-transform cursor-pointer no-underline">
                     POUR 10€ / MOIS
                 </a>
             </div>
@@ -884,7 +902,7 @@
 
         <!-- CTA BUTTON -->
         <div class="text-center mt-12 relative z-10">
-            <a href="#pricing" class="cta-main inline-block px-10 py-4 md:px-16 md:py-6 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-black text-2xl md:text-4xl transform md:-rotate-2 shadow-[0_0_60px_rgba(212,175,55,0.4)] animate-slam-in opacity-0 hover:scale-105 transition-transform cursor-pointer no-underline">
+            <a href="#pricing" onclick="fbq('track', 'AddToCart', {value: 10, currency: 'EUR', content_name: 'Discord CTA'});" class="cta-main inline-block px-10 py-4 md:px-16 md:py-6 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-black text-2xl md:text-4xl transform md:-rotate-2 shadow-[0_0_60px_rgba(212,175,55,0.4)] animate-slam-in opacity-0 hover:scale-105 transition-transform cursor-pointer no-underline">
                 REJOINDRE FOCUS BUSINESS
             </a>
         </div>
@@ -1202,7 +1220,7 @@
                         <div class="auto-logo">
                             <div class="auto-logo-icon">🚗</div>
                             AutoDeal
-                        </div>
+                    </div>
                         <div class="auto-search">🔍 Rechercher...</div>
                     </div>
                     <div class="auto-listings">
@@ -1597,7 +1615,7 @@
                     </div>
                     <div class="price-big">9,90€</div>
                     <div class="period">/ mois • Sans engagement</div>
-                    <a href="https://checkout.stripe.com/c/pay/cs_live_a1bTSlmBAyUz1y7ocGPwSHQaqHozGdJDydkhKpmF3q0pZy3bkjcTJJo344" class="gold-btn">
+                    <a href="https://checkout.stripe.com/c/pay/cs_live_a1bTSlmBAyUz1y7ocGPwSHQaqHozGdJDydkhKpmF3q0pZy3bkjcTJJo344" onclick="fbq('track', 'InitiateCheckout', {value: 10, currency: 'EUR', content_name: 'Focus Business Membership'});" class="gold-btn">
                         REJOINDRE LE CLUB
                     </a>
                     <div class="mt-8 flex items-center justify-center gap-4 opacity-50 grayscale hover:grayscale-0 transition duration-500">
