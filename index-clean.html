@@ -69,7 +69,6 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/additions.css">
 </head>
 <body class="bg-gray-50 text-gray-900">
 <!-- LOADER NOIR/OR -->
@@ -322,6 +321,139 @@
 
 
     <!-- SECTION ARSENAL START -->
+    <style>
+
+        /* ===== MARQUEE ===== */
+        .marquee-wrapper {
+            overflow: hidden;
+            position: relative;
+            padding: 20px 0;
+            mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+        }
+
+        .marquee-track.animate-left { animation: scrollL 25s linear infinite; }
+        .marquee-track.animate-right { animation: scrollR 25s linear infinite; }
+        .marquee-track.paused { animation-play-state: paused; }
+
+        @keyframes scrollL { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes scrollR { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+        /* ===== CARD ===== */
+        .card {
+            width: 380px;
+            height: 240px;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.15); }
+
+        /* Carte sans classe bg spécifique = fond sombre par défaut */
+        .card.bg-black { background: black; }
+        .card:not([class*="bg-"]) { background: rgba(18, 18, 20, 0.98); }
+
+        .logo-badge { position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; z-index: 10; }
+        .logo-badge svg { width: 100%; height: 100%; }
+
+        .cat-tag {
+            position: absolute; top: 12px; left: 12px;
+            font-size: 9px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.5px; padding: 4px 10px; border-radius: 6px; z-index: 10;
+        }
+
+        /* STAMP */
+        .stamp {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-12deg) scale(0);
+            font-weight: 900; font-size: 26px; padding: 6px 18px;
+            border: 4px solid; letter-spacing: 1px;
+            opacity: 0; z-index: 20; pointer-events: none;
+        }
+        .stamp.show { animation: stampSlam 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes stampSlam {
+            0% { transform: translate(-50%, -50%) rotate(-12deg) scale(2.5); opacity: 0; }
+            100% { transform: translate(-50%, -50%) rotate(-12deg) scale(1); opacity: 1; }
+        }
+
+        /* TOAST */
+        .toast {
+            position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+            background: #22c55e; color: white; font-size: 10px; font-weight: 600;
+            padding: 6px 14px; border-radius: 8px; white-space: nowrap;
+            opacity: 0; z-index: 15;
+        }
+        .toast.show { animation: toastPop 2.5s ease forwards; }
+        @keyframes toastPop {
+            0% { opacity: 0; transform: translateX(-50%) translateY(15px); }
+            15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* TERMINAL */
+        .term-line { opacity: 0; }
+        .cursor { display: inline-block; width: 8px; height: 14px; background: #22c55e; animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* HEARTS */
+        .heart { position: absolute; font-size: 14px; animation: floatHeart 2s ease-out forwards; pointer-events: none; }
+        @keyframes floatHeart { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-50px) scale(0.6); } }
+
+        /* PROGRESS & MISC */
+        .prog-track { background: rgba(255,255,255,0.1); border-radius: 4px; height: 8px; overflow: hidden; }
+        .prog-fill { height: 100%; background: #22c55e; width: 0%; transition: width 1.5s ease; }
+        .roas-path { stroke-dasharray: 150; stroke-dashoffset: 150; }
+        .roas-path.draw { animation: drawLine 1.5s ease forwards; }
+        @keyframes drawLine { to { stroke-dashoffset: 0; } }
+        .neon { animation: neonGlow 1.2s ease-in-out infinite alternate; }
+        @keyframes neonGlow { from { box-shadow: 0 0 5px currentColor; } to { box-shadow: 0 0 15px currentColor; } }
+
+        /* PAPER TEXTURE FOR FISCALITE */
+        .bg-paper { background-color: #f4f4f0; background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E"); }
+
+        /* PARTICLES HERO (ajout pour sections Arsenal et Discord) */
+        .particle-hero {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleHeroFloat 6s infinite;
+            box-shadow: 0 0 8px rgba(255,255,255,0.8);
+            z-index: 5;
+        }
+
+        @keyframes particleHeroFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+            20% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-80px) translateX(20px) scale(1);
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-150px) translateX(-20px) scale(0);
+            }
+        }
+
+    </style>
 
     <section class="py-12 md:py-16 relative overflow-hidden">
 
@@ -603,7 +735,7 @@
         
         <!-- CTA SECTION - CARTE ANIMÉE -->
         <div class="section-cta">
-            <a href="#pricing" class="section-cta-card-light">
+            <a href="#pricing" class="section-cta-card">
                 <div class="cta-label">Nos outils</div>
                 <div class="cta-title">Découvrir l'arsenal<span class="cta-arrow">→</span></div>
                 <div class="cta-price">Accès complet • <span>10€/mois</span></div>
@@ -614,6 +746,178 @@
 
 
     <!-- SECTION DISCORD START -->
+    <style>
+
+        /* ===== DISCORD COLORS - MODE SOMBRE OFFICIEL ===== */
+        .focus-bg { background: #313338; }
+        .focus-sidebar { background: #2B2D31; }
+        .focus-chat { background: #313338; }
+        .focus-gold { color: #D4AF37; }
+        .focus-gold-bg { background: #D4AF37; }
+        
+        /* Discord Dark Theme Official Colors */
+        .discord-dark-bg { background: #313338; }
+        .discord-dark-sidebar { background: #2B2D31; }
+        .discord-dark-tertiary { background: #1E1F22; }
+        .discord-dark-text { color: #F2F3F5; }
+        .discord-dark-text-muted { color: #B5BAC1; }
+        .discord-dark-border { border-color: #3F4147; }
+        .discord-blurple { color: #5865F2; }
+        
+        /* ROLES COLORS */
+        .role-founder { color: #ff4444; }
+        .role-student-yellow { color: #fbbf24; }
+        .role-student-blue { color: #60a5fa; }
+
+        /* ===== DISCORD ELEMENTS - MODE SOMBRE ===== */
+        .discord-message { 
+            background: transparent; 
+            transition: all 0.2s; 
+        }
+        .discord-message:hover { 
+            background: rgba(79, 84, 92, 0.3); 
+        }
+        .discord-channel { 
+            color: #949BA4; 
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .discord-channel:hover { 
+            color: #DBDEE1; 
+            background: rgba(79, 84, 92, 0.3);
+        }
+        .discord-channel.active { 
+            color: #FFFFFF; 
+            background: rgba(79, 84, 92, 0.6);
+            font-weight: 600;
+        }
+        
+        /* SCROLLBAR */
+        .discord-scrollbar::-webkit-scrollbar { width: 8px; }
+        .discord-scrollbar::-webkit-scrollbar-track { background: #2B2D31; }
+        .discord-scrollbar::-webkit-scrollbar-thumb { background: #1A1B1E; border-radius: 4px; }
+        .discord-scrollbar::-webkit-scrollbar-thumb:hover { background: #0F1011; }
+
+        /* TYPING INDICATOR */
+        .typing-indicator {
+            display: inline-flex;
+            gap: 4px;
+            align-items: center;
+        }
+        .typing-dot {
+            width: 4px;
+            height: 4px;
+            background: #949BA4;
+            border-radius: 50%;
+            animation: typingBounce 1.4s infinite;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-6px); }
+        }
+
+        /* MESSAGE APPEAR */
+        .message-appear {
+            animation: messageSlideIn 0.4s ease-out;
+        }
+        @keyframes messageSlideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ONLINE STATUS */
+        .status-online {
+            width: 10px;
+            height: 10px;
+            background: #23A559;
+            border: 2px solid #2B2D31;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+        }
+
+        /* REACTION */
+        .reaction {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #2B2D31;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            padding: 3px 8px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .reaction:hover {
+            background: #3F4147;
+            border-color: rgba(149, 155, 164, 0.3);
+        }
+
+        /* CARD CONTAINER - DISCORD LIGHT THEME */
+        /* === DISCORD MODE SOMBRE - COULEURS OFFICIELLES === */
+        .discord-card {
+            background: #313338;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            border: 1px solid #1E1F22;
+        }
+        
+        .discord-card .focus-sidebar {
+            background: #2B2D31 !important;
+            border-right: 1px solid #1E1F22 !important;
+        }
+        
+        .discord-card .chat-area {
+            background: #313338 !important;
+        }
+        
+        .discord-card .chat-header {
+            background: #313338 !important;
+            border-bottom: 1px solid #26272D !important;
+        }
+        
+        .discord-card #messages-container {
+            background: #313338 !important;
+        }
+        
+        .discord-card .text-white {
+            color: #F2F3F5 !important;
+        }
+        
+        .discord-card .text-gray-400 {
+            color: #B5BAC1 !important;
+        }
+        
+        .discord-card .text-gray-500 {
+            color: #949BA4 !important;
+        }
+
+        /* GLOW EFFECT - OR */
+        .glow-focus {
+            box-shadow: 
+                0 0 60px rgba(212, 175, 55, 0.15),
+                0 20px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(212, 175, 55, 0.1) !important;
+        }
+
+        /* CROWN ICON FOR FOUNDERS */
+        .founder-crown {
+            display: inline-block;
+            margin-left: 4px;
+            font-size: 12px;
+        }
+
+        /* INPUT FOCUS */
+        .discord-input:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+    </style>
 
     <section class="min-h-[80vh] flex flex-col justify-center py-12 md:py-16 px-4 relative overflow-hidden">
 
@@ -656,141 +960,102 @@
                         <!-- CHANNELS LIST -->
                         <div class="flex-1 overflow-y-auto discord-scrollbar p-2">
                             
-                            <!-- LIVES & REDIFFUSIONS -->
+                            <!-- TEXT CHANNELS -->
                             <div class="mb-3">
                                 <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
-                                    <span class="text-sm mr-1">🎬</span> Lives & Rediffusions
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                                    Channels Principaux
                                 </div>
                                 
                                 <div class="space-y-0.5" id="channels-main">
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="rediff-générale">
-                                        <span class="text-sm mr-2">📺</span>
-                                        <span class="text-sm font-medium">rediff-générale</span>
-                                    </div>
-                                    
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="live-public">
-                                        <span class="text-sm mr-2">🎥</span>
-                                        <span class="text-sm font-medium">Live Public</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- IMPORTANT -->
-                            <div class="mb-3">
-                                <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
-                                    <span class="text-sm mr-1">🔴</span> Important
-                                </div>
-                                
-                                <div class="space-y-0.5">
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="annonce">
-                                        <span class="text-sm mr-2">📢</span>
-                                        <span class="text-sm font-medium">annonce</span>
-                                    </div>
-                                    
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="annonce-public">
-                                        <span class="text-sm mr-2">📣</span>
-                                        <span class="text-sm font-medium">annonce-public</span>
-                                    </div>
-                                    
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="programme-live">
-                                        <span class="text-sm mr-2">📅</span>
-                                        <span class="text-sm font-medium">programme-live-semaine</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- GÉNÉRAL -->
-                            <div class="mb-3">
-                                <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
-                                    <span class="text-sm mr-1">💬</span> général
-                                </div>
-                                
-                                <div class="space-y-0.5">
                                     <div class="discord-channel active rounded px-2 py-1.5 flex items-center channel-item" data-channel="général">
                                         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"/></svg>
                                         <span class="text-sm font-medium">général</span>
                                     </div>
                                     
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="concours">
-                                        <span class="text-sm mr-2">🏆</span>
-                                        <span class="text-sm font-medium">concours</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="annonce">
+                                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"/></svg>
+                                        <span class="text-sm font-medium">annonce</span>
                                     </div>
                                     
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="général-public">
-                                        <span class="text-sm mr-2">🌐</span>
-                                        <span class="text-sm font-medium">général-public</span>
-                                    </div>
-                                    
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="présentation">
-                                        <span class="text-sm mr-2">📝</span>
-                                        <span class="text-sm font-medium">présentation</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="résultats">
+                                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"/></svg>
+                                        <span class="text-sm font-medium">résultats</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- INFORMATIONS -->
+                            <!-- BUSINESS CHANNELS -->
                             <div class="mb-3">
                                 <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
-                                    <span class="text-sm mr-1">📁</span> Informations
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                                    Business
                                 </div>
                                 
                                 <div class="space-y-0.5">
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="règlement">
-                                        <span class="text-sm mr-2">📋</span>
-                                        <span class="text-sm font-medium">règlement</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="ecommerce">
+                                        <span class="text-sm mr-2">🛒</span>
+                                        <span class="text-sm font-medium">ecommerce</span>
                                     </div>
                                     
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="focus-coin">
-                                        <span class="text-sm mr-2">❤️</span>
-                                        <span class="text-sm font-medium">focus-coin</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="smma">
+                                        <span class="text-sm mr-2">📱</span>
+                                        <span class="text-sm font-medium">smma</span>
                                     </div>
                                     
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="bienvenue">
-                                        <span class="text-sm mr-2">👋</span>
-                                        <span class="text-sm font-medium">bienvenue</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- VOCAL -->
-                            <div class="mb-3">
-                                <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
-                                    <span class="text-sm mr-1">🎤</span> Vocal
-                                </div>
-                                
-                                <div class="space-y-0.5">
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="commandes-vocaux">
-                                        <span class="text-sm mr-2">🎙️</span>
-                                        <span class="text-sm font-medium">commandes-vocaux</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="automobile">
+                                        <span class="text-sm mr-2">🚗</span>
+                                        <span class="text-sm font-medium">automobile</span>
                                     </div>
                                     
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="vocal-public">
-                                        <span class="text-sm mr-2">🔊</span>
-                                        <span class="text-sm font-medium">Vocal Public</span>
-                                    </div>
-                                    
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="vocal-business">
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="fiscalité">
                                         <span class="text-sm mr-2">💼</span>
-                                        <span class="text-sm font-medium">Vocal Business</span>
+                                        <span class="text-sm font-medium">fiscalité</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- FOCUS -->
+                            <!-- MARKETING CHANNELS -->
                             <div class="mb-3">
                                 <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
-                                    <span class="text-sm mr-1">⭐</span> Focus
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                                    Marketing
                                 </div>
                                 
                                 <div class="space-y-0.5">
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="vos-chiffres">
-                                        <span class="text-sm mr-2">💰</span>
-                                        <span class="text-sm font-medium">vos-chiffres</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="meta-ads">
+                                        <span class="text-sm mr-2">📊</span>
+                                        <span class="text-sm font-medium">meta-ads</span>
                                     </div>
                                     
-                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="vos-avis">
-                                        <span class="text-sm mr-2">⭐</span>
-                                        <span class="text-sm font-medium">vos-avis</span>
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="google-ads">
+                                        <span class="text-sm mr-2">🎯</span>
+                                        <span class="text-sm font-medium">google-ads</span>
+                                    </div>
+                                    
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="seo">
+                                        <span class="text-sm mr-2">🔍</span>
+                                        <span class="text-sm font-medium">seo</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- TECH CHANNELS -->
+                            <div class="mb-3">
+                                <div class="text-xs font-bold text-[#949BA4] uppercase tracking-wider px-2 mb-1.5 flex items-center">
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                                    Tech
+                                </div>
+                                
+                                <div class="space-y-0.5">
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="ia">
+                                        <span class="text-sm mr-2">🤖</span>
+                                        <span class="text-sm font-medium">ia</span>
+                                    </div>
+                                    
+                                    <div class="discord-channel rounded px-2 py-1.5 flex items-center channel-item" data-channel="dev-web">
+                                        <span class="text-sm mr-2">💻</span>
+                                        <span class="text-sm font-medium">dev-web</span>
                                     </div>
                                 </div>
                             </div>
@@ -1101,31 +1366,13 @@
                 </div>
             </div>
 
-            <!-- 4. IA TERMINAL ASCII -->
+            <!-- 4. IA TERMINAL -->
             <div class="expert-card" data-tilt>
-                <div class="ui-replica terminal-focus">
-                    <div class="terminal-header">
-                        <div class="terminal-dots">
-                            <div class="terminal-dot red"></div>
-                            <div class="terminal-dot yellow"></div>
-                            <div class="terminal-dot green"></div>
-                        </div>
-                        <div class="terminal-title">focus@ai ~ zsh</div>
-                    </div>
-                    <div class="terminal-body">
-                        <div class="terminal-prompt">> focus --generate brand</div>
-                        <div class="terminal-output">Initializing AI agents...</div>
-                        <div class="terminal-output">Loading neural network...</div>
-                        <div class="terminal-output" style="color: #27c93f;">✓ Ready</div>
-                        <div class="terminal-ascii">
-███████╗ ██████╗  ██████╗██╗   ██╗███████╗
-██╔════╝██╔═══██╗██╔════╝██║   ██║██╔════╝
-█████╗  ██║   ██║██║     ██║   ██║███████╗
-██╔══╝  ██║   ██║██║     ██║   ██║╚════██║
-██║     ╚██████╔╝╚██████╗╚██████╔╝███████║
-╚═╝      ╚═════╝  ╚═════╝ ╚═════╝ ╚══════╝
-                        </div>
-                        <div class="terminal-prompt" style="margin-top: 8px;">> <span class="terminal-cursor"></span></div>
+                <div class="ui-replica terminal">
+                    <div class="matrix-bg" id="matrix-bg"></div>
+                    <div class="terminal-glow"></div>
+                    <div id="terminal-content" style="position: relative; z-index: 2;">
+                        <!-- Lines will be added by JS -->
                     </div>
                 </div>
                 <div class="info-zone">
@@ -1291,7 +1538,7 @@
         
         <!-- CTA SECTION - CARTE ANIMÉE -->
         <div class="section-cta">
-            <a href="#pricing" class="section-cta-card-light">
+            <a href="#pricing" class="section-cta-card">
                 <div class="cta-label">Notre équipe</div>
                 <div class="cta-title">Découvrir nos experts<span class="cta-arrow">→</span></div>
                 <div class="cta-price">Coaching inclus • <span>10€/mois</span></div>
@@ -1444,7 +1691,7 @@
         
         <!-- CTA SECTION - CARTE ANIMÉE -->
         <div class="section-cta">
-            <a href="#pricing" class="section-cta-card-light">
+            <a href="#pricing" class="section-cta-card">
                 <div class="cta-label">Communauté</div>
                 <div class="cta-title">Rejoindre le groupe<span class="cta-arrow">→</span></div>
                 <div class="cta-price">+1000 membres actifs • <span>10€/mois</span></div>
