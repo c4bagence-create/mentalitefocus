@@ -126,13 +126,20 @@
                 font-size: 8px !important;
             }
             
-            /* Repositionner les cartes pour écrans moyens - plus éloignées du centre */
-            .orbit-pos-1 { top: 8% !important; left: 5% !important; }
-            .orbit-pos-2 { top: 5% !important; right: 8% !important; left: auto !important; }
-            .orbit-pos-3 { top: 35% !important; right: 3% !important; left: auto !important; }
-            .orbit-pos-4 { bottom: 25% !important; right: 5% !important; left: auto !important; top: auto !important; }
-            .orbit-pos-5 { bottom: 15% !important; left: 3% !important; top: auto !important; }
-            .orbit-pos-6 { top: 55% !important; left: 5% !important; }
+            /* Repositionner les cartes pour écrans moyens - FORCER les positions orbit */
+            .hero-card-mobile {
+                position: absolute !important;
+                bottom: unset !important;
+            }
+            
+            .orbit-pos-1 { top: 8% !important; left: 3% !important; right: auto !important; bottom: auto !important; }
+            .orbit-pos-2 { top: 5% !important; right: 3% !important; left: auto !important; bottom: auto !important; }
+            .orbit-pos-3 { top: 32% !important; left: 2% !important; right: auto !important; bottom: auto !important; }
+            .orbit-pos-4 { top: 35% !important; right: 2% !important; left: auto !important; bottom: auto !important; }
+            .orbit-pos-5 { top: 56% !important; left: 3% !important; right: auto !important; bottom: auto !important; }
+            .orbit-pos-6 { top: 58% !important; right: 3% !important; left: auto !important; bottom: auto !important; }
+            .orbit-pos-7 { top: 78% !important; left: 10% !important; right: auto !important; bottom: auto !important; }
+            .orbit-pos-8 { top: 80% !important; right: 10% !important; left: auto !important; bottom: auto !important; }
             
             /* Hero text - Centré avec espace pour les cartes */
             .interactive-zone {

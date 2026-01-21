@@ -323,10 +323,10 @@ var data = [
         // ===== MESSAGES DATABASE PAR SALON =====
         const messagesDB = {
             'général': [
-                { user: "Sonny", role: "founder", avatar: "bg-red-600", time: "Aujourd'hui à 08:15", content: "🔥 Live ce soir à 20h : On crée une section Shopify de A à Z avec Claude IA !", reactions: ["🔥 24", "👀 12"] },
-                { user: "bmh.793", role: "student-yellow", avatar: "bg-purple-500", time: "Aujourd'hui à 08:18", content: "Merci Sonny pour le live d'hier c'était incroyable ! J'ai enfin compris les sections liquid" },
-                { user: "YasmineCr", role: "student-blue", avatar: "bg-pink-400", time: "Aujourd'hui à 08:20", content: "Le livvvw de ce soir une dinguerie !!!!!!<br>Je cherchais comment faire des sections liquid depuis 2023 😂", reactions: ["😂 8", "💀 3"] },
-                { user: "Zaid", role: "founder", avatar: "bg-red-600", time: "Aujourd'hui à 09:30", content: "Nouveau module sur Meta Ads qui sort demain ! Tout ce qu'il faut pour passer de 0 à 10K€/mois 🎯" },
+                { user: "Sonny", role: "founder", avatar: "bg-red-600", time: "Aujourd'hui à 08:15", content: "🔥 Live ce soir à 20h : On parle stratégies e-commerce avec Claude IA pour automatiser vos tâches !", reactions: ["🔥 24", "👀 12"] },
+                { user: "bmh.793", role: "student-yellow", avatar: "bg-purple-500", time: "Aujourd'hui à 08:18", content: "Merci Sonny pour les conseils d'hier c'était incroyable ! J'ai enfin compris comment structurer ma boutique" },
+                { user: "YasmineCr", role: "student-blue", avatar: "bg-pink-400", time: "Aujourd'hui à 08:20", content: "Le live de ce soir une dinguerie !!!!!!<br>Hâte d'apprendre les automatisations IA 😂", reactions: ["😂 8", "💀 3"] },
+                { user: "Zaid", role: "founder", avatar: "bg-red-600", time: "Aujourd'hui à 09:30", content: "Pour ceux qui veulent scale leur business : on fait un point Meta Ads demain en vocal ! Venez avec vos questions 🎯" },
                 { user: "Mohamed951", role: "student-yellow", avatar: "bg-amber-500", time: "Aujourd'hui à 09:35", content: "Merci @Jamel pour les conseils hier, j'ai appliqué et j'ai doublé mon ROAS !" },
                 { user: "iSkyze", role: "student-blue", avatar: "bg-indigo-500", time: "Aujourd'hui à 10:12", content: "Merci Midou de la value comme toujours 🙏" },
                 { user: "Jamel", role: "founder", avatar: "bg-red-600", time: "Aujourd'hui à 11:45", content: "Pour ceux qui veulent scale avec Meta Ads, je fais un live spécial samedi matin. On analyse vos campagnes en direct 📊" },
@@ -335,34 +335,34 @@ var data = [
             ],
             
             'annonce': [
-                { user: "Zaid", role: "founder", avatar: "bg-red-600", time: "Aujourd'hui à 08:00", content: "🎉 NOUVEAU MODULE DISPONIBLE : Meta Ads Mastery<br><br>✅ De 0 à 10K€/mois<br>✅ Stratégies éprouvées<br>✅ Cas pratiques<br><br>Dispo dans votre espace membre !", reactions: ["🔥 45", "🎉 32", "💪 18"] },
-                { user: "Sonny", role: "founder", avatar: "bg-red-600", time: "Hier à 18:30", content: "📺 REPLAY - Live Shopify Liquid Sections<br><br>Le replay du live d'hier est disponible ! On a créé 3 sections custom avec Claude IA.<br><br>Durée : 2h30 de pure valeur 💎" },
-                { user: "Jamel", role: "founder", avatar: "bg-red-600", time: "Il y a 2 jours", content: "🚀 FOCUS COIN : Nouveau système de points<br><br>Chaque interaction vous rapporte des points Focus Coin :<br>• Message : 10 pts<br>• Aide un membre : 50 pts<br>• Partage résultat : 100 pts<br><br>À échanger contre des formations !" }
+                { user: "Zaid", role: "founder", avatar: "bg-red-600", time: "Aujourd'hui à 08:00", content: "🎉 LIVE EXCEPTIONNEL CE SOIR : Scaling Meta Ads<br><br>✅ Stratégies pour passer de 0 à 10K€/mois<br>✅ Analyse de vos campagnes en direct<br>✅ Q&A avec toute l'équipe<br><br>RDV à 20h en vocal !", reactions: ["🔥 45", "🎉 32", "💪 18"] },
+                { user: "Sonny", role: "founder", avatar: "bg-red-600", time: "Hier à 18:30", content: "📺 REPLAY DISPO - Session Shopify + IA<br><br>Le replay de la session d'hier est disponible ! On a vu comment utiliser l'IA pour automatiser le e-commerce.<br><br>Durée : 2h30 de pure valeur 💎" },
+                { user: "Jamel", role: "founder", avatar: "bg-red-600", time: "Il y a 2 jours", content: "🚀 FOCUS COIN : Nouveau système de points<br><br>Chaque interaction vous rapporte des points Focus Coin :<br>• Message : 10 pts<br>• Aide un membre : 50 pts<br>• Partage résultat : 100 pts<br><br>À échanger contre des avantages exclusifs !" }
             ],
             
             'résultats': [
                 { user: "Midou", role: "founder", avatar: "bg-red-600", time: "Aujourd'hui à 14:30", content: "Bravo à tous ceux qui partagent leurs résultats ! C'est ça l'esprit Focus 🔥<br>Keep pushing ! 💪" },
                 { user: "Malek", role: "student-yellow", avatar: "bg-orange-500", time: "Aujourd'hui à 10:15", content: "Premier 5K€ de CA ce mois-ci sur ma boutique Shopify ! 🚀🚀🚀<br>Merci à toute l'équipe Focus pour les conseils !", reactions: ["🔥 28", "🎉 15", "💪 12"] },
-                { user: "Val", role: "student-blue", avatar: "bg-indigo-600", time: "Aujourd'hui à 11:42", content: "Ma première campagne Meta Ads rentable : 1200€ de dépense, 4800€ de CA ! ROAS de 4x 💰<br>J'ai suivi le module de Zaid à la lettre", reactions: ["🎯 18", "💰 22"] },
+                { user: "Val", role: "student-blue", avatar: "bg-indigo-600", time: "Aujourd'hui à 11:42", content: "Ma première campagne Meta Ads rentable : 1200€ de dépense, 4800€ de CA ! ROAS de 4x 💰<br>J'ai appliqué les conseils de Zaid à la lettre", reactions: ["🎯 18", "💰 22"] },
                 { user: "Fafull.S6", role: "student-yellow", avatar: "bg-rose-500", time: "Aujourd'hui à 13:05", content: "J'ai fermé ma première vente de voiture grâce aux techniques de Midou ! +2800€ de commission 🚗💨", reactions: ["🚗 10", "💪 8"] },
-                { user: "Redwane", role: "student-blue", avatar: "bg-blue-400", time: "Aujourd'hui à 15:20", content: "2 nouveaux clients SMMA cette semaine. 3000€ de MRR en plus ! Merci Jamel pour le module prospection 📱", reactions: ["🔥 15"] }
+                { user: "Redwane", role: "student-blue", avatar: "bg-blue-400", time: "Aujourd'hui à 15:20", content: "2 nouveaux clients SMMA cette semaine. 3000€ de MRR en plus ! Merci Jamel pour les tips en vocal 📱", reactions: ["🔥 15"] }
             ],
             
             'ecommerce': [
                 { user: "Sonny", role: "founder", avatar: "bg-red-600", time: "Aujourd'hui à 09:00", content: "Pour ceux qui galèrent avec les sections Shopify : utilisez Claude IA avec les bons prompts. Je vous montre ça en live ce soir 🎨" },
                 { user: "bmh.793", role: "student-yellow", avatar: "bg-purple-500", time: "Aujourd'hui à 09:15", content: "Question : quel thème Shopify vous recommandez pour du dropshipping ? Dawn ou un thème premium ?", reactions: [] },
-                { user: "YasmineCr", role: "student-blue", avatar: "bg-pink-400", time: "Aujourd'hui à 09:20", content: "Moi j'utilise Dawn + sections custom. C'est gratuit et ultra rapide ! Merci Sonny pour le tuto 🙏" },
+                { user: "YasmineCr", role: "student-blue", avatar: "bg-pink-400", time: "Aujourd'hui à 09:20", content: "Moi j'utilise Dawn + sections custom. C'est gratuit et ultra rapide ! Merci Sonny pour les conseils 🙏" },
                 { user: "Mohamed951", role: "student-yellow", avatar: "bg-amber-500", time: "Aujourd'hui à 10:05", content: "Les gars comment vous gérez les retours produits ? J'ai eu 5 demandes cette semaine 😓" },
-                { user: "iSkyze", role: "student-blue", avatar: "bg-indigo-500", time: "Aujourd'hui à 10:18", content: "Policy claire dès le départ + bon SAV = moins de problèmes. Check le module Customer Success de Focus" },
+                { user: "iSkyze", role: "student-blue", avatar: "bg-indigo-500", time: "Aujourd'hui à 10:18", content: "Policy claire dès le départ + bon SAV = moins de problèmes. Demande en vocal les gars sont chauds pour aider !" },
                 { user: "Rabah", role: "student-yellow", avatar: "bg-cyan-600", time: "Aujourd'hui à 11:30", content: "J'ai intégré Claude IA pour mes descriptions produits. Gain de temps ÉNORME ! 🤖" },
                 { user: "incognito", role: "student-blue", avatar: "bg-gray-600", time: "Aujourd'hui à 12:45", content: "Question bête : c'est quoi la différence entre Shopify et Shopify Plus ? Vraiment utile ?" }
             ],
             
             'smma': [
                 { user: "Jamel", role: "founder", avatar: "bg-red-600", time: "Aujourd'hui à 08:30", content: "Le secret du SMMA en 2026 : spécialisation + résultats prouvés. Arrêtez d'être généralistes, devenez experts dans UNE niche 🎯" },
-                { user: "BA1MAN", role: "student-yellow", avatar: "bg-cyan-500", time: "Aujourd'hui à 09:15", content: "J'ai débloqué mon premier client à 2K€/mois grâce aux scripts de prospection de Jamel ! C'est fou 🚀" },
+                { user: "BA1MAN", role: "student-yellow", avatar: "bg-cyan-500", time: "Aujourd'hui à 09:15", content: "J'ai débloqué mon premier client à 2K€/mois grâce aux conseils de prospection de Jamel ! C'est fou 🚀" },
                 { user: "Betterr", role: "student-blue", avatar: "bg-teal-500", time: "Aujourd'hui à 10:20", content: "Question : vous prospectez plutôt cold email ou LinkedIn pour du SMMA local ?" },
-                { user: "Malek", role: "student-yellow", avatar: "bg-orange-500", time: "Aujourd'hui à 10:35", content: "LinkedIn marche mieux pour moi. J'ai signé 3 clients en B2B avec la méthode Focus" },
+                { user: "Malek", role: "student-yellow", avatar: "bg-orange-500", time: "Aujourd'hui à 10:35", content: "LinkedIn marche mieux pour moi. J'ai signé 3 clients en B2B avec la méthode qu'on a vu en live" },
                 { user: "Val", role: "student-blue", avatar: "bg-indigo-600", time: "Aujourd'hui à 11:50", content: "Combien vous facturez pour de la gestion Meta Ads ? Je veux pas me sous-vendre..." },
                 { user: "Rodrygo", role: "student-yellow", avatar: "bg-red-400", time: "Aujourd'hui à 12:10", content: "Moi je fais 1500€ de setup + 15% du budget pub. Ça passe bien 💰" }
             ],
@@ -380,7 +380,7 @@ var data = [
                 { user: "Zaid", role: "founder", avatar: "bg-red-600", time: "Aujourd'hui à 10:00", content: "Pour ceux qui dépassent 100K€/an : pensez à la LLC + holding française. Optimisation fiscale légale = jusqu'à 40% d'économies 💼" },
                 { user: "Betterr", role: "student-yellow", avatar: "bg-teal-500", time: "Aujourd'hui à 10:30", content: "C'est quoi la différence entre LLC New Mexico et LLC Wyoming ? Laquelle choisir ?" },
                 { user: "Val", role: "student-blue", avatar: "bg-indigo-600", time: "Aujourd'hui à 10:45", content: "New Mexico = moins de paperasse et 0% d'impôts state. Wyoming c'est bien aussi mais plus de maintenance" },
-                { user: "Malek", role: "student-yellow", avatar: "bg-orange-500", time: "Aujourd'hui à 11:20", content: "J'ai monté ma LLC avec le guide Focus. Super simple ! Reçu les docs en 10 jours 📄" },
+                { user: "Malek", role: "student-yellow", avatar: "bg-orange-500", time: "Aujourd'hui à 11:20", content: "J'ai monté ma LLC avec les conseils du groupe. Super simple ! Reçu les docs en 10 jours 📄" },
                 { user: "YasmineCr", role: "student-blue", avatar: "bg-pink-400", time: "Aujourd'hui à 12:15", content: "Question comptable : vous utilisez quel outil pour tracker vos dépenses ? Excel ou un soft ?" },
                 { user: "Rodrygo", role: "student-yellow", avatar: "bg-red-400", time: "Aujourd'hui à 13:05", content: "Moi j'utilise Pennylane. Interface FR, synchro bancaire, nickel pour l'expert comptable ✅" }
             ],
