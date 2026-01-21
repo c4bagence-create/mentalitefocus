@@ -91,6 +91,116 @@
             }
         }
         
+        /* ========== TABLETTE (768px - 1024px) = AFFICHER COMME MOBILE ========== */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            /* Hero - Cacher les cartes flottantes sur tablette */
+            .hero-card-mobile,
+            .glass-card,
+            .orbit-pos-1, .orbit-pos-2, .orbit-pos-3,
+            .orbit-pos-4, .orbit-pos-5, .orbit-pos-6 {
+                display: none !important;
+            }
+            
+            /* Hero - Layout mobile sur tablette */
+            .hero-section-mobile,
+            section.min-h-\\[80vh\\] {
+                min-height: auto !important;
+                padding: 80px 40px 60px !important;
+            }
+            
+            /* Hero text - Centré et propre */
+            .interactive-zone {
+                max-width: 600px !important;
+                margin: 0 auto !important;
+                text-align: center !important;
+            }
+            
+            /* Stats - Format mobile sur tablette */
+            .hero-stats-mobile {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px !important;
+                max-width: 300px !important;
+                margin: 0 auto !important;
+            }
+            
+            /* Sous-titre - Lignes séparées */
+            .hero-subtitle-mobile {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 4px !important;
+            }
+            
+            .hero-subtitle-mobile span {
+                display: block !important;
+            }
+            
+            /* ========== AUTRES SECTIONS TABLETTE ========== */
+            
+            /* Discord */
+            .discord-card {
+                max-width: 700px !important;
+                margin: 0 auto !important;
+            }
+            
+            /* Networking */
+            .networking-section {
+                flex-direction: column !important;
+                gap: 40px !important;
+            }
+            
+            .networking-text {
+                max-width: 600px !important;
+                text-align: center !important;
+                margin: 0 auto !important;
+            }
+            
+            .phone-mockup {
+                max-width: 320px !important;
+                margin: 0 auto !important;
+            }
+            
+            .speech-bubble {
+                display: none !important;
+            }
+            
+            /* Expert Grid - 2 colonnes */
+            .expert-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 30px !important;
+                padding: 0 30px !important;
+            }
+            
+            .expert-card {
+                width: 100% !important;
+                max-width: none !important;
+            }
+            
+            /* Arsenal */
+            .card {
+                width: 300px !important;
+                height: 200px !important;
+            }
+            
+            /* Pricing */
+            .pricing-card {
+                flex-direction: column !important;
+                max-width: 600px !important;
+                margin: 0 auto !important;
+            }
+            
+            .left-panel {
+                border-right: none !important;
+                border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+            }
+            
+            .satellite {
+                display: none !important;
+            }
+        }
+        
         /* Stats Hero - Centrées */
         .hero-stats-bar {
             justify-content: center !important;

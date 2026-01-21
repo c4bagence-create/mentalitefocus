@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-BIT Analytics - Focus Business</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        goldLight: '#F5E6B8',
+                        goldDark: '#8B7024'
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    
+    <style>
+        * { font-family: 'Space Grotesk', sans-serif; }
+        
+        /* Background grid */
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+        
+        /* Glowing orb */
+        .orb {
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+            animation: orbPulse 4s ease-in-out infinite;
+        }
+        @keyframes orbPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+        
+        /* Avatar glow */
+        .avatar-glow {
+            box-shadow: 
+                0 0 30px rgba(212, 175, 55, 0.4),
+                0 0 60px rgba(212, 175, 55, 0.2),
+                0 0 100px rgba(212, 175, 55, 0.1);
+            animation: avatarPulse 3s ease-in-out infinite;
+        }
+        @keyframes avatarPulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.2); }
+            50% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.6), 0 0 100px rgba(212, 175, 55, 0.3); }
+        }
+        
+        /* Typing cursor */
+        .cursor {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #D4AF37, #FFD700, #D4AF37);
+            background-size: 200% auto;
+            animation: gradientFlow 3s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #D4AF37;
+            border-radius: 50%;
+            animation: particleFloat 8s ease-in-out infinite;
+            opacity: 0.3;
+        }
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            25% { transform: translateY(-30px) translateX(10px); opacity: 0.6; }
+            50% { transform: translateY(-50px) translateX(-10px); opacity: 0.3; }
+            75% { transform: translateY(-20px) translateX(20px); opacity: 0.5; }
+        }
+        
+        /* Terminal style */
+        .terminal {
+            background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.5),
+                0 25px 50px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        
+        .terminal-line {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        
+        /* Scan line effect */
+        .scanline {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            animation: scan 3s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0; opacity: 0; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        
+        /* Countdown flip */
+        .countdown-digit {
+            background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        
+        /* Wave animation */
+        .wave {
+            animation: wave 2s ease-in-out infinite;
+        }
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-10deg); }
+        }
+        
+        /* Status dot */
+        .status-dot {
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+        @keyframes statusPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-black text-white min-h-screen overflow-hidden">
+
+    <!-- PASSWORD PROTECTION -->
+    <div id="auth-screen" class="fixed inset-0 bg-black z-[9999] flex items-center justify-center">
+        <div class="absolute inset-0 grid-bg"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] orb"></div>
+        
+        <div class="text-center p-8 max-w-md w-full relative z-10">
+            <div class="w-20 h-20 bg-gradient-to-br from-gold to-goldDark rounded-2xl flex items-center justify-center mx-auto mb-6 avatar-glow">
+                <span class="text-black font-black text-3xl">2B</span>
+            </div>
+            <h1 class="text-3xl font-bold text-white mb-2">2-BIT Analytics</h1>
+            <p class="text-gray-500 mb-8">Zone reservee a l'equipe Focus</p>
+            
+            <div class="relative">
+                <input 
+                    type="password" 
+                    id="password-input" 
+                    placeholder="••••••••••"
+                    class="w-full px-6 py-4 bg-zinc-900/80 backdrop-blur border border-zinc-800 rounded-xl text-white text-center text-lg tracking-widest focus:outline-none focus:border-gold transition-all duration-300"
+                    onkeypress="if(event.key === 'Enter') checkPassword()"
+                    autofocus
+                >
+                <div id="error-msg" class="text-red-500 text-sm mt-3 hidden">Acces refuse</div>
+            </div>
+            
+            <button 
+                onclick="checkPassword()" 
+                class="mt-6 w-full py-4 bg-gradient-to-r from-gold to-goldDark text-black font-bold rounded-xl hover:scale-[1.02] transition-transform"
+            >
+                Entrer
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main-content" class="min-h-screen relative" style="display: none;">
+        
+        <!-- Background effects -->
+        <div class="fixed inset-0 grid-bg pointer-events-none"></div>
+        <div class="fixed top-1/4 left-1/4 w-[600px] h-[600px] orb pointer-events-none"></div>
+        <div class="fixed bottom-1/4 right-1/4 w-[400px] h-[400px] orb pointer-events-none" style="animation-delay: -2s;"></div>
+        
+        <!-- Particles -->
+        <div class="particle" style="left: 10%; top: 20%;"></div>
+        <div class="particle" style="left: 20%; top: 60%; animation-delay: -1s;"></div>
+        <div class="particle" style="left: 80%; top: 30%; animation-delay: -2s;"></div>
+        <div class="particle" style="left: 70%; top: 70%; animation-delay: -3s;"></div>
+        <div class="particle" style="left: 40%; top: 80%; animation-delay: -4s;"></div>
+        <div class="particle" style="left: 90%; top: 50%; animation-delay: -5s;"></div>
+        <div class="particle" style="left: 5%; top: 90%; animation-delay: -6s;"></div>
+        <div class="particle" style="left: 60%; top: 10%; animation-delay: -7s;"></div>
+        
+        <!-- Header -->
+        <header class="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-gradient-to-br from-gold to-goldDark rounded-xl flex items-center justify-center font-bold text-black">2B</div>
+                    <div>
+                        <div class="text-white font-bold">2-BIT</div>
+                        <div class="text-gray-500 text-xs">Focus Analytics</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-gold rounded-full status-dot"></div>
+                    <span class="text-gray-400 text-sm">Systeme actif</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main section -->
+        <main class="min-h-screen flex items-center justify-center px-6 pt-20">
+            <div class="max-w-4xl w-full">
+                
+                <!-- Avatar + Greeting -->
+                <div class="text-center mb-12" id="greeting-section">
+                    <div class="w-32 h-32 bg-gradient-to-br from-gold to-goldDark rounded-3xl flex items-center justify-center mx-auto mb-8 avatar-glow">
+                        <span class="text-black font-black text-5xl wave">2B</span>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-6xl font-black mb-4">
+                        <span id="greeting-text"></span><span class="cursor text-gold">|</span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-400" id="subtitle-text" style="opacity: 0;">
+                        Data Analyst - Focus Business Intelligence
+                    </p>
+                </div>
+                
+                <!-- Terminal -->
+                <div class="terminal rounded-2xl p-6 md:p-8 mb-12 relative overflow-hidden" id="terminal">
+                    <div class="scanline"></div>
+                    
+                    <!-- Terminal header -->
+                    <div class="flex items-center gap-2 mb-6 pb-4 border-b border-white/10">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="ml-4 text-gray-500 text-sm font-mono">2bit@focus:~/analytics</span>
+                    </div>
+                    
+                    <!-- Terminal content -->
+                    <div class="font-mono text-sm md:text-base space-y-3" id="terminal-content">
+                        <div class="terminal-line flex items-start gap-3">
+                            <span class="text-gold">$</span>
+                            <span class="text-gray-300">initialisation_systeme --mode=veille</span>
+                        </div>
+                        <div class="terminal-line flex items-start gap-3">
+                            <span class="text-green-500">[OK]</span>
+                            <span class="text-gray-400">PostHog connecte - API active</span>
+                        </div>
+                        <div class="terminal-line flex items-start gap-3">
+                            <span class="text-green-500">[OK]</span>
+                            <span class="text-gray-400">Meta Pixel synchronise</span>
+                        </div>
+                        <div class="terminal-line flex items-start gap-3">
+                            <span class="text-green-500">[OK]</span>
+                            <span class="text-gray-400">Collecte de donnees en cours...</span>
+                        </div>
+                        <div class="terminal-line flex items-start gap-3 mt-6">
+                            <span class="text-gold">$</span>
+                            <span class="text-gray-300">status --verbose</span>
+                        </div>
+                        <div class="terminal-line flex items-start gap-3">
+                            <span class="text-yellow-500">[WAIT]</span>
+                            <span class="text-gray-400">Donnees insuffisantes pour analyse</span>
+                        </div>
+                        <div class="terminal-line flex items-start gap-3">
+                            <span class="text-blue-400">[INFO]</span>
+                            <span class="text-gray-400">Prochaine analyse programmee: <span class="text-gold">08:00</span></span>
+                        </div>
+                        <div class="terminal-line flex items-start gap-3 mt-6">
+                            <span class="text-gold">$</span>
+                            <span class="text-white">message --to=lossa</span>
+                        </div>
+                        <div class="terminal-line mt-4 p-4 bg-gold/10 rounded-lg border border-gold/20">
+                            <p class="text-gray-300 leading-relaxed">
+                                <span class="text-gold font-bold">Yo Lossa,</span><br><br>
+                                Je viens d'etre active sur le site. Pour l'instant je collecte les donnees des visiteurs.<br><br>
+                                <span class="text-white">Mon premier rapport complet arrive demain matin a 8h.</span><br><br>
+                                D'ici la, je track tout : visiteurs, clics, scroll, temps passe, sources...<br>
+                                Tu vas voir, ca va etre <span class="text-gold">propre</span>.<br><br>
+                                <span class="text-gray-500">- 2-Bit</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Countdown -->
+                <div class="text-center mb-12" id="countdown-section" style="opacity: 0;">
+                    <p class="text-gray-500 mb-6 uppercase tracking-widest text-sm">Prochain rapport dans</p>
+                    
+                    <div class="flex justify-center gap-4" id="countdown">
+                        <div class="countdown-item">
+                            <div class="countdown-digit rounded-xl px-6 py-4 text-center">
+                                <span class="text-4xl md:text-5xl font-black gradient-text" id="hours">00</span>
+                            </div>
+                            <p class="text-gray-600 text-xs mt-2 uppercase">Heures</p>
+                        </div>
+                        <div class="text-4xl text-gold font-bold self-start pt-4">:</div>
+                        <div class="countdown-item">
+                            <div class="countdown-digit rounded-xl px-6 py-4 text-center">
+                                <span class="text-4xl md:text-5xl font-black gradient-text" id="minutes">00</span>
+                            </div>
+                            <p class="text-gray-600 text-xs mt-2 uppercase">Minutes</p>
+                        </div>
+                        <div class="text-4xl text-gold font-bold self-start pt-4">:</div>
+                        <div class="countdown-item">
+                            <div class="countdown-digit rounded-xl px-6 py-4 text-center">
+                                <span class="text-4xl md:text-5xl font-black gradient-text" id="seconds">00</span>
+                            </div>
+                            <p class="text-gray-600 text-xs mt-2 uppercase">Secondes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats preview -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12" id="stats-preview" style="opacity: 0;">
+                    <div class="bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-xl p-4 text-center">
+                        <div class="text-2xl font-black text-gold mb-1">--</div>
+                        <div class="text-gray-500 text-xs">Visiteurs</div>
+                    </div>
+                    <div class="bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-xl p-4 text-center">
+                        <div class="text-2xl font-black text-gold mb-1">--</div>
+                        <div class="text-gray-500 text-xs">Temps moyen</div>
+                    </div>
+                    <div class="bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-xl p-4 text-center">
+                        <div class="text-2xl font-black text-gold mb-1">--</div>
+                        <div class="text-gray-500 text-xs">Conversions</div>
+                    </div>
+                    <div class="bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-xl p-4 text-center">
+                        <div class="text-2xl font-black text-gold mb-1">--</div>
+                        <div class="text-gray-500 text-xs">Score</div>
+                    </div>
+                </div>
+                
+                <!-- CTA -->
+                <div class="text-center" id="cta-section" style="opacity: 0;">
+                    <a href="https://mentalitefocus.com" class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 border border-zinc-800 rounded-xl text-gray-400 hover:text-white hover:border-gold/50 transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                        </svg>
+                        <span>Retour au site Focus</span>
+                    </a>
+                </div>
+                
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="py-8 text-center">
+            <p class="text-gray-600 text-sm">
+                2-BIT Analytics • Focus Business Intelligence
+            </p>
+        </footer>
+        
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Password protection
+        const VALID_HASH = '5a8dd3ad0756a93ded72b823b19dd877';
+        
+        function md5(string) {
+            function rotateLeft(value, shift) { return (value << shift) | (value >>> (32 - shift)); }
+            function addUnsigned(x, y) { var lsw = (x & 0xFFFF) + (y & 0xFFFF); return (((x >> 16) + (y >> 16) + (lsw >> 16)) << 16) | (lsw & 0xFFFF); }
+            function F(x, y, z) { return (x & y) | ((~x) & z); }
+            function G(x, y, z) { return (x & z) | (y & (~z)); }
+            function H(x, y, z) { return x ^ y ^ z; }
+            function I(x, y, z) { return y ^ (x | (~z)); }
+            function FF(a, b, c, d, x, s, ac) { a = addUnsigned(a, addUnsigned(addUnsigned(F(b, c, d), x), ac)); return addUnsigned(rotateLeft(a, s), b); }
+            function GG(a, b, c, d, x, s, ac) { a = addUnsigned(a, addUnsigned(addUnsigned(G(b, c, d), x), ac)); return addUnsigned(rotateLeft(a, s), b); }
+            function HH(a, b, c, d, x, s, ac) { a = addUnsigned(a, addUnsigned(addUnsigned(H(b, c, d), x), ac)); return addUnsigned(rotateLeft(a, s), b); }
+            function II(a, b, c, d, x, s, ac) { a = addUnsigned(a, addUnsigned(addUnsigned(I(b, c, d), x), ac)); return addUnsigned(rotateLeft(a, s), b); }
+            function convertToWordArray(string) { var length = string.length, words = [], i; for (i = 0; i < length; i += 4) words.push((string.charCodeAt(i)) | (string.charCodeAt(i + 1) << 8) | (string.charCodeAt(i + 2) << 16) | (string.charCodeAt(i + 3) << 24)); return words; }
+            function wordToHex(value) { var hex = '', i; for (i = 0; i < 4; i++) hex += ((value >> (i * 8)) & 255).toString(16).padStart(2, '0'); return hex; }
+            var x = [], k, AA, BB, CC, DD, a, b, c, d, S = [7, 12, 17, 22, 5, 9, 14, 20, 4, 11, 16, 23, 6, 10, 15, 21];
+            string = unescape(encodeURIComponent(string));
+            var len = string.length; string += String.fromCharCode(0x80); while (string.length % 64 != 56) string += String.fromCharCode(0); x = convertToWordArray(string); x.push(len * 8); x.push(0);
+            a = 0x67452301; b = 0xEFCDAB89; c = 0x98BADCFE; d = 0x10325476;
+            for (k = 0; k < x.length; k += 16) { AA = a; BB = b; CC = c; DD = d; a = FF(a, b, c, d, x[k], S[0], 0xD76AA478); d = FF(d, a, b, c, x[k + 1], S[1], 0xE8C7B756); c = FF(c, d, a, b, x[k + 2], S[2], 0x242070DB); b = FF(b, c, d, a, x[k + 3], S[3], 0xC1BDCEEE); a = FF(a, b, c, d, x[k + 4], S[0], 0xF57C0FAF); d = FF(d, a, b, c, x[k + 5], S[1], 0x4787C62A); c = FF(c, d, a, b, x[k + 6], S[2], 0xA8304613); b = FF(b, c, d, a, x[k + 7], S[3], 0xFD469501); a = FF(a, b, c, d, x[k + 8], S[0], 0x698098D8); d = FF(d, a, b, c, x[k + 9], S[1], 0x8B44F7AF); c = FF(c, d, a, b, x[k + 10], S[2], 0xFFFF5BB1); b = FF(b, c, d, a, x[k + 11], S[3], 0x895CD7BE); a = FF(a, b, c, d, x[k + 12], S[0], 0x6B901122); d = FF(d, a, b, c, x[k + 13], S[1], 0xFD987193); c = FF(c, d, a, b, x[k + 14], S[2], 0xA679438E); b = FF(b, c, d, a, x[k + 15], S[3], 0x49B40821); a = GG(a, b, c, d, x[k + 1], S[4], 0xF61E2562); d = GG(d, a, b, c, x[k + 6], S[5], 0xC040B340); c = GG(c, d, a, b, x[k + 11], S[6], 0x265E5A51); b = GG(b, c, d, a, x[k], S[7], 0xE9B6C7AA); a = GG(a, b, c, d, x[k + 5], S[4], 0xD62F105D); d = GG(d, a, b, c, x[k + 10], S[5], 0x2441453); c = GG(c, d, a, b, x[k + 15], S[6], 0xD8A1E681); b = GG(b, c, d, a, x[k + 4], S[7], 0xE7D3FBC8); a = GG(a, b, c, d, x[k + 9], S[4], 0x21E1CDE6); d = GG(d, a, b, c, x[k + 14], S[5], 0xC33707D6); c = GG(c, d, a, b, x[k + 3], S[6], 0xF4D50D87); b = GG(b, c, d, a, x[k + 8], S[7], 0x455A14ED); a = GG(a, b, c, d, x[k + 13], S[4], 0xA9E3E905); d = GG(d, a, b, c, x[k + 2], S[5], 0xFCEFA3F8); c = GG(c, d, a, b, x[k + 7], S[6], 0x676F02D9); b = GG(b, c, d, a, x[k + 12], S[7], 0x8D2A4C8A); a = HH(a, b, c, d, x[k + 5], S[8], 0xFFFA3942); d = HH(d, a, b, c, x[k + 8], S[9], 0x8771F681); c = HH(c, d, a, b, x[k + 11], S[10], 0x6D9D6122); b = HH(b, c, d, a, x[k + 14], S[11], 0xFDE5380C); a = HH(a, b, c, d, x[k + 1], S[8], 0xA4BEEA44); d = HH(d, a, b, c, x[k + 4], S[9], 0x4BDECFA9); c = HH(c, d, a, b, x[k + 7], S[10], 0xF6BB4B60); b = HH(b, c, d, a, x[k + 10], S[11], 0xBEBFBC70); a = HH(a, b, c, d, x[k + 13], S[8], 0x289B7EC6); d = HH(d, a, b, c, x[k], S[9], 0xEAA127FA); c = HH(c, d, a, b, x[k + 3], S[10], 0xD4EF3085); b = HH(b, c, d, a, x[k + 6], S[11], 0x4881D05); a = HH(a, b, c, d, x[k + 9], S[8], 0xD9D4D039); d = HH(d, a, b, c, x[k + 12], S[9], 0xE6DB99E5); c = HH(c, d, a, b, x[k + 15], S[10], 0x1FA27CF8); b = HH(b, c, d, a, x[k + 2], S[11], 0xC4AC5665); a = II(a, b, c, d, x[k], S[12], 0xF4292244); d = II(d, a, b, c, x[k + 7], S[13], 0x432AFF97); c = II(c, d, a, b, x[k + 14], S[14], 0xAB9423A7); b = II(b, c, d, a, x[k + 5], S[15], 0xFC93A039); a = II(a, b, c, d, x[k + 12], S[12], 0x655B59C3); d = II(d, a, b, c, x[k + 3], S[13], 0x8F0CCC92); c = II(c, d, a, b, x[k + 10], S[14], 0xFFEFF47D); b = II(b, c, d, a, x[k + 1], S[15], 0x85845DD1); a = II(a, b, c, d, x[k + 8], S[12], 0x6FA87E4F); d = II(d, a, b, c, x[k + 15], S[13], 0xFE2CE6E0); c = II(c, d, a, b, x[k + 6], S[14], 0xA3014314); b = II(b, c, d, a, x[k + 13], S[15], 0x4E0811A1); a = II(a, b, c, d, x[k + 4], S[12], 0xF7537E82); d = II(d, a, b, c, x[k + 11], S[13], 0xBD3AF235); c = II(c, d, a, b, x[k + 2], S[14], 0x2AD7D2BB); b = II(b, c, d, a, x[k + 9], S[15], 0xEB86D391); a = addUnsigned(a, AA); b = addUnsigned(b, BB); c = addUnsigned(c, CC); d = addUnsigned(d, DD); }
+            return (wordToHex(a) + wordToHex(b) + wordToHex(c) + wordToHex(d)).toLowerCase();
+        }
+        
+        function checkPassword() {
+            const input = document.getElementById('password-input').value;
+            const hash = md5(input);
+            
+            if (hash === VALID_HASH) {
+                document.getElementById('auth-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                sessionStorage.setItem('2bit-auth', 'true');
+                startAnimations();
+            } else {
+                document.getElementById('error-msg').classList.remove('hidden');
+                document.getElementById('password-input').classList.add('border-red-500');
+                gsap.to('#auth-screen', { x: [-10, 10, -10, 10, 0], duration: 0.4 });
+                setTimeout(() => {
+                    document.getElementById('error-msg').classList.add('hidden');
+                    document.getElementById('password-input').classList.remove('border-red-500');
+                }, 2000);
+            }
+        }
+        
+        // Check if already authenticated
+        if (sessionStorage.getItem('2bit-auth') === 'true') {
+            document.getElementById('auth-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            setTimeout(startAnimations, 100);
+        }
+        
+        // Animations
+        function startAnimations() {
+            // Typing effect
+            const text = "Salut Lossa.";
+            const el = document.getElementById('greeting-text');
+            let i = 0;
+            
+            function type() {
+                if (i < text.length) {
+                    el.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 100);
+                } else {
+                    // Show subtitle
+                    gsap.to('#subtitle-text', { opacity: 1, y: 0, duration: 0.8, delay: 0.3 });
+                    // Show terminal lines
+                    animateTerminal();
+                }
+            }
+            setTimeout(type, 500);
+        }
+        
+        function animateTerminal() {
+            const lines = document.querySelectorAll('.terminal-line');
+            lines.forEach((line, i) => {
+                gsap.to(line, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    delay: i * 0.3
+                });
+            });
+            
+            // Show other sections
+            setTimeout(() => {
+                gsap.to('#countdown-section', { opacity: 1, duration: 0.8 });
+                gsap.to('#stats-preview', { opacity: 1, duration: 0.8, delay: 0.2 });
+                gsap.to('#cta-section', { opacity: 1, duration: 0.8, delay: 0.4 });
+                startCountdown();
+            }, lines.length * 300 + 500);
+        }
+        
+        // Countdown to 8 AM
+        function startCountdown() {
+            function update() {
+                const now = new Date();
+                let target = new Date();
+                target.setHours(8, 0, 0, 0);
+                
+                // If it's past 8 AM, set target to tomorrow
+                if (now >= target) {
+                    target.setDate(target.getDate() + 1);
+                }
+                
+                const diff = target - now;
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            update();
+            setInterval(update, 1000);
+        }
+    </script>
+</body>
+</html>
