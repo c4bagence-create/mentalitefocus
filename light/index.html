@@ -6,17 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Focus Business - L'Élite de l'Exécution</title>
     
-    <!-- Fonts -->
+    <!-- SEO & Performance -->
+    <meta name="description" content="Focus Business - Communauté élite pour entrepreneurs. Rejoins +1000 membres actifs pour 10€/mois.">
+    <meta name="theme-color" content="#000000">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts - Optimized -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Libraries - Defer non-critical -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
     <script>
         tailwind.config = {
@@ -64,15 +70,78 @@
     </script>
 
     <style>
+        /* === MODE CLAIR - FOCUS - VRAIES NUANCES === */
+        :root {
+            /* Fonds avec nuances */
+            --bg-page: #F5F5F7;
+            --bg-section: #EAEAEC;
+            --bg-card: #FFFFFF;
+            --bg-card-elevated: #FAFAFA;
+            --bg-input: #E8E8ED;
+            
+            /* Textes */
+            --text-primary: #1D1D1F;
+            --text-secondary: #424245;
+            --text-muted: #6E6E73;
+            --text-light: #86868B;
+            
+            /* Bordures */
+            --border-light: rgba(0,0,0,0.06);
+            --border-medium: rgba(0,0,0,0.1);
+            --border-strong: rgba(0,0,0,0.15);
+            
+            /* Or */
+            --gold: #B8860B;
+            --gold-light: #D4AF37;
+            --gold-bg: rgba(184,134,11,0.08);
+            
+            /* Ombres */
+            --shadow-soft: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-medium: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-strong: 0 8px 32px rgba(0,0,0,0.12);
+        }
+        
+        /* === PERFORMANCE OPTIMIZATIONS === */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
         html { 
             overflow-x: hidden !important;
+            scroll-behavior: smooth;
         }
+        
         body { 
-            background-color: #000; 
-            color: white; 
+            background-color: var(--bg-primary); 
+            color: var(--text-primary); 
             overflow-x: hidden !important; 
             max-width: 100vw !important;
             position: relative;
+            font-family: 'Space Grotesk', sans-serif;
+            text-rendering: optimizeSpeed;
+        }
+        
+        /* GPU Acceleration for animations */
+        .expert-card,
+        .discord-card,
+        .pricing-card,
+        .speech-bubble,
+        .hero-card-mobile,
+        [class*="animate-"] {
+            will-change: transform, opacity;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        
+        /* Contain paint for heavy sections */
+        section {
+            contain: layout style;
+        }
+        
+        /* Optimize images */
+        img {
+            content-visibility: auto;
         }
         
         /* Fix scroll horizontal mobile */
@@ -264,34 +333,34 @@
         
         /* --- PREMIUM LOADER NOIR/OR --- */
         #loader {
-            position: fixed; inset: 0; background: #000; z-index: 99999;
+            position: fixed; inset: 0; background: #FAFAFA; z-index: 99999;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
         
-        /* Glow ambiant or */
+        /* Glow ambiant or - Mode Clair */
         #loader::before {
             content: '';
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
-            filter: blur(60px);
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
+            filter: blur(80px);
             animation: loaderGlow 2s ease-in-out infinite;
         }
         
         @keyframes loaderGlow {
-            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+            0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
         }
 
         .loader-letter {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 900;
             font-size: 4rem;
-            background: linear-gradient(135deg, #fff 0%, #D4AF37 50%, #fff 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #D4AF37 50%, #1a1a1a 100%);
             background-size: 200% 200%;
             -webkit-background-clip: text;
             background-clip: text;
@@ -317,7 +386,7 @@
         }
 
         .loader-bar-container {
-            width: 200px; height: 2px; background: rgba(255,255,255,0.1); 
+            width: 200px; height: 3px; background: rgba(0,0,0,0.08); 
             margin-top: 2rem; overflow: hidden; border-radius: 10px;
             position: relative;
         }
@@ -325,14 +394,14 @@
             width: 0%; height: 100%; 
             background: linear-gradient(90deg, #D4AF37, #FFD700);
             animation: loadFill 1.2s ease-out forwards;
-            box-shadow: 0 0 20px rgba(212,175,55,0.6);
+            box-shadow: 0 0 15px rgba(212,175,55,0.4);
         }
         @keyframes loadFill { to { width: 100%; } }
         
         .loader-text {
             margin-top: 1.5rem;
             font-size: 10px;
-            color: rgba(255,255,255,0.4);
+            color: #6E6E73;
             letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 600;
@@ -528,11 +597,32 @@
             }
         }
 
+        /* ===== TOGGLE THEME ===== */
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1D1D1F;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .theme-toggle:hover {
+            background: rgba(0,0,0,0.1);
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
         /* ===== LOGO NAVBAR AVEC EFFETS INTENSES ===== */
         .header-logo-small {
             width: 80px;
             height: auto;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.5));
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.1));
             animation: logoGlobalPulse 2s ease-in-out infinite;
         }
         
@@ -1008,10 +1098,11 @@
             .bubble-4 { bottom: 25%; right: 5%; }
         }
         
+        /* MODE SOMBRE - Speech bubbles Discord style */
         .speech-bubble {
             position: absolute;
-            background: rgba(10, 10, 15, 0.95);
-            border: 1px solid rgba(212, 175, 55, 0.25);
+            background: rgba(43, 45, 49, 0.95);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 14px;
             padding: 10px 12px;
             backdrop-filter: blur(20px);
@@ -1036,8 +1127,8 @@
             position: absolute;
             width: 10px;
             height: 10px;
-            background: rgba(10, 10, 15, 0.95);
-            border: 1px solid rgba(212, 175, 55, 0.25);
+            background: rgba(43, 45, 49, 0.95);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 0 0 3px 0;
             transform: rotate(45deg);
         }
@@ -1086,7 +1177,7 @@
         
         .speech-bubble .speech-text {
             font-size: 10px;
-            color: white;
+            color: #F2F3F5;
             line-height: 1.35;
             font-weight: 500;
         }
@@ -1427,8 +1518,8 @@
 
         /* CARD UNIFORME */
         .expert-card {
-            background: #0a0a0b;
-            border: 1px solid rgba(255,255,255,0.06);
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.08);
             border-radius: 24px;
             height: 480px;
             position: relative;
@@ -1436,6 +1527,7 @@
             display: flex;
             flex-direction: column;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
         
         .expert-card:hover {
@@ -1460,13 +1552,14 @@
             flex-direction: column;
             gap: 10px;
             flex: 1;
+            background: #FFFFFF;
         }
         
         .role { 
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #666;
+            color: #D4AF37;
             font-weight: 700;
         }
         
@@ -1474,15 +1567,12 @@
             font-size: 24px;
             font-weight: 900;
             letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #1a1a1a;
         }
         
         .desc { 
             font-size: 14px;
-            color: #999;
+            color: #4E5058;
             line-height: 1.6;
         }
 
@@ -1799,12 +1889,14 @@
         }
 
         /* ===== 2. ADS DASHBOARD V2 - ULTRA STYLÉ ===== */
+        /* MODE CLAIR - Ads Dashboard */
         .ads-dashboard-v2 {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F7 100%);
             height: 100%;
             display: flex;
             flex-direction: column;
             position: relative;
+            border: 1px solid rgba(0,0,0,0.08);
             overflow: hidden;
             padding: 16px;
         }
@@ -1865,14 +1957,14 @@
         .ads-title {
             font-size: 12px;
             font-weight: 700;
-            color: white;
+            color: #1D1D1F;
         }
         
         .ads-live-badge {
             font-size: 9px;
             font-weight: 800;
-            color: #22C55E;
-            background: rgba(34,197,94,0.15);
+            color: #059669;
+            background: rgba(5,150,105,0.1);
             padding: 4px 8px;
             border-radius: 4px;
             animation: livePulse 1.5s ease-in-out infinite;
@@ -1891,9 +1983,10 @@
             z-index: 2;
         }
         
+        /* MODE CLAIR - KPI Cards */
         .ads-kpi-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.08);
             border-radius: 8px;
             padding: 10px;
             position: relative;
@@ -1901,7 +1994,7 @@
         }
         
         .ads-kpi-card.highlight {
-            background: rgba(212,175,55,0.1);
+            background: rgba(212,175,55,0.08);
             border-color: rgba(212,175,55,0.3);
         }
         
@@ -1920,21 +2013,22 @@
             50%, 100% { left: 100%; }
         }
         
+        /* MODE CLAIR - KPI Values */
         .ads-kpi-value {
             font-size: 16px;
             font-weight: 900;
-            color: white;
+            color: #1D1D1F;
             animation: valueCount 0.5s ease-out;
         }
         
         .ads-kpi-card.highlight .ads-kpi-value {
-            color: #D4AF37;
-            text-shadow: 0 0 20px rgba(212,175,55,0.5);
+            color: #B8860B;
+            text-shadow: 0 0 15px rgba(212,175,55,0.3);
         }
         
         .ads-kpi-label {
             font-size: 9px;
-            color: #666;
+            color: #6E6E73;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-top: 2px;
@@ -2010,7 +2104,7 @@
             display: flex;
             justify-content: space-between;
             font-size: 8px;
-            color: #444;
+            color: #6E6E73;
             margin-top: 4px;
         }
 
@@ -2224,15 +2318,17 @@
         }
 
         /* ===== 4. TERMINAL IA ===== */
+        /* MODE CLAIR - Terminal IA */
         .terminal {
-            background: #0D1117; height: 100%; padding: 20px;
+            background: #FFFFFF; height: 100%; padding: 20px;
             font-family: 'JetBrains Mono', monospace; font-size: 11px;
-            color: #22C55E; overflow: hidden; position: relative;
+            color: #1D1D1F; overflow: hidden; position: relative;
+            border: 1px solid rgba(0,0,0,0.08);
         }
         .terminal::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, transparent 1px, transparent 2px, rgba(0,0,0,0.15) 3px);
-            pointer-events: none; opacity: 0.3;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.02) 0px, transparent 1px, transparent 2px, rgba(0,0,0,0.02) 3px);
+            pointer-events: none; opacity: 0.5;
         }
         .terminal-line {
             margin-bottom: 8px; opacity: 0;
@@ -2244,15 +2340,15 @@
             to { opacity: 1; transform: translateX(0); }
         }
         .terminal-prompt { 
-            color: #22C55E; 
-            text-shadow: 0 0 8px rgba(34,197,94,0.5);
+            color: #059669; 
+            text-shadow: none;
         }
         .terminal-command { 
-            color: #58A6FF;
-            text-shadow: 0 0 8px rgba(88,166,255,0.3);
+            color: #2563EB;
+            text-shadow: none;
         }
         .terminal-output { 
-            color: #888;
+            color: #6E6E73;
             animation: terminalFlicker 0.1s ease-in;
         }
         @keyframes terminalFlicker {
@@ -2261,8 +2357,8 @@
         }
         .terminal-cursor {
             display: inline-block; width: 10px; height: 16px;
-            background: #22C55E; animation: cursorBlink 1s infinite;
-            box-shadow: 0 0 8px #22C55E;
+            background: #059669; animation: cursorBlink 1s infinite;
+            box-shadow: 0 0 5px rgba(5,150,105,0.3);
         }
         @keyframes cursorBlink {
             0%, 50% { opacity: 1; box-shadow: 0 0 8px #22C55E; }
@@ -2296,7 +2392,7 @@
         .terminal-glow {
             position: absolute; top: 50%; left: 50%;
             width: 250px; height: 250px;
-            background: radial-gradient(circle, rgba(34,197,94,0.15), transparent 70%);
+            background: radial-gradient(circle, rgba(5,150,105,0.08), transparent 70%);
             transform: translate(-50%, -50%);
             animation: terminalGlowPulse 4s ease-in-out infinite;
             pointer-events: none;
@@ -2416,12 +2512,15 @@
         }
 
         /* ===== 6. GOOGLE SEARCH ===== */
+        /* MODE CLAIR - Google Search */
         .google-search {
-            background: #202124; height: 100%; display: flex; flex-direction: column;
+            background: #FFFFFF; height: 100%; display: flex; flex-direction: column;
             position: relative; overflow: hidden;
+            border: 1px solid #DFE1E5;
         }
         .google-header {
             padding: 16px 20px; display: flex; align-items: center; gap: 18px;
+            background: #F8F9FA; border-bottom: 1px solid #DFE1E5;
         }
         .google-logo {
             font-size: 20px; font-weight: 700;
@@ -2437,19 +2536,20 @@
             50% { transform: translateY(-2px); }
         }
         .google-search-bar {
-            flex: 1; background: #303134; border-radius: 24px;
-            padding: 10px 18px; color: #e8eaed; font-size: 13px;
+            flex: 1; background: #FFFFFF; border-radius: 24px;
+            padding: 10px 18px; color: #5F6368; font-size: 13px;
             display: flex; align-items: center; gap: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 1px 6px rgba(32,33,36,0.18);
+            border: 1px solid #DFE1E5;
             transition: all 0.3s ease;
         }
         .google-search-bar:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            background: #383a3d;
+            box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+            border-color: rgba(223,225,229,0);
         }
         .google-typing-cursor {
             display: inline-block; width: 1px; height: 16px;
-            background: #e8eaed; margin-left: 2px;
+            background: #5F6368; margin-left: 2px;
             animation: googleCursorBlink 1s infinite;
         }
         @keyframes googleCursorBlink {
@@ -2458,6 +2558,7 @@
         }
         .google-results {
             padding: 20px; flex: 1; overflow-y: auto;
+            background: #FFFFFF;
         }
         .google-result {
             margin-bottom: 28px; font-family: arial, sans-serif;
@@ -2472,7 +2573,7 @@
             transform: translateX(4px);
         }
         .google-url {
-            color: #bdc1c6; font-size: 12px; margin-bottom: 6px;
+            color: #202124; font-size: 12px; margin-bottom: 6px;
             display: flex; align-items: center; gap: 8px;
         }
         .google-favicon {
@@ -2487,16 +2588,16 @@
             50% { transform: rotate(360deg); }
         }
         .google-title {
-            color: #8ab4f8; font-size: 18px; font-weight: 400;
+            color: #1a0dab; font-size: 18px; font-weight: 400;
             cursor: pointer; text-decoration: none; margin-bottom: 6px;
             display: block; transition: all 0.2s ease;
         }
         .google-title:hover { 
             text-decoration: underline; 
-            color: #aac7ff;
+            color: #1a0dab;
         }
         .google-stars {
-            color: #fbbf24; font-size: 12px; margin-bottom: 6px;
+            color: #f59e0b; font-size: 12px; margin-bottom: 6px;
             animation: googleStarsShine 2s ease-in-out infinite;
         }
         @keyframes googleStarsShine {
@@ -2504,7 +2605,7 @@
             50% { text-shadow: 0 0 8px rgba(251,191,36,0.6); }
         }
         .google-desc {
-            color: #bdc1c6; font-size: 13px; line-height: 1.6;
+            color: #4d5156; font-size: 13px; line-height: 1.6;
         }
         .google-result-blur {
             opacity: 0.3; filter: blur(2px); pointer-events: none;
@@ -2617,16 +2718,18 @@
         }
 
         /* ===== 8. SMMA INVOICE ===== */
+        /* MODE CLAIR - SMMA Invoice */
         .smma-invoice {
-            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
             height: 100%; padding: 24px;
-            color: white; display: flex; flex-direction: column;
+            color: #1D1D1F; display: flex; flex-direction: column;
             position: relative; overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.08);
         }
         .smma-invoice::before {
             content: ''; position: absolute; top: 0; right: 0;
             width: 120px; height: 120px;
-            background: radial-gradient(circle, rgba(34,197,94,0.1), transparent);
+            background: radial-gradient(circle, rgba(212,175,55,0.1), transparent);
             animation: invoiceGlowMove 5s ease-in-out infinite;
         }
         @keyframes invoiceGlowMove {
@@ -2643,11 +2746,12 @@
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        /* MODE CLAIR - Invoice elements */
         .invoice-number {
-            font-size: 11px; color: #888;
+            font-size: 11px; color: #6E6E73;
         }
         .invoice-id {
-            font-size: 18px; font-weight: 900; color: white;
+            font-size: 18px; font-weight: 900; color: #1D1D1F;
             font-family: 'JetBrains Mono', monospace;
             animation: invoiceIdGlow 3s ease-in-out infinite;
         }
@@ -2656,19 +2760,20 @@
             50% { text-shadow: 0 0 12px rgba(255,255,255,0.3); }
         }
         .invoice-date {
-            text-align: right; font-size: 11px; color: #888;
+            text-align: right; font-size: 11px; color: #6E6E73;
         }
         .invoice-client {
-            font-size: 12px; color: #aaa; margin-bottom: 24px;
-            padding: 10px 14px; background: rgba(255,255,255,0.03);
-            border-left: 3px solid #22C55E; border-radius: 6px;
+            font-size: 12px; color: #424245; margin-bottom: 24px;
+            padding: 10px 14px; background: rgba(0,0,0,0.02);
+            border-left: 3px solid #059669; border-radius: 6px;
         }
+        /* MODE CLAIR - Invoice Items */
         .invoice-items {
             flex: 1; margin-bottom: 20px;
         }
         .invoice-item {
             display: flex; justify-content: space-between;
-            padding: 12px 0; border-bottom: 1px solid #2a2a2a;
+            padding: 12px 0; border-bottom: 1px solid #E5E5E5;
             font-size: 13px;
             animation: invoiceItemFadeIn 0.5s ease-out;
             transition: all 0.3s ease;
@@ -2678,31 +2783,32 @@
             to { opacity: 1; transform: translateX(0); }
         }
         .invoice-item:hover {
-            background: rgba(255,255,255,0.03);
+            background: rgba(0,0,0,0.02);
             padding-left: 8px;
         }
-        .invoice-item-name { color: #ccc; }
+        .invoice-item-name { color: #424245; }
         .invoice-item-price { 
-            font-weight: 700; color: white;
+            font-weight: 700; color: #1D1D1F;
             animation: invoicePriceFlicker 4s ease-in-out infinite;
         }
         @keyframes invoicePriceFlicker {
-            0%, 100% { color: white; }
-            50% { color: #22C55E; text-shadow: 0 0 8px rgba(34,197,94,0.3); }
+            0%, 100% { color: #1D1D1F; }
+            50% { color: #059669; text-shadow: none; }
         }
         .invoice-total {
             display: flex; justify-content: space-between; align-items: center;
-            padding-top: 20px; border-top: 2px solid #333;
-            background: rgba(255,255,255,0.02);
+            padding-top: 20px; border-top: 2px solid #E5E5E5;
+            background: rgba(0,0,0,0.02);
             padding: 20px 14px; border-radius: 8px; margin-top: 10px;
         }
         .invoice-total-label {
             font-size: 14px; font-weight: 700; text-transform: uppercase;
+            color: #424245;
         }
         .invoice-total-amount {
             font-size: 32px; font-weight: 900;
             font-family: 'JetBrains Mono', monospace;
-            background: linear-gradient(135deg, #22C55E, #16a34a);
+            background: linear-gradient(135deg, #059669, #047857);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -2715,10 +2821,11 @@
         .invoice-paid-badge {
             position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%) rotate(-12deg);
-            border: 5px solid #22C55E; color: #22C55E;
-            background: rgba(26,26,26,0.98); font-size: 36px;
+            border: 5px solid #059669; color: #059669;
+            background: rgba(255,255,255,0.98); font-size: 36px;
             font-weight: 900; padding: 14px 36px; border-radius: 10px;
             opacity: 0; animation: paidStamp 6s infinite;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             box-shadow: 0 8px 32px rgba(34,197,94,0.4), inset 0 0 20px rgba(34,197,94,0.1);
             z-index: 20;
         }
@@ -2763,16 +2870,17 @@
         body { background: #050505; color: white; overflow-x: hidden; }
 
         /* REALISTIC PHONE CONTAINER */
+        /* PHONE MOCKUP - MODE SOMBRE DISCORD */
         .phone-mockup {
             width: 320px;
             height: 680px;
-            background: #000;
+            background: #1E1F22;
             border-radius: 50px;
             position: relative;
             box-shadow: 
-                0 0 0 4px #333, /* Cadre métal */
-                0 0 0 5px #000, /* Joint noir */
-                -20px 20px 50px rgba(0,0,0,0.8); /* Ombre sol */
+                0 0 0 4px #D1D5DB, /* Cadre métal */
+                0 0 0 6px #E5E7EB, /* Joint */
+                -20px 20px 60px rgba(0,0,0,0.2); /* Ombre */
             transform: rotate(-5deg);
             transition: transform 0.1s ease-out;
             transform-style: preserve-3d;
@@ -2780,7 +2888,7 @@
 
         .phone-screen {
             position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px;
-            background: #1e1f22;
+            background: #2B2D31;
             border-radius: 46px;
             overflow: hidden;
             display: flex; flex-direction: column;
@@ -2800,26 +2908,33 @@
         .channel-header {
             padding: 10px 16px;
             background: #2b2d31;
-            border-bottom: 1px solid #1e1f22;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
             display: flex; align-items: center; justify-content: space-between;
         }
 
+        /* MODE SOMBRE DISCORD - Voice user rows */
         .voice-user-row {
             display: flex; align-items: center; gap: 12px;
             padding: 8px 16px;
             transition: background 0.2s;
+            background: #2B2D31;
+            margin: 4px 8px;
+            border-radius: 8px;
+        }
+        .voice-user-row:hover {
+            background: #35373C;
         }
         .voice-user-row.talking .avatar-ring {
             box-shadow: 0 0 0 2px #23a559;
         }
         .voice-user-row.talking .user-name {
-            color: white;
+            color: #FFFFFF;
         }
 
         /* MESSAGE BUBBLES (REALISTIC CHAT OVERLAY) */
         .chat-overlay {
             position: absolute; bottom: 0; left: 0; width: 100%;
-            background: linear-gradient(to top, #1e1f22 90%, transparent);
+            background: linear-gradient(to top, #f5f5f5 90%, transparent);
             padding: 20px; padding-bottom: 40px;
             display: flex; flex-direction: column; gap: 10px;
         }
@@ -2880,14 +2995,24 @@
         /* MAIN CARD */
         .pricing-card {
             width: 100%; max-width: 1000px;
-            background: linear-gradient(145deg, #111 0%, #050505 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            background: linear-gradient(145deg, #FFFFFF 0%, #F8F8FA 100%);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-top: 3px solid #B8860B;
             border-radius: 32px;
             display: flex; flex-direction: column-reverse;
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.9);
+            box-shadow: 0 20px 60px -20px rgba(0,0,0,0.15);
             position: relative; z-index: 10;
             overflow: hidden;
+        }
+        
+        /* MODE CLAIR - Prix et textes */
+        .pricing-card .text-white {
+            color: #1D1D1F !important;
+        }
+        
+        .pricing-card .text-gray-400,
+        .pricing-card .text-gray-500 {
+            color: #6E6E73 !important;
         }
         @media (min-width: 1024px) { .pricing-card { flex-direction: row; height: 500px; } }
 
@@ -2909,31 +3034,51 @@
         @keyframes pulse-gold { 0% { opacity: 0.1; transform: scale(1); } 100% { opacity: 0.5; transform: scale(1.5); } }
 
         /* LEFT PANEL (VALEUR - MICRO SCENES) */
+        /* MODE CLAIR - Left/Right panels */
         .left-panel {
             padding: 40px 24px; flex: 1.2; display: flex; flex-direction: column; justify-content: center;
-            border-top: 1px solid rgba(255,255,255,0.05); position: relative;
+            border-top: 1px solid rgba(0,0,0,0.06); position: relative;
+            background: #FAFAFA;
         }
         @media (min-width: 1024px) { 
-            .left-panel { border-top: none; border-right: 1px solid rgba(255,255,255,0.05); padding: 60px; } 
+            .left-panel { border-top: none; border-right: 1px solid rgba(0,0,0,0.06); padding: 60px; } 
         }
 
         /* 1. CHAT BLOCK */
+        /* MODE CLAIR - Value blocks */
         .value-block {
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px;
+            background: #F5F5F7; 
+            border: 1px solid rgba(0,0,0,0.06); 
+            border-radius: 16px;
             padding: 12px; margin-bottom: 16px; display: flex; align-items: center; gap: 16px;
             overflow: hidden; position: relative; transition: all 0.3s;
         }
-        .value-block:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.15); transform: translateX(5px); }
-
-        .scene-box {
-            width: 60px; height: 60px; background: #000; border-radius: 12px; border: 1px solid #333;
-            position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+        .value-block:hover { 
+            background: #EAEAEC; 
+            border-color: rgba(184,134,11,0.3); 
+            transform: translateX(5px); 
         }
 
-        /* Chat Anim */
+        .scene-box {
+            width: 60px; height: 60px; 
+            background: linear-gradient(145deg, #EAEAEC, #E0E0E2); 
+            border-radius: 12px; 
+            border: 1px solid rgba(0,0,0,0.08);
+            position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+        }
+        
+        /* Mode clair - textes dans value-block */
+        .block-text h4 {
+            color: #1D1D1F !important;
+        }
+        .block-text p {
+            color: #6E6E73 !important;
+        }
+
+        /* Chat Anim - Mode clair */
         .chat-stream { position: absolute; bottom: -20px; width: 100%; display: flex; flex-direction: column; gap: 4px; padding: 0 8px; }
-        .tiny-msg { height: 4px; background: #333; border-radius: 2px; width: 70%; animation: chatUp 3s infinite linear; }
-        .tiny-msg.right { align-self: flex-end; background: #D4AF37; }
+        .tiny-msg { height: 4px; background: #C7C7CC; border-radius: 2px; width: 70%; animation: chatUp 3s infinite linear; }
+        .tiny-msg.right { align-self: flex-end; background: #B8860B; }
         @keyframes chatUp { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(-40px); opacity: 0; } }
 
         /* 2. VAULT BLOCK */
@@ -2955,34 +3100,44 @@
         .block-text h4 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 2px; }
         .block-text p { font-size: 11px; color: #888; font-weight: 500; }
 
-        /* RIGHT PANEL (OFFER) */
-        .right-panel {
-            flex: 0.8; background: radial-gradient(circle at top, rgba(212,175,55,0.05), transparent 70%);
-            padding: 40px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-            position: relative;
-        }
-
         .price-big {
-            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 80px; line-height: 0.9; color: white;
-            text-shadow: 0 0 40px rgba(255,255,255,0.2); margin-bottom: 10px; letter-spacing: -3px;
+            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 80px; line-height: 0.9; color: #1a1a1a;
+            text-shadow: 0 0 40px rgba(212,175,55,0.2); margin-bottom: 10px; letter-spacing: -3px;
         }
-        .period { font-size: 14px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; }
+        .period { font-size: 14px; color: #6E6E73; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; }
 
+        /* Mode clair - Bouton CTA */
         .gold-btn {
             width: 100%; max-width: 300px; padding: 20px; border-radius: 14px;
-            background: white; color: black; font-weight: 900; font-size: 16px;
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 100%); 
+            color: white !important; 
+            font-weight: 900; font-size: 16px;
             text-transform: uppercase; letter-spacing: 1px;
             transition: all 0.3s; position: relative; overflow: hidden;
-            box-shadow: 0 0 30px rgba(255,255,255,0.2);
+            box-shadow: 0 10px 30px rgba(184,134,11,0.25);
+            border: none;
+        }
+        .gold-btn:hover {
+            box-shadow: 0 15px 40px rgba(184,134,11,0.35);
+            transform: translateY(-2px);
+        }
+        
+        .right-panel {
+            flex: 0.8; 
+            background: linear-gradient(145deg, #FFFFFF 0%, #F8F8FA 100%);
+            padding: 40px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            position: relative;
         }
         .gold-btn:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(255,255,255,0.5); }
 
         /* SATELLITES */
+        /* MODE CLAIR - Satellites */
         .satellite {
             position: absolute; z-index: 20;
-            background: #000; border: 1px solid rgba(255,255,255,0.15);
+            background: #FFFFFF; 
+            border: 1px solid rgba(0,0,0,0.08);
             border-radius: 12px; padding: 12px 16px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
             display: flex; align-items: center; gap: 12px;
             min-width: 200px;
         }
@@ -3018,8 +3173,8 @@
             width: 100%; max-width: 1100px; height: 700px;
             padding: 2px;
             border-radius: 24px;
-            background: linear-gradient(180deg, rgba(212,175,55,0.3), rgba(212,175,55,0.1));
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.7), 0 0 60px rgba(212,175,55,0.15);
+            background: linear-gradient(180deg, rgba(212,175,55,0.2), rgba(212,175,55,0.08));
+            box-shadow: 0 30px 80px -20px rgba(0,0,0,0.15), 0 0 40px rgba(212,175,55,0.1);
         }
 
         /* BORDER BEAM - OR */
@@ -3044,27 +3199,79 @@
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* CHAT INTERFACE - NOIR/OR */
+        /* CHAT INTERFACE - MODE CLAIR PREMIUM */
         .chat-interface {
             width: 100%; height: 100%;
-            background: rgba(10, 10, 12, 0.95);
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(212,175,55,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212,175,55,0.04) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(212,175,55,0.02) 0%, transparent 60%),
+                linear-gradient(135deg, #FEFEFE 0%, #FAFAFA 100%);
             backdrop-filter: blur(20px);
             border-radius: 22px;
             display: flex;
             position: relative; z-index: 2;
-            border: 1px solid rgba(212,175,55,0.1);
+            border: 1px solid rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        /* Pattern doré subtil animé */
+        .chat-interface::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(212,175,55,0.08) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, rgba(212,175,55,0.06) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Shimmer doré qui traverse */
+        .chat-interface::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.05), transparent);
+            animation: chatShimmer 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes chatShimmer {
+            0%, 100% { left: -100%; }
+            50% { left: 150%; }
         }
 
-        /* SIDEBAR - NOIR/OR */
+        /* SIDEBAR - PREMIUM AVEC PATTERN */
         .sidebar {
-            width: 340px; border-right: 1px solid rgba(255,255,255,0.1);
-            background: rgba(30, 30, 35, 0.3);
+            width: 340px; 
+            border-right: 1px solid rgba(212,175,55,0.15);
+            background: 
+                linear-gradient(180deg, rgba(212,175,55,0.02) 0%, transparent 30%),
+                linear-gradient(0deg, rgba(212,175,55,0.03) 0%, transparent 20%),
+                #F8F8FA;
             display: flex; flex-direction: column;
+            position: relative;
+            z-index: 1;
         }
+        
+        /* Accent line dorée en haut de la sidebar */
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4AF37, #FFD700, #D4AF37, transparent);
+        }
+        
         @media (max-width: 1024px) { .sidebar { display: none; } }
 
         .ai-header {
-            padding: 24px; border-bottom: 1px solid rgba(212,175,55,0.15);
+            padding: 24px; border-bottom: 1px solid rgba(0,0,0,0.08);
             display: flex; align-items: center; gap: 14px;
         }
         .ai-avatar {
@@ -3087,38 +3294,130 @@
         .q-btn {
             width: 100%; text-align: left;
             padding: 14px 16px; margin-bottom: 4px; border-radius: 10px;
-            font-size: 13px; color: #888; font-weight: 500;
+            font-size: 13px; color: #666; font-weight: 500;
             cursor: pointer; transition: all 0.2s;
             display: flex; align-items: center; gap: 12px;
             border: 1px solid transparent;
         }
-        .q-btn:hover { background: rgba(212,175,55,0.05); color: white; border-color: rgba(212,175,55,0.1); }
+        .q-btn:hover { background: rgba(212,175,55,0.08); color: #1a1a1a; border-color: rgba(212,175,55,0.15); }
         .q-btn.active {
-            background: rgba(212,175,55,0.1); color: white;
-            border-color: rgba(212,175,55,0.3);
-            box-shadow: 0 4px 20px rgba(212,175,55,0.15);
+            background: rgba(212,175,55,0.15); color: #1a1a1a;
+            border-color: rgba(212,175,55,0.4);
+            box-shadow: 0 4px 20px rgba(212,175,55,0.1);
         }
 
-        /* CHAT AREA */
-        .chat-view { flex: 1; display: flex; flex-direction: column; background: transparent; }
+        /* CHAT AREA - MODE CLAIR PREMIUM */
+        .chat-view { 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+            background: transparent;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Ligne décorative dorée animée */
+        .chat-view::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);
+        }
         
         .welcome-msg {
-            height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white;
+            height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #1D1D1F;
         }
         .welcome-circle {
-            width: 80px; height: 80px; border-radius: 50%; border: 1px solid rgba(212,175,55,0.3);
+            width: 80px; height: 80px; border-radius: 50%; border: 1px solid rgba(212,175,55,0.4);
             display: flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 20px;
-            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(212,175,55,0.1);
+            background: linear-gradient(135deg, #F5F5F5, #EAEAEC);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1), 0 0 30px rgba(212,175,55,0.15);
             animation: welcomeCirclePulse 3s ease-in-out infinite;
         }
         @keyframes welcomeCirclePulse {
-            0%, 100% { box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 20px rgba(212,175,55,0.1); }
-            50% { box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.2); }
+            0%, 100% { box-shadow: 0 8px 30px rgba(0,0,0,0.1), 0 0 20px rgba(212,175,55,0.1); }
+            50% { box-shadow: 0 8px 30px rgba(0,0,0,0.1), 0 0 40px rgba(212,175,55,0.2); }
+        }
+
+        /* INPUT AREA PREMIUM */
+        .chat-input-area {
+            padding: 20px 24px;
+            background: 
+                linear-gradient(180deg, rgba(212,175,55,0.02) 0%, rgba(212,175,55,0.05) 100%),
+                linear-gradient(90deg, transparent, rgba(212,175,55,0.03), transparent);
+            border-top: 1px solid rgba(212,175,55,0.15);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .chat-input-area::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 20%; right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
+        }
+        
+        .chat-input-box {
+            height: 52px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 100%);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            padding: 0 8px 0 16px;
+            gap: 12px;
+            box-shadow: 
+                0 4px 20px rgba(0,0,0,0.04),
+                0 0 0 1px rgba(212,175,55,0.05),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .chat-input-box:hover {
+            border-color: rgba(212,175,55,0.4);
+            box-shadow: 
+                0 6px 25px rgba(0,0,0,0.06),
+                0 0 0 3px rgba(212,175,55,0.08),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+        
+        .chat-input-icon {
+            font-size: 18px;
+            opacity: 0.6;
+        }
+        
+        .chat-input-placeholder {
+            flex: 1;
+            color: #86868B;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .chat-input-send {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 12px rgba(212,175,55,0.3);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .chat-input-send:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(212,175,55,0.4);
         }
 
         /* MESSAGES */
-        .msg-scroll { flex: 1; padding: 40px; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; }
+        .msg-scroll { flex: 1; padding: 40px; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; position: relative; z-index: 1; }
         
         .msg-row { display: flex; gap: 16px; max-width: 85%; opacity: 0; transform: translateY(10px); animation: enterMsg 0.4s forwards; }
         .msg-row.user { align-self: flex-end; flex-direction: row-reverse; }
@@ -3131,8 +3430,20 @@
         .msg-avatar-icon.user { background: #1a1a1a; color: white; border: 1px solid rgba(212,175,55,0.2); }
 
         .bubble { padding: 18px 24px; border-radius: 18px; font-size: 15px; line-height: 1.6; }
-        .msg-row.ai .bubble { background: rgba(20,20,22,0.9); border: 1px solid rgba(212,175,55,0.15); color: #eee; border-top-left-radius: 4px; }
-        .msg-row.user .bubble { background: linear-gradient(135deg, #D4AF37, #FFD700); color: black; border-top-right-radius: 4px; font-weight: 600; }
+        .msg-row.ai .bubble { 
+            background: linear-gradient(135deg, #F8F8FA 0%, #F0F0F2 100%);
+            border: 1px solid rgba(212,175,55,0.12); 
+            color: #1D1D1F; 
+            border-top-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .msg-row.user .bubble { 
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%); 
+            color: white; 
+            border-top-right-radius: 4px; 
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(212,175,55,0.25);
+        }
 
         @keyframes enterMsg { to { opacity: 1; transform: translateY(0); } }
 
@@ -3149,12 +3460,13 @@
         .mobile-only-accordion { display: none; }
         @media (max-width: 1024px) { .faq-wrapper { display: none; } }
         
-        .acc-item { background: #151515; border: 1px solid #333; border-radius: 12px; margin-bottom: 10px; }
-        .acc-head { padding: 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; cursor: pointer; }
-        .acc-body { height: 0; overflow: hidden; padding: 0 20px; color: #aaa; transition: 0.3s; }
+        /* MODE CLAIR - Accordéon */
+        .acc-item { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; margin-bottom: 10px; }
+        .acc-head { padding: 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; cursor: pointer; color: #1D1D1F; }
+        .acc-body { height: 0; overflow: hidden; padding: 0 20px; color: #6E6E73; transition: 0.3s; }
         .acc-item.open .acc-body { height: auto; padding-bottom: 20px; }
 
-        /* ===== FAQ MOBILE INTERFACE - Style App avec Questions Visibles ===== */
+        /* ===== FAQ MOBILE INTERFACE PREMIUM ===== */
         .faq-mobile-wrapper {
             display: none;
             width: 100%;
@@ -3162,25 +3474,56 @@
             margin: 0 auto;
             border-radius: 24px;
             overflow: hidden;
-            background: rgba(10, 10, 12, 0.98);
-            border: 1px solid rgba(212,175,55,0.2);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.1);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(212,175,55,0.04) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(212,175,55,0.03) 0%, transparent 40%),
+                linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 100%);
+            border: 1px solid rgba(212,175,55,0.15);
+            box-shadow: 
+                0 25px 50px -12px rgba(0,0,0,0.15),
+                0 0 0 1px rgba(212,175,55,0.1),
+                0 0 80px rgba(212,175,55,0.08);
             position: relative;
+        }
+        
+        /* Pattern doré subtil */
+        .faq-mobile-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(212,175,55,0.06) 1px, transparent 1px),
+                radial-gradient(circle at 80% 80%, rgba(212,175,55,0.04) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 0;
         }
         
         @media (max-width: 1024px) {
             .faq-mobile-wrapper { display: flex; flex-direction: column; }
         }
         
-        /* Header Mobile avec AI - NOIR/OR */
+        /* Header Mobile PREMIUM */
         .faq-mobile-header {
             padding: 16px 20px;
-            background: linear-gradient(180deg, rgba(20, 20, 22, 0.98) 0%, rgba(10, 10, 12, 0.98) 100%);
+            background: 
+                linear-gradient(90deg, rgba(212,175,55,0.03) 0%, transparent 50%, rgba(212,175,55,0.03) 100%),
+                linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 100%);
             border-bottom: 1px solid rgba(212,175,55,0.15);
             display: flex;
             align-items: center;
             gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .faq-mobile-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 20%; right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
         }
         
         .faq-mobile-header .ai-icon {
@@ -3210,7 +3553,7 @@
         .faq-mobile-header .ai-name {
             font-size: 15px;
             font-weight: 700;
-            color: white;
+            color: #1D1D1F;
         }
         
         .faq-mobile-header .ai-status {
@@ -3235,11 +3578,15 @@
             font-weight: 600;
         }
         
-        /* Questions rapides visibles - Scroll horizontal - NOIR/OR */
+        /* Questions rapides PREMIUM */
         .faq-quick-questions {
             padding: 16px;
-            background: rgba(0,0,0,0.5);
-            border-bottom: 1px solid rgba(212,175,55,0.1);
+            background: 
+                linear-gradient(90deg, rgba(212,175,55,0.02) 0%, transparent 30%, transparent 70%, rgba(212,175,55,0.02) 100%),
+                linear-gradient(180deg, #F5F5F7 0%, #EFEFEF 100%);
+            border-bottom: 1px solid rgba(212,175,55,0.12);
+            position: relative;
+            z-index: 1;
         }
         
         .faq-quick-label {
@@ -3275,11 +3622,11 @@
         .faq-quick-btn {
             flex-shrink: 0;
             padding: 10px 16px;
-            background: rgba(212,175,55,0.08);
-            border: 1px solid rgba(212,175,55,0.25);
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.1);
             border-radius: 20px;
             font-size: 12px;
-            color: #ddd;
+            color: #424245;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s;
@@ -3290,10 +3637,10 @@
         }
         
         .faq-quick-btn:hover {
-            background: rgba(212,175,55,0.2);
-            border-color: rgba(212,175,55,0.5);
+            background: rgba(212,175,55,0.1);
+            border-color: rgba(212,175,55,0.4);
             transform: translateY(-2px);
-            color: #FFD700;
+            color: #B8860B;
         }
         
         .faq-quick-btn:active {
@@ -3352,21 +3699,21 @@
         .faq-mobile-welcome .icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
-            border: 2px solid rgba(212,175,55,0.25);
+            background: linear-gradient(135deg, #F5F5F7, #EAEAEC);
+            border: 2px solid rgba(212,175,55,0.3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 28px;
             margin-bottom: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 25px rgba(212,175,55,0.15);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1), 0 0 25px rgba(212,175,55,0.15);
         }
         
         .faq-mobile-welcome h4 {
             font-size: 22px;
             font-weight: 800;
-            color: white;
+            color: #1D1D1F;
             margin-bottom: 8px;
         }
         
@@ -3408,9 +3755,9 @@
         }
         
         .faq-msg-avatar.user {
-            background: #1a1a1a;
-            color: white;
-            border: 1px solid rgba(212,175,55,0.2);
+            background: #EAEAEC;
+            color: #1D1D1F;
+            border: 1px solid rgba(0,0,0,0.1);
         }
         
         .faq-msg-bubble {
@@ -3421,10 +3768,11 @@
         }
         
         .faq-msg.ai .faq-msg-bubble {
-            background: rgba(20,20,22,0.95);
-            border: 1px solid rgba(212,175,55,0.15);
-            color: #eee;
+            background: linear-gradient(135deg, #F8F8FA 0%, #EFEFEF 100%);
+            border: 1px solid rgba(212,175,55,0.12);
+            color: #1D1D1F;
             border-top-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
         
         .faq-msg.user .faq-msg-bubble {
@@ -3434,33 +3782,48 @@
             border-top-right-radius: 4px;
         }
         
-        /* Input Mobile (décoratif) */
+        /* Input Mobile PREMIUM */
         .faq-mobile-input {
-            padding: 12px 16px;
-            background: rgba(0,0,0,0.5);
-            border-top: 1px solid rgba(212,175,55,0.1);
+            padding: 16px;
+            background: 
+                linear-gradient(180deg, rgba(212,175,55,0.02) 0%, rgba(212,175,55,0.06) 100%),
+                #FAFAFA;
+            border-top: 1px solid rgba(212,175,55,0.15);
+            position: relative;
+        }
+        
+        .faq-mobile-input::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 15%; right: 15%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
         }
         
         .faq-mobile-input-box {
-            height: 44px;
-            background: rgba(212,175,55,0.05);
-            border: 1px solid rgba(212,175,55,0.15);
-            border-radius: 22px;
+            height: 48px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 100%);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 24px;
             display: flex;
             align-items: center;
-            padding: 0 16px;
-            color: #666;
-            font-size: 13px;
+            padding: 0 20px;
+            color: #86868B;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 
+                0 4px 16px rgba(0,0,0,0.04),
+                inset 0 1px 0 rgba(255,255,255,0.8);
         }
         
-        /* Drawer pour voir toutes les questions - NOIR/OR */
+        /* Drawer pour voir toutes les questions - MODE CLAIR */
         .faq-questions-drawer {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(8, 8, 10, 0.98);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             z-index: 100;
             transform: translateY(100%);
@@ -3480,32 +3843,32 @@
             align-items: center;
             margin-bottom: 24px;
             padding-bottom: 16px;
-            border-bottom: 1px solid rgba(212,175,55,0.15);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
         }
         
         .faq-close-btn {
             width: 36px;
             height: 36px;
-            background: rgba(212,175,55,0.15);
-            border: 1px solid rgba(212,175,55,0.2);
+            background: #EAEAEC;
+            border: 1px solid rgba(0,0,0,0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             font-size: 20px;
-            color: #D4AF37;
+            color: #6E6E73;
             transition: all 0.2s;
         }
         
         .faq-close-btn:hover {
-            background: rgba(212,175,55,0.25);
+            background: #E0E0E2;
         }
         
         .faq-question-item {
             padding: 14px 16px;
-            background: rgba(212,175,55,0.05);
-            border: 1px solid rgba(212,175,55,0.12);
+            background: #F5F5F7;
+            border: 1px solid rgba(0,0,0,0.06);
             border-radius: 12px;
             margin-bottom: 8px;
             cursor: pointer;
@@ -3517,7 +3880,7 @@
         
         .faq-question-item:hover,
         .faq-question-item:active {
-            background: rgba(212,175,55,0.12);
+            background: #EAEAEC;
             border-color: rgba(212,175,55,0.3);
         }
         
@@ -3527,7 +3890,7 @@
         
         .faq-question-item .q-text {
             font-size: 14px;
-            color: #ccc;
+            color: #424245;
             font-weight: 500;
         }
         
@@ -3564,7 +3927,7 @@
 
     </style>
 </head>
-<body class="bg-black text-white">
+<body class="bg-gray-50 text-gray-900">
 <!-- LOADER NOIR/OR -->
     <div id="loader">
         <div class="flex relative overflow-hidden p-4">
@@ -3581,23 +3944,23 @@
         <div class="loader-text">Chargement...</div>
     </div>
 
-    <!-- NAVBAR AVEC LOGO -->
-    <nav class="fixed top-0 w-full z-40 px-6 py-6 md:px-8 md:py-8 flex justify-center">
-        <svg class="header-logo-small" viewBox="0 0 685 226" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="logo-letter-nav" d="M123.05 0V36.93H41.15V87.33L41.45 87.63H120.65V124.36H41.45L41.15 124.66V202.01L20.52 213.39L0.200012 225.56L0 28.35V8.38998C1 4.14998 4.13998 0.999979 8.38998 0.00997925H123.05V0Z" fill="white"/>
-            <path class="logo-letter-nav" d="M684.76 155.69C684.3 162.55 682.54 168.78 679 174.59C657.71 209.53 591.44 208.07 575.2 169.06C574.33 166.97 572.7 162.5 572.68 160.39C572.68 159.89 572.61 159.01 573.18 158.85L602.11 152.94C602.43 153.01 602.65 153.15 602.81 153.44C603.3 154.29 603.75 157.04 604.21 158.23C609.7 172.37 631.26 176.02 643.53 169.31C651.98 164.69 655.5 151.56 646.97 145.44C636.17 137.68 613.96 137.51 600.61 132.28C581.75 124.9 574.6 111.86 575.46 91.9201C577.08 54.4901 621.28 45.0201 650.93 55.0401C661.71 58.6801 673.82 66.5201 678.28 77.4101C679.44 80.2401 680.25 83.7801 680.92 86.5801C681.06 87.1801 681.451 89.5701 680.621 89.6301L651.91 95.3901C650.44 95.1601 648.581 90.6201 647.741 89.3701C641.341 79.8101 627.08 76.1101 616.42 79.7601C606.92 83.0101 604.5 94.3901 610.92 101.81C619.97 112.28 647.81 112.72 661.3 118.14C674.79 123.56 683.941 136.92 684.731 151.91V155.7L684.76 155.69Z" fill="white"/>
-            <path class="logo-letter-nav" d="M8.39975 0C4.14975 1 1.00977 4.14001 0.00976562 8.38V0H8.39975Z" fill="white"/>
-            <path class="logo-letter-nav" d="M136.36 152.17C128.57 129.83 131.95 102.66 144.62 82.7301C171.03 41.2201 237.72 40.2801 264.04 82.3701C283.39 113.32 278.68 161.78 248.99 184.83C220.93 206.6 174.85 204.71 150.71 177.85C143.97 170.36 139.64 161.62 136.35 152.17H136.36ZM201.71 80.8901C154.25 83.5201 153.15 162.87 196.07 169.86C211.24 172.33 227.79 166.66 236.04 153.31C253.52 125 240.3 78.7501 201.72 80.8901H201.71Z" fill="white"/>
-            <path class="logo-letter-nav" d="M464.43 56.0901V139.23C465.78 158 473.35 169.52 493.3 169.26C513.25 169 519.96 157.99 522.34 139.99C524.34 124.86 523.2 108.02 523.15 92.7201C523.12 80.5101 523.2 68.2901 523.15 56.0801H556.11V195.4L523.55 195.51C523.13 195.27 523.18 194.92 523.14 194.52C522.86 191.66 522.79 183.91 523.14 181.13C523.22 180.53 523.57 180.38 523.67 180.06C523.98 179.01 522.82 179.64 522.35 180.15C520.83 181.82 519.64 184.7 518.15 186.53C504.98 202.73 478.43 202.38 460.75 194.59C437.59 184.39 431.36 165.01 430.85 141.23C430.63 130.81 430.89 120.27 430.87 109.89C430.84 91.9601 430.87 74.0201 430.87 56.0901H464.43Z" fill="white"/>
-            <path class="logo-letter-nav" d="M408.63 75.3098C412.79 80.9198 417.1 90.7198 418.14 97.6398C418.17 97.8598 418.33 98.3198 418.09 98.4898L387.93 105.38C383.85 95.0998 377.16 86.2198 366.19 82.8898C310.24 65.8898 303.2 175.91 359.43 170.23C374.37 168.72 384.21 157.78 389.13 144.31L419.06 152.31C419.18 153.82 418.49 155.28 417.98 156.68C405.26 191.42 368.74 207.55 333.59 196.3C306.15 187.52 290.15 165.08 287.47 136.79C284.51 105.49 295.02 74.4498 323.66 58.8398C351.02 43.9298 389.69 49.7898 408.62 75.3098H408.63Z" fill="white"/>
-        </svg>
+    <!-- NAVBAR AVEC LOGO ET TOGGLE THEME -->
+    <nav class="fixed top-0 w-full z-40 px-6 py-4 md:px-8 md:py-6 flex items-center justify-between">
+        <div class="w-10"></div>
+        <img src="assets/images/logofocusnoir.svg" alt="Focus" class="header-logo-small h-8 md:h-10">
+        <!-- TOGGLE THEME -->
+        <a href="/" class="theme-toggle" title="Passer en mode sombre">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+            </svg>
+        </a>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="min-h-[80vh] relative flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden">
+    <!-- HERO SECTION - MODE CLAIR -->
+    <section class="min-h-[80vh] relative flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden bg-gradient-to-b from-white to-gray-50">
         
-        <!-- GLOW OR HERO - TRÈS DISCRET -->
-        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-400/3 blur-[200px] rounded-full pointer-events-none z-0"></div>
+        <!-- GLOW OR HERO - MODE CLAIR -->
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-amber-400/10 blur-[200px] rounded-full pointer-events-none z-0"></div>
         
         <!-- PARTICLES DANS TOUTE LA SECTION -->
         <div class="particle-hero" style="left: 5%; top: 15%; animation-delay: 0s;"></div>
@@ -3617,20 +3980,20 @@
         <!-- TEXTE CENTER (INTERACTIVE ZONE) -->
         <div class="relative z-20 text-center mb-8 md:mb-16 mt-4 interactive-zone">
             
-            <!-- BADGE -->
-            <div class="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
-                <span class="w-2 h-2 bg-amber-400 rounded-full inline-block mr-2 animate-pulse"></span> Groupe Business
+            <!-- BADGE - MODE CLAIR -->
+            <div class="inline-block px-4 py-1.5 rounded-full border border-black/10 bg-black/5 text-gray-700 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
+                <span class="w-2 h-2 bg-amber-500 rounded-full inline-block mr-2 animate-pulse"></span> Groupe Business
             </div>
             
-            <!-- TITRE COMME SCREENSHOT -->
-            <h1 class="hero-title text-5xl md:text-[8rem] lg:text-[10rem] font-black font-display tracking-tighter leading-[0.9] select-none text-white mb-4">
+            <!-- TITRE - MODE CLAIR -->
+            <h1 class="hero-title text-5xl md:text-[8rem] lg:text-[10rem] font-black font-display tracking-tighter leading-[0.9] select-none text-gray-900 mb-4">
                 TOUS LES<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-amber-600">BUSINESS.</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-500 via-amber-600 to-amber-700">BUSINESS.</span>
             </h1>
             
-            <!-- SOUS-TITRE -->
-            <p class="text-gray-400 text-sm md:text-lg mb-6 max-w-lg mx-auto px-4">
-                <strong class="text-white">Un groupe Discord.</strong> Tous les business models. <strong class="text-amber-400">Sans bullshit.</strong>
+            <!-- SOUS-TITRE - MODE CLAIR -->
+            <p class="text-gray-500 text-sm md:text-lg mb-6 max-w-lg mx-auto px-4">
+                <strong class="text-gray-900">Un groupe Discord.</strong> Tous les business models. <strong class="text-amber-600">Sans bullshit.</strong>
             </p>
             
             <!-- BANDEAU INCLINÉ -->
@@ -3640,23 +4003,23 @@
                 </a>
             </div>
 
-            <!-- STATS BAR - CARRÉ 2x2 COMPACT -->
+            <!-- STATS BAR - MODE CLAIR -->
             <div class="grid grid-cols-2 gap-x-8 gap-y-2 mt-3 mx-auto w-fit">
                 <div class="text-center">
-                    <div class="text-lg font-black text-white leading-none">5</div>
-                    <div class="text-[7px] text-gray-500 uppercase">Lives/Sem</div>
+                    <div class="text-lg font-black text-gray-900 leading-none">5</div>
+                    <div class="text-[7px] text-gray-400 uppercase">Lives/Sem</div>
                     </div>
                 <div class="text-center">
-                    <div class="text-lg font-black text-white leading-none">∞</div>
-                    <div class="text-[7px] text-gray-500 uppercase">Replays</div>
+                    <div class="text-lg font-black text-gray-900 leading-none">∞</div>
+                    <div class="text-[7px] text-gray-400 uppercase">Replays</div>
                     </div>
                 <div class="text-center">
-                    <div class="text-lg font-black text-white leading-none">1M+</div>
-                    <div class="text-[7px] text-gray-500 uppercase">CA Généré</div>
+                    <div class="text-lg font-black text-gray-900 leading-none">1M+</div>
+                    <div class="text-[7px] text-gray-400 uppercase">CA Généré</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-lg font-black text-white leading-none">24/7</div>
-                    <div class="text-[7px] text-gray-500 uppercase">Support</div>
+                    <div class="text-lg font-black text-gray-900 leading-none">24/7</div>
+                    <div class="text-[7px] text-gray-400 uppercase">Support</div>
                     </div>
             </div>
         </div>
@@ -4095,17 +4458,17 @@
         <div class="absolute top-1/2 left-1/3 -translate-y-1/2 w-[600px] h-[500px] bg-amber-400/5 blur-[140px] rounded-full pointer-events-none z-0"></div>
         <div class="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-amber-500/4 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-        <!-- HEADER -->
+        <!-- HEADER - MODE CLAIR -->
         <div class="text-center mb-12 px-4 relative z-10">
-            <div class="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
-                <span class="w-2 h-2 bg-amber-400 rounded-full inline-block mr-2 animate-pulse"></span> 8 Domaines
+            <div class="inline-block px-4 py-1.5 rounded-full border border-black/10 bg-black/5 text-gray-700 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
+                <span class="w-2 h-2 bg-amber-500 rounded-full inline-block mr-2 animate-pulse"></span> 8 Domaines
             </div>
-            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] font-display">
+            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] font-display text-gray-900">
                 NOS DOMAINES<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-amber-600">D'EXPERTISE</span>
             </h2>
-            <p class="text-gray-400 text-sm md:text-base mt-4 max-w-md mx-auto">
-                <strong class="text-white">Maîtrise totale.</strong> Précision chirurgicale. <strong class="text-amber-400">Résultats garantis.</strong>
+            <p class="text-gray-500 text-sm md:text-base mt-4 max-w-md mx-auto">
+                <strong class="text-gray-900">Maîtrise totale.</strong> Précision chirurgicale. <strong class="text-amber-600">Résultats garantis.</strong>
             </p>
         </div>
 
@@ -4133,7 +4496,14 @@
                 <!-- LEBONCOIN (STYLE REFAIT) -->
                 <div class="card bg-white border-[#ff6e14]/20">
                     <div class="cat-tag bg-[#ff6e14] text-white">LeBonCoin</div>
-                    <div class="logo-badge text-[#ff6e14]"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg></div>
+                    <div class="logo-badge" style="background: #ff6e14; border-radius: 8px; padding: 5px;">
+                        <!-- LEBONCOIN CUBE 3D LOGO -->
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" stroke="white" stroke-width="1.5" fill="none"/>
+                            <path d="M12 22V12M3 7l9 5 9-5" stroke="white" stroke-width="1.5"/>
+                            <path d="M12 2l9 5-9 5-9-5 9-5z" fill="white" fill-opacity="0.2"/>
+                        </svg>
+                    </div>
                     <div class="h-[100px] overflow-hidden border-b border-gray-100" style="background-image: url('assets/images/rs3.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="p-3 text-zinc-800 relative">
                         <div class="text-[10px] text-zinc-400">Ventes privées • Il y a 2 min</div>
@@ -4164,26 +4534,26 @@
                     </div>
                 </div>
 
-                <!-- SMMA -->
-                <div class="card">
+                <!-- SMMA - MODE CLAIR -->
+                <div class="card bg-white">
                     <div class="cat-tag bg-purple-600 text-white">SMMA</div>
-                    <div class="logo-badge text-purple-400"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg></div>
+                    <div class="logo-badge text-purple-600"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg></div>
                     <div class="p-4 pt-11 h-full">
-                        <div class="bg-zinc-800/60 border border-zinc-700 rounded-lg p-3 h-full relative">
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 h-full relative">
                             <div class="flex justify-between items-start mb-2">
-                                <div><div class="text-[9px] text-zinc-500">FACTURE</div><div class="font-bold text-sm">#2026-0142</div></div>
-                                <div class="text-[8px] text-zinc-500 text-right">Tech SAS<br>19 Jan 2026</div>
+                                <div><div class="text-[9px] text-gray-500">FACTURE</div><div class="font-bold text-sm text-gray-900">#2026-0142</div></div>
+                                <div class="text-[8px] text-gray-500 text-right">Tech SAS<br>19 Jan 2026</div>
                             </div>
-                            <div class="space-y-1 text-[10px] border-t border-zinc-700 pt-2">
-                                <div class="flex justify-between"><span class="text-zinc-400">Ads Management</span><span>2,000€</span></div>
-                                <div class="flex justify-between"><span class="text-zinc-400">Creative x10</span><span>1,500€</span></div>
-                                <div class="flex justify-between"><span class="text-zinc-400">Strategy</span><span>1,500€</span></div>
+                            <div class="space-y-1 text-[10px] border-t border-gray-200 pt-2 text-gray-800">
+                                <div class="flex justify-between"><span class="text-gray-500">Ads Management</span><span>2,000€</span></div>
+                                <div class="flex justify-between"><span class="text-gray-500">Creative x10</span><span>1,500€</span></div>
+                                <div class="flex justify-between"><span class="text-gray-500">Strategy</span><span>1,500€</span></div>
                             </div>
-                            <div class="flex justify-between items-center mt-2 pt-2 border-t border-zinc-600">
-                                <span class="font-bold text-xs">TOTAL</span>
-                                <span class="font-black text-lg">5,000€</span>
+                            <div class="flex justify-between items-center mt-2 pt-2 border-t border-gray-300">
+                                <span class="font-bold text-xs text-gray-800">TOTAL</span>
+                                <span class="font-black text-lg text-gray-900">5,000€</span>
                             </div>
-                            <div class="stamp border-green-500 text-green-500 bg-zinc-900/95 stamp-paye">PAYÉ</div>
+                            <div class="stamp border-green-600 text-green-600 bg-white/95 stamp-paye">PAYÉ</div>
                         </div>
                     </div>
                 </div>
@@ -4232,19 +4602,18 @@
 
                 <!-- META ADS (NEW LOGO) -->
                 <div class="card bg-white">
-                    <div class="cat-tag bg-blue-600 text-white">Meta Ads</div>
-                    <div class="logo-badge">
-                        <!-- META OFFICIAL LOGO -->
-                        <svg viewBox="0 0 1024 1024" fill="none">
+                    <div class="cat-tag bg-[#0081FB] text-white">Meta Ads</div>
+                    <div class="logo-badge" style="background: #000; border-radius: 8px; padding: 6px;">
+                        <!-- META INFINITY LOGO -->
+                        <svg viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <defs>
-                                <linearGradient id="metaGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#0081FB;stop-opacity:1" />
-                                    <stop offset="25%" style="stop-color:#0064E0;stop-opacity:1" />
-                                    <stop offset="75%" style="stop-color:#00B8D4;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#0081FB;stop-opacity:1" />
+                                <linearGradient id="metaBlue" x1="0%" y1="50%" x2="100%" y2="50%">
+                                    <stop offset="0%" stop-color="#0095F6"/>
+                                    <stop offset="50%" stop-color="#0078D4"/>
+                                    <stop offset="100%" stop-color="#0095F6"/>
                                 </linearGradient>
                             </defs>
-                            <path fill="url(#metaGradient2)" d="M715.583 512.002c-47.444-70.337-107.095-130.247-172.502-170.919-79.117-49.151-154.827-63.414-213.253-40.265-70.211 27.845-111.452 100.355-120.014 210.593-8.543 109.895 14.983 252.504 68.867 414.322 8.426 25.306 30.014 43.062 55.809 45.96 25.795 2.893 50.793-9.834 64.68-32.937l238.178-395.318c6.145-10.217 10.122-21.579 11.634-33.372 1.512-11.793.587-23.904-2.734-35.586-3.321-11.682-8.74-22.659-15.874-32.174l-13.088-19.548c19.12 13.466 37.481 28.489 54.923 45.009 47.444 44.854 88.329 97.166 120.845 154.601 32.517 57.434 56.526 119.628 70.682 183.619 14.156 63.991 18.565 129.65 13.001 193.503-5.564 63.853-21.565 125.711-47.046 182.206-12.744 28.226-3.119 61.468 22.744 78.537 25.863 17.069 59.926 12.786 80.539-10.142 55.783-62.06 95.742-136.75 117.674-219.926 21.932-83.177 25.878-170.381 11.664-256.828-14.214-86.448-46.15-169.617-94.107-245.029-47.958-75.412-111.857-143.474-188.283-199.956z"/>
+                            <path d="M25 8C14 8 8 20 8 20s6 12 17 12c6 0 11-5 15-10 4 5 9 10 15 10 11 0 17-12 17-12s-6-12-17-12c-6 0-11 5-15 10-4-5-9-10-15-10zm0 6c4 0 8 3 11 6-3 3-7 6-11 6-6 0-11-6-11-6s5-6 11-6zm50 0c6 0 11 6 11 6s-5 6-11 6c-4 0-8-3-11-6 3-3 7-6 11-6z" fill="url(#metaBlue)"/>
                         </svg>
                     </div>
                     <div class="p-4 pt-11 h-full flex flex-col justify-between text-zinc-800">
@@ -4257,15 +4626,17 @@
                     </div>
                 </div>
 
-                <!-- TIKTOK ADS -->
-                <div class="card bg-black border-zinc-800">
-                    <div class="cat-tag bg-pink-600/80 text-white">TikTok Ads</div>
-                    <div class="logo-badge"><svg viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></div>
-                    <div class="p-4 pt-11 h-full flex flex-col justify-between">
-                        <div><div class="text-[9px] text-zinc-500 uppercase">Video Performance</div><div class="text-3xl font-black mt-1 tiktok-views">4.12M</div><div class="text-[10px] text-zinc-500">views</div></div>
+                <!-- TIKTOK ADS - MODE CLAIR -->
+                <div class="card bg-white border border-gray-200">
+                    <div class="cat-tag bg-gradient-to-r from-[#FE2C55] to-[#00F2EA] text-white">TikTok Ads</div>
+                    <div class="logo-badge" style="background: linear-gradient(135deg, #FE2C55 0%, #00F2EA 100%); border-radius: 8px; padding: 4px;">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    </div>
+                    <div class="p-4 pt-11 h-full flex flex-col justify-between text-gray-800">
+                        <div><div class="text-[9px] text-gray-500 uppercase">Video Performance</div><div class="text-3xl font-black mt-1 tiktok-views bg-gradient-to-r from-[#FE2C55] to-[#00F2EA] bg-clip-text text-transparent">4.12M</div><div class="text-[10px] text-gray-500">views</div></div>
                         <div class="flex items-center gap-2">
-                            <span class="px-3 py-1.5 bg-pink-500/20 text-pink-400 text-[10px] font-bold rounded-full neon" style="color: #ec4899;">🔥 VIRAL</span>
-                            <span class="text-zinc-500 text-[10px]">+1,240% reach</span>
+                            <span class="px-3 py-1.5 bg-gradient-to-r from-[#FE2C55]/20 to-[#00F2EA]/20 text-[#FE2C55] text-[10px] font-bold rounded-full">🔥 VIRAL</span>
+                            <span class="text-gray-500 text-[10px]">+1,240% reach</span>
                         </div>
                     </div>
                 </div>
@@ -4305,16 +4676,39 @@
                     </div>
                 </div>
 
-                <!-- SEO -->
+                <!-- SEO - VRAIES COULEURS GOOGLE -->
                 <div class="card bg-white">
-                    <div class="cat-tag bg-zinc-100 text-zinc-600">SEO</div>
+                    <div class="cat-tag bg-[#F8F9FA] text-[#5F6368] border border-[#DADCE0]">SEO</div>
                     <div class="logo-badge"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></div>
-                    <div class="p-4 pt-11 h-full flex flex-col text-zinc-800">
-                        <div class="border border-zinc-200 rounded-full px-3 py-1.5 flex items-center gap-2 text-zinc-400 text-[10px] mb-2">🔍 formation business</div>
-                        <div class="space-y-1.5 relative flex-1">
-                            <div class="bg-zinc-50 rounded p-1.5 seo-r1"><div class="text-[8px] text-zinc-400">#1</div><div class="text-[9px] text-zinc-500">concurrent.fr</div></div>
-                            <div class="bg-zinc-50 rounded p-1.5 seo-r2"><div class="text-[8px] text-zinc-400">#2</div><div class="text-[9px] text-zinc-500">autre-site.com</div></div>
-                            <div class="bg-blue-50 border border-blue-200 rounded p-1.5 seo-focus"><div class="text-[8px] text-amber-500 font-bold">#3 <span class="opacity-0 seo-star">⭐</span></div><div class="text-[9px] text-[#1a0dab] font-bold">mentalitefocus.com</div></div>
+                    <div class="p-4 pt-11 h-full flex flex-col">
+                        <!-- Barre de recherche Google -->
+                        <div class="bg-white border border-[#DFE1E5] rounded-full px-3 py-1.5 flex items-center gap-2 text-[#5F6368] text-[10px] mb-3 shadow-sm hover:shadow-md transition-shadow">
+                            <svg class="w-3 h-3" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                            <span>formation business</span>
+                        </div>
+                        <!-- Résultats de recherche Google -->
+                        <div class="space-y-2.5 relative flex-1">
+                            <!-- Résultat #1 -->
+                            <div class="bg-white rounded p-2 seo-r1 border-l-2 border-transparent hover:bg-[#F8F9FA] transition-colors">
+                                <div class="text-[8px] text-[#202124] mb-0.5">concurrent.fr › formation</div>
+                                <div class="text-[10px] text-[#1a0dab] font-medium hover:underline cursor-pointer">Formation Business Standard</div>
+                                <div class="text-[8px] text-[#4D5156] mt-0.5">Apprenez les bases du business...</div>
+                            </div>
+                            <!-- Résultat #2 -->
+                            <div class="bg-white rounded p-2 seo-r2 border-l-2 border-transparent hover:bg-[#F8F9FA] transition-colors">
+                                <div class="text-[8px] text-[#202124] mb-0.5">autre-site.com › cours</div>
+                                <div class="text-[10px] text-[#1a0dab] font-medium hover:underline cursor-pointer">Cours Business en Ligne</div>
+                                <div class="text-[8px] text-[#4D5156] mt-0.5">Découvrez nos formations...</div>
+                            </div>
+                            <!-- Résultat #3 - FOCUS (mis en avant) -->
+                            <div class="bg-[#E8F0FE] rounded p-2 seo-focus border-l-2 border-[#4285F4] shadow-sm">
+                                <div class="flex items-center gap-1 mb-0.5">
+                                    <div class="text-[8px] text-[#202124]">mentalitefocus.com</div>
+                                    <span class="text-[7px] bg-[#34A853] text-white px-1 rounded opacity-0 seo-star">★ #1</span>
+                                </div>
+                                <div class="text-[10px] text-[#1a0dab] font-bold">Focus Business - La Communauté #1</div>
+                                <div class="text-[8px] text-[#4D5156] mt-0.5">+1000 entrepreneurs. Lives quotidiens. Résultats concrets.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -4486,21 +4880,35 @@
     <!-- SECTION DISCORD START -->
     <style>
 
-        /* ===== DISCORD COLORS ===== */
+        /* ===== DISCORD COLORS - MODE SOMBRE OFFICIEL ===== */
         .focus-bg { background: #313338; }
         .focus-sidebar { background: #2B2D31; }
         .focus-chat { background: #313338; }
-        .focus-gold { color: #FFD700; }
-        .focus-gold-bg { background: #FFD700; }
+        .focus-gold { color: #D4AF37; }
+        .focus-gold-bg { background: #D4AF37; }
+        
+        /* Discord Dark Theme Official Colors */
+        .discord-dark-bg { background: #313338; }
+        .discord-dark-sidebar { background: #2B2D31; }
+        .discord-dark-tertiary { background: #1E1F22; }
+        .discord-dark-text { color: #F2F3F5; }
+        .discord-dark-text-muted { color: #B5BAC1; }
+        .discord-dark-border { border-color: #3F4147; }
+        .discord-blurple { color: #5865F2; }
         
         /* ROLES COLORS */
         .role-founder { color: #ff4444; }
         .role-student-yellow { color: #fbbf24; }
         .role-student-blue { color: #60a5fa; }
 
-        /* ===== DISCORD ELEMENTS ===== */
-        .discord-message { background: transparent; transition: all 0.2s; }
-        .discord-message:hover { background: #2e3035; }
+        /* ===== DISCORD ELEMENTS - MODE SOMBRE ===== */
+        .discord-message { 
+            background: transparent; 
+            transition: all 0.2s; 
+        }
+        .discord-message:hover { 
+            background: rgba(79, 84, 92, 0.3); 
+        }
         .discord-channel { 
             color: #949BA4; 
             transition: all 0.2s;
@@ -4508,11 +4916,11 @@
         }
         .discord-channel:hover { 
             color: #DBDEE1; 
-            background: #3F4147;
+            background: rgba(79, 84, 92, 0.3);
         }
         .discord-channel.active { 
             color: #FFFFFF; 
-            background: #3F4147;
+            background: rgba(79, 84, 92, 0.6);
             font-weight: 600;
         }
         
@@ -4581,13 +4989,44 @@
             border-color: rgba(149, 155, 164, 0.3);
         }
 
-        /* CARD CONTAINER */
+        /* CARD CONTAINER - DISCORD LIGHT THEME */
+        /* === DISCORD MODE SOMBRE - COULEURS OFFICIELLES === */
         .discord-card {
             background: #313338;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            border: 1px solid rgba(0,0,0,0.2);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            border: 1px solid #1E1F22;
+        }
+        
+        .discord-card .focus-sidebar {
+            background: #2B2D31 !important;
+            border-right: 1px solid #1E1F22 !important;
+        }
+        
+        .discord-card .chat-area {
+            background: #313338 !important;
+        }
+        
+        .discord-card .chat-header {
+            background: #313338 !important;
+            border-bottom: 1px solid #26272D !important;
+        }
+        
+        .discord-card #messages-container {
+            background: #313338 !important;
+        }
+        
+        .discord-card .text-white {
+            color: #F2F3F5 !important;
+        }
+        
+        .discord-card .text-gray-400 {
+            color: #B5BAC1 !important;
+        }
+        
+        .discord-card .text-gray-500 {
+            color: #949BA4 !important;
         }
 
         /* GLOW EFFECT - OR */
@@ -4621,15 +5060,15 @@
 
         <!-- HEADER -->
         <div class="text-center mb-12 relative z-10">
-            <div class="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
-                <span class="w-2 h-2 bg-amber-400 rounded-full inline-block mr-2 animate-pulse"></span> Communauté Active
+            <div class="inline-block px-4 py-1.5 rounded-full border border-black/10 bg-black/5 text-gray-700 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
+                <span class="w-2 h-2 bg-amber-500 rounded-full inline-block mr-2 animate-pulse"></span> Communauté Active
             </div>
-            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] font-display">
+            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] font-display text-gray-900">
                 UNE COMMUNAUTÉ<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-amber-600">VIVANTE & ACTIVE</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-500 via-amber-600 to-amber-700">VIVANTE & ACTIVE</span>
             </h2>
-            <p class="text-gray-400 text-sm md:text-base mt-4 max-w-lg mx-auto">
-                Rejoins <strong class="text-white">1,240+ entrepreneurs</strong> qui s'entraident, partagent leurs <strong class="text-amber-400">résultats</strong> et progressent ensemble chaque jour.
+            <p class="text-gray-500 text-sm md:text-base mt-4 max-w-lg mx-auto">
+                Rejoins <strong class="text-gray-900">1,240+ entrepreneurs</strong> qui s'entraident, partagent leurs <strong class="text-amber-600">résultats</strong> et progressent ensemble chaque jour.
             </p>
         </div>
 
@@ -4638,16 +5077,16 @@
             <div class="discord-card glow-focus">
                 <div class="flex flex-col md:flex-row h-[450px] md:h-[650px]">
                     
-                    <!-- LEFT SIDEBAR -->
-                    <div class="focus-sidebar w-60 flex-shrink-0 flex flex-col border-r border-white/5">
+                    <!-- LEFT SIDEBAR - MODE SOMBRE DISCORD -->
+                    <div class="focus-sidebar w-60 flex-shrink-0 flex flex-col border-r border-[#1E1F22]">
                         
                         <!-- SERVER NAME -->
-                        <div class="h-12 flex items-center justify-between px-4 border-b border-white/5 shadow-lg">
+                        <div class="h-12 flex items-center justify-between px-4 border-b border-[#1E1F22] shadow-lg" style="background: #1E1F22;">
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center font-black text-sm text-black">F</div>
                                 <span class="font-bold text-white text-sm">Focus Business</span>
                             </div>
-                            <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"/></svg>
+                            <svg class="w-4 h-4 text-[#B5BAC1] cursor-pointer hover:text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"/></svg>
                         </div>
 
                         <!-- CHANNELS LIST -->
@@ -5226,12 +5665,12 @@
             <div class="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
                 <span class="w-2 h-2 bg-amber-400 rounded-full inline-block mr-2 animate-pulse"></span> L'Équipe
             </div>
-            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9]">
+            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] text-gray-900">
                 NOS EXPERTS<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-amber-600">À VOTRE SERVICE</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-500 via-amber-600 to-amber-700">À VOTRE SERVICE</span>
             </h2>
-            <p class="text-gray-400 text-sm md:text-base mt-4 max-w-md mx-auto">
-                <strong class="text-white">8 domaines.</strong> Expertise maximale. <strong class="text-amber-400">Résultats garantis.</strong>
+            <p class="text-gray-500 text-sm md:text-base mt-4 max-w-md mx-auto">
+                <strong class="text-gray-900">8 domaines.</strong> Expertise maximale. <strong class="text-amber-600">Résultats garantis.</strong>
             </p>
         </div>
 
@@ -5564,29 +6003,29 @@
 
     </section>
 <!-- ==================== SECTION NETWORKING ==================== -->
-<section class="networking-section relative w-full py-12 md:py-20 flex flex-col lg:flex-row justify-center items-center gap-12 md:gap-24 lg:gap-40 overflow-hidden bg-black">
+<section class="networking-section relative w-full py-12 md:py-20 flex flex-col lg:flex-row justify-center items-center gap-12 md:gap-24 lg:gap-40 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
         
-        <!-- GLOW OR VOLUMETRIQUE -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-gradient-to-br from-amber-500/8 via-amber-400/5 to-transparent blur-[180px] rounded-full pointer-events-none z-0"></div>
+        <!-- GLOW OR VOLUMETRIQUE - MODE CLAIR -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-gradient-to-br from-amber-400/15 via-amber-300/10 to-transparent blur-[180px] rounded-full pointer-events-none z-0"></div>
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-400/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
         <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-400/4 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-        <!-- TEXTE CONTEXTE GAUCHE -->
+        <!-- TEXTE CONTEXTE GAUCHE - MODE CLAIR -->
         <div class="networking-text relative z-10 max-w-lg text-center lg:text-left px-4 md:px-6">
-            <div class="inline-block px-3 md:px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+            <div class="inline-block px-3 md:px-4 py-1.5 rounded-full border border-black/10 bg-black/5 text-gray-700 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 shadow-[0_0_20px_rgba(0,0,0,0.05)]">
                 <span class="w-2 h-2 bg-amber-500 rounded-full inline-block mr-2 animate-pulse"></span> Networking Puissant
             </div>
-            <h2 class="text-4xl md:text-6xl lg:text-8xl font-black leading-[0.9] mb-4 md:mb-6 text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
-                TU N'ES PLUS <br> <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-amber-600">SEUL.</span>
+            <h2 class="text-4xl md:text-6xl lg:text-8xl font-black leading-[0.9] mb-4 md:mb-6 text-gray-900">
+                TU N'ES PLUS <br> <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-500 via-amber-600 to-amber-700">SEUL.</span>
             </h2>
-            <p class="text-gray-400 text-sm md:text-base mb-6 md:mb-8 max-w-md">
-                Quand t'es bloqué à 2h du mat', <strong class="text-white">+1000 membres</strong> sont là pour t'aider. Pas de théorie, des gens qui ont la dalle comme toi.
+            <p class="text-gray-500 text-sm md:text-base mb-6 md:mb-8 max-w-md">
+                Quand t'es bloqué à 2h du mat', <strong class="text-gray-900">+1000 membres</strong> sont là pour t'aider. Pas de théorie, des gens qui ont la dalle comme toi.
             </p>
-            <div class="space-y-6 border-l-2 border-gold/30 pl-6 md:pl-8 hidden md:block">
-                <p class="text-gray-300 text-lg font-medium leading-relaxed">
-                    Quand tu as un doute technique, tu ne cherches pas sur Google. <strong class="text-white">Tu demandes à un mec qui l'a fait hier.</strong>
+            <div class="space-y-6 border-l-2 border-amber-400/40 pl-6 md:pl-8 hidden md:block">
+                <p class="text-gray-600 text-lg font-medium leading-relaxed">
+                    Quand tu as un doute technique, tu ne cherches pas sur Google. <strong class="text-gray-900">Tu demandes à un mec qui l'a fait hier.</strong>
                 </p>
-                <p class="text-gray-400 text-base">
+                <p class="text-gray-500 text-base">
                     500+ experts connectés en permanence. Des réponses, pas de la théorie.
                 </p>
             </div>
@@ -5652,17 +6091,17 @@
                 <div class="phone-screen">
                     <!-- Status Bar -->
                     <div class="status-bar"><span>23:42</span><div class="flex gap-1.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-1.07 3.97-2.9 5.33z"/></svg><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
-                    <!-- Discord Header - Salon Entraide -->
-                    <div class="bg-[#2b2d31] pb-3 pt-2 px-4 shadow-md z-10"><div class="flex items-center gap-3"><div class="text-gray-400"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg></div><div><h3 class="text-white font-bold text-base leading-tight">🎧 Entraide</h3><p class="text-amber-400 text-xs font-bold">En appel (4)</p></div><div class="ml-auto flex gap-3"><div class="bg-[#1e1f22] p-2 rounded-full"><svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></div></div></div></div>
-                    <!-- User List - ÉLÈVES UNIQUEMENT -->
-                    <div class="flex-1 bg-[#1e1f22] overflow-y-auto pt-2 pb-20">
-                        <div class="voice-user-row talking" id="u1"><div class="relative"><div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-sm avatar-ring transition-shadow duration-100">T</div><div class="absolute -bottom-1 -right-1 bg-[#1e1f22] rounded-full p-0.5"><div class="w-3 h-3 bg-amber-500 rounded-full animate-pulse"></div></div></div><div class="flex-1"><div class="text-white font-bold text-sm">Thomas_Ads</div><div class="text-amber-400 text-xs">Parle...</div></div><svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/></svg></div>
-                        <div class="voice-user-row" id="u2"><div class="relative"><div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center font-bold text-sm">K</div><div class="absolute -bottom-1 -right-1 bg-[#1e1f22] rounded-full p-0.5"><div class="w-3 h-3 bg-amber-500 rounded-full"></div></div></div><div class="flex-1"><div class="text-white font-bold text-sm user-name">Karim_Immo</div><div class="text-discordTextDark text-xs">Écoute</div></div></div>
-                        <div class="voice-user-row" id="u3"><div class="relative"><div class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center font-bold text-sm">J</div><div class="absolute -bottom-1 -right-1 bg-[#1e1f22] rounded-full p-0.5"><div class="w-3 h-3 bg-amber-500 rounded-full"></div></div></div><div class="flex-1"><div class="text-white font-bold text-sm user-name">Julie_Ecom</div><div class="text-discordTextDark text-xs">Écoute</div></div></div>
-                        <div class="voice-user-row" id="u4"><div class="relative"><div class="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center font-bold text-sm">M</div><div class="absolute -bottom-1 -right-1 bg-[#1e1f22] rounded-full p-0.5"><div class="w-3 h-3 bg-amber-500 rounded-full"></div></div></div><div class="flex-1"><div class="text-white font-bold text-sm user-name">Mehdi_Dev</div><div class="text-discordTextDark text-xs">Écoute</div></div></div>
+                    <!-- Discord Header - Salon Entraide - MODE SOMBRE -->
+                    <div class="bg-[#2B2D31] pb-3 pt-2 px-4 shadow-lg z-10 border-b border-[#1E1F22]"><div class="flex items-center gap-3"><div class="text-[#B5BAC1]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg></div><div><h3 class="text-white font-bold text-base leading-tight">🎧 Entraide</h3><p class="text-[#23A55A] text-xs font-bold">En appel (4)</p></div><div class="ml-auto flex gap-3"><div class="bg-[#383A40] p-2 rounded-full"><svg class="w-5 h-5 text-[#ED4245]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></div></div></div></div>
+                    <!-- User List - DISCORD DARK THEME -->
+                    <div class="flex-1 bg-[#2B2D31] overflow-y-auto pt-2 pb-20">
+                        <div class="voice-user-row talking" id="u1"><div class="relative"><div class="w-10 h-10 rounded-full bg-[#5865F2] flex items-center justify-center font-bold text-sm text-white avatar-ring transition-shadow duration-100">T</div><div class="absolute -bottom-1 -right-1 bg-[#2B2D31] rounded-full p-0.5"><div class="w-3 h-3 bg-[#23A55A] rounded-full animate-pulse"></div></div></div><div class="flex-1"><div class="text-white font-bold text-sm">Thomas_Ads</div><div class="text-[#23A55A] text-xs">Parle...</div></div><svg class="w-4 h-4 text-[#23A55A]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/></svg></div>
+                        <div class="voice-user-row" id="u2"><div class="relative"><div class="w-10 h-10 rounded-full bg-[#747F8D] flex items-center justify-center font-bold text-sm text-white">K</div><div class="absolute -bottom-1 -right-1 bg-[#2B2D31] rounded-full p-0.5"><div class="w-3 h-3 bg-[#23A55A] rounded-full"></div></div></div><div class="flex-1"><div class="text-[#F2F3F5] font-bold text-sm user-name">Karim_Immo</div><div class="text-[#949BA4] text-xs">Écoute</div></div></div>
+                        <div class="voice-user-row" id="u3"><div class="relative"><div class="w-10 h-10 rounded-full bg-[#EB459E] flex items-center justify-center font-bold text-sm text-white">J</div><div class="absolute -bottom-1 -right-1 bg-[#2B2D31] rounded-full p-0.5"><div class="w-3 h-3 bg-[#23A55A] rounded-full"></div></div></div><div class="flex-1"><div class="text-[#F2F3F5] font-bold text-sm user-name">Julie_Ecom</div><div class="text-[#949BA4] text-xs">Écoute</div></div></div>
+                        <div class="voice-user-row" id="u4"><div class="relative"><div class="w-10 h-10 rounded-full bg-[#57F287] flex items-center justify-center font-bold text-sm text-white">M</div><div class="absolute -bottom-1 -right-1 bg-[#2B2D31] rounded-full p-0.5"><div class="w-3 h-3 bg-[#23A55A] rounded-full"></div></div></div><div class="flex-1"><div class="text-[#F2F3F5] font-bold text-sm user-name">Mehdi_Dev</div><div class="text-[#949BA4] text-xs">Écoute</div></div></div>
                     </div>
-                    <!-- Bottom Bar Discord Voice -->
-                    <div class="absolute bottom-0 left-0 w-full p-3 bg-[#232428] border-t border-white/5"><div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-xs font-black text-black">T</div><div><div class="text-white text-xs font-bold">Toi</div><div class="text-amber-400 text-[10px]">Connecté</div></div></div><div class="flex items-center gap-3"><div class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg></div><div class="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center"><svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M5 3a2 2 0 00-2 2v1c0 8.284 6.716 15 15 15h1a2 2 0 002-2v-3.28a1 1 0 00-.684-.948l-4.493-1.498a1 1 0 00-1.21.502l-1.13 2.257a11.042 11.042 0 01-5.516-5.517l2.257-1.128a1 1 0 00.502-1.21L9.228 3.683A1 1 0 008.279 3H5z"/></svg></div></div></div></div>
+                    <!-- Bottom Bar Discord Voice - MODE SOMBRE -->
+                    <div class="absolute bottom-0 left-0 w-full p-3 bg-[#232428] border-t border-[#1E1F22]"><div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-[#5865F2] flex items-center justify-center text-xs font-black text-white">T</div><div><div class="text-white text-xs font-bold">Toi</div><div class="text-[#23A55A] text-[10px]">Connecté</div></div></div><div class="flex items-center gap-3"><div class="w-8 h-8 bg-[#383A40] rounded-full flex items-center justify-center"><svg class="w-4 h-4 text-[#B5BAC1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg></div><div class="w-8 h-8 bg-[#ED4245]/20 rounded-full flex items-center justify-center"><svg class="w-4 h-4 text-[#ED4245]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M5 3a2 2 0 00-2 2v1c0 8.284 6.716 15 15 15h1a2 2 0 002-2v-3.28a1 1 0 00-.684-.948l-4.493-1.498a1 1 0 00-1.21.502l-1.13 2.257a11.042 11.042 0 01-5.516-5.517l2.257-1.128a1 1 0 00.502-1.21L9.228 3.683A1 1 0 008.279 3H5z"/></svg></div></div></div></div>
                 </div>
             </div>
 
@@ -5712,15 +6151,15 @@
         
         <!-- HEADER PRICING -->
         <div class="text-center mb-12 md:mb-16 relative z-10 px-4">
-            <div class="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
-                <span class="w-2 h-2 bg-amber-400 rounded-full inline-block mr-2 animate-pulse"></span> Offre Unique
+            <div class="inline-block px-4 py-1.5 rounded-full border border-black/10 bg-black/5 text-gray-700 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
+                <span class="w-2 h-2 bg-amber-500 rounded-full inline-block mr-2 animate-pulse"></span> Offre Unique
             </div>
-            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9]">
+            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] text-gray-900">
                 REJOINS<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-amber-600">FOCUS.</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-500 via-amber-600 to-amber-700">FOCUS.</span>
             </h2>
-            <p class="text-gray-400 text-sm md:text-base mt-4 max-w-md mx-auto">
-                <strong class="text-white">Accès illimité</strong> à tout l'écosystème. <strong class="text-amber-400">Pour le prix d'un kebab.</strong>
+            <p class="text-gray-600 text-sm md:text-base mt-4 max-w-md mx-auto">
+                <strong class="text-gray-900">Accès illimité</strong> à tout l'écosystème. <strong class="text-amber-600">Pour le prix d'un kebab.</strong>
             </p>
         </div>
         
@@ -5734,16 +6173,16 @@
                 <div class="s-icon bg-green-500/10 text-green-500">🛒</div>
                 <div>
                     <div class="text-[10px] text-gray-500 font-bold uppercase">Ressource</div>
-                    <div class="text-white font-bold text-xs">94 Thèmes Shopify Premium</div>
+                    <div class="text-gray-900 font-bold text-xs">94 Thèmes Shopify Premium</div>
                 </div>
             </div>
 
             <!-- 2. Prompts AI -->
             <div class="satellite sat-2 animate-float-2 hidden lg:flex">
-                <div class="s-icon bg-gold/10 text-gold">🤖</div>
+                <div class="s-icon bg-amber-500/10 text-amber-600">🤖</div>
                 <div>
                     <div class="text-[10px] text-gray-500 font-bold uppercase">IA Focus</div>
-                    <div class="gold-text">Prompts JSON Photoshoot</div>
+                    <div class="text-amber-600 font-bold text-xs">Prompts JSON Photoshoot</div>
                 </div>
             </div>
 
@@ -5751,40 +6190,40 @@
             <div class="satellite sat-3 animate-float-3 hidden lg:flex">
                 <div class="s-icon bg-blue-500/10 text-blue-500">💰</div>
                 <div>
-                    <div class="text-[10px] text-gray-400 font-bold uppercase">Vente</div>
-                    <div class="text-white font-bold text-xs flex items-center gap-2">
-                        Live Closing <span class="bg-green-500/20 text-green-400 text-[8px] px-1 rounded animate-pulse">SOLD</span>
+                    <div class="text-[10px] text-gray-500 font-bold uppercase">Vente</div>
+                    <div class="text-gray-900 font-bold text-xs flex items-center gap-2">
+                        Live Closing <span class="bg-amber-500/20 text-amber-600 text-[8px] px-1 rounded animate-pulse">SOLD</span>
                     </div>
                 </div>
             </div>
 
             <!-- 4. Template Notion -->
             <div class="satellite animate-float-2 hidden lg:flex" style="top: 50%; left: -10%; transform: rotate(10deg);">
-                <div class="s-icon bg-white/10 text-white">📑</div>
+                <div class="s-icon bg-gray-900/10 text-gray-700">📑</div>
                 <div>
                     <div class="text-[10px] text-gray-500 font-bold uppercase">Structure</div>
-                    <div class="text-white text-[10px] font-bold">Notion Focus OS</div>
+                    <div class="text-gray-900 text-[10px] font-bold">Notion Focus OS</div>
                 </div>
             </div>
 
             <!-- 5. Fournisseurs -->
             <div class="satellite animate-float-1 hidden lg:flex" style="bottom: 5%; left: 5%; transform: rotate(-8deg);">
-                <div class="s-icon bg-gray-500/10 text-gray-400">📦</div>
+                <div class="s-icon bg-gray-500/10 text-gray-500">📦</div>
                 <div>
                     <div class="text-[10px] text-gray-500 font-bold uppercase">Logistique</div>
-                    <div class="text-white text-[10px] font-bold">Contacts Fournisseurs Privés</div>
+                    <div class="text-gray-900 text-[10px] font-bold">Contacts Fournisseurs Privés</div>
                 </div>
             </div>
 
             <!-- 6. Agent Chinois -->
             <div class="satellite animate-float-3 hidden lg:flex" style="top: 0%; right: 5%; transform: rotate(15deg);">
                 <div class="s-icon bg-green-500/10 text-green-500 relative">
-                    <div class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border border-black"></div>
+                    <div class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border border-white"></div>
                     📞
                 </div>
                 <div>
                     <div class="text-[10px] text-gray-500 font-bold uppercase">Sourcing</div>
-                    <div class="text-white text-[10px] font-bold">Agent Chinois Privé (WhatsApp)</div>
+                    <div class="text-gray-900 text-[10px] font-bold">Agent Chinois Privé (WhatsApp)</div>
                 </div>
             </div>
 
@@ -5798,8 +6237,8 @@
 
                 <!-- GAUCHE: VALEUR (MICRO SCENES) -->
                 <div class="left-panel">
-                    <h2 class="text-3xl font-display font-black text-white mb-8">
-                        L'INVESTISSEMENT <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">D'UN DÉJEUNER.</span>
+                    <h2 class="text-3xl font-display font-black text-gray-900 mb-8">
+                        L'INVESTISSEMENT <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-700">D'UN DÉJEUNER.</span>
                     </h2>
 
                     <!-- 1. RESEAU -->
@@ -5846,7 +6285,7 @@
 
                 <!-- DROITE: PRIX -->
                 <div class="right-panel">
-                    <div class="inline-block px-3 py-1 rounded-full border border-white/20 bg-white/5 text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-6">
+                    <div class="inline-block px-3 py-1 rounded-full border border-black/10 bg-amber-50 text-amber-700 text-[10px] font-bold uppercase tracking-widest mb-6">
                         Accès Complet
                     </div>
                     <div class="price-big">9,90€</div>
@@ -5874,14 +6313,14 @@
         <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-amber-400/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
         
         <div class="text-center mb-10 md:mb-14 relative z-10 px-4">
-            <div class="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
-                <span class="w-2 h-2 bg-amber-400 rounded-full inline-block mr-2 animate-pulse"></span> Questions Fréquentes
+            <div class="inline-block px-4 py-1.5 rounded-full border border-black/10 bg-black/5 text-gray-700 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
+                <span class="w-2 h-2 bg-amber-500 rounded-full inline-block mr-2 animate-pulse"></span> Questions Fréquentes
             </div>
-            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9]">
-                FAQ <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-amber-600">AI.</span>
+            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] text-gray-900">
+                FAQ <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-500 via-amber-600 to-amber-700">AI.</span>
             </h2>
-            <p class="text-gray-400 text-sm md:text-base mt-4 max-w-md mx-auto">
-                <strong class="text-white">L'intelligence collective</strong> à votre service. <strong class="text-amber-400">24/7.</strong>
+            <p class="text-gray-500 text-sm md:text-base mt-4 max-w-md mx-auto">
+                <strong class="text-gray-900">L'intelligence collective</strong> à votre service. <strong class="text-amber-600">24/7.</strong>
             </p>
         </div>
 
@@ -5892,11 +6331,11 @@
             <div class="chat-interface">
                 <div class="sidebar">
                     <div class="ai-header">
-                        <div class="ai-avatar"><img src="assets/images/logof.svg" alt="F" style="width: 22px; height: auto; filter: invert(1);"></div>
+                        <div class="ai-avatar"><img src="assets/images/logof.svg" alt="F" style="width: 22px; height: auto;"></div>
                         <div>
-                            <div class="text-white font-bold text-sm">Focus Assistant</div>
-                            <div class="flex items-center gap-2 text-[10px] text-amber-400 font-bold mt-1">
-                                <span class="w-2 h-2 bg-amber-400 rounded-full animate-pulse shadow-[0_0_10px_#D4AF37]"></span> ONLINE
+                            <div class="text-gray-900 font-bold text-sm">Focus Assistant</div>
+                            <div class="flex items-center gap-2 text-[10px] text-amber-600 font-bold mt-1">
+                                <span class="w-2 h-2 bg-amber-500 rounded-full animate-pulse shadow-[0_0_10px_#D4AF37]"></span> ONLINE
                             </div>
                         </div>
                     </div>
@@ -5928,10 +6367,15 @@
                         </div>
                     </div>
                     
-                    <div class="p-6 border-t border-white/10 bg-black/20">
-                        <div class="h-12 bg-white/5 border border-white/10 rounded-xl flex items-center px-4 justify-between text-gray-500 text-sm">
-                            <span>Message...</span>
-                            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white">↵</div>
+                    <div class="chat-input-area">
+                        <div class="chat-input-box">
+                            <div class="chat-input-icon">💬</div>
+                            <span class="chat-input-placeholder">Sélectionnez une question...</span>
+                            <div class="chat-input-send">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -5944,7 +6388,7 @@
             <!-- Questions Drawer (pour voir toutes les questions) -->
             <div class="faq-questions-drawer" id="faqDrawer">
                 <div class="faq-drawer-header">
-                    <div class="text-white font-bold text-lg">Toutes les questions</div>
+                    <div class="text-gray-900 font-bold text-lg">Toutes les questions</div>
                     <div class="faq-close-btn" onclick="closeFaqDrawer()">×</div>
                 </div>
                 
@@ -6011,13 +6455,13 @@
     </section>
 
 <!-- ==================== FOOTER ==================== -->
-<footer class="relative py-24 overflow-hidden" style="background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);">
+<footer class="relative py-24 overflow-hidden" style="background: linear-gradient(180deg, #FAFAFA 0%, #F0F0F0 100%);">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="text-center mb-16">
-            <h3 class="text-6xl font-black mb-4" style="background: linear-gradient(135deg, #fff 0%, #666 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">FOCUS</h3>
+            <h3 class="text-6xl font-black mb-4" style="background: linear-gradient(135deg, #1a1a1a 0%, #666 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">FOCUS</h3>
             <p class="text-gray-500 text-sm uppercase tracking-[0.3em]">Business Elite Community</p>
         </div>
-        <div class="border-t border-white/10 pt-8">
+        <div class="border-t border-black/10 pt-8">
             <p class="text-gray-500 text-sm text-center">© 2026 Focus Business. Tous droits réservés.</p>
         </div>
     </div>
@@ -6380,6 +6824,8 @@ window.addEventListener('load', initTilt);
 
 <!-- ========== SCROLL ANIMATIONS ========== -->
 <script>
+    // Attendre que GSAP soit chargé (defer)
+    window.addEventListener('load', function() {
     // GSAP ScrollTrigger animations pour tout le site
     gsap.registerPlugin(ScrollTrigger);
     
@@ -6532,6 +6978,7 @@ window.addEventListener('load', initTilt);
         });
     });
     
+    }); // Fin window.addEventListener('load')
 </script>
 
 <!-- BADGE INTRIGUE -->
