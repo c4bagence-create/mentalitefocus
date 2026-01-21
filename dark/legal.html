@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales - Focus Business</title>
+    <meta name="description" content="Mentions légales du site mentalitefocus.com - Informations sur l'éditeur et l'hébergeur.">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.7;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .logo { height: 32px; }
+        
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .back-btn:hover { color: #D4AF37; }
+        
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .page-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #999 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+        
+        .page-header .subtitle {
+            color: #888;
+            font-size: 14px;
+        }
+        
+        .page-header .update-date {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 8px 16px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            color: #D4AF37;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .content-section {
+            margin-bottom: 48px;
+        }
+        
+        .content-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+        }
+        
+        .content-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ddd;
+            margin: 24px 0 12px;
+        }
+        
+        .content-section p {
+            color: #aaa;
+            margin-bottom: 16px;
+        }
+        
+        .content-section ul {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+        
+        .content-section li {
+            color: #aaa;
+            margin-bottom: 8px;
+        }
+        
+        .content-section li::marker {
+            color: #D4AF37;
+        }
+        
+        .info-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .info-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #D4AF37;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        
+        .info-card .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        
+        .info-card .info-label {
+            font-weight: 600;
+            color: #ddd;
+            min-width: 180px;
+        }
+        
+        .info-card .info-value {
+            color: #aaa;
+        }
+        
+        .contact-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 48px;
+            text-align: center;
+        }
+        
+        .contact-box h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+        
+        .contact-box p {
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .contact-box a {
+            display: inline-block;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .contact-box a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: #050505;
+        }
+        
+        footer p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        footer a {
+            color: #D4AF37;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 640px) {
+            nav { padding: 1rem; }
+            main { padding: 100px 16px 60px; }
+            .content-section h2 { font-size: 1.25rem; }
+            .info-card .info-row { flex-direction: column; gap: 4px; }
+            .info-card .info-label { min-width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/dark/" class="back-btn">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Retour
+    </a>
+    <img src="assets/images/logof.svg" alt="Focus" class="logo">
+    <div style="width: 60px;"></div>
+</nav>
+
+<main>
+    <div class="page-header">
+        <h1>Mentions Légales</h1>
+        <p class="subtitle">Informations légales conformément à la réglementation en vigueur</p>
+        <span class="update-date">Dernière mise à jour : Janvier 2026</span>
+    </div>
+    
+    <div class="content-section">
+        <h2>1. Éditeur du site</h2>
+        
+        <div class="info-card">
+            <h4>🏢 Informations société</h4>
+            <div class="info-row">
+                <span class="info-label">Raison sociale</span>
+                <span class="info-value">FOCUS MEDIA LLC</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Forme juridique</span>
+                <span class="info-value">Limited Liability Company (LLC)</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">État d'enregistrement</span>
+                <span class="info-value">Nouveau-Mexique, États-Unis</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Numéro d'enregistrement</span>
+                <span class="info-value">0008043509</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Siège social</span>
+                <span class="info-value">1209 Mountain Road Pl NE, Ste N<br>Albuquerque, NM 87110, USA</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Durée</span>
+                <span class="info-value">Perpétuelle</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Agent enregistré</span>
+                <span class="info-value">Northwest Registered Agent, Inc.</span>
+            </div>
+        </div>
+        
+        <div class="info-card">
+            <h4>📧 Contact</h4>
+            <div class="info-row">
+                <span class="info-label">Site web</span>
+                <span class="info-value">mentalitefocus.com</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Email</span>
+                <span class="info-value">support@mentalitefocus.com</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Marque</span>
+                <span class="info-value">FOCUS AI / FOCUS BUSINESS</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <h2>2. Directeur de la publication</h2>
+        <p>Le directeur de la publication du site mentalitefocus.com est le représentant légal de FOCUS MEDIA LLC.</p>
+        <p>Contact : <a href="mailto:support@mentalitefocus.com" style="color: #D4AF37;">support@mentalitefocus.com</a></p>
+    </div>
+    
+    <div class="content-section">
+        <h2>3. Hébergement</h2>
+        
+        <div class="info-card">
+            <h4>🌐 Hébergeur</h4>
+            <div class="info-row">
+                <span class="info-label">Société</span>
+                <span class="info-value">Hostinger International Ltd</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Adresse</span>
+                <span class="info-value">61 Lordou Vironos Street<br>6023 Larnaca, Chypre</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Site web</span>
+                <span class="info-value">hostinger.com</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <h2>4. Propriété intellectuelle</h2>
+        <p>L'ensemble du contenu présent sur le site mentalitefocus.com (textes, images, logos, vidéos, graphismes, icônes, sons, logiciels, bases de données, etc.) est la propriété exclusive de FOCUS MEDIA LLC ou de ses partenaires et est protégé par les lois relatives à la propriété intellectuelle.</p>
+        <p>Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de FOCUS MEDIA LLC.</p>
+        <p>Les marques et logos reproduits sur le site sont déposés par les sociétés qui en sont propriétaires.</p>
+    </div>
+    
+    <div class="content-section">
+        <h2>5. Données personnelles</h2>
+        <p>Les informations concernant la collecte et le traitement des données personnelles sont détaillées dans notre <a href="/dark/privacy.html" style="color: #D4AF37; font-weight: 600;">Politique de Confidentialité</a>.</p>
+        <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données personnelles.</p>
+        <p>Pour exercer ces droits, contactez-nous à : <a href="mailto:support@mentalitefocus.com" style="color: #D4AF37;">support@mentalitefocus.com</a></p>
+    </div>
+    
+    <div class="content-section">
+        <h2>6. Cookies</h2>
+        <p>Le site mentalitefocus.com utilise des cookies pour améliorer l'expérience utilisateur et à des fins statistiques. En continuant votre navigation sur ce site, vous acceptez l'utilisation de cookies.</p>
+        <p>Pour plus d'informations sur les cookies utilisés et leur gestion, consultez notre <a href="/dark/privacy.html" style="color: #D4AF37; font-weight: 600;">Politique de Confidentialité</a>.</p>
+    </div>
+    
+    <div class="content-section">
+        <h2>7. Limitation de responsabilité</h2>
+        <p>FOCUS MEDIA LLC s'efforce de fournir sur le site des informations aussi précises que possible. Toutefois, elle ne pourra être tenue responsable des omissions, des inexactitudes et des carences dans la mise à jour, qu'elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations.</p>
+        <p>Les liens hypertextes mis en place dans le cadre du présent site internet en direction d'autres ressources présentes sur le réseau Internet ne sauraient engager la responsabilité de FOCUS MEDIA LLC.</p>
+    </div>
+    
+    <div class="content-section">
+        <h2>8. Droit applicable</h2>
+        <p>Les présentes mentions légales sont soumises au droit américain. En cas de litige, et après échec de toute tentative de recherche d'une solution amiable, les tribunaux américains seront seuls compétents pour connaître de ce litige.</p>
+        <p>Pour les utilisateurs résidant dans l'Union Européenne, les dispositions du RGPD et des lois locales de protection des consommateurs s'appliquent en complément.</p>
+    </div>
+    
+    <div class="contact-box">
+        <h3>Une question juridique ?</h3>
+        <p>Notre équipe est disponible pour répondre à vos questions.</p>
+        <a href="mailto:support@mentalitefocus.com">Nous contacter</a>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 FOCUS MEDIA LLC. Tous droits réservés.</p>
+    <p style="margin-top: 8px;">
+        <a href="/dark/">Accueil</a> • 
+        <a href="/dark/privacy.html">Confidentialité</a> • 
+        <a href="/dark/terms.html">Conditions</a>
+    </p>
+</footer>
+
+</body>
+</html>
