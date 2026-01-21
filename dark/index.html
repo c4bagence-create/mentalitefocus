@@ -397,14 +397,18 @@
             100% { text-shadow: 0 0 80px rgba(255,255,255,0.4), 0 0 150px rgba(255,255,255,0.2); }
         }
         
-        /* FOND TEXTE HERO MOBILE */
+        /* SOUS-TITRE HERO MOBILE - LIGNES SÉPARÉES */
         @media (max-width: 768px) {
-            .hero-subtitle-bg {
-                background: rgba(0,0,0,0.7);
-                backdrop-filter: blur(10px);
-                padding: 12px 20px;
-                border-radius: 12px;
-                border: 1px solid rgba(255,255,255,0.1);
+            .hero-subtitle-mobile {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+                padding: 0 20px;
+            }
+            .hero-subtitle-mobile span {
+                display: block;
+                text-align: center;
             }
         }
         
@@ -3809,8 +3813,10 @@
             </h1>
             
             <!-- SOUS-TITRE -->
-            <p class="hero-subtitle-bg text-gray-400 text-sm md:text-lg mb-6 max-w-lg mx-auto px-4">
-                <strong class="text-white">Un groupe Discord.</strong> Tous les business models. <strong class="text-amber-400">Sans bullshit.</strong>
+            <p class="hero-subtitle-mobile text-gray-400 text-sm md:text-lg mb-6 max-w-lg mx-auto md:block">
+                <span><strong class="text-white">Un groupe Discord.</strong></span>
+                <span>Tous les business models.</span>
+                <span><strong class="text-amber-400">Sans bullshit.</strong></span>
             </p>
             
             <!-- BANDEAU INCLINÉ -->
