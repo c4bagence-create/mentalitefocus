@@ -220,7 +220,7 @@
             setTimeout(() => {
                 document.querySelectorAll('.google-bar').forEach(b => b.style.width = '100%');
                 document.querySelectorAll('.google-ctr').forEach(t => t.innerText = '12.8%');
-            }, 1500);
+            }, 2500); // Crypto optimisé
             setTimeout(() => document.querySelectorAll('.google-boost').forEach(t => gsap.to(t, { opacity: 1, duration: 0.3 })), 3000);
 
             // Meta
@@ -630,7 +630,7 @@
 
             setTimeout(() => {
                 loadChannel('général');
-            }, 1500);
+            }, 2500); // Crypto optimisé
         });
 
 
@@ -950,7 +950,7 @@ window.addEventListener('load', initTilt);
                 feed.appendChild(r);
                 feed.scrollTop = feed.scrollHeight;
                 busy = false;
-            }, 600);
+            }, 2500); // Snapchat optimisé
         }
         
         // ===== FAQ MOBILE FUNCTIONS =====

@@ -1,0 +1,412 @@
+/* ========================================
+   CLASSES ARBITRAIRES CONVERTIES EN CSS
+   Pour remplacer le CDN Tailwind
+   ======================================== */
+
+/* === KEYFRAMES === */
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(var(--rotation, 0deg)); }
+    50% { transform: translateY(-15px) rotate(var(--rotation, 0deg)); }
+}
+
+/* === POSITIONS (base) === */
+.left-\[2\%\] { left: 2%; }
+.left-\[5\%\] { left: 5%; }
+.left-\[8\%\] { left: 8%; }
+.right-\[2\%\] { right: 2%; }
+.right-\[5\%\] { right: 5%; }
+.right-\[10\%\] { right: 10%; }
+.right-\[18\%\] { right: 18%; }
+.right-\[20\%\] { right: 20%; }
+.top-\[12\%\] { top: 12%; }
+.top-\[15\%\] { top: 15%; }
+.top-\[18\%\] { top: 18%; }
+.top-\[38\%\] { top: 38%; }
+.top-\[60\%\] { top: 60%; }
+.bottom-\[20\%\] { bottom: 20%; }
+.bottom-\[25\%\] { bottom: 25%; }
+.bottom-\[32\%\] { bottom: 32%; }
+
+/* === POSITIONS RESPONSIVE (md: = 768px+) === */
+@media (min-width: 768px) {
+    .md\:absolute { position: absolute; }
+    .md\:left-\[2\%\] { left: 2%; }
+    .md\:left-\[5\%\] { left: 5%; }
+    .md\:left-\[8\%\] { left: 8%; }
+    .md\:right-\[2\%\] { right: 2%; }
+    .md\:right-\[5\%\] { right: 5%; }
+    .md\:right-\[10\%\] { right: 10%; }
+    .md\:right-\[18\%\] { right: 18%; }
+    .md\:right-\[20\%\] { right: 20%; }
+    .md\:top-\[12\%\] { top: 12%; }
+    .md\:top-\[15\%\] { top: 15%; }
+    .md\:top-\[18\%\] { top: 18%; }
+    .md\:top-\[38\%\] { top: 38%; }
+    .md\:top-\[60\%\] { top: 60%; }
+    .md\:bottom-\[20\%\] { bottom: 20%; }
+    .md\:bottom-\[25\%\] { bottom: 25%; }
+    .md\:bottom-\[32\%\] { bottom: 32%; }
+    
+    /* Animations responsive */
+    .md\:animate-float { animation: float 6s ease-in-out infinite; }
+    .md\:animate-float-delayed { animation: float 7s ease-in-out 2s infinite; }
+    .md\:animate-float-slow { animation: float 8s ease-in-out 1s infinite; }
+}
+
+/* === TAILLES WIDTH === */
+.w-\[220px\] { width: 220px; }
+.w-\[240px\] { width: 240px; }
+.w-\[260px\] { width: 260px; }
+.w-\[270px\] { width: 270px; }
+.w-\[280px\] { width: 280px; }
+.w-\[400px\] { width: 400px; }
+.w-\[500px\] { width: 500px; }
+.w-\[600px\] { width: 600px; }
+.w-\[700px\] { width: 700px; }
+.w-\[800px\] { width: 800px; }
+.w-\[900px\] { width: 900px; }
+.w-\[85\%\] { width: 85%; }
+.max-w-\[1400px\] { max-width: 1400px; }
+.max-w-\[1800px\] { max-width: 1800px; }
+
+/* === TAILLES HEIGHT === */
+.h-\[100px\] { height: 100px; }
+.h-\[400px\] { height: 400px; }
+.h-\[450px\] { height: 450px; }
+.h-\[500px\] { height: 500px; }
+.h-\[600px\] { height: 600px; }
+.h-\[650px\] { height: 650px; }
+.h-\[800px\] { height: 800px; }
+.h-\[900px\] { height: 900px; }
+.min-h-\[80vh\] { min-height: 80vh; }
+
+/* === TYPOGRAPHIE === */
+.text-\[7px\] { font-size: 7px; }
+.text-\[8px\] { font-size: 8px; }
+.text-\[9px\] { font-size: 9px; }
+.text-\[10px\] { font-size: 10px; }
+.text-\[11px\] { font-size: 11px; }
+.text-\[18px\] { font-size: 18px; }
+.text-\[8rem\] { font-size: 8rem; }
+.text-\[10rem\] { font-size: 10rem; }
+.leading-\[0\.9\] { line-height: 0.9; }
+.tracking-\[0\.2em\] { letter-spacing: 0.2em; }
+.tracking-\[0\.3em\] { letter-spacing: 0.3em; }
+
+/* === COULEURS TEXTE === */
+.text-\[\#002e25\] { color: #002e25; }
+.text-\[\#10A37F\], .text-\[\#10a37f\] { color: #10A37F; }
+.text-\[\#1a0dab\] { color: #1a0dab; }
+.text-\[\#202124\] { color: #202124; }
+.text-\[\#23A55A\] { color: #23A55A; }
+.text-\[\#4D5156\] { color: #4D5156; }
+.text-\[\#5F6368\] { color: #5F6368; }
+.text-\[\#635BFF\] { color: #635BFF; }
+.text-\[\#949BA4\] { color: #949BA4; }
+.text-\[\#95BF47\] { color: #95BF47; }
+.text-\[\#B5BAC1\] { color: #B5BAC1; }
+.text-\[\#DBDEE1\] { color: #DBDEE1; }
+.text-\[\#ED4245\] { color: #ED4245; }
+.text-\[\#F2F3F5\] { color: #F2F3F5; }
+.text-\[\#F7931A\] { color: #F7931A; }
+.text-\[\#FE2C55\] { color: #FE2C55; }
+.text-\[\#ff6e14\] { color: #ff6e14; }
+
+/* === COULEURS BACKGROUND === */
+.bg-\[\#0081FB\] { background-color: #0081FB; }
+.bg-\[\#10A37F\], .bg-\[\#10a37f\] { background-color: #10A37F; }
+.bg-\[\#232428\] { background-color: #232428; }
+.bg-\[\#23A55A\] { background-color: #23A55A; }
+.bg-\[\#2B2D31\], .bg-\[\#2b2d31\] { background-color: #2B2D31; }
+.bg-\[\#34A853\] { background-color: #34A853; }
+.bg-\[\#35373C\] { background-color: #35373C; }
+.bg-\[\#383A40\] { background-color: #383A40; }
+.bg-\[\#5865F2\] { background-color: #5865F2; }
+.bg-\[\#57F287\] { background-color: #57F287; }
+.bg-\[\#747F8D\] { background-color: #747F8D; }
+.bg-\[\#95BF47\], .bg-\[\#95bf47\] { background-color: #95BF47; }
+.bg-\[\#E8F0FE\] { background-color: #E8F0FE; }
+.bg-\[\#EB459E\] { background-color: #EB459E; }
+.bg-\[\#ED4245\] { background-color: #ED4245; }
+.bg-\[\#F7931A\] { background-color: #F7931A; }
+.bg-\[\#F8F9FA\] { background-color: #F8F9FA; }
+.bg-\[\#FE2C55\] { background-color: #FE2C55; }
+.bg-\[\#f4f6f8\] { background-color: #f4f6f8; }
+.bg-\[\#f9f9f9\] { background-color: #f9f9f9; }
+.bg-\[\#ff6e14\] { background-color: #ff6e14; }
+
+/* === COULEURS BORDER === */
+.border-\[\#1E1F22\] { border-color: #1E1F22; }
+.border-\[\#26272D\] { border-color: #26272D; }
+.border-\[\#4285F4\] { border-color: #4285F4; }
+.border-\[\#DADCE0\] { border-color: #DADCE0; }
+.border-\[\#DFE1E5\] { border-color: #DFE1E5; }
+.border-\[\#ff6e14\] { border-color: #ff6e14; }
+
+/* === BORDER SIZES === */
+.border-t-\[5px\] { border-top-width: 5px; }
+.border-b-\[5px\] { border-bottom-width: 5px; }
+.border-l-\[10px\] { border-left-width: 10px; }
+
+/* === EFFETS BLUR === */
+.blur-\[100px\] { filter: blur(100px); }
+.blur-\[120px\] { filter: blur(120px); }
+.blur-\[140px\] { filter: blur(140px); }
+.blur-\[150px\] { filter: blur(150px); }
+.blur-\[180px\] { filter: blur(180px); }
+.blur-\[200px\] { filter: blur(200px); }
+
+/* === SHADOWS === */
+.shadow-\[0_0_10px_\#D4AF37\] { box-shadow: 0 0 10px #D4AF37; }
+.shadow-\[0_0_10px_\#FE2C55\] { box-shadow: 0 0 10px #FE2C55; }
+.shadow-\[0_0_20px_rgba\(0\,0\,0\,0\.05\)\] { box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+.shadow-\[0_0_60px_rgba\(212\,175\,55\,0\.4\)\] { box-shadow: 0 0 60px rgba(212,175,55,0.4); }
+
+/* === GRADIENTS === */
+.from-\[\#FE2C55\] { --tw-gradient-from: #FE2C55; }
+.to-\[\#00F2EA\] { --tw-gradient-to: #00F2EA; }
+
+/* === PLACEHOLDER === */
+.placeholder-\[\#6D6F78\]::placeholder { color: #6D6F78; }
+
+/* === RESPONSIVE FIXES === */
+@media (min-width: 768px) {
+    .md\:block {
+        display: block !important;
+    }
+    
+    .md\:flex {
+        display: flex !important;
+    }
+    
+    .md\:hidden {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   CORRECTIONS MODE CLAIR - PRIORITÉ MAXIMALE
+   ======================================== */
+
+/* RESET BODY - Mode clair */
+body {
+    background: #FAFAFA !important;
+    background-color: #FAFAFA !important;
+    color: #1a1a1a !important;
+}
+
+/* Sections fond clair */
+section {
+    background-color: transparent !important;
+}
+
+/* Section Hero */
+section.min-h-\[80vh\] {
+    background: linear-gradient(to bottom, #fff, #f5f5f7) !important;
+}
+
+/* Section Arsenal/Domaines */
+.marquee-wrapper {
+    background: transparent !important;
+}
+
+/* Cartes Arsenal - Mode clair */
+.card:not([class*="bg-"]) { 
+    background: white !important;
+    border-color: rgba(0,0,0,0.1) !important;
+}
+
+.card.bg-white {
+    background: white !important;
+}
+
+/* Textes dans les cartes - Mode clair */
+.card .text-white {
+    color: #1a1a1a !important;
+}
+
+.card .text-gray-300,
+.card .text-gray-400 {
+    color: #666 !important;
+}
+
+/* Section Discord - Mode clair */
+.focus-sidebar {
+    background: #f0f0f0 !important;
+}
+
+.discord-content {
+    background: #fff !important;
+}
+
+/* Messages Discord - Mode clair */
+.discord-message {
+    color: #1a1a1a !important;
+}
+
+.discord-message .text-gray-200 {
+    color: #333 !important;
+}
+
+/* Voice chat - Mode clair */
+.phone-screen {
+    background: linear-gradient(180deg, #2b2d31 0%, #1e1f22 100%) !important;
+}
+
+/* Expert cards backgrounds - Garder sombres car ce sont des UI replicas */
+.expert-card .ui-replica {
+    /* Ces cartes restent sombres car ce sont des répliques d'interfaces */
+}
+
+/* Pricing cards - Mode clair */
+.pricing-card {
+    background: white !important;
+    border-color: rgba(0,0,0,0.1) !important;
+}
+
+.pricing-card .text-white {
+    color: #1a1a1a !important;
+}
+
+.pricing-card .text-gray-400 {
+    color: #666 !important;
+}
+
+/* Section Networking - Mode clair */
+.networking-section {
+    background: linear-gradient(to bottom, #f5f5f7, #fff) !important;
+}
+
+/* FAQ Section - Mode clair */
+.faq-mobile-wrapper,
+.chat-view {
+    background: #fff !important;
+}
+
+/* Scene/Pricing background - Mode clair */
+.scene {
+    background: transparent !important;
+}
+
+.gold-glow {
+    background: rgba(212, 175, 55, 0.1) !important;
+}
+
+/* Footer - Mode clair */
+footer {
+    background: #f5f5f7 !important;
+    color: #1a1a1a !important;
+}
+
+footer .text-white {
+    color: #1a1a1a !important;
+}
+
+footer .text-gray-400,
+footer .text-gray-500 {
+    color: #666 !important;
+}
+
+/* Bandeau animé - Mode clair */
+.animated-banner {
+    background: linear-gradient(90deg, #f0f0f0, #e5e5e5, #f0f0f0) !important;
+}
+
+.animated-banner .banner-text {
+    color: #1a1a1a !important;
+}
+
+.animated-banner .banner-highlight {
+    color: #D4AF37 !important;
+}
+
+/* Expert Cards - Texte plus grand en desktop */
+@media (min-width: 768px) {
+    .expert-card .info-zone .name {
+        font-size: 1.25rem !important;
+    }
+    
+    .expert-card .info-zone .role {
+        font-size: 0.75rem !important;
+    }
+    
+    .expert-card .info-zone .desc {
+        font-size: 0.875rem !important;
+        line-height: 1.4 !important;
+    }
+}
+
+/* ========================================
+   DISCORD SECTION - MODE CLAIR CORRIGÉ
+   ======================================== */
+
+/* Discord utilise les vraies couleurs Discord dark (plus lisible) */
+.focus-sidebar {
+    background: #2b2d31 !important;
+}
+
+.focus-sidebar .text-white,
+.focus-sidebar .text-gray-300,
+.focus-sidebar .text-gray-400 {
+    color: #f2f3f5 !important;
+}
+
+.focus-sidebar .channel-item {
+    color: #949ba4 !important;
+}
+
+.focus-sidebar .channel-item.active,
+.focus-sidebar .channel-item:hover {
+    color: #fff !important;
+    background: rgba(255,255,255,0.1) !important;
+}
+
+/* Chat Discord */
+.discord-content,
+.messages-container {
+    background: #313338 !important;
+}
+
+.discord-message {
+    color: #f2f3f5 !important;
+}
+
+.discord-message .text-gray-200,
+.discord-message .text-gray-300 {
+    color: #dbdee1 !important;
+}
+
+.discord-message .text-gray-500 {
+    color: #949ba4 !important;
+}
+
+/* Header Discord */
+.discord-header {
+    background: #313338 !important;
+    border-color: #1e1f22 !important;
+}
+
+.discord-header .text-white {
+    color: #f2f3f5 !important;
+}
+
+/* Input Discord */
+.discord-input,
+.message-input {
+    background: #383a40 !important;
+    color: #f2f3f5 !important;
+}
+
+.discord-input::placeholder,
+.message-input::placeholder {
+    color: #6d6f78 !important;
+}
+
+/* Membres Discord */
+.member-item .text-gray-400 {
+    color: #949ba4 !important;
+}
+
+.member-item .text-white {
+    color: #f2f3f5 !important;
+}
