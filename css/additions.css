@@ -4,23 +4,39 @@
 @media (max-width: 768px) {
     .expert-grid {
         display: flex !important;
+        flex-wrap: nowrap !important;
         overflow-x: auto !important;
+        overflow-y: hidden !important;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         gap: 16px !important;
         padding: 0 20px 20px 20px !important;
         scroll-behavior: smooth;
+        grid-template-columns: none !important;
     }
     
     .expert-grid::-webkit-scrollbar {
         display: none;
     }
     
+    .expert-grid {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
     .expert-card {
         flex: 0 0 85vw !important;
         max-width: 320px !important;
         min-width: 280px !important;
+        width: 85vw !important;
         scroll-snap-align: center;
+        height: auto !important;
+    }
+    
+    /* Indicateur de scroll */
+    .expert-grid::after {
+        content: '';
+        flex: 0 0 4px;
     }
 }
 
