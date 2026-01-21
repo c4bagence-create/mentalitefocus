@@ -9,6 +9,7 @@
     <!-- SEO & Performance -->
     <meta name="description" content="Focus Business - Communauté élite pour entrepreneurs. Rejoins +1000 membres actifs pour 10€/mois.">
     <meta name="theme-color" content="#000000">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     
@@ -328,6 +329,54 @@
             }
             .ai-badge-text {
                 font-size: 9px;
+            }
+            /* CTA MOBILE DROIT (pas penché) */
+            .cta-main {
+                transform: rotate(0deg) !important;
+            }
+        }
+        
+        /* MINI CTA APRÈS SECTIONS */
+        .section-cta {
+            text-align: center;
+            padding: 32px 16px;
+            margin-top: -20px;
+        }
+        .section-cta a {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            color: black;
+            font-weight: 800;
+            font-size: 14px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+            transition: all 0.3s ease;
+        }
+        .section-cta a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(212,175,55,0.5);
+        }
+        
+        /* EFFET TITRE HERO */
+        .hero-title-effect {
+            text-shadow: 0 0 60px rgba(0,0,0,0.2), 0 0 120px rgba(212,175,55,0.1);
+            animation: heroTitleGlow 3s ease-in-out infinite alternate;
+        }
+        @keyframes heroTitleGlow {
+            0% { text-shadow: 0 0 40px rgba(0,0,0,0.1), 0 0 80px rgba(212,175,55,0.05); }
+            100% { text-shadow: 0 0 80px rgba(0,0,0,0.2), 0 0 150px rgba(212,175,55,0.1); }
+        }
+        
+        /* FOND TEXTE HERO MOBILE */
+        @media (max-width: 768px) {
+            .hero-subtitle-bg {
+                background: rgba(255,255,255,0.8);
+                backdrop-filter: blur(10px);
+                padding: 12px 20px;
+                border-radius: 12px;
+                border: 1px solid rgba(0,0,0,0.1);
             }
         }
         
@@ -3986,13 +4035,13 @@
             </div>
             
             <!-- TITRE - MODE CLAIR -->
-            <h1 class="hero-title text-5xl md:text-[8rem] lg:text-[10rem] font-black font-display tracking-tighter leading-[0.9] select-none text-gray-900 mb-4">
-                TOUS LES<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-500 via-amber-600 to-amber-700">BUSINESS.</span>
+            <h1 class="hero-title hero-title-effect text-5xl md:text-[8rem] lg:text-[10rem] font-black font-display tracking-tighter leading-[0.9] select-none text-gray-900 mb-4">
+                <span class="inline-block" style="text-shadow: 0 0 60px rgba(0,0,0,0.2), 0 4px 0 rgba(212,175,55,0.2);">TOUS LES</span><br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-amber-500 via-amber-600 to-amber-700" style="filter: drop-shadow(0 0 30px rgba(212,175,55,0.4));">BUSINESS.</span>
             </h1>
             
             <!-- SOUS-TITRE - MODE CLAIR -->
-            <p class="text-gray-500 text-sm md:text-lg mb-6 max-w-lg mx-auto px-4">
+            <p class="hero-subtitle-bg text-gray-500 text-sm md:text-lg mb-6 max-w-lg mx-auto px-4">
                 <strong class="text-gray-900">Un groupe Discord.</strong> Tous les business models. <strong class="text-amber-600">Sans bullshit.</strong>
             </p>
             
@@ -4334,8 +4383,8 @@
             width: max-content;
         }
 
-        .marquee-track.animate-left { animation: scrollL 60s linear infinite; }
-        .marquee-track.animate-right { animation: scrollR 60s linear infinite; }
+        .marquee-track.animate-left { animation: scrollL 25s linear infinite; }
+        .marquee-track.animate-right { animation: scrollR 25s linear infinite; }
         .marquee-track.paused { animation-play-state: paused; }
 
         @keyframes scrollL { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -4728,6 +4777,11 @@
                 </div>
 
             </div>
+        </div>
+        
+        <!-- CTA SECTION -->
+        <div class="section-cta">
+            <a href="#pricing">Rejoindre Focus →</a>
         </div>
 
     </section>
@@ -6000,6 +6054,11 @@
             </div>
 
         </div>
+        
+        <!-- CTA SECTION -->
+        <div class="section-cta">
+            <a href="#pricing">Rejoindre Focus →</a>
+        </div>
 
     </section>
 <!-- ==================== SECTION NETWORKING ==================== -->
@@ -6143,6 +6202,11 @@
                 </div>
             </div>
 
+        </div>
+        
+        <!-- CTA SECTION -->
+        <div class="section-cta">
+            <a href="#pricing">Rejoindre Focus →</a>
         </div>
 
     </section>
