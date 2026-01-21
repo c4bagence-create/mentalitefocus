@@ -9,6 +9,12 @@
     50% { transform: translateY(-15px) rotate(var(--rotation, 0deg)); }
 }
 
+/* === MAX-WIDTH CLASSES === */
+.max-w-4xl { max-width: 56rem; } /* 896px */
+.max-w-7xl { max-width: 80rem; } /* 1280px */
+.max-w-\[1400px\] { max-width: 1400px; }
+.max-w-\[1800px\] { max-width: 1800px; }
+
 /* === POSITIONS (base) === */
 .left-\[2\%\] { left: 2%; }
 .left-\[5\%\] { left: 5%; }
@@ -79,6 +85,13 @@
 .h-\[800px\] { height: 800px; }
 .h-\[900px\] { height: 900px; }
 .min-h-\[80vh\] { min-height: 80vh; }
+
+/* Discord responsive height */
+@media (min-width: 768px) {
+    .md\:h-\[650px\] { height: 650px !important; }
+    .md\:h-\[600px\] { height: 600px !important; }
+    .md\:h-\[500px\] { height: 500px !important; }
+}
 
 /* === TYPOGRAPHIE === */
 .text-\[7px\] { font-size: 7px; }
