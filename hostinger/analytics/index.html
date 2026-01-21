@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2-BIT Analytics - Focus Business</title>
+    <title>2-BIT Analytics Hub - Focus Business</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,7 +23,6 @@
                     },
                     fontFamily: {
                         display: ['Space Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
                     }
                 }
             }
@@ -32,13 +31,10 @@
     
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         * { font-family: 'Space Grotesk', sans-serif; }
         
-        /* Background grid */
         .grid-bg {
             background-image: 
                 linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
@@ -46,7 +42,6 @@
             background-size: 50px 50px;
         }
         
-        /* Glowing orb */
         .orb {
             background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
             animation: orbPulse 4s ease-in-out infinite;
@@ -56,11 +51,8 @@
             50% { transform: scale(1.2); opacity: 0.8; }
         }
         
-        /* Avatar glow */
         .avatar-glow {
-            box-shadow: 
-                0 0 30px rgba(212, 175, 55, 0.4),
-                0 0 60px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.2);
             animation: avatarPulse 3s ease-in-out infinite;
         }
         @keyframes avatarPulse {
@@ -68,7 +60,6 @@
             50% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.6), 0 0 100px rgba(212, 175, 55, 0.3); }
         }
         
-        /* Gradient text */
         .gradient-text {
             background: linear-gradient(90deg, #D4AF37, #FFD700, #D4AF37);
             background-size: 200% auto;
@@ -81,16 +72,6 @@
             100% { background-position: 200% center; }
         }
         
-        /* Status dot */
-        .status-dot {
-            animation: statusPulse 2s ease-in-out infinite;
-        }
-        @keyframes statusPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
-        }
-        
-        /* Live indicator */
         .live-dot {
             animation: livePulse 1s ease-in-out infinite;
         }
@@ -99,44 +80,13 @@
             50% { opacity: 0.5; transform: scale(1.2); }
         }
         
-        /* Card hover */
-        .stat-card {
+        .tool-card {
             transition: all 0.3s ease;
         }
-        .stat-card:hover {
-            transform: translateY(-5px);
+        .tool-card:hover {
+            transform: translateY(-8px) scale(1.02);
             border-color: rgba(212, 175, 55, 0.5);
         }
-        
-        /* Terminal style */
-        .terminal {
-            background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 3px; }
-        
-        /* Loading shimmer */
-        .shimmer {
-            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-        }
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        
-        /* Recommendation cards */
-        .recommendation {
-            border-left: 3px solid #D4AF37;
-        }
-        .recommendation.warning { border-left-color: #f59e0b; }
-        .recommendation.critical { border-left-color: #ef4444; }
-        .recommendation.success { border-left-color: #22c55e; }
     </style>
 </head>
 <body class="bg-black text-white min-h-screen">
@@ -165,10 +115,7 @@
                 <div id="error-msg" class="text-red-500 text-sm mt-3 hidden">Accès refusé</div>
             </div>
             
-            <button 
-                onclick="checkPassword()" 
-                class="mt-6 w-full py-4 bg-gradient-to-r from-gold to-goldDark text-black font-bold rounded-xl hover:scale-[1.02] transition-transform"
-            >
+            <button onclick="checkPassword()" class="mt-6 w-full py-4 bg-gradient-to-r from-gold to-goldDark text-black font-bold rounded-xl hover:scale-[1.02] transition-transform">
                 Entrer
             </button>
         </div>
@@ -177,219 +124,213 @@
     <!-- MAIN DASHBOARD -->
     <div id="main-content" class="min-h-screen relative" style="display: none;">
         
-        <!-- Background -->
         <div class="fixed inset-0 grid-bg pointer-events-none"></div>
         <div class="fixed top-1/4 left-1/4 w-[600px] h-[600px] orb pointer-events-none"></div>
         
         <!-- Header -->
         <header class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
-            <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
                 <div class="flex items-center gap-4">
                     <div class="w-10 h-10 bg-gradient-to-br from-gold to-goldDark rounded-xl flex items-center justify-center font-bold text-black">2B</div>
                     <div>
-                        <div class="text-white font-bold">2-BIT Analytics</div>
+                        <div class="text-white font-bold">2-BIT Analytics Hub</div>
                         <div class="text-gray-500 text-xs">Focus Business Intelligence</div>
                     </div>
                 </div>
-                <div class="flex items-center gap-6">
-                    <div class="flex items-center gap-2">
-                        <div class="w-2 h-2 bg-green-500 rounded-full live-dot"></div>
-                        <span class="text-green-400 text-sm font-medium">LIVE</span>
-                    </div>
-                    <div class="text-gray-500 text-sm" id="current-time">--:--:--</div>
-                    <a href="https://mentalitefocus.com" class="text-gray-400 hover:text-gold transition-colors text-sm">
-                        ← Retour au site
-                    </a>
-                </div>
+                <a href="https://mentalitefocus.com" class="text-gray-400 hover:text-gold transition-colors text-sm flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    Retour au site
+                </a>
             </div>
         </header>
         
         <!-- Main Content -->
-        <main class="pt-24 pb-12 px-6">
-            <div class="max-w-7xl mx-auto">
+        <main class="pt-28 pb-12 px-6">
+            <div class="max-w-6xl mx-auto">
                 
-                <!-- Welcome Section -->
-                <div class="mb-8">
-                    <h1 class="text-3xl md:text-4xl font-black mb-2">
-                        <span class="gradient-text">Dashboard Temps Réel</span>
+                <!-- Welcome -->
+                <div class="text-center mb-12">
+                    <div class="w-24 h-24 bg-gradient-to-br from-gold to-goldDark rounded-3xl flex items-center justify-center mx-auto mb-6 avatar-glow">
+                        <span class="text-black font-black text-4xl">2B</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-black mb-4">
+                        <span class="gradient-text">Analytics Hub</span>
                     </h1>
-                    <p class="text-gray-500">Analyse en direct de mentalitefocus.com</p>
+                    <p class="text-gray-400 text-lg max-w-xl mx-auto">
+                        Accède aux vraies données de mentalitefocus.com en temps réel
+                    </p>
                 </div>
                 
-                <!-- Real-time Stats Grid -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <!-- Tools Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                     
-                    <!-- Visitors Now -->
-                    <div class="stat-card bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-6">
-                        <div class="flex items-center gap-2 mb-3">
-                            <div class="w-2 h-2 bg-green-500 rounded-full live-dot"></div>
-                            <span class="text-gray-500 text-xs uppercase tracking-wider">Visiteurs Actuels</span>
-                        </div>
-                        <div class="text-4xl font-black text-gold mb-1" id="visitors-now">0</div>
-                        <div class="text-gray-600 text-xs">en ce moment sur le site</div>
-                    </div>
-                    
-                    <!-- Today Visitors -->
-                    <div class="stat-card bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-6">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-gray-500 text-xs uppercase tracking-wider">👥 Aujourd'hui</span>
-                        </div>
-                        <div class="text-4xl font-black text-white mb-1" id="visitors-today">0</div>
-                        <div class="text-gray-600 text-xs flex items-center gap-1">
-                            <span class="text-green-500" id="visitors-trend">+0%</span> vs hier
-                        </div>
-                    </div>
-                    
-                    <!-- Avg Time -->
-                    <div class="stat-card bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-6">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-gray-500 text-xs uppercase tracking-wider">⏱️ Temps Moyen</span>
-                        </div>
-                        <div class="text-4xl font-black text-white mb-1" id="avg-time">0:00</div>
-                        <div class="text-gray-600 text-xs">sur le site</div>
-                    </div>
-                    
-                    <!-- CTA Clicks -->
-                    <div class="stat-card bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-6">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-gray-500 text-xs uppercase tracking-wider">🎯 Clics CTA</span>
-                        </div>
-                        <div class="text-4xl font-black text-white mb-1" id="cta-clicks">0</div>
-                        <div class="text-gray-600 text-xs flex items-center gap-1">
-                            <span class="text-gold" id="conversion-rate">0%</span> conversion
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <!-- Charts Row -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                    
-                    <!-- Visitors Chart -->
-                    <div class="bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-6">
-                        <h3 class="text-white font-bold mb-4">📈 Visiteurs (24h)</h3>
-                        <div class="h-64">
-                            <canvas id="visitors-chart"></canvas>
-                        </div>
-                    </div>
-                    
-                    <!-- Traffic Sources -->
-                    <div class="bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-6">
-                        <h3 class="text-white font-bold mb-4">🌍 Sources de Trafic</h3>
-                        <div class="h-64 flex items-center justify-center">
-                            <canvas id="sources-chart"></canvas>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <!-- Activity Feed & Recommendations -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                    
-                    <!-- Live Activity Feed -->
-                    <div class="lg:col-span-2 bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-white font-bold">🔴 Activité en Direct</h3>
-                            <div class="flex items-center gap-2">
-                                <div class="w-2 h-2 bg-green-500 rounded-full live-dot"></div>
-                                <span class="text-gray-500 text-xs">Live</span>
+                    <!-- Microsoft Clarity -->
+                    <a href="https://clarity.microsoft.com/projects/view/v50k153mjn/dashboard" target="_blank" class="tool-card bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-8 block">
+                        <div class="flex items-start gap-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
                             </div>
-                        </div>
-                        <div class="space-y-3 max-h-80 overflow-y-auto" id="activity-feed">
-                            <div class="shimmer h-12 rounded-lg"></div>
-                            <div class="shimmer h-12 rounded-lg"></div>
-                            <div class="shimmer h-12 rounded-lg"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Device Breakdown -->
-                    <div class="bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-6">
-                        <h3 class="text-white font-bold mb-4">📱 Appareils</h3>
-                        <div class="space-y-4" id="device-breakdown">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-2xl">📱</span>
-                                    <span class="text-white">Mobile</span>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <h3 class="text-xl font-bold text-white">Microsoft Clarity</h3>
+                                    <div class="flex items-center gap-1">
+                                        <div class="w-2 h-2 bg-green-500 rounded-full live-dot"></div>
+                                        <span class="text-green-400 text-xs font-medium">LIVE</span>
+                                    </div>
                                 </div>
-                                <span class="text-gold font-bold" id="mobile-pct">0%</span>
-                            </div>
-                            <div class="w-full bg-zinc-800 rounded-full h-2">
-                                <div class="bg-gold rounded-full h-2 transition-all" id="mobile-bar" style="width: 0%"></div>
-                            </div>
-                            
-                            <div class="flex items-center justify-between mt-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-2xl">💻</span>
-                                    <span class="text-white">Desktop</span>
+                                <p class="text-gray-400 text-sm mb-4">Visiteurs temps réel, heatmaps, recordings vidéo</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">👥 Visiteurs</span>
+                                    <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">🔥 Heatmaps</span>
+                                    <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">📹 Recordings</span>
                                 </div>
-                                <span class="text-gray-400 font-bold" id="desktop-pct">0%</span>
-                            </div>
-                            <div class="w-full bg-zinc-800 rounded-full h-2">
-                                <div class="bg-gray-500 rounded-full h-2 transition-all" id="desktop-bar" style="width: 0%"></div>
-                            </div>
-                            
-                            <div class="flex items-center justify-between mt-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-2xl">📟</span>
-                                    <span class="text-white">Tablet</span>
-                                </div>
-                                <span class="text-gray-400 font-bold" id="tablet-pct">0%</span>
-                            </div>
-                            <div class="w-full bg-zinc-800 rounded-full h-2">
-                                <div class="bg-gray-600 rounded-full h-2 transition-all" id="tablet-bar" style="width: 0%"></div>
                             </div>
                         </div>
-                    </div>
+                        <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-gray-500 text-sm">clarity.microsoft.com</span>
+                            <span class="text-gold text-sm font-medium flex items-center gap-1">
+                                Ouvrir
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </span>
+                        </div>
+                    </a>
+                    
+                    <!-- Meta Business Suite -->
+                    <a href="https://business.facebook.com/latest/insights" target="_blank" class="tool-card bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-8 block">
+                        <div class="flex items-start gap-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <h3 class="text-xl font-bold text-white">Meta Business Suite</h3>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">KPIs Meta Ads, conversions, audiences</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">💰 Dépenses</span>
+                                    <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">📊 Impressions</span>
+                                    <span class="px-3 py-1 bg-gold/20 text-gold rounded-full text-xs">🎯 Conversions</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-gray-500 text-sm">business.facebook.com</span>
+                            <span class="text-gold text-sm font-medium flex items-center gap-1">
+                                Ouvrir
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </span>
+                        </div>
+                    </a>
+                    
+                    <!-- Meta Events Manager -->
+                    <a href="https://business.facebook.com/events_manager" target="_blank" class="tool-card bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-8 block">
+                        <div class="flex items-start gap-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <h3 class="text-xl font-bold text-white">Meta Events Manager</h3>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">Pixel events, PageView, AddToCart, Purchases</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-indigo-500/20 text-indigo-400 rounded-full text-xs">👁️ PageView</span>
+                                    <span class="px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-xs">🛒 AddToCart</span>
+                                    <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">💳 Purchase</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-gray-500 text-sm">Pixel ID: 26364309749823828</span>
+                            <span class="text-gold text-sm font-medium flex items-center gap-1">
+                                Ouvrir
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </span>
+                        </div>
+                    </a>
+                    
+                    <!-- Stripe Dashboard -->
+                    <a href="https://dashboard.stripe.com" target="_blank" class="tool-card bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-8 block">
+                        <div class="flex items-start gap-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-violet-500 to-violet-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <h3 class="text-xl font-bold text-white">Stripe Dashboard</h3>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">Paiements, abonnements, revenus</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-violet-500/20 text-violet-400 rounded-full text-xs">💵 Revenus</span>
+                                    <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-xs">🔄 Abonnés</span>
+                                    <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-xs">❌ Churns</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-gray-500 text-sm">dashboard.stripe.com</span>
+                            <span class="text-gold text-sm font-medium flex items-center gap-1">
+                                Ouvrir
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </span>
+                        </div>
+                    </a>
                     
                 </div>
                 
-                <!-- 2-BIT Recommendations -->
-                <div class="bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-6 mb-8">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-12 h-12 bg-gradient-to-br from-gold to-goldDark rounded-xl flex items-center justify-center font-bold text-black">2B</div>
+                <!-- Info Box -->
+                <div class="bg-gold/10 border border-gold/30 rounded-2xl p-6 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-2xl">💡</span>
+                        </div>
                         <div>
-                            <h3 class="text-white font-bold text-lg">Recommandations 2-BIT</h3>
-                            <p class="text-gray-500 text-sm">Analyse basée sur tes données</p>
+                            <h3 class="text-gold font-bold mb-2">Pourquoi ces outils ?</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Ces dashboards affichent les <strong class="text-white">vraies données en temps réel</strong>. 
+                                Clarity te montre exactement ce que font tes visiteurs (heatmaps + vidéos). 
+                                Meta Events te montre les conversions de tes ads. 
+                                Stripe te montre les paiements et revenus.
+                            </p>
                         </div>
-                    </div>
-                    
-                    <div class="space-y-4" id="recommendations">
-                        <div class="shimmer h-20 rounded-lg"></div>
-                        <div class="shimmer h-20 rounded-lg"></div>
                     </div>
                 </div>
                 
-                <!-- Quick Links -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <a href="https://eu.posthog.com" target="_blank" class="bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-6 hover:border-gold/50 transition-all group">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center text-2xl">📊</div>
-                            <div>
-                                <div class="text-white font-bold group-hover:text-gold transition-colors">PostHog</div>
-                                <div class="text-gray-500 text-sm">Dashboard détaillé</div>
-                            </div>
+                <!-- Quick Stats Reminder -->
+                <div class="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6">
+                    <h3 class="text-white font-bold mb-4 flex items-center gap-2">
+                        <span class="text-xl">📌</span> Tracking actif sur le site
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center p-4 bg-black/30 rounded-xl">
+                            <div class="text-2xl mb-2">📊</div>
+                            <div class="text-white font-bold text-sm">Clarity</div>
+                            <div class="text-green-400 text-xs">✓ Actif</div>
                         </div>
-                    </a>
-                    
-                    <a href="https://business.facebook.com/events_manager" target="_blank" class="bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-6 hover:border-gold/50 transition-all group">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-2xl">📘</div>
-                            <div>
-                                <div class="text-white font-bold group-hover:text-gold transition-colors">Meta Events</div>
-                                <div class="text-gray-500 text-sm">Pixel & Conversions</div>
-                            </div>
+                        <div class="text-center p-4 bg-black/30 rounded-xl">
+                            <div class="text-2xl mb-2">📘</div>
+                            <div class="text-white font-bold text-sm">Meta Pixel</div>
+                            <div class="text-green-400 text-xs">✓ Actif</div>
                         </div>
-                    </a>
-                    
-                    <a href="https://mentalitefocus.com" target="_blank" class="bg-zinc-900/50 backdrop-blur border border-zinc-800 rounded-2xl p-6 hover:border-gold/50 transition-all group">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center text-2xl">🌐</div>
-                            <div>
-                                <div class="text-white font-bold group-hover:text-gold transition-colors">Le Site</div>
-                                <div class="text-gray-500 text-sm">mentalitefocus.com</div>
-                            </div>
+                        <div class="text-center p-4 bg-black/30 rounded-xl">
+                            <div class="text-2xl mb-2">📧</div>
+                            <div class="text-white font-bold text-sm">Klaviyo</div>
+                            <div class="text-green-400 text-xs">✓ Actif</div>
                         </div>
-                    </a>
+                        <div class="text-center p-4 bg-black/30 rounded-xl">
+                            <div class="text-2xl mb-2">📈</div>
+                            <div class="text-white font-bold text-sm">PostHog</div>
+                            <div class="text-green-400 text-xs">✓ Actif</div>
+                        </div>
+                    </div>
                 </div>
                 
             </div>
@@ -398,18 +339,13 @@
         <!-- Footer -->
         <footer class="py-8 text-center border-t border-white/5">
             <p class="text-gray-600 text-sm">
-                2-BIT Analytics • Focus Business Intelligence • Données mises à jour en temps réel
+                2-BIT Analytics Hub • Focus Business • Données en temps réel
             </p>
         </footer>
         
     </div>
 
-    <!-- SCRIPTS -->
     <script>
-        // ===========================================
-        // PASSWORD PROTECTION
-        // ===========================================
-        // Mot de passe: Focus2026!
         const VALID_PASSWORD = 'Focus2026!';
         
         function checkPassword() {
@@ -419,7 +355,7 @@
                 document.getElementById('auth-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
                 sessionStorage.setItem('2bit-auth', 'true');
-                initDashboard();
+                animateCards();
             } else {
                 document.getElementById('error-msg').classList.remove('hidden');
                 document.getElementById('password-input').classList.add('border-red-500');
@@ -431,350 +367,20 @@
             }
         }
         
-        // Check if already authenticated
         if (sessionStorage.getItem('2bit-auth') === 'true') {
             document.getElementById('auth-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
-            setTimeout(initDashboard, 100);
+            setTimeout(animateCards, 100);
         }
         
-        // ===========================================
-        // DASHBOARD INITIALIZATION
-        // ===========================================
-        let visitorsChart, sourcesChart;
-        let activityData = [];
-        
-        function initDashboard() {
-            updateTime();
-            setInterval(updateTime, 1000);
-            
-            initCharts();
-            fetchAnalytics();
-            generateRecommendations();
-            
-            // Refresh data every 30 seconds
-            setInterval(fetchAnalytics, 30000);
-            
-            // Simulate live activity
-            simulateLiveActivity();
-        }
-        
-        function updateTime() {
-            const now = new Date();
-            document.getElementById('current-time').textContent = now.toLocaleTimeString('fr-FR');
-        }
-        
-        // ===========================================
-        // CHARTS
-        // ===========================================
-        function initCharts() {
-            // Visitors Chart (24h)
-            const visitorsCtx = document.getElementById('visitors-chart').getContext('2d');
-            visitorsChart = new Chart(visitorsCtx, {
-                type: 'line',
-                data: {
-                    labels: generateLast24Hours(),
-                    datasets: [{
-                        label: 'Visiteurs',
-                        data: Array(24).fill(0),
-                        borderColor: '#D4AF37',
-                        backgroundColor: 'rgba(212, 175, 55, 0.1)',
-                        fill: true,
-                        tension: 0.4,
-                        pointRadius: 0,
-                        pointHoverRadius: 6,
-                        pointHoverBackgroundColor: '#D4AF37'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false }
-                    },
-                    scales: {
-                        x: {
-                            grid: { color: 'rgba(255,255,255,0.05)' },
-                            ticks: { color: '#666' }
-                        },
-                        y: {
-                            grid: { color: 'rgba(255,255,255,0.05)' },
-                            ticks: { color: '#666' },
-                            beginAtZero: true
-                        }
-                    }
-                }
+        function animateCards() {
+            gsap.from('.tool-card', {
+                y: 30,
+                opacity: 0,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: 'power2.out'
             });
-            
-            // Sources Chart (Doughnut)
-            const sourcesCtx = document.getElementById('sources-chart').getContext('2d');
-            sourcesChart = new Chart(sourcesCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Meta Ads', 'Direct', 'Organic', 'Referral'],
-                    datasets: [{
-                        data: [0, 0, 0, 0],
-                        backgroundColor: [
-                            '#4267B2', // Meta blue
-                            '#D4AF37', // Gold
-                            '#22c55e', // Green
-                            '#8B5CF6'  // Purple
-                        ],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: { color: '#999', padding: 20 }
-                        }
-                    },
-                    cutout: '70%'
-                }
-            });
-        }
-        
-        function generateLast24Hours() {
-            const hours = [];
-            const now = new Date();
-            for (let i = 23; i >= 0; i--) {
-                const h = new Date(now - i * 3600000);
-                hours.push(h.getHours() + 'h');
-            }
-            return hours;
-        }
-        
-        // ===========================================
-        // FETCH ANALYTICS DATA
-        // ===========================================
-        async function fetchAnalytics() {
-            // Note: PostHog Public API requires server-side call with private key
-            // For now, we'll simulate data based on typical patterns
-            // To get REAL data, you need to set up a backend endpoint
-            
-            try {
-                // Simulate realistic data based on time of day
-                const hour = new Date().getHours();
-                const isBusinessHours = hour >= 9 && hour <= 22;
-                
-                // Base visitors calculation
-                const baseVisitors = isBusinessHours ? Math.floor(Math.random() * 5) + 2 : Math.floor(Math.random() * 2);
-                const todayTotal = Math.floor(Math.random() * 50) + 20 + (hour * 3);
-                const avgTimeMinutes = Math.floor(Math.random() * 3) + 1;
-                const avgTimeSeconds = Math.floor(Math.random() * 60);
-                const ctaClicks = Math.floor(todayTotal * (Math.random() * 0.1 + 0.05));
-                
-                // Update stats
-                animateNumber('visitors-now', baseVisitors);
-                animateNumber('visitors-today', todayTotal);
-                document.getElementById('avg-time').textContent = `${avgTimeMinutes}:${avgTimeSeconds.toString().padStart(2, '0')}`;
-                animateNumber('cta-clicks', ctaClicks);
-                
-                // Trend
-                const trend = Math.floor(Math.random() * 40) - 10;
-                const trendEl = document.getElementById('visitors-trend');
-                trendEl.textContent = (trend >= 0 ? '+' : '') + trend + '%';
-                trendEl.className = trend >= 0 ? 'text-green-500' : 'text-red-500';
-                
-                // Conversion rate
-                const convRate = ((ctaClicks / todayTotal) * 100).toFixed(1);
-                document.getElementById('conversion-rate').textContent = convRate + '%';
-                
-                // Device breakdown (typical for business site)
-                const mobile = Math.floor(Math.random() * 20) + 60; // 60-80%
-                const desktop = Math.floor(Math.random() * 15) + 15; // 15-30%
-                const tablet = 100 - mobile - desktop;
-                
-                document.getElementById('mobile-pct').textContent = mobile + '%';
-                document.getElementById('desktop-pct').textContent = desktop + '%';
-                document.getElementById('tablet-pct').textContent = tablet + '%';
-                document.getElementById('mobile-bar').style.width = mobile + '%';
-                document.getElementById('desktop-bar').style.width = desktop + '%';
-                document.getElementById('tablet-bar').style.width = tablet + '%';
-                
-                // Update charts
-                updateVisitorsChart(hour);
-                updateSourcesChart();
-                
-            } catch (error) {
-                console.error('Error fetching analytics:', error);
-            }
-        }
-        
-        function animateNumber(elementId, targetValue) {
-            const el = document.getElementById(elementId);
-            const current = parseInt(el.textContent) || 0;
-            const diff = targetValue - current;
-            const steps = 20;
-            const increment = diff / steps;
-            let step = 0;
-            
-            const interval = setInterval(() => {
-                step++;
-                el.textContent = Math.round(current + increment * step);
-                if (step >= steps) {
-                    el.textContent = targetValue;
-                    clearInterval(interval);
-                }
-            }, 30);
-        }
-        
-        function updateVisitorsChart(currentHour) {
-            const data = [];
-            for (let i = 0; i < 24; i++) {
-                // Simulate traffic pattern (more traffic during day)
-                const hourIndex = (currentHour - 23 + i + 24) % 24;
-                const isActive = hourIndex >= 9 && hourIndex <= 22;
-                const base = isActive ? Math.floor(Math.random() * 8) + 3 : Math.floor(Math.random() * 3);
-                data.push(i <= currentHour ? base : 0);
-            }
-            visitorsChart.data.datasets[0].data = data;
-            visitorsChart.update('none');
-        }
-        
-        function updateSourcesChart() {
-            // Typical traffic source distribution for a Meta Ads focused business
-            const metaAds = Math.floor(Math.random() * 20) + 50; // 50-70%
-            const direct = Math.floor(Math.random() * 15) + 15;  // 15-30%
-            const organic = Math.floor(Math.random() * 10) + 5;  // 5-15%
-            const referral = 100 - metaAds - direct - organic;
-            
-            sourcesChart.data.datasets[0].data = [metaAds, direct, organic, referral];
-            sourcesChart.update('none');
-        }
-        
-        // ===========================================
-        // LIVE ACTIVITY SIMULATION
-        // ===========================================
-        const activityTypes = [
-            { icon: '👁️', action: 'a vu', target: 'la page d\'accueil', color: 'text-blue-400' },
-            { icon: '📜', action: 'a scrollé jusqu\'à', target: 'Nos Experts', color: 'text-purple-400' },
-            { icon: '🎯', action: 'a cliqué sur', target: 'POUR 10€/MOIS', color: 'text-gold' },
-            { icon: '💬', action: 'a vu', target: 'le Discord', color: 'text-indigo-400' },
-            { icon: '❓', action: 'a ouvert', target: 'une question FAQ', color: 'text-cyan-400' },
-            { icon: '⏱️', action: 'temps sur le site:', target: '', color: 'text-gray-400', isTime: true },
-            { icon: '📱', action: 'visite depuis', target: 'Mobile', color: 'text-green-400' },
-            { icon: '💻', action: 'visite depuis', target: 'Desktop', color: 'text-gray-400' },
-            { icon: '🔗', action: 'arrivé via', target: 'Meta Ads', color: 'text-blue-500' },
-            { icon: '🏠', action: 'arrivé via', target: 'lien direct', color: 'text-gold' }
-        ];
-        
-        const cities = ['Paris', 'Lyon', 'Marseille', 'Bordeaux', 'Lille', 'Toulouse', 'Nice', 'Nantes', 'Strasbourg', 'Montpellier', 'Bruxelles', 'Genève', 'Casablanca', 'Dakar'];
-        
-        function simulateLiveActivity() {
-            const feedEl = document.getElementById('activity-feed');
-            feedEl.innerHTML = '';
-            
-            // Initial activities
-            for (let i = 0; i < 5; i++) {
-                addActivity(true);
-            }
-            
-            // Add new activity every 5-15 seconds
-            function scheduleNext() {
-                const delay = Math.floor(Math.random() * 10000) + 5000;
-                setTimeout(() => {
-                    addActivity();
-                    scheduleNext();
-                }, delay);
-            }
-            scheduleNext();
-        }
-        
-        function addActivity(initial = false) {
-            const feedEl = document.getElementById('activity-feed');
-            const activity = activityTypes[Math.floor(Math.random() * activityTypes.length)];
-            const city = cities[Math.floor(Math.random() * cities.length)];
-            const timeAgo = initial ? Math.floor(Math.random() * 10) + 1 : 0;
-            
-            let targetText = activity.target;
-            if (activity.isTime) {
-                const mins = Math.floor(Math.random() * 5) + 1;
-                const secs = Math.floor(Math.random() * 60);
-                targetText = `${mins}:${secs.toString().padStart(2, '0')}`;
-            }
-            
-            const activityEl = document.createElement('div');
-            activityEl.className = 'flex items-center gap-4 p-3 bg-black/30 rounded-xl border border-white/5 opacity-0 transform translate-y-4';
-            activityEl.innerHTML = `
-                <span class="text-xl">${activity.icon}</span>
-                <div class="flex-1">
-                    <span class="text-gray-400">Visiteur de <span class="text-white">${city}</span></span>
-                    <span class="text-gray-600 mx-1">•</span>
-                    <span class="${activity.color}">${activity.action} ${targetText}</span>
-                </div>
-                <span class="text-gray-600 text-xs">${timeAgo > 0 ? 'il y a ' + timeAgo + ' min' : 'maintenant'}</span>
-            `;
-            
-            feedEl.insertBefore(activityEl, feedEl.firstChild);
-            
-            // Animate in
-            gsap.to(activityEl, { opacity: 1, y: 0, duration: 0.3 });
-            
-            // Keep only last 10 activities
-            while (feedEl.children.length > 10) {
-                feedEl.removeChild(feedEl.lastChild);
-            }
-        }
-        
-        // ===========================================
-        // 2-BIT RECOMMENDATIONS
-        // ===========================================
-        function generateRecommendations() {
-            const recommendationsEl = document.getElementById('recommendations');
-            const hour = new Date().getHours();
-            
-            const recommendations = [];
-            
-            // Time-based recommendations
-            if (hour < 9 || hour > 22) {
-                recommendations.push({
-                    type: 'info',
-                    title: '🌙 Heures creuses',
-                    message: 'Le trafic est naturellement plus faible la nuit. Concentre tes ads sur 10h-22h pour maximiser le ROI.',
-                    priority: 'warning'
-                });
-            }
-            
-            // General recommendations
-            recommendations.push({
-                type: 'action',
-                title: '📢 Augmenter le trafic',
-                message: 'Pour plus de visiteurs : augmente le budget Meta Ads progressivement (+20% par jour) et teste des créatives vidéo de 15s montrant la valeur du Discord.',
-                priority: 'critical'
-            });
-            
-            recommendations.push({
-                type: 'insight',
-                title: '📱 Audience mobile dominante',
-                message: 'Plus de 70% de ton trafic est mobile. Assure-toi que le parcours d\'achat est optimisé mobile et que le bouton Stripe est bien visible.',
-                priority: 'success'
-            });
-            
-            recommendations.push({
-                type: 'tip',
-                title: '🎯 Optimisation conversion',
-                message: 'Les visiteurs passent en moyenne moins de 2 min sur le site. Ajoute des témoignages vidéo et un timer de urgence sur le CTA pour augmenter les conversions.',
-                priority: 'warning'
-            });
-            
-            recommendations.push({
-                type: 'action',
-                title: '🔄 Retargeting',
-                message: 'Configure une audience personnalisée sur Meta avec les visiteurs du site qui n\'ont pas acheté. Relance-les avec une offre limitée.',
-                priority: 'critical'
-            });
-            
-            // Render recommendations
-            recommendationsEl.innerHTML = recommendations.map(rec => `
-                <div class="recommendation ${rec.priority} bg-black/30 rounded-xl p-4">
-                    <div class="font-bold text-white mb-1">${rec.title}</div>
-                    <p class="text-gray-400 text-sm leading-relaxed">${rec.message}</p>
-                </div>
-            `).join('');
         }
     </script>
 </body>
