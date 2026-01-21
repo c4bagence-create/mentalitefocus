@@ -77,16 +77,6 @@
             max-width: 100vw;
         }
         
-        /* ========== OPTIMISATIONS PERFORMANCE ========== */
-        * {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        .expert-card, .pricing-card, .speech-bubble, .satellite {
-            will-change: transform, opacity;
-        }
-        
         /* CARTES HERO - Visibles sur desktop, cachées sur mobile */
         @media (min-width: 769px) {
             .hero-card-mobile,
@@ -4046,12 +4036,17 @@
             width: max-content;
         }
 
+        .marquee-track {
+            will-change: transform;
+            transform: translate3d(0,0,0);
+            backface-visibility: hidden;
+        }
         .marquee-track.animate-left { animation: scrollL 25s linear infinite; }
         .marquee-track.animate-right { animation: scrollR 25s linear infinite; }
         .marquee-track.paused { animation-play-state: paused; }
 
-        @keyframes scrollL { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes scrollR { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        @keyframes scrollL { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
+        @keyframes scrollR { 0% { transform: translate3d(-50%,0,0); } 100% { transform: translate3d(0,0,0); } }
 
         /* ===== CARD ===== */
         .card {
@@ -4350,12 +4345,17 @@
             width: max-content;
         }
 
+        .marquee-track {
+            will-change: transform;
+            transform: translate3d(0,0,0);
+            backface-visibility: hidden;
+        }
         .marquee-track.animate-left { animation: scrollL 25s linear infinite; }
         .marquee-track.animate-right { animation: scrollR 25s linear infinite; }
         .marquee-track.paused { animation-play-state: paused; }
 
-        @keyframes scrollL { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes scrollR { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        @keyframes scrollL { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
+        @keyframes scrollR { 0% { transform: translate3d(-50%,0,0); } 100% { transform: translate3d(0,0,0); } }
 
         /* ===== CARD ===== */
         .card {

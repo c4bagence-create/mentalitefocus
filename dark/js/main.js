@@ -1,4 +1,4 @@
-// === DARK MODE MAIN.JS ===
+// === ARSENAL ANIMATIONS ===
         /* LOADER */
         window.onload = () => { 
             setTimeout(() => {
@@ -50,10 +50,11 @@
             }, 2500);
         }, 6000);
 
-        // 3. CRYPTO LOOP
+        // 3. CRYPTO LOOP - Optimisé
         setInterval(() => {
             const valEl = document.getElementById('btc-val');
             const pctEl = document.getElementById('btc-percent');
+            if (!valEl || !pctEl) return;
             const change = (Math.random() - 0.45) * 200;
             let current = parseFloat(valEl.innerText.replace('$','').replace(',',''));
             let newVal = current + change;
@@ -62,9 +63,11 @@
             valEl.style.color = change > 0 ? '#4ade80' : '#f87171';
             pctEl.innerText = (change > 0 ? '+' : '') + (Math.random()*5).toFixed(2) + '%';
             
-            const bars = cryptoChart.children;
-            bars[Math.floor(Math.random() * bars.length)].style.height = Math.random() * 100 + '%';
-        }, 1500);
+            if (cryptoChart && cryptoChart.children.length > 0) {
+                const bars = cryptoChart.children;
+                bars[Math.floor(Math.random() * bars.length)].style.height = Math.random() * 100 + '%';
+            }
+        }, 2500);
 
         // 4. RANDOM EVENTS
         const randomCards = [
@@ -139,6 +142,8 @@
             }
         }, 8000);
 
+
+// === DISCORD SECTION ===
         // ===== CLONE CARDS FOR INFINITE LOOP =====
         document.querySelectorAll('.marquee-track').forEach(track => {
             const cards = track.innerHTML;
@@ -192,18 +197,18 @@
             setTimeout(() => document.querySelectorAll('.stamp-vendu').forEach(s => s.classList.add('show')), 2200);
             setTimeout(() => document.querySelectorAll('.auto-badge').forEach(b => gsap.to(b, { opacity: 1, duration: 0.4 })), 3000);
 
-            // E-com
+            // E-com - Optimisé
             let ecom = 14250;
             setInterval(() => {
-                ecom += Math.floor(Math.random() * 60) + 30;
+                ecom += Math.floor(Math.random() * 150) + 50;
                 document.querySelectorAll('.ecom-total').forEach(el => el.innerText = ecom.toLocaleString() + '€');
-            }, 2000);
+            }, 3000);
             setInterval(() => {
                 document.querySelectorAll('.toast-ecom').forEach(t => {
                     t.classList.add('show');
                     setTimeout(() => t.classList.remove('show'), 3000);
                 });
-            }, 5500);
+            }, 7000);
 
             // SMMA
             setTimeout(() => document.querySelectorAll('.stamp-paye').forEach(s => s.classList.add('show')), 2800);
@@ -226,23 +231,23 @@
             }, 1800);
             setTimeout(() => document.querySelectorAll('.meta-roas').forEach(t => t.innerText = '8.7x'), 3200);
 
-            // TikTok
+            // TikTok - Optimisé (réduit fréquence)
             let views = 4120000;
             setInterval(() => {
-                views += Math.floor(Math.random() * 6000);
+                views += Math.floor(Math.random() * 50000) + 10000;
                 document.querySelectorAll('.tiktok-views').forEach(t => t.innerText = (views/1000000).toFixed(2) + 'M');
-            }, 100);
+            }, 2000);
 
-            // Snapchat (REFAIT)
+            // Snapchat - Optimisé (réduit fréquence)
             let snapViews = 842000, snapSwipes = 12400, snapCtr = 1.47;
             setInterval(() => {
-                snapViews += Math.floor(Math.random() * 800) + 200;
-                snapSwipes += Math.floor(Math.random() * 15) + 5;
+                snapViews += Math.floor(Math.random() * 3000) + 1000;
+                snapSwipes += Math.floor(Math.random() * 50) + 20;
                 snapCtr = ((snapSwipes / snapViews) * 100).toFixed(2);
                 document.querySelectorAll('.snap-views').forEach(t => t.innerText = Math.floor(snapViews/1000) + 'K');
                 document.querySelectorAll('.snap-swipes').forEach(t => t.innerText = (snapSwipes/1000).toFixed(1) + 'K');
                 document.querySelectorAll('.snap-ctr').forEach(t => t.innerText = snapCtr + '%');
-            }, 600);
+            }, 2500);
             
             // Screenshot flash effect
             setInterval(() => {
@@ -267,9 +272,11 @@
                 setTimeout(() => document.querySelectorAll('.seo-star').forEach(s => s.style.opacity = 1), 900);
             }, 2500);
 
-            // Hearts
+            // Hearts - Optimisé (réduit fréquence + limite éléments)
             setInterval(() => {
                 document.querySelectorAll('.hearts-box').forEach(box => {
+                    // Limite à 5 cœurs max pour éviter memory leak
+                    if (box.children.length > 5) return;
                     const h = document.createElement('span');
                     h.className = 'heart';
                     h.innerText = ['❤️','🧡','💜','💖'][Math.floor(Math.random()*4)];
@@ -278,9 +285,11 @@
                     box.appendChild(h);
                     setTimeout(() => h.remove(), 2000);
                 });
-            }, 450);
+            }, 1200);
 
         });
+
+// === FAQ SECTION ===
         // ===== MESSAGES DATABASE PAR SALON =====
         const messagesDB = {
             'général': [
@@ -624,44 +633,69 @@
             }, 1500);
         });
 
-// Protection VanillaTilt
+
+// === EXPERTS CAROUSEL ===
+            // Expert Carousel Navigation
+            const expertGrid = document.getElementById('expertGrid');
+            const expertDots = document.getElementById('expertDots');
+            
+            if (expertGrid && window.innerWidth <= 768) {
+                const cards = expertGrid.querySelectorAll('.expert-card');
+                const totalCards = cards.length;
+                
+                // Create dots
+                for (let i = 0; i < totalCards; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'swipe-dot' + (i === 0 ? ' active' : '');
+                    dot.onclick = () => scrollToExpert(i);
+                    expertDots.appendChild(dot);
+                }
+                
+                // Update dots on scroll
+                expertGrid.addEventListener('scroll', () => {
+                    const scrollLeft = expertGrid.scrollLeft;
+                    const cardWidth = expertGrid.querySelector('.expert-card').offsetWidth + 16;
+                    const activeIndex = Math.round(scrollLeft / cardWidth);
+                    
+                    document.querySelectorAll('.swipe-dot').forEach((dot, i) => {
+                        dot.classList.toggle('active', i === activeIndex);
+                    });
+                });
+            }
+            
+            function scrollExperts(direction) {
+                const grid = document.getElementById('expertGrid');
+                const cardWidth = grid.querySelector('.expert-card').offsetWidth + 16;
+                grid.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+            }
+            
+            function scrollToExpert(index) {
+                const grid = document.getElementById('expertGrid');
+                const cardWidth = grid.querySelector('.expert-card').offsetWidth + 16;
+                grid.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+            }
+
+// === GLOBAL SCRIPTS ===
+// Protection VanillaTilt - Initialisé une seule fois
 function initTilt() {
     if(typeof VanillaTilt !== 'undefined') {
         document.querySelectorAll('[data-tilt]').forEach(el => {
-            VanillaTilt.init(el, { max: 5, speed: 400, glare: true, "max-glare": 0.2 });
+            // Éviter double init
+            if (!el._vanillaTiltInit) {
+                VanillaTilt.init(el, { max: 5, speed: 400, glare: true, "max-glare": 0.2 });
+                el._vanillaTiltInit = true;
+            }
         });
         const phone = document.querySelector('.phone-mockup');
-        if(phone) VanillaTilt.init(phone, { max: 10, speed: 400, glare: true, "max-glare": 0.2 });
+        if(phone && !phone._vanillaTiltInit) {
+            VanillaTilt.init(phone, { max: 10, speed: 400, glare: true, "max-glare": 0.2 });
+            phone._vanillaTiltInit = true;
+        }
     }
 }
 window.addEventListener('load', initTilt);
 
-/* Script equipe */
-
-        // TILT EFFECT
-        VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
-            max: 6, speed: 400, glare: true, 'max-glare': 0.25
-        });
-
-        // ===== 1. SNAPCHAT - Increment views/swipes avec effet smooth =====
-        let snapViews = 842000;
-        let snapSwipes = 12400;
-        setInterval(() => {
-            snapViews += Math.floor(Math.random() * 800) + 300;
-            snapSwipes += Math.floor(Math.random() * 15) + 5;
-            const viewsEl = document.getElementById('snap-views');
-            const swipesEl = document.getElementById('snap-swipes');
-            viewsEl.textContent = (snapViews / 1000).toFixed(0) + 'K';
-            swipesEl.textContent = (snapSwipes / 1000).toFixed(1) + 'K';
-            
-            // Flash effect on update
-            viewsEl.style.transform = 'scale(1.15)';
-            swipesEl.style.transform = 'scale(1.15)';
-            setTimeout(() => {
-                viewsEl.style.transform = 'scale(1)';
-                swipesEl.style.transform = 'scale(1)';
-            }, 200);
-        }, 600);
+        // ===== 1. SNAPCHAT - SUPPRIMÉ (dupliqué au-dessus) =====
 
         // ===== 2. META ADS - Cycling ROAS avec animation fluide =====
         const roasValues = ['2.4x', '3.1x', '4.7x', '6.2x', '8.2x'];
@@ -688,10 +722,10 @@ window.addEventListener('load', initTilt);
         const terminalContent = document.getElementById('terminal-content');
         const matrixBg = document.getElementById('matrix-bg');
         
-        // Matrix rain effect
+        // Matrix rain effect - Optimisé (réduit fréquence)
         const matrixChars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ';
         function createMatrixRain() {
-            if (matrixBg && matrixBg.children.length < 15) {
+            if (matrixBg && matrixBg.children.length < 10) {
                 const char = document.createElement('div');
                 char.className = 'matrix-char';
                 char.textContent = matrixChars[Math.floor(Math.random() * matrixChars.length)];
@@ -703,7 +737,7 @@ window.addEventListener('load', initTilt);
                 setTimeout(() => char.remove(), 5000);
             }
         }
-        setInterval(createMatrixRain, 400);
+        setInterval(createMatrixRain, 800);
         
         // Terminal typewriter
         const terminalLines = [
@@ -975,6 +1009,8 @@ window.addEventListener('load', initTilt);
             }, 800);
         }
     
+
+// === ANIMATIONS ===
     // Attendre que GSAP soit chargé (defer)
     window.addEventListener('load', function() {
     // GSAP ScrollTrigger animations pour tout le site
