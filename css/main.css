@@ -4080,7 +4080,8 @@
 
         /* Carte sans classe bg spécifique = fond sombre par défaut */
         .card.bg-black { background: black; }
-        .card:not([class*="bg-"]) { background: rgba(18, 18, 20, 0.98); }
+        .card:not([class*="bg-"]):not(.card-snapchat) { background: rgba(18, 18, 20, 0.98); }
+        .card-snapchat { background: linear-gradient(135deg, #FFFC00 0%, #FFF000 100%) !important; }
 
         .logo-badge { position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; z-index: 10; }
         .logo-badge svg { width: 100%; height: 100%; }
@@ -4389,7 +4390,8 @@
 
         /* Carte sans classe bg spécifique = fond sombre par défaut */
         .card.bg-black { background: black; }
-        .card:not([class*="bg-"]) { background: rgba(18, 18, 20, 0.98); }
+        .card:not([class*="bg-"]):not(.card-snapchat) { background: rgba(18, 18, 20, 0.98); }
+        .card-snapchat { background: linear-gradient(135deg, #FFFC00 0%, #FFF000 100%) !important; }
 
         .logo-badge { position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; z-index: 10; }
         .logo-badge svg { width: 100%; height: 100%; }
