@@ -2512,12 +2512,15 @@
         }
 
         /* ===== 6. GOOGLE SEARCH ===== */
+        /* MODE CLAIR - Google Search */
         .google-search {
-            background: #202124; height: 100%; display: flex; flex-direction: column;
+            background: #FFFFFF; height: 100%; display: flex; flex-direction: column;
             position: relative; overflow: hidden;
+            border: 1px solid #DFE1E5;
         }
         .google-header {
             padding: 16px 20px; display: flex; align-items: center; gap: 18px;
+            background: #F8F9FA; border-bottom: 1px solid #DFE1E5;
         }
         .google-logo {
             font-size: 20px; font-weight: 700;
@@ -2533,19 +2536,20 @@
             50% { transform: translateY(-2px); }
         }
         .google-search-bar {
-            flex: 1; background: #303134; border-radius: 24px;
-            padding: 10px 18px; color: #e8eaed; font-size: 13px;
+            flex: 1; background: #FFFFFF; border-radius: 24px;
+            padding: 10px 18px; color: #5F6368; font-size: 13px;
             display: flex; align-items: center; gap: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 1px 6px rgba(32,33,36,0.18);
+            border: 1px solid #DFE1E5;
             transition: all 0.3s ease;
         }
         .google-search-bar:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            background: #383a3d;
+            box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+            border-color: rgba(223,225,229,0);
         }
         .google-typing-cursor {
             display: inline-block; width: 1px; height: 16px;
-            background: #e8eaed; margin-left: 2px;
+            background: #5F6368; margin-left: 2px;
             animation: googleCursorBlink 1s infinite;
         }
         @keyframes googleCursorBlink {
@@ -2554,6 +2558,7 @@
         }
         .google-results {
             padding: 20px; flex: 1; overflow-y: auto;
+            background: #FFFFFF;
         }
         .google-result {
             margin-bottom: 28px; font-family: arial, sans-serif;
@@ -2568,7 +2573,7 @@
             transform: translateX(4px);
         }
         .google-url {
-            color: #bdc1c6; font-size: 12px; margin-bottom: 6px;
+            color: #202124; font-size: 12px; margin-bottom: 6px;
             display: flex; align-items: center; gap: 8px;
         }
         .google-favicon {
@@ -2583,16 +2588,16 @@
             50% { transform: rotate(360deg); }
         }
         .google-title {
-            color: #8ab4f8; font-size: 18px; font-weight: 400;
+            color: #1a0dab; font-size: 18px; font-weight: 400;
             cursor: pointer; text-decoration: none; margin-bottom: 6px;
             display: block; transition: all 0.2s ease;
         }
         .google-title:hover { 
             text-decoration: underline; 
-            color: #aac7ff;
+            color: #1a0dab;
         }
         .google-stars {
-            color: #fbbf24; font-size: 12px; margin-bottom: 6px;
+            color: #f59e0b; font-size: 12px; margin-bottom: 6px;
             animation: googleStarsShine 2s ease-in-out infinite;
         }
         @keyframes googleStarsShine {
@@ -2600,7 +2605,7 @@
             50% { text-shadow: 0 0 8px rgba(251,191,36,0.6); }
         }
         .google-desc {
-            color: #bdc1c6; font-size: 13px; line-height: 1.6;
+            color: #4d5156; font-size: 13px; line-height: 1.6;
         }
         .google-result-blur {
             opacity: 0.3; filter: blur(2px); pointer-events: none;
