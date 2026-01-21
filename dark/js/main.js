@@ -13,113 +13,25 @@ var data = [
     { q: "Puis-je annuler quand je veux ?", a: "Oui, instantanément. Un bouton dans ton espace membre. Pas de mail, pas de justification. Liberté totale." }
 ];
 
-// === ARSENAL ANIMATIONS ===
+// === ARSENAL ANIMATIONS - OPTIMISÉ ===
         // LOADER géré par GSAP plus bas (évite les conflits)
+        
+        // === PAGE VISIBILITY API - PAUSE QUAND ONGLET INACTIF ===
+        let pageVisible = true;
+        document.addEventListener('visibilitychange', () => {
+            pageVisible = !document.hidden;
+        });
 
         /* INIT CHARTS */
         const cryptoChart = document.getElementById('crypto-chart');
-        for(let i=0; i<12; i++) cryptoChart.innerHTML += `<div class="w-1 bg-[#F7931A] transition-all duration-500" style="height:${Math.random()*100}%; opacity:${0.5+Math.random()*0.5}"></div>`;
+        if (cryptoChart) {
+            for(let i=0; i<12; i++) cryptoChart.innerHTML += `<div class="w-1 bg-[#F7931A] transition-all duration-500" style="height:${Math.random()*100}%; opacity:${0.5+Math.random()*0.5}"></div>`;
+        }
 
-        /* --- AUTOMATIC LIFE SYSTEM --- */
-        
-        // 1. SHOPIFY LOOP
-        setInterval(() => {
-            const card = document.getElementById('card-shopify');
-            const badge = document.getElementById('notif-shop');
-            const valEl = document.getElementById('shop-val');
-            
-            card.style.transform = window.innerWidth > 768 ? 'translateY(-8px) scale(1.02)' : 'scale(1.02)';
-            badge.style.transform = 'translateY(0)';
-            
-            let current = parseFloat(valEl.innerText.replace(',','').replace('€','').replace(/\s/g, ''));
-            valEl.innerText = (current + 49).toLocaleString('fr-FR') + ' €';
-            
-            setTimeout(() => {
-                badge.style.transform = 'translateY(-100%)';
-                if(window.innerWidth > 768) card.style.transform = '';
-                else card.style.transform = 'none';
-            }, 2000);
-        }, 4000);
-
-        // 2. STRIPE LOOP
-        setInterval(() => {
-            const card = document.getElementById('card-stripe');
-            const badge = document.getElementById('notif-stripe');
-            const valEl = document.getElementById('stripe-val');
-            
-            card.style.transform = window.innerWidth > 768 ? 'translateY(-8px) scale(1.02)' : 'scale(1.02)';
-            badge.style.transform = 'translateY(0)';
-            
-            let current = parseFloat(valEl.innerText.replace('+','').replace('€','').replace(',00','').replace(/\s/g, ''));
-            valEl.innerText = '+ ' + (current + 297).toLocaleString('fr-FR') + ',00 €';
-            
-            setTimeout(() => {
-                badge.style.transform = 'translateY(-100%)';
-                if(window.innerWidth > 768) card.style.transform = '';
-                else card.style.transform = 'none';
-            }, 2500);
-        }, 6000);
-
-        // 3. CRYPTO LOOP - Optimisé
-        setInterval(() => {
-            const valEl = document.getElementById('btc-val');
-            const pctEl = document.getElementById('btc-percent');
-            if (!valEl || !pctEl) return;
-            const change = (Math.random() - 0.45) * 200;
-            let current = parseFloat(valEl.innerText.replace('$','').replace(',',''));
-            let newVal = current + change;
-            
-            valEl.innerText = '$' + newVal.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-            valEl.style.color = change > 0 ? '#4ade80' : '#f87171';
-            pctEl.innerText = (change > 0 ? '+' : '') + (Math.random()*5).toFixed(2) + '%';
-            
-            if (cryptoChart && cryptoChart.children.length > 0) {
-            const bars = cryptoChart.children;
-            bars[Math.floor(Math.random() * bars.length)].style.height = Math.random() * 100 + '%';
-            }
-        }, 2500);
-
-        // 4. RANDOM EVENTS
-        const randomCards = [
-            {id: 'card-youtube', badge: 'notif-yt'},
-            {id: 'card-tiktok', badge: 'notif-tiktok'}
-        ];
-
-        setInterval(() => {
-            const item = randomCards[Math.floor(Math.random() * randomCards.length)];
-            const card = document.getElementById(item.id);
-            const badge = document.getElementById(item.badge);
-            
-            if(card && badge && window.getComputedStyle(card).display !== 'none') {
-                badge.style.transform = 'translateY(0)';
-                setTimeout(() => badge.style.transform = 'translateY(-100%)', 2500);
-            }
-        }, 4500);
-
-        // 5. QONTO LOOP
+        /* --- AUTOMATIC LIFE SYSTEM - OPTIMISÉ --- */
+        // Variables pour les animations
         const qontoAmounts = [4300, 2890, 5670, 3200, 4800];
         let qontoIndex = 0;
-        setInterval(() => {
-            const card = document.getElementById('card-qonto');
-            const badge = document.getElementById('notif-qonto');
-            const valEl = document.getElementById('qonto-val');
-            
-            if(card && badge && valEl) {
-                card.style.transform = window.innerWidth > 768 ? 'translateY(-8px) scale(1.02)' : 'scale(1.02)';
-                badge.style.transform = 'translateY(0)';
-                
-                valEl.innerText = '+ ' + qontoAmounts[qontoIndex].toLocaleString('fr-FR') + ' €';
-                qontoIndex = (qontoIndex + 1) % qontoAmounts.length;
-                
-                setTimeout(() => {
-                    badge.style.transform = 'translateY(-100%)';
-                    if(window.innerWidth > 768) card.style.transform = '';
-                    else card.style.transform = 'none';
-                }, 2500);
-            }
-        }, 7000);
-
-        // 6. REVOLUT LOOP
         const revolutPayments = [
             [{name: '🍎 Apple', amount: 1200}, {name: '👜 Louis Vuitton', amount: 600}],
             [{name: '💻 MacBook Pro', amount: 2800}, {name: '🏨 Hotel Ritz', amount: 450}],
@@ -127,30 +39,111 @@ var data = [
             [{name: '🎮 PlayStation', amount: 550}, {name: '👟 Nike', amount: 180}]
         ];
         let revolutIndex = 0;
+        const randomCards = [{id: 'card-youtube', badge: 'notif-yt'}, {id: 'card-tiktok', badge: 'notif-tiktok'}];
         
+        // Compteurs pour espacer les animations
+        let animFrame = 0;
+        
+        // === BOUCLE PRINCIPALE UNIQUE (au lieu de 6 setInterval) ===
         setInterval(() => {
-            const card = document.getElementById('card-revolut');
-            const badge = document.getElementById('notif-revolut');
-            const paymentsEl = document.getElementById('revolut-payments');
+            if (!pageVisible) return; // Ne rien faire si onglet inactif
+            animFrame++;
             
-            if(card && badge && paymentsEl) {
-                badge.style.transform = 'translateY(0)';
-                
-                const payments = revolutPayments[revolutIndex];
-                paymentsEl.innerHTML = payments.map(p => `
-                    <div class="flex justify-between items-center opacity-90">
-                        <span class="text-gray-300">${p.name}</span>
-                        <span class="text-white font-bold">- ${p.amount.toLocaleString('fr-FR')} €</span>
-                    </div>
-                `).join('');
-                
-                revolutIndex = (revolutIndex + 1) % revolutPayments.length;
-                
-                setTimeout(() => {
-                    badge.style.transform = 'translateY(-100%)';
-                }, 2500);
+            // SHOPIFY - toutes les 8 sec (animFrame % 8)
+            if (animFrame % 8 === 0) {
+                const card = document.getElementById('card-shopify');
+                const badge = document.getElementById('notif-shop');
+                const valEl = document.getElementById('shop-val');
+                if (card && badge && valEl) {
+                    card.style.transform = window.innerWidth > 768 ? 'translateY(-8px) scale(1.02)' : 'scale(1.02)';
+                    badge.style.transform = 'translateY(0)';
+                    let current = parseFloat(valEl.innerText.replace(',','').replace('€','').replace(/\s/g, '')) || 2500;
+                    valEl.innerText = (current + 49).toLocaleString('fr-FR') + ' €';
+                    setTimeout(() => {
+                        badge.style.transform = 'translateY(-100%)';
+                        card.style.transform = window.innerWidth > 768 ? '' : 'none';
+                    }, 2000);
+                }
             }
-        }, 8000);
+            
+            // STRIPE - toutes les 12 sec
+            if (animFrame % 12 === 2) {
+                const card = document.getElementById('card-stripe');
+                const badge = document.getElementById('notif-stripe');
+                const valEl = document.getElementById('stripe-val');
+                if (card && badge && valEl) {
+                    card.style.transform = window.innerWidth > 768 ? 'translateY(-8px) scale(1.02)' : 'scale(1.02)';
+                    badge.style.transform = 'translateY(0)';
+                    let current = parseFloat(valEl.innerText.replace(/[^0-9]/g, '')) || 997;
+                    valEl.innerText = '+ ' + (current + 297).toLocaleString('fr-FR') + ',00 €';
+                    setTimeout(() => {
+                        badge.style.transform = 'translateY(-100%)';
+                        card.style.transform = window.innerWidth > 768 ? '' : 'none';
+                    }, 2500);
+                }
+            }
+            
+            // CRYPTO - toutes les 5 sec
+            if (animFrame % 5 === 0) {
+                const valEl = document.getElementById('btc-val');
+                const pctEl = document.getElementById('btc-percent');
+                if (valEl && pctEl) {
+                    const change = (Math.random() - 0.45) * 200;
+                    let current = parseFloat(valEl.innerText.replace(/[^0-9]/g, '')) || 98000;
+                    valEl.innerText = '$' + (current + change).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+                    valEl.style.color = change > 0 ? '#4ade80' : '#f87171';
+                    pctEl.innerText = (change > 0 ? '+' : '') + (Math.random()*5).toFixed(2) + '%';
+                    if (cryptoChart && cryptoChart.children.length > 0) {
+                        cryptoChart.children[Math.floor(Math.random() * cryptoChart.children.length)].style.height = Math.random() * 100 + '%';
+                    }
+                }
+            }
+            
+            // RANDOM EVENTS (YouTube/TikTok) - toutes les 9 sec
+            if (animFrame % 9 === 4) {
+                const item = randomCards[Math.floor(Math.random() * randomCards.length)];
+                const badge = document.getElementById(item.badge);
+                if (badge) {
+                    badge.style.transform = 'translateY(0)';
+                    setTimeout(() => badge.style.transform = 'translateY(-100%)', 2500);
+                }
+            }
+            
+            // QONTO - toutes les 14 sec
+            if (animFrame % 14 === 6) {
+                const card = document.getElementById('card-qonto');
+                const badge = document.getElementById('notif-qonto');
+                const valEl = document.getElementById('qonto-val');
+                if (card && badge && valEl) {
+                    card.style.transform = window.innerWidth > 768 ? 'translateY(-8px) scale(1.02)' : 'scale(1.02)';
+                    badge.style.transform = 'translateY(0)';
+                    valEl.innerText = '+ ' + qontoAmounts[qontoIndex].toLocaleString('fr-FR') + ' €';
+                    qontoIndex = (qontoIndex + 1) % qontoAmounts.length;
+                    setTimeout(() => {
+                        badge.style.transform = 'translateY(-100%)';
+                        card.style.transform = window.innerWidth > 768 ? '' : 'none';
+                    }, 2500);
+                }
+            }
+            
+            // REVOLUT - toutes les 16 sec
+            if (animFrame % 16 === 10) {
+                const badge = document.getElementById('notif-revolut');
+                const paymentsEl = document.getElementById('revolut-payments');
+                if (badge && paymentsEl) {
+                    badge.style.transform = 'translateY(0)';
+                    const payments = revolutPayments[revolutIndex];
+                    paymentsEl.innerHTML = payments.map(p => `
+                        <div class="flex justify-between items-center opacity-90">
+                            <span class="text-gray-300">${p.name}</span>
+                            <span class="text-white font-bold">- ${p.amount.toLocaleString('fr-FR')} €</span>
+                        </div>
+                    `).join('');
+                    revolutIndex = (revolutIndex + 1) % revolutPayments.length;
+                    setTimeout(() => badge.style.transform = 'translateY(-100%)', 2500);
+                }
+            }
+        }, 1000); // 1 tick par seconde
 
 
 // === DISCORD SECTION ===
@@ -207,30 +200,17 @@ var data = [
             setTimeout(() => document.querySelectorAll('.stamp-vendu').forEach(s => s.classList.add('show')), 2200);
             setTimeout(() => document.querySelectorAll('.auto-badge').forEach(b => gsap.to(b, { opacity: 1, duration: 0.4 })), 3000);
 
-            // E-com - Optimisé
-            let ecom = 14250;
-            setInterval(() => {
-                ecom += Math.floor(Math.random() * 150) + 50;
-                document.querySelectorAll('.ecom-total').forEach(el => el.innerText = ecom.toLocaleString() + '€');
-            }, 3000);
-            setInterval(() => {
-                document.querySelectorAll('.toast-ecom').forEach(t => {
-                    t.classList.add('show');
-                    setTimeout(() => t.classList.remove('show'), 3000);
-                });
-            }, 7000);
-
             // SMMA
             setTimeout(() => document.querySelectorAll('.stamp-paye').forEach(s => s.classList.add('show')), 2800);
 
-            // Fiscalite (New stamp logic)
+            // Fiscalite
             setTimeout(() => document.querySelectorAll('.stamp-tax').forEach(s => gsap.to(s, { opacity: 0.8, scale: 1, duration: 0.4, ease: "back.out(1.7)" })), 2000);
 
             // Google
             setTimeout(() => {
                 document.querySelectorAll('.google-bar').forEach(b => b.style.width = '100%');
                 document.querySelectorAll('.google-ctr').forEach(t => t.innerText = '12.8%');
-            }, 2500); // Crypto optimisé
+            }, 2500);
             setTimeout(() => document.querySelectorAll('.google-boost').forEach(t => gsap.to(t, { opacity: 1, duration: 0.3 })), 3000);
 
             // Meta
@@ -241,81 +221,96 @@ var data = [
             }, 1800);
             setTimeout(() => document.querySelectorAll('.meta-roas').forEach(t => t.innerText = '8.7x'), 3200);
 
-            // TikTok - Optimisé (réduit fréquence)
-            let views = 4120000;
-            setInterval(() => {
-                views += Math.floor(Math.random() * 50000) + 10000;
-                document.querySelectorAll('.tiktok-views').forEach(t => t.innerText = (views/1000000).toFixed(2) + 'M');
-            }, 2000);
-
-            // Snapchat - Optimisé (réduit fréquence)
-            let snapViews = 842000, snapSwipes = 12400, snapCtr = 1.47;
-            setInterval(() => {
-                snapViews += Math.floor(Math.random() * 3000) + 1000;
-                snapSwipes += Math.floor(Math.random() * 50) + 20;
-                snapCtr = ((snapSwipes / snapViews) * 100).toFixed(2);
-                document.querySelectorAll('.snap-views').forEach(t => t.innerText = Math.floor(snapViews/1000) + 'K');
-                document.querySelectorAll('.snap-swipes').forEach(t => t.innerText = (snapSwipes/1000).toFixed(1) + 'K');
-                document.querySelectorAll('.snap-ctr').forEach(t => t.innerText = snapCtr + '%');
-            }, 2500);
+            // === BOUCLE OPTIMISÉE POUR ARSENAL (au lieu de 8 setInterval) ===
+            let ecom = 14250, views = 4120000, snapViews = 842000, snapSwipes = 12400;
+            let arsenalFrame = 0;
             
-            // Screenshot flash effect
             setInterval(() => {
-                document.querySelectorAll('.snap-flash-bg').forEach(f => {
-                    f.style.opacity = 0.9;
-                    setTimeout(() => f.style.opacity = 0, 150);
-                });
-                document.querySelectorAll('.snap-camera').forEach(c => {
-                    c.style.opacity = 1;
-                    c.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                    setTimeout(() => {
-                        c.style.opacity = 0;
-                        c.style.transform = 'translate(-50%, -50%) scale(1)';
-                    }, 300);
-                });
-            }, 5000);
-
-            // SEO - Animation en boucle
-            function animateSEO() {
-                const seoFocus = document.querySelectorAll('.seo-focus');
-                const seoResults = document.querySelectorAll('.seo-r1, .seo-r2');
-                const seoStar = document.querySelectorAll('.seo-star');
+                if (!pageVisible) return;
+                arsenalFrame++;
                 
-                if (seoFocus.length === 0) return;
+                // E-com total - toutes les 6 sec
+                if (arsenalFrame % 6 === 0) {
+                    ecom += Math.floor(Math.random() * 150) + 50;
+                    document.querySelectorAll('.ecom-total').forEach(el => el.innerText = ecom.toLocaleString() + '€');
+                }
                 
-                // Phase 1: Montée de Focus + descente des autres
-                seoFocus.forEach(el => gsap.to(el, { y: -55, duration: 0.8, ease: 'power2.out' }));
-                seoResults.forEach(el => gsap.to(el, { y: 30, duration: 0.8, ease: 'power2.out' }));
-                setTimeout(() => seoStar.forEach(s => s.style.opacity = 1), 900);
+                // E-com toast - toutes les 14 sec
+                if (arsenalFrame % 14 === 3) {
+                    document.querySelectorAll('.toast-ecom').forEach(t => {
+                        t.classList.add('show');
+                        setTimeout(() => t.classList.remove('show'), 3000);
+                    });
+                }
                 
-                // Phase 2: Retour à la position initiale après 4s
-            setTimeout(() => {
-                    seoFocus.forEach(el => gsap.to(el, { y: 0, duration: 0.8, ease: 'power2.out' }));
-                    seoResults.forEach(el => gsap.to(el, { y: 0, duration: 0.8, ease: 'power2.out' }));
-                    seoStar.forEach(s => s.style.opacity = 0);
-                }, 4000);
-            }
-            
-            // Lancer l'animation SEO toutes les 6 secondes
-            setTimeout(() => {
-                animateSEO();
-                setInterval(animateSEO, 6000);
-            }, 2500);
-
-            // Hearts - Optimisé (réduit fréquence + limite éléments)
-            setInterval(() => {
-                document.querySelectorAll('.hearts-box').forEach(box => {
-                    // Limite à 5 cœurs max pour éviter memory leak
-                    if (box.children.length > 5) return;
-                    const h = document.createElement('span');
-                    h.className = 'heart';
-                    h.innerText = ['❤️','🧡','💜','💖'][Math.floor(Math.random()*4)];
-                    h.style.left = Math.random() * 15 + 'px';
-                    h.style.bottom = '0';
-                    box.appendChild(h);
-                    setTimeout(() => h.remove(), 2000);
-                });
-            }, 1200);
+                // TikTok - toutes les 4 sec
+                if (arsenalFrame % 4 === 0) {
+                    views += Math.floor(Math.random() * 50000) + 10000;
+                    document.querySelectorAll('.tiktok-views').forEach(t => t.innerText = (views/1000000).toFixed(2) + 'M');
+                }
+                
+                // Snapchat - toutes les 5 sec
+                if (arsenalFrame % 5 === 2) {
+                    snapViews += Math.floor(Math.random() * 3000) + 1000;
+                    snapSwipes += Math.floor(Math.random() * 50) + 20;
+                    document.querySelectorAll('.snap-views').forEach(t => t.innerText = Math.floor(snapViews/1000) + 'K');
+                    document.querySelectorAll('.snap-swipes').forEach(t => t.innerText = (snapSwipes/1000).toFixed(1) + 'K');
+                    document.querySelectorAll('.snap-ctr').forEach(t => t.innerText = ((snapSwipes / snapViews) * 100).toFixed(2) + '%');
+                }
+                
+                // Snap flash - toutes les 10 sec
+                if (arsenalFrame % 10 === 5) {
+                    document.querySelectorAll('.snap-flash-overlay').forEach(f => {
+                        f.style.opacity = 0.9;
+                        setTimeout(() => f.style.opacity = 0, 150);
+                    });
+                }
+                
+                // SEO - toutes les 12 sec
+                if (arsenalFrame % 12 === 1) {
+                    const seoFocus = document.querySelectorAll('.seo-focus');
+                    const seoResults = document.querySelectorAll('.seo-r1, .seo-r2');
+                    const seoStar = document.querySelectorAll('.seo-star');
+                    if (seoFocus.length > 0) {
+                        seoFocus.forEach(el => gsap.to(el, { y: -55, duration: 0.8, ease: 'power2.out' }));
+                        seoResults.forEach(el => gsap.to(el, { y: 30, duration: 0.8, ease: 'power2.out' }));
+                        setTimeout(() => seoStar.forEach(s => s.style.opacity = 1), 900);
+                        setTimeout(() => {
+                            seoFocus.forEach(el => gsap.to(el, { y: 0, duration: 0.8, ease: 'power2.out' }));
+                            seoResults.forEach(el => gsap.to(el, { y: 0, duration: 0.8, ease: 'power2.out' }));
+                            seoStar.forEach(s => s.style.opacity = 0);
+                        }, 4000);
+                    }
+                }
+                
+                // Hearts - toutes les 3 sec
+                if (arsenalFrame % 3 === 0) {
+                    document.querySelectorAll('.hearts-box').forEach(box => {
+                        if (box.children.length > 5) return;
+                        const h = document.createElement('span');
+                        h.className = 'heart';
+                        h.innerText = ['❤️','🧡','💜','💖'][Math.floor(Math.random()*4)];
+                        h.style.left = Math.random() * 15 + 'px';
+                        h.style.bottom = '0';
+                        box.appendChild(h);
+                        setTimeout(() => h.remove(), 2000);
+                    });
+                }
+                
+                // Meta Ads ROAS - toutes les 5 sec
+                if (arsenalFrame % 5 === 3) {
+                    const roasEl = document.getElementById('meta-roas');
+                    if (roasEl) {
+                        roasIndex = (roasIndex + 1) % roasValues.length;
+                        roasEl.style.transform = 'scale(1.2)';
+                        roasEl.textContent = roasValues[roasIndex];
+                        metaResults += Math.floor(Math.random() * 50) + 10;
+                        const resultsEl = document.getElementById('meta-results');
+                        if(resultsEl) resultsEl.textContent = metaResults.toLocaleString('en-US');
+                        setTimeout(() => { if(roasEl) roasEl.style.transform = 'scale(1)'; }, 300);
+                    }
+                }
+            }, 1000);
 
         });
 
@@ -621,28 +616,25 @@ var data = [
                 loadChannel('général');
             }, 800);
             
-            // Ajouter des messages animés périodiquement pour effet "live"
+            // Ajouter des messages animés périodiquement - OPTIMISÉ (8s au lieu de 5s)
             setInterval(() => {
-                if (messagesContainer && messagesContainer.children.length > 0) {
-                    const randomMsgs = [
-                        { user: "Focus Bot", role: "founder", avatar: "bg-green-500", time: "À l'instant", content: "🔔 Nouveau membre dans le salon ! Bienvenue 👋" },
-                        { user: "Alex_Trading", role: "student-blue", avatar: "bg-blue-500", time: "À l'instant", content: "Merci pour les conseils ! 🙏" },
-                        { user: "Julie_Ecom", role: "student-yellow", avatar: "bg-pink-500", time: "À l'instant", content: "Je viens de faire ma première vente ! 🎉" },
-                        { user: "Thomas_Ads", role: "student-blue", avatar: "bg-purple-500", time: "À l'instant", content: "ROAS de 4.2 aujourd'hui 📈🔥" }
-                    ];
-                    const msg = randomMsgs[Math.floor(Math.random() * randomMsgs.length)];
-                    const msgElement = createMessage(msg);
-                    msgElement.classList.add('discord-msg-animated');
-                    messagesContainer.appendChild(msgElement);
-                    setTimeout(() => msgElement.style.opacity = '1', 50);
-                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                    
-                    // Limiter le nombre de messages pour performance
-                    while (messagesContainer.children.length > 15) {
-                        messagesContainer.removeChild(messagesContainer.firstChild);
-                    }
-                }
-            }, 5000);
+                if (!pageVisible || !messagesContainer || messagesContainer.children.length === 0) return;
+                
+                const randomMsgs = [
+                    { user: "Focus Bot", role: "founder", avatar: "bg-green-500", time: "À l'instant", content: "🔔 Nouveau membre dans le salon ! Bienvenue 👋" },
+                    { user: "Alex_Trading", role: "student-blue", avatar: "bg-blue-500", time: "À l'instant", content: "Merci pour les conseils ! 🙏" },
+                    { user: "Julie_Ecom", role: "student-yellow", avatar: "bg-pink-500", time: "À l'instant", content: "Je viens de faire ma première vente ! 🎉" },
+                    { user: "Thomas_Ads", role: "student-blue", avatar: "bg-purple-500", time: "À l'instant", content: "ROAS de 4.2 aujourd'hui 📈🔥" }
+                ];
+                const msgElement = createMessage(randomMsgs[Math.floor(Math.random() * randomMsgs.length)]);
+                msgElement.classList.add('discord-msg-animated');
+                messagesContainer.appendChild(msgElement);
+                setTimeout(() => msgElement.style.opacity = '1', 50);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                // Limiter messages pour performance
+                while (messagesContainer.children.length > 12) messagesContainer.removeChild(messagesContainer.firstChild);
+            }, 8000);
         }
         
         // Init on load
@@ -748,28 +740,10 @@ window.addEventListener('load', initTilt);
 
         // ===== 1. SNAPCHAT - SUPPRIMÉ (dupliqué au-dessus) =====
 
-        // ===== 2. META ADS - Cycling ROAS avec animation fluide =====
+        // ===== 2. META ADS - Animation (intégrée dans boucle principale Arsenal) =====
         const roasValues = ['2.4x', '3.1x', '4.7x', '6.2x', '8.2x'];
         let roasIndex = 4;
         let metaResults = 4240;
-        
-        setInterval(() => {
-            const roasEl = document.getElementById('meta-roas');
-            if (!roasEl) return; // Protection null
-            
-            roasIndex = (roasIndex + 1) % roasValues.length;
-            roasEl.style.transform = 'scale(1.2)';
-            roasEl.textContent = roasValues[roasIndex];
-            
-            // Increment results
-            metaResults += Math.floor(Math.random() * 50) + 10;
-            const resultsEl = document.getElementById('meta-results');
-            if(resultsEl) resultsEl.textContent = metaResults.toLocaleString('en-US');
-            
-            setTimeout(() => {
-                if(roasEl) roasEl.style.transform = 'scale(1)';
-            }, 300);
-        }, 2500);
 
         // ===== 4. TERMINAL IA - Typewriter effect + Matrix background =====
         const terminalContent = document.getElementById('terminal-content');
@@ -790,7 +764,8 @@ window.addEventListener('load', initTilt);
                 setTimeout(() => char.remove(), 5000);
             }
         }
-        if (matrixBg) setInterval(createMatrixRain, 800);
+        // Matrix rain - OPTIMISÉ (1.5s au lieu de 800ms)
+        if (matrixBg) setInterval(() => { if (pageVisible) createMatrixRain(); }, 1500);
         
         // Terminal typewriter
         const terminalLines = [
@@ -829,21 +804,17 @@ window.addEventListener('load', initTilt);
         }
         if (terminalContent) typeTerminal();
 
-        // ===== 5. SHOPIFY - Increment sales avec effet de compteur =====
+        // ===== 5. SHOPIFY - Increment sales (OPTIMISÉ - 4s au lieu de 2s) =====
         let shopifySales = 14250;
         setInterval(() => {
-            const increment = Math.floor(Math.random() * 80) + 30;
-            shopifySales += increment;
+            if (!pageVisible) return;
             const salesEl = document.getElementById('shopify-sales');
+            if (!salesEl) return;
+            shopifySales += Math.floor(Math.random() * 80) + 30;
             salesEl.textContent = shopifySales.toLocaleString('fr-FR') + '€';
-            
-            // Bounce effect
-            salesEl.style.transition = 'transform 0.3s ease';
             salesEl.style.transform = 'scale(1.1)';
-            setTimeout(() => {
-                salesEl.style.transform = 'scale(1)';
-            }, 300);
-        }, 2000);
+            setTimeout(() => { if(salesEl) salesEl.style.transform = 'scale(1)'; }, 300);
+        }, 4000);
 
         // ===== 6. GOOGLE - Typing animation in search bar =====
         const searchQueries = [
@@ -869,7 +840,7 @@ window.addEventListener('load', initTilt);
                 }
             }
         }
-        setInterval(rotateSearchQuery, 5000);
+        setInterval(() => { if (pageVisible) rotateSearchQuery(); }, 6000);
 
         // ===== ADD SMOOTH TRANSITIONS =====
         document.querySelectorAll('.snap-stat-value, .meta-roas, .shopify-sales-value').forEach(el => {
@@ -926,20 +897,29 @@ window.addEventListener('load', initTilt);
             bubble.innerHTML = `<span class="font-bold text-white mr-2">${m.u}:</span>${m.t}`;
             chatStream.appendChild(bubble);
         }
-        setInterval(addMessage, 2500);
-
-        // SPEAKING ANIMATION
+        // Boucle optimisée pour Networking (au lieu de 2 setInterval séparés)
         const speaker = document.getElementById('u1');
+        let networkFrame = 0;
         setInterval(() => {
-            // Randomly toggle speaking state
-            if(Math.random() > 0.3) {
-                speaker.classList.add('talking');
-                speaker.querySelector('.avatar-ring').style.boxShadow = `0 0 0 ${Math.random() * 4 + 2}px #23a559`;
-            } else {
-                speaker.classList.remove('talking');
-                speaker.querySelector('.avatar-ring').style.boxShadow = 'none';
+            if (!pageVisible) return;
+            networkFrame++;
+            
+            // Messages - toutes les 5 sec
+            if (networkFrame % 5 === 0) addMessage();
+            
+            // Speaking - simulation sans surcharge CPU (500ms au lieu de 200ms)
+            if (speaker && networkFrame % 1 === 0) {
+                if (Math.random() > 0.4) {
+                    speaker.classList.add('talking');
+                    const ring = speaker.querySelector('.avatar-ring');
+                    if (ring) ring.style.boxShadow = `0 0 0 ${Math.random() * 4 + 2}px #23a559`;
+                } else {
+                    speaker.classList.remove('talking');
+                    const ring = speaker.querySelector('.avatar-ring');
+                    if (ring) ring.style.boxShadow = 'none';
+                }
             }
-        }, 200);
+        }, 500);
 
         if (typeof VanillaTilt !== 'undefined') {
             const phoneMockup = document.querySelector(".phone-mockup");
