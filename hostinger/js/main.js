@@ -1,10 +1,5 @@
 // === ARSENAL ANIMATIONS ===
-        /* LOADER */
-        window.onload = () => { 
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 1000); // 3 secondes pour profiter de l'effet épique
-        }
+        // LOADER géré par GSAP plus bas (évite les conflits)
 
         /* INIT CHARTS */
         const cryptoChart = document.getElementById('crypto-chart');
@@ -1016,36 +1011,45 @@ window.addEventListener('load', initTilt);
     // GSAP ScrollTrigger animations pour tout le site
     gsap.registerPlugin(ScrollTrigger);
     
-    // Animation pour les titres de section
+    // Configuration globale pour éviter les saccades
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    
+    // Animation pour les titres de section - avec once: true pour éviter replay
     gsap.utils.toArray('.section-title, h2').forEach(title => {
-        gsap.from(title, {
-            scrollTrigger: {
-                trigger: title,
-                start: 'top 85%',
-                toggleActions: 'play none none none'
-            },
-            opacity: 0,
-            y: 40,
-            duration: 0.8,
-            ease: 'power3.out'
-        });
+        gsap.fromTo(title, 
+            { opacity: 0, y: 30 },
+            {
+                scrollTrigger: {
+                    trigger: title,
+                    start: 'top 85%',
+                    once: true
+                },
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: 'power2.out'
+            }
+        );
     });
     
-    // Animation pour les cartes Expert
+    // Animation pour les cartes Expert - optimisé
     gsap.utils.toArray('.expert-card').forEach((card, i) => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 90%',
-                toggleActions: 'play none none none'
-            },
-            opacity: 0,
-            y: 50,
-            scale: 0.95,
-            duration: 0.6,
-            delay: i * 0.08,
-            ease: 'power2.out'
-        });
+        gsap.fromTo(card,
+            { opacity: 0, y: 30, scale: 0.98 },
+            {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 90%',
+                    once: true
+                },
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.5,
+                delay: i * 0.05,
+                ease: 'power2.out'
+            }
+        );
     });
     
     // Animation KPIs Ads Dashboard
@@ -1093,76 +1097,96 @@ window.addEventListener('load', initTilt);
     const adsDashboard = document.querySelector('.ads-dashboard-v2');
     if (adsDashboard) adsObserver.observe(adsDashboard);
     
-    // Animation pour la section Pricing
-    gsap.from('.pricing-card', {
-        scrollTrigger: {
-            trigger: '.pricing-card',
-            start: 'top 80%'
-        },
-        opacity: 0,
-        y: 60,
-        scale: 0.9,
-        duration: 0.9,
-        ease: 'power3.out'
-    });
-    
-    // Animation pour la FAQ
-    gsap.from('.faq-wrapper, .faq-mobile-wrapper', {
-        scrollTrigger: {
-            trigger: '.faq-wrapper',
-            start: 'top 85%'
-        },
-        opacity: 0,
-        y: 40,
-        duration: 0.7,
-        ease: 'power2.out'
-    });
-    
-    // Animation pour les paragraphes et textes
-    gsap.utils.toArray('.networking-text p, .networking-text h2').forEach((el, i) => {
-        gsap.from(el, {
+    // Animation pour la section Pricing - optimisé
+    gsap.fromTo('.pricing-card', 
+        { opacity: 0, y: 40, scale: 0.95 },
+        {
             scrollTrigger: {
-                trigger: el,
-                start: 'top 90%'
+                trigger: '.pricing-card',
+                start: 'top 85%',
+                once: true
             },
-            opacity: 0,
-            x: -30,
+            opacity: 1,
+            y: 0,
+            scale: 1,
             duration: 0.6,
-            delay: i * 0.15,
             ease: 'power2.out'
-        });
+        }
+    );
+    
+    // Animation pour la FAQ - optimisé
+    gsap.fromTo('.faq-wrapper, .faq-mobile-wrapper',
+        { opacity: 0, y: 30 },
+        {
+            scrollTrigger: {
+                trigger: '.faq-wrapper',
+                start: 'top 85%',
+                once: true
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: 'power2.out'
+        }
+    );
+    
+    // Animation pour les paragraphes et textes - optimisé
+    gsap.utils.toArray('.networking-text p, .networking-text h2').forEach((el, i) => {
+        gsap.fromTo(el,
+            { opacity: 0, x: -20 },
+            {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 90%',
+                    once: true
+                },
+                opacity: 1,
+                x: 0,
+                duration: 0.4,
+                delay: i * 0.1,
+                ease: 'power2.out'
+            }
+        );
     });
     
-    // Animation pour les éléments avec classe "satellite"
+    // Animation pour les éléments avec classe "satellite" - optimisé
     gsap.utils.toArray('.satellite').forEach((sat, i) => {
-        gsap.from(sat, {
-            scrollTrigger: {
-                trigger: sat,
-                start: 'top 95%'
-            },
-            opacity: 0,
-            scale: 0,
-            rotation: -20,
-            duration: 0.5,
-            delay: i * 0.1,
-            ease: 'back.out(2)'
-        });
+        gsap.fromTo(sat,
+            { opacity: 0, scale: 0.8, rotation: -10 },
+            {
+                scrollTrigger: {
+                    trigger: sat,
+                    start: 'top 95%',
+                    once: true
+                },
+                opacity: 1,
+                scale: 1,
+                rotation: 0,
+                duration: 0.4,
+                delay: i * 0.08,
+                ease: 'back.out(1.5)'
+            }
+        );
     });
     
-    // Animation pour les bulles de speech
+    // Animation pour les bulles de speech - optimisé
     gsap.utils.toArray('.speech-bubble').forEach((bubble, i) => {
-        gsap.from(bubble, {
-            scrollTrigger: {
-                trigger: bubble,
-                start: 'top 90%'
-            },
-            opacity: 0,
-            scale: 0.8,
-            y: 20,
-            duration: 0.5,
-            delay: i * 0.15,
-            ease: 'power2.out'
-        });
+        gsap.fromTo(bubble,
+            { opacity: 0, scale: 0.9, y: 15 },
+            {
+                scrollTrigger: {
+                    trigger: bubble,
+                    start: 'top 90%',
+                    once: true
+                },
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                duration: 0.4,
+                delay: i * 0.1,
+                ease: 'power2.out'
+            }
+        );
     });
     
     }); // Fin window.addEventListener('load')

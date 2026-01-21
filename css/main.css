@@ -782,13 +782,18 @@
             text-shadow: 0 0 30px rgba(255,255,255,0.15); /* Glow très léger */
         }
 
-        /* Bandeau */
+        /* Bandeau - Optimisé GPU */
         .bandeau { 
-            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.8s ease;
+            will-change: transform;
+            transform: translateZ(0) rotate(-2deg);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
         }
+        .bandeau:hover,
         .interactive-zone:hover .bandeau { 
-            transform: rotate(0deg) scale(1.08) !important; 
-            box-shadow: 0 30px 60px -15px rgba(255, 255, 255, 0.2);
+            transform: translateZ(0) rotate(0deg) scale(1.05); 
+            box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.4);
         }
 
         /* ========== DISCORD SECTION - MOBILE LISIBLE ========== */
