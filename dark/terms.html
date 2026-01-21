@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions de Service - Focus Business</title>
+    <meta name="description" content="Conditions générales d'utilisation de Focus Business - Vos droits et obligations.">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '26364309749823828');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=26364309749823828&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.7;
+        }
+        
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .logo {
+            height: 32px;
+        }
+        
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .back-btn:hover {
+            color: #D4AF37;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+        }
+        
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .page-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #999 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+        
+        .page-header .subtitle {
+            color: #888;
+            font-size: 14px;
+        }
+        
+        .page-header .update-date {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 8px 16px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            color: #D4AF37;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 48px;
+        }
+        
+        .content-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+        }
+        
+        .content-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ddd;
+            margin: 24px 0 12px;
+        }
+        
+        .content-section p {
+            color: #aaa;
+            margin-bottom: 16px;
+        }
+        
+        .content-section ul {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+        
+        .content-section li {
+            color: #aaa;
+            margin-bottom: 8px;
+        }
+        
+        .content-section li::marker {
+            color: #D4AF37;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            color: #ccc;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+        }
+        
+        .warning-box p {
+            margin: 0;
+            color: #fca5a5;
+        }
+        
+        .contact-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 48px;
+            text-align: center;
+        }
+        
+        .contact-box h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+        
+        .contact-box p {
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .contact-box a {
+            display: inline-block;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .contact-box a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: #050505;
+        }
+        
+        footer p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        footer a {
+            color: #D4AF37;
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            nav {
+                padding: 1rem;
+            }
+            
+            main {
+                padding: 100px 16px 60px;
+            }
+            
+            .content-section h2 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <a href="/dark/" class="back-btn">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Retour
+    </a>
+    <img src="assets/images/logof.svg" alt="Focus" class="logo">
+    <div style="width: 60px;"></div>
+</nav>
+
+<!-- Main Content -->
+<main>
+    <div class="page-header">
+        <h1>Conditions de Service</h1>
+        <p class="subtitle">Conditions générales d'utilisation</p>
+        <span class="update-date">Dernière mise à jour : Janvier 2026</span>
+    </div>
+    
+    <div class="content-section">
+        <h2>1. Acceptation des conditions</h2>
+        <p>En accédant et en utilisant les services de Focus Business, vous acceptez d'être lié par les présentes conditions de service. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser nos services.</p>
+        
+        <div class="highlight-box">
+            <p><strong>Focus Business</strong> est une communauté premium dédiée aux entrepreneurs ambitieux. L'accès à nos services est conditionné à l'acceptation de ces termes.</p>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <h2>2. Description des services</h2>
+        <p>Focus Business propose :</p>
+        <ul>
+            <li>Accès à une communauté Discord privée avec +1000 membres</li>
+            <li>Formations et ressources business exclusives</li>
+            <li>Sessions de coaching et mentorat</li>
+            <li>Networking avec d'autres entrepreneurs</li>
+            <li>Outils et templates business</li>
+            <li>Support et accompagnement personnalisé</li>
+        </ul>
+    </div>
+    
+    <div class="content-section">
+        <h2>3. Inscription et compte</h2>
+        
+        <h3>3.1 Éligibilité</h3>
+        <p>Pour utiliser nos services, vous devez :</p>
+        <ul>
+            <li>Être âgé d'au moins 18 ans</li>
+            <li>Avoir la capacité juridique de contracter</li>
+            <li>Fournir des informations exactes lors de l'inscription</li>
+        </ul>
+        
+        <h3>3.2 Sécurité du compte</h3>
+        <p>Vous êtes responsable de :</p>
+        <ul>
+            <li>La confidentialité de vos identifiants de connexion</li>
+            <li>Toutes les activités effectuées sous votre compte</li>
+            <li>Nous informer immédiatement de toute utilisation non autorisée</li>
+        </ul>
+    </div>
+    
+    <div class="content-section">
+        <h2>4. Tarifs et paiement</h2>
+        
+        <h3>4.1 Abonnement</h3>
+        <ul>
+            <li>L'accès à Focus Business est proposé à <strong>9.90€/mois</strong></li>
+            <li>Le paiement est effectué mensuellement par prélèvement automatique</li>
+            <li>Les prix incluent la TVA applicable</li>
+        </ul>
+        
+        <h3>4.2 Moyens de paiement</h3>
+        <p>Nous acceptons les paiements par carte bancaire via notre prestataire sécurisé Stripe. Vos informations de paiement sont traitées de manière sécurisée et ne sont jamais stockées sur nos serveurs.</p>
+        
+        <h3>4.3 Facturation</h3>
+        <p>Une facture est automatiquement générée et envoyée par email à chaque paiement.</p>
+    </div>
+    
+    <div class="content-section">
+        <h2>5. Droit de rétractation</h2>
+        <p>Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation ne s'applique pas aux contenus numériques fournis sur un support immatériel dont l'exécution a commencé avec votre accord.</p>
+        
+        <div class="highlight-box">
+            <p>En souscrivant à Focus Business, vous acceptez que l'accès aux contenus soit immédiat et renoncez expressément à votre droit de rétractation.</p>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <h2>6. Résiliation</h2>
+        
+        <h3>6.1 Par le membre</h3>
+        <ul>
+            <li>Vous pouvez annuler votre abonnement à tout moment</li>
+            <li>L'annulation prend effet à la fin de la période de facturation en cours</li>
+            <li>Aucun remboursement au prorata n'est effectué</li>
+            <li>Un bouton d'annulation est disponible dans votre espace membre</li>
+        </ul>
+        
+        <h3>6.2 Par Focus Business</h3>
+        <p>Nous nous réservons le droit de suspendre ou résilier votre accès en cas de :</p>
+        <ul>
+            <li>Non-paiement de l'abonnement</li>
+            <li>Violation des présentes conditions</li>
+            <li>Comportement nuisible envers la communauté</li>
+            <li>Utilisation frauduleuse des services</li>
+        </ul>
+    </div>
+    
+    <div class="content-section">
+        <h2>7. Règles de la communauté</h2>
+        <p>En tant que membre, vous vous engagez à :</p>
+        <ul>
+            <li>Respecter les autres membres et l'équipe</li>
+            <li>Ne pas partager de contenu illégal, offensant ou discriminatoire</li>
+            <li>Ne pas spammer ou faire de publicité non autorisée</li>
+            <li>Ne pas partager les contenus exclusifs en dehors de la communauté</li>
+            <li>Contribuer positivement aux échanges</li>
+        </ul>
+        
+        <div class="warning-box">
+            <p><strong>⚠️ Important :</strong> Tout manquement grave à ces règles peut entraîner une exclusion immédiate sans remboursement.</p>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <h2>8. Propriété intellectuelle</h2>
+        
+        <h3>8.1 Nos contenus</h3>
+        <p>Tous les contenus fournis par Focus Business (formations, templates, ressources) sont protégés par le droit d'auteur. Vous disposez d'une licence personnelle, non-transférable et non-exclusive pour les utiliser.</p>
+        
+        <h3>8.2 Interdictions</h3>
+        <ul>
+            <li>Revendre ou redistribuer nos contenus</li>
+            <li>Partager votre accès avec des tiers</li>
+            <li>Copier ou reproduire nos méthodes à des fins commerciales</li>
+            <li>Enregistrer les sessions de coaching sans autorisation</li>
+        </ul>
+    </div>
+    
+    <div class="content-section">
+        <h2>9. Limitation de responsabilité</h2>
+        <p>Focus Business fournit des conseils et formations à titre informatif. Nous ne garantissons pas :</p>
+        <ul>
+            <li>Des résultats financiers spécifiques</li>
+            <li>Le succès de votre entreprise</li>
+            <li>L'exactitude permanente de toutes les informations</li>
+        </ul>
+        <p>Vous êtes seul responsable de l'application des conseils et des décisions business que vous prenez.</p>
+    </div>
+    
+    <div class="content-section">
+        <h2>10. Modifications des conditions</h2>
+        <p>Nous nous réservons le droit de modifier ces conditions à tout moment. Les modifications importantes vous seront notifiées par email au moins 30 jours avant leur entrée en vigueur.</p>
+        <p>La poursuite de l'utilisation de nos services après modification vaut acceptation des nouvelles conditions.</p>
+    </div>
+    
+    <div class="content-section">
+        <h2>11. Droit applicable et litiges</h2>
+        <p>Les présentes conditions sont régies par le droit français. En cas de litige, une solution amiable sera recherchée avant toute action judiciaire.</p>
+        <p>À défaut d'accord amiable, les tribunaux français seront seuls compétents.</p>
+    </div>
+    
+    <div class="contact-box">
+        <h3>Des questions ?</h3>
+        <p>Notre équipe est disponible pour clarifier ces conditions.</p>
+        <a href="mailto:contact@mentalitefocus.com">Nous contacter</a>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 Focus Business. Tous droits réservés.</p>
+    <p style="margin-top: 8px;">
+        <a href="/dark/">Accueil</a> • 
+        <a href="/dark/privacy.html">Politique de confidentialité</a>
+    </p>
+</footer>
+
+</body>
+</html>
