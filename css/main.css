@@ -692,9 +692,12 @@
                 position: relative;
             }
             .mobile-hidden { display: block; }
+        }
+        
+        /* Reset des positions orbit SEULEMENT sur grand desktop (> 1400px) */
+        @media (min-width: 1401px) {
             .orbit-pos-1, .orbit-pos-2, .orbit-pos-3, .orbit-pos-4,
             .orbit-pos-5, .orbit-pos-6, .orbit-pos-7, .orbit-pos-8 {
-                /* Reset des positions orbit en desktop */
                 top: unset; left: unset; right: unset; bottom: unset;
             }
         }
