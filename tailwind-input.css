@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/* Import des classes arbitraires custom */
+@import "./css/arbitrary.css";
+
+@theme {
+  --color-bg: #FAFAFA;
+  --color-gold: #D4AF37;
+  --color-gold-light: #F5E6B8;
+  --color-gold-dark: #8B7024;
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Animations custom */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(var(--rotation, 0deg)); }
+  50% { transform: translateY(-15px) rotate(var(--rotation, 0deg)); }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes slamIn {
+  0% { opacity: 0; transform: translateY(-50px) scale(0.8) rotate(-10deg); }
+  70% { transform: translateY(5px) scale(1.02) rotate(-1deg); }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotate(-2deg); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float 7s ease-in-out 2s infinite; }
+.animate-breathe { animation: breathe 3s ease-in-out infinite; }
+.animate-slam-in { animation: slamIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }

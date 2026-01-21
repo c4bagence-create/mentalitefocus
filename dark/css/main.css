@@ -455,6 +455,7 @@
         .card-tiktok { background: #000; border: 1px solid rgba(255,255,255,0.1); }
         .card-gpt { background: #343541; border: 1px solid #10A37F; }
         .card-youtube { background: #282828; border-left: 4px solid #FF0000; }
+        .card-snapchat { background: linear-gradient(135deg, #FFFC00 0%, #FFF000 100%) !important; }
 
         /* NOTIFICATIONS */
         .notif-badge {
