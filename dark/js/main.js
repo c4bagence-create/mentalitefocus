@@ -900,18 +900,17 @@ window.addEventListener('load', initTilt);
             }
         }, 200);
 
-        VanillaTilt.init(document.querySelector(".phone-mockup"), {
-            max: 10,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.2
-        });
+        if (typeof VanillaTilt !== 'undefined') {
+            const phoneMockup = document.querySelector(".phone-mockup");
+            if (phoneMockup) VanillaTilt.init(phoneMockup, { max: 10, speed: 400, glare: true, "max-glare": 0.2 });
+        }
     
 /* Script pricing */
 
-        VanillaTilt.init(document.querySelector(".pricing-card"), {
-            max: 2, speed: 400, glare: true, "max-glare": 0.05,
-        });
+        if (typeof VanillaTilt !== 'undefined') {
+            const pricingCard = document.querySelector(".pricing-card");
+            if (pricingCard) VanillaTilt.init(pricingCard, { max: 2, speed: 400, glare: true, "max-glare": 0.05 });
+        }
     
 /* Script faq */
 
