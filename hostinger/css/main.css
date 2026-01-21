@@ -91,36 +91,39 @@
             }
         }
         
-        /* ========== TABLETTE (768px - 1024px) = AFFICHER COMME MOBILE ========== */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            /* Hero - Cacher les cartes flottantes sur tablette */
+        /* ========== ÉCRANS MOYENS (768px - 1400px) = CACHER CARTES FLOTTANTES ========== */
+        /* Dès que les cartes risquent de toucher le texte, on les cache */
+        @media (min-width: 769px) and (max-width: 1400px) {
+            /* Hero - Cacher TOUTES les cartes flottantes */
             .hero-card-mobile,
             .glass-card,
             .orbit-pos-1, .orbit-pos-2, .orbit-pos-3,
-            .orbit-pos-4, .orbit-pos-5, .orbit-pos-6 {
+            .orbit-pos-4, .orbit-pos-5, .orbit-pos-6,
+            [class*="absolute"][class*="glass"],
+            [class*="hero-card"] {
                 display: none !important;
             }
             
-            /* Hero - Layout mobile sur tablette */
+            /* Hero - Layout propre sans cartes */
             .hero-section-mobile,
             section.min-h-\\[80vh\\] {
-                min-height: auto !important;
-                padding: 80px 40px 60px !important;
+                min-height: 80vh !important;
+                padding: 100px 60px 80px !important;
             }
             
-            /* Hero text - Centré et propre */
+            /* Hero text - Centré avec espace */
             .interactive-zone {
-                max-width: 600px !important;
+                max-width: 800px !important;
                 margin: 0 auto !important;
                 text-align: center !important;
             }
             
-            /* Stats - Format mobile sur tablette */
+            /* Stats - Format compact centré */
             .hero-stats-mobile {
                 display: grid !important;
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 12px !important;
-                max-width: 300px !important;
+                gap: 16px !important;
+                max-width: 350px !important;
                 margin: 0 auto !important;
             }
             
@@ -129,10 +132,18 @@
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
-                gap: 4px !important;
+                gap: 6px !important;
             }
             
             .hero-subtitle-mobile span {
+                display: block !important;
+            }
+        }
+        
+        /* ========== GRAND DESKTOP (> 1400px) = CARTES FLOTTANTES VISIBLES ========== */
+        @media (min-width: 1401px) {
+            .hero-card-mobile,
+            .glass-card {
                 display: block !important;
             }
         }
