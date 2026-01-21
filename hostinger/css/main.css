@@ -91,29 +91,52 @@
             }
         }
         
-        /* ========== ÉCRANS MOYENS (768px - 1400px) = CACHER CARTES FLOTTANTES ========== */
-        /* Dès que les cartes risquent de toucher le texte, on les cache */
+        /* ========== ÉCRANS MOYENS (768px - 1400px) = PETITES CARTES MOBILE ========== */
+        /* Dès que les cartes risquent de toucher le texte, on passe en mode petites cartes */
         @media (min-width: 769px) and (max-width: 1400px) {
-            /* Hero - Cacher TOUTES les cartes flottantes */
-            .hero-card-mobile,
-            .glass-card,
-            .orbit-pos-1, .orbit-pos-2, .orbit-pos-3,
-            .orbit-pos-4, .orbit-pos-5, .orbit-pos-6,
-            [class*="absolute"][class*="glass"],
-            [class*="hero-card"] {
+            /* Cacher les GRANDES cartes desktop */
+            .glass-card:not(.hero-card-mobile) {
                 display: none !important;
             }
             
-            /* Hero - Layout propre sans cartes */
-            .hero-section-mobile,
-            section.min-h-\\[80vh\\] {
-                min-height: 80vh !important;
-                padding: 100px 60px 80px !important;
+            /* Afficher les petites cartes mobile */
+            .hero-card-mobile {
+                display: block !important;
+                position: absolute !important;
+                pointer-events: auto;
+                animation: floatMobile 4s ease-in-out infinite !important;
             }
             
-            /* Hero text - Centré avec espace */
+            /* Taille des cartes - version tablette (entre mobile et desktop) */
+            .hero-card-mobile.card-mini {
+                width: 130px !important;
+                max-width: 130px !important;
+                padding: 10px !important;
+                border-radius: 12px !important;
+            }
+            
+            .hero-card-mobile.card-mini .text-4xl,
+            .hero-card-mobile.card-mini .text-3xl,
+            .hero-card-mobile.card-mini .text-2xl {
+                font-size: 14px !important;
+            }
+            
+            .hero-card-mobile.card-mini .text-xs,
+            .hero-card-mobile.card-mini .text-sm {
+                font-size: 8px !important;
+            }
+            
+            /* Repositionner les cartes pour écrans moyens - plus éloignées du centre */
+            .orbit-pos-1 { top: 8% !important; left: 5% !important; }
+            .orbit-pos-2 { top: 5% !important; right: 8% !important; left: auto !important; }
+            .orbit-pos-3 { top: 35% !important; right: 3% !important; left: auto !important; }
+            .orbit-pos-4 { bottom: 25% !important; right: 5% !important; left: auto !important; top: auto !important; }
+            .orbit-pos-5 { bottom: 15% !important; left: 3% !important; top: auto !important; }
+            .orbit-pos-6 { top: 55% !important; left: 5% !important; }
+            
+            /* Hero text - Centré avec espace pour les cartes */
             .interactive-zone {
-                max-width: 800px !important;
+                max-width: 600px !important;
                 margin: 0 auto !important;
                 text-align: center !important;
             }
@@ -126,23 +149,13 @@
                 max-width: 350px !important;
                 margin: 0 auto !important;
             }
-            
-            /* Sous-titre - Lignes séparées */
-            .hero-subtitle-mobile {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                gap: 6px !important;
-            }
-            
-            .hero-subtitle-mobile span {
-                display: block !important;
-            }
         }
         
-        /* ========== GRAND DESKTOP (> 1400px) = CARTES FLOTTANTES VISIBLES ========== */
+        /* ========== GRAND DESKTOP (> 1400px) = GRANDES CARTES DESKTOP ========== */
         @media (min-width: 1401px) {
-            .hero-card-mobile,
+            .hero-card-mobile {
+                display: none !important;
+            }
             .glass-card {
                 display: block !important;
             }
