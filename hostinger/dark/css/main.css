@@ -1,11 +1,11 @@
         /* === MODE CLAIR - FOCUS - VRAIES NUANCES === */
         :root {
-            /* Fonds avec nuances */
-            --bg-page: #F5F5F7;
-            --bg-section: #EAEAEC;
-            --bg-card: #FFFFFF;
-            --bg-card-elevated: #FAFAFA;
-            --bg-input: #E8E8ED;
+            /* Fonds avec nuances - DARK MODE */
+            --bg-page: #050505;
+            --bg-section: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --bg-card-elevated: #151515;
+            --bg-input: #1f1f1f;
             
             /* Textes */
             --text-primary: #1D1D1F;
@@ -364,13 +364,13 @@
         
         /* --- PREMIUM LOADER NOIR/OR --- */
         #loader {
-            position: fixed; inset: 0; background: #FAFAFA; z-index: 99999;
+            position: fixed; inset: 0; background: #050505; z-index: 99999;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
         
-        /* Glow ambiant or - Mode Clair */
+        /* Glow ambiant or - Mode Sombre */
         #loader::before {
             content: '';
             position: absolute;
@@ -391,7 +391,7 @@
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 900;
             font-size: 4rem;
-            background: linear-gradient(135deg, #1a1a1a 0%, #D4AF37 50%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #fff 0%, #D4AF37 50%, #fff 100%);
             background-size: 200% 200%;
             -webkit-background-clip: text;
             background-clip: text;
@@ -417,7 +417,7 @@
         }
 
         .loader-bar-container {
-            width: 200px; height: 3px; background: rgba(0,0,0,0.08); 
+            width: 200px; height: 3px; background: rgba(255,255,255,0.1); 
             margin-top: 2rem; overflow: hidden; border-radius: 10px;
             position: relative;
         }
@@ -1618,8 +1618,8 @@
 
         /* CARD UNIFORME */
         .expert-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.08);
+            background: #1a1a1a;
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 24px;
             height: 480px;
             position: relative;
@@ -1652,7 +1652,7 @@
             flex-direction: column;
             gap: 10px;
             flex: 1;
-            background: #FFFFFF;
+            background: #1a1a1a;
         }
         
         .role { 
@@ -3095,9 +3095,9 @@
         /* MAIN CARD */
         .pricing-card {
             width: 100%; max-width: 1000px;
-            background: linear-gradient(145deg, #FFFFFF 0%, #F8F8FA 100%);
-            border: 1px solid rgba(0,0,0,0.08);
-            border-top: 3px solid #B8860B;
+            background: linear-gradient(145deg, #1a1a1a 0%, #151515 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-top: 3px solid #D4AF37;
             border-radius: 32px;
             display: flex; flex-direction: column-reverse;
             box-shadow: 0 20px 60px -20px rgba(0,0,0,0.15);
@@ -3137,18 +3137,18 @@
         /* MODE CLAIR - Left/Right panels */
         .left-panel {
             padding: 40px 24px; flex: 1.2; display: flex; flex-direction: column; justify-content: center;
-            border-top: 1px solid rgba(0,0,0,0.06); position: relative;
-            background: #FAFAFA;
+            border-top: 1px solid rgba(255,255,255,0.06); position: relative;
+            background: #151515;
         }
         @media (min-width: 1024px) { 
             .left-panel { border-top: none; border-right: 1px solid rgba(0,0,0,0.06); padding: 60px; } 
         }
 
         /* 1. CHAT BLOCK */
-        /* MODE CLAIR - Value blocks */
+        /* MODE SOMBRE - Value blocks */
         .value-block {
-            background: #F5F5F7; 
-            border: 1px solid rgba(0,0,0,0.06); 
+            background: #1f1f1f; 
+            border: 1px solid rgba(255,255,255,0.06); 
             border-radius: 16px;
             padding: 12px; margin-bottom: 16px; display: flex; align-items: center; gap: 16px;
             overflow: hidden; position: relative; transition: all 0.3s;
@@ -3224,7 +3224,7 @@
         
         .right-panel {
             flex: 0.8; 
-            background: linear-gradient(145deg, #FFFFFF 0%, #F8F8FA 100%);
+            background: linear-gradient(145deg, #1a1a1a 0%, #151515 100%);
             padding: 40px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
             position: relative;
         }
@@ -3234,8 +3234,8 @@
         /* MODE CLAIR - Satellites */
         .satellite {
             position: absolute; z-index: 20;
-            background: #FFFFFF; 
-            border: 1px solid rgba(0,0,0,0.08);
+            background: #1a1a1a; 
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 12px; padding: 12px 16px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.08);
             display: flex; align-items: center; gap: 12px;
@@ -3304,9 +3304,9 @@
             width: 100%; height: 100%;
             background: 
                 radial-gradient(circle at 20% 80%, rgba(212,175,55,0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(212,175,55,0.04) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(212,175,55,0.02) 0%, transparent 60%),
-                linear-gradient(135deg, #FEFEFE 0%, #FAFAFA 100%);
+                radial-gradient(circle at 80% 20%, rgba(212,175,55,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(212,175,55,0.04) 0%, transparent 60%),
+                linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
             backdrop-filter: blur(20px);
             border-radius: 22px;
             display: flex;
@@ -3351,9 +3351,9 @@
             width: 340px; 
             border-right: 1px solid rgba(212,175,55,0.15);
             background: 
-                linear-gradient(180deg, rgba(212,175,55,0.02) 0%, transparent 30%),
-                linear-gradient(0deg, rgba(212,175,55,0.03) 0%, transparent 20%),
-                #F8F8FA;
+                linear-gradient(180deg, rgba(212,175,55,0.04) 0%, transparent 30%),
+                linear-gradient(0deg, rgba(212,175,55,0.06) 0%, transparent 20%),
+                #0f0f0f;
             display: flex; flex-direction: column;
             position: relative;
             z-index: 1;
@@ -3394,16 +3394,16 @@
         .q-btn {
             width: 100%; text-align: left;
             padding: 14px 16px; margin-bottom: 4px; border-radius: 10px;
-            font-size: 13px; color: #666; font-weight: 500;
+            font-size: 13px; color: #999; font-weight: 500;
             cursor: pointer; transition: all 0.2s;
             display: flex; align-items: center; gap: 12px;
             border: 1px solid transparent;
         }
-        .q-btn:hover { background: rgba(212,175,55,0.08); color: #1a1a1a; border-color: rgba(212,175,55,0.15); }
+        .q-btn:hover { background: rgba(212,175,55,0.15); color: #fff; border-color: rgba(212,175,55,0.3); }
         .q-btn.active {
-            background: rgba(212,175,55,0.15); color: #1a1a1a;
-            border-color: rgba(212,175,55,0.4);
-            box-shadow: 0 4px 20px rgba(212,175,55,0.1);
+            background: rgba(212,175,55,0.2); color: #fff;
+            border-color: rgba(212,175,55,0.5);
+            box-shadow: 0 4px 20px rgba(212,175,55,0.2);
         }
 
         /* CHAT AREA - MODE CLAIR PREMIUM */
@@ -3463,8 +3463,8 @@
         
         .chat-input-box {
             height: 52px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 100%);
-            border: 1px solid rgba(212,175,55,0.2);
+            background: linear-gradient(135deg, #1a1a1a 0%, #151515 100%);
+            border: 1px solid rgba(212,175,55,0.3);
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -3531,18 +3531,18 @@
 
         .bubble { padding: 18px 24px; border-radius: 18px; font-size: 15px; line-height: 1.6; }
         .msg-row.ai .bubble { 
-            background: linear-gradient(135deg, #F8F8FA 0%, #F0F0F2 100%);
-            border: 1px solid rgba(212,175,55,0.12); 
-            color: #1D1D1F; 
+            background: linear-gradient(135deg, #1f1f1f 0%, #181818 100%);
+            border: 1px solid rgba(212,175,55,0.2); 
+            color: #e5e5e5; 
             border-top-left-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
         .msg-row.user .bubble { 
             background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%); 
-            color: white; 
+            color: #000; 
             border-top-right-radius: 4px; 
             font-weight: 600;
-            box-shadow: 0 4px 16px rgba(212,175,55,0.25);
+            box-shadow: 0 4px 16px rgba(212,175,55,0.4);
         }
 
         @keyframes enterMsg { to { opacity: 1; transform: translateY(0); } }
@@ -3560,10 +3560,10 @@
         .mobile-only-accordion { display: none; }
         @media (max-width: 1024px) { .faq-wrapper { display: none; } }
         
-        /* MODE CLAIR - Accordéon */
-        .acc-item { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; margin-bottom: 10px; }
-        .acc-head { padding: 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; cursor: pointer; color: #1D1D1F; }
-        .acc-body { height: 0; overflow: hidden; padding: 0 20px; color: #6E6E73; transition: 0.3s; }
+        /* MODE SOMBRE - Accordéon */
+        .acc-item { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; margin-bottom: 10px; }
+        .acc-head { padding: 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; cursor: pointer; color: #fff; }
+        .acc-body { height: 0; overflow: hidden; padding: 0 20px; color: #999; transition: 0.3s; }
         .acc-item.open .acc-body { height: auto; padding-bottom: 20px; }
 
         /* ===== FAQ MOBILE INTERFACE PREMIUM ===== */
@@ -3575,9 +3575,9 @@
             border-radius: 24px;
             overflow: hidden;
             background: 
-                radial-gradient(circle at 30% 70%, rgba(212,175,55,0.04) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(212,175,55,0.03) 0%, transparent 40%),
-                linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 100%);
+                radial-gradient(circle at 30% 70%, rgba(212,175,55,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(212,175,55,0.06) 0%, transparent 40%),
+                linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
             border: 1px solid rgba(212,175,55,0.15);
             box-shadow: 
                 0 25px 50px -12px rgba(0,0,0,0.15),
@@ -3608,9 +3608,9 @@
         .faq-mobile-header {
             padding: 16px 20px;
             background: 
-                linear-gradient(90deg, rgba(212,175,55,0.03) 0%, transparent 50%, rgba(212,175,55,0.03) 100%),
-                linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 100%);
-            border-bottom: 1px solid rgba(212,175,55,0.15);
+                linear-gradient(90deg, rgba(212,175,55,0.06) 0%, transparent 50%, rgba(212,175,55,0.06) 100%),
+                linear-gradient(180deg, #1a1a1a 0%, #151515 100%);
+            border-bottom: 1px solid rgba(212,175,55,0.2);
             display: flex;
             align-items: center;
             gap: 12px;
@@ -3653,7 +3653,7 @@
         .faq-mobile-header .ai-name {
             font-size: 15px;
             font-weight: 700;
-            color: #1D1D1F;
+            color: #fff;
         }
         
         .faq-mobile-header .ai-status {
@@ -3682,9 +3682,9 @@
         .faq-quick-questions {
             padding: 16px;
             background: 
-                linear-gradient(90deg, rgba(212,175,55,0.02) 0%, transparent 30%, transparent 70%, rgba(212,175,55,0.02) 100%),
-                linear-gradient(180deg, #F5F5F7 0%, #EFEFEF 100%);
-            border-bottom: 1px solid rgba(212,175,55,0.12);
+                linear-gradient(90deg, rgba(212,175,55,0.04) 0%, transparent 30%, transparent 70%, rgba(212,175,55,0.04) 100%),
+                linear-gradient(180deg, #151515 0%, #0f0f0f 100%);
+            border-bottom: 1px solid rgba(212,175,55,0.2);
             position: relative;
             z-index: 1;
         }
@@ -3722,8 +3722,8 @@
         .faq-quick-btn {
             flex-shrink: 0;
             padding: 10px 16px;
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.1);
+            background: #1a1a1a;
+            border: 1px solid rgba(212,175,55,0.2);
             border-radius: 20px;
             font-size: 12px;
             color: #424245;
@@ -3799,8 +3799,8 @@
         .faq-mobile-welcome .icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, #F5F5F7, #EAEAEC);
-            border: 2px solid rgba(212,175,55,0.3);
+            background: linear-gradient(135deg, #1f1f1f, #151515);
+            border: 2px solid rgba(212,175,55,0.4);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -3868,9 +3868,9 @@
         }
         
         .faq-msg.ai .faq-msg-bubble {
-            background: linear-gradient(135deg, #F8F8FA 0%, #EFEFEF 100%);
-            border: 1px solid rgba(212,175,55,0.12);
-            color: #1D1D1F;
+            background: linear-gradient(135deg, #1f1f1f 0%, #181818 100%);
+            border: 1px solid rgba(212,175,55,0.2);
+            color: #e5e5e5;
             border-top-left-radius: 4px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
@@ -3886,9 +3886,9 @@
         .faq-mobile-input {
             padding: 16px;
             background: 
-                linear-gradient(180deg, rgba(212,175,55,0.02) 0%, rgba(212,175,55,0.06) 100%),
-                #FAFAFA;
-            border-top: 1px solid rgba(212,175,55,0.15);
+                linear-gradient(180deg, rgba(212,175,55,0.04) 0%, rgba(212,175,55,0.08) 100%),
+                #0f0f0f;
+            border-top: 1px solid rgba(212,175,55,0.2);
             position: relative;
         }
         
@@ -3902,18 +3902,18 @@
         
         .faq-mobile-input-box {
             height: 48px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 100%);
-            border: 1px solid rgba(212,175,55,0.2);
+            background: linear-gradient(135deg, #1a1a1a 0%, #151515 100%);
+            border: 1px solid rgba(212,175,55,0.3);
             border-radius: 24px;
             display: flex;
             align-items: center;
             padding: 0 20px;
-            color: #86868B;
+            color: #888;
             font-size: 14px;
             font-weight: 500;
             box-shadow: 
-                0 4px 16px rgba(0,0,0,0.04),
-                inset 0 1px 0 rgba(255,255,255,0.8);
+                0 4px 16px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.05);
         }
         
         /* Drawer pour voir toutes les questions - MODE CLAIR */
@@ -3967,8 +3967,8 @@
         
         .faq-question-item {
             padding: 14px 16px;
-            background: #F5F5F7;
-            border: 1px solid rgba(0,0,0,0.06);
+            background: #1a1a1a;
+            border: 1px solid rgba(255,255,255,0.06);
             border-radius: 12px;
             margin-bottom: 8px;
             cursor: pointer;
