@@ -3117,14 +3117,14 @@
             overflow: hidden;
         }
         
-        /* MODE CLAIR - Prix et textes */
+        /* MODE SOMBRE - Prix et textes */
         .pricing-card .text-white {
-            color: #1D1D1F !important;
+            color: #FFFFFF !important;
         }
         
         .pricing-card .text-gray-400,
         .pricing-card .text-gray-500 {
-            color: #6E6E73 !important;
+            color: #9CA3AF !important;
         }
         @media (min-width: 1024px) { .pricing-card { flex-direction: row; height: 500px; } }
 
@@ -3166,8 +3166,8 @@
             overflow: hidden; position: relative; transition: all 0.3s;
         }
         .value-block:hover { 
-            background: #EAEAEC; 
-            border-color: rgba(184,134,11,0.3); 
+            background: #2a2a2a; 
+            border-color: rgba(212,175,55,0.3); 
             transform: translateX(5px); 
         }
 
@@ -3179,12 +3179,12 @@
             position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
         }
         
-        /* Mode clair - textes dans value-block */
+        /* Mode sombre - textes dans value-block */
         .block-text h4 {
-            color: #1D1D1F !important;
+            color: #FFFFFF !important;
         }
         .block-text p {
-            color: #6E6E73 !important;
+            color: #9CA3AF !important;
         }
 
         /* Chat Anim - Mode clair */
@@ -3213,10 +3213,10 @@
         .block-text p { font-size: 11px; color: #888; font-weight: 500; }
 
         .price-big {
-            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 80px; line-height: 0.9; color: #1a1a1a;
-            text-shadow: 0 0 40px rgba(212,175,55,0.2); margin-bottom: 10px; letter-spacing: -3px;
+            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 80px; line-height: 0.9; color: #FFFFFF;
+            text-shadow: 0 0 40px rgba(212,175,55,0.3); margin-bottom: 10px; letter-spacing: -3px;
         }
-        .period { font-size: 14px; color: #6E6E73; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; }
+        .period { font-size: 14px; color: #9CA3AF; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; }
 
         /* Mode clair - Bouton CTA */
         .gold-btn {
