@@ -1,3 +1,7 @@
+// === VARIABLES GLOBALES FAQ (doit être en premier) ===
+var busy = false;
+var mobileBusy = false;
+
 // === ARSENAL ANIMATIONS ===
         // LOADER géré par GSAP plus bas (évite les conflits)
 
@@ -698,8 +702,10 @@ window.addEventListener('load', initTilt);
         let metaResults = 4240;
         
         setInterval(() => {
-            roasIndex = (roasIndex + 1) % roasValues.length;
             const roasEl = document.getElementById('meta-roas');
+            if (!roasEl) return; // Protection null
+            
+            roasIndex = (roasIndex + 1) % roasValues.length;
             roasEl.style.transform = 'scale(1.2)';
             roasEl.textContent = roasValues[roasIndex];
             
@@ -709,7 +715,7 @@ window.addEventListener('load', initTilt);
             if(resultsEl) resultsEl.textContent = metaResults.toLocaleString('en-US');
             
             setTimeout(() => {
-                roasEl.style.transform = 'scale(1)';
+                if(roasEl) roasEl.style.transform = 'scale(1)';
             }, 300);
         }, 2500);
 
@@ -732,7 +738,7 @@ window.addEventListener('load', initTilt);
                 setTimeout(() => char.remove(), 5000);
             }
         }
-        setInterval(createMatrixRain, 800);
+        if (matrixBg) setInterval(createMatrixRain, 800);
         
         // Terminal typewriter
         const terminalLines = [
@@ -751,6 +757,8 @@ window.addEventListener('load', initTilt);
 
         let lineIndex = 0;
         function typeTerminal() {
+            if (!terminalContent) return; // Protection null
+            
             if (lineIndex < terminalLines.length) {
                 const div = document.createElement('div');
                 div.className = 'terminal-line';
@@ -761,13 +769,13 @@ window.addEventListener('load', initTilt);
                 setTimeout(typeTerminal, lineIndex === 8 ? 1200 : lineIndex === 9 ? 800 : 350);
             } else {
                 setTimeout(() => {
-                    terminalContent.innerHTML = '';
+                    if (terminalContent) terminalContent.innerHTML = '';
                     lineIndex = 0;
                     typeTerminal();
                 }, 6000);
             }
         }
-        typeTerminal();
+        if (terminalContent) typeTerminal();
 
         // ===== 5. SHOPIFY - Increment sales avec effet de compteur =====
         let shopifySales = 14250;
@@ -908,8 +916,6 @@ window.addEventListener('load', initTilt);
             { q: "Puis-je annuler quand je veux ?", a: "Oui, instantanément. Un bouton dans ton espace membre. Pas de mail, pas de justification. Liberté totale." }
         ];
 
-        let busy = false;
-
         function ask(idx) {
             if (busy) return;
             
@@ -957,7 +963,6 @@ window.addEventListener('load', initTilt);
             document.getElementById('faqDrawer').classList.remove('open');
         }
         
-        let mobileBusy = false;
         function askMobile(idx) {
             if (mobileBusy) return;
             
