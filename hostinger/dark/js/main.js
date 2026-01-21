@@ -1,6 +1,17 @@
 // === VARIABLES GLOBALES FAQ (doit être en premier) ===
 var busy = false;
 var mobileBusy = false;
+var data = [
+    { q: "Je n'ai aucune compétence et je pars de 0.", a: "C'est le cas de <b>80% des membres</b>. Le 'Protocole' te guide pas à pas, de la création du statut à la première vente." },
+    { q: "Pourquoi le prix est seulement de 9.90€/mois ?", a: "On casse le marché. C'est le prix d'un Netflix, mais qui te rapporte de l'argent. On mise sur la communauté." },
+    { q: "J'ai un travail / des études, je n'ai pas le temps.", a: "Focus est un accélérateur. Au lieu de perdre 10h sur Google, tu as la réponse en 5 min. 30min/jour suffisent." },
+    { q: "Est-ce que le business est saturé en 2026 ?", a: "Saturé pour les amateurs. Un boulevard pour les pros équipés d'IA. C'est le meilleur moment pour se lancer." },
+    { q: "Faut-il payer des logiciels en plus ?", a: "Non. On t'apprend à utiliser les versions gratuites et on te fournit nos propres scripts et templates." },
+    { q: "Je ne vis pas en France, est-ce que ça marche ?", a: "Oui. Le digital n'a pas de frontières. Stripe et Shopify fonctionnent dans 99% des pays." },
+    { q: "Si je suis bloqué techniquement, qui m'aide ?", a: "Le réseau. Poste un screen dans le chat, un expert te répond. Partage ton écran en vocal. Tu n'es jamais seul." },
+    { q: "J'ai peur d'échouer...", a: "L'échec vient de l'isolement. Ici, tu es porté par l'énergie du groupe. Si tu appliques le Protocole, tu avances." },
+    { q: "Puis-je annuler quand je veux ?", a: "Oui, instantanément. Un bouton dans ton espace membre. Pas de mail, pas de justification. Liberté totale." }
+];
 
 // === ARSENAL ANIMATIONS ===
         // LOADER géré par GSAP plus bas (évite les conflits)
@@ -903,18 +914,6 @@ window.addEventListener('load', initTilt);
         });
     
 /* Script faq */
-
-        const data = [
-            { q: "Je n'ai aucune compétence et je pars de 0.", a: "C'est le cas de <b>80% des membres</b>. Le 'Protocole' te guide pas à pas, de la création du statut à la première vente." },
-            { q: "Pourquoi le prix est seulement de 9.90€/mois ?", a: "On casse le marché. C'est le prix d'un Netflix, mais qui te rapporte de l'argent. On mise sur la communauté." },
-            { q: "J'ai un travail / des études, je n'ai pas le temps.", a: "Focus est un accélérateur. Au lieu de perdre 10h sur Google, tu as la réponse en 5 min. 30min/jour suffisent." },
-            { q: "Est-ce que le business est saturé en 2026 ?", a: "Saturé pour les amateurs. Un boulevard pour les pros équipés d'IA. C'est le meilleur moment pour se lancer." },
-            { q: "Faut-il payer des logiciels en plus ?", a: "Non. On t'apprend à utiliser les versions gratuites et on te fournit nos propres scripts et templates." },
-            { q: "Je ne vis pas en France, est-ce que ça marche ?", a: "Oui. Le digital n'a pas de frontières. Stripe et Shopify fonctionnent dans 99% des pays." },
-            { q: "Si je suis bloqué techniquement, qui m'aide ?", a: "Le réseau. Poste un screen dans le chat, un expert te répond. Partage ton écran en vocal. Tu n'es jamais seul." },
-            { q: "J'ai peur d'échouer...", a: "L'échec vient de l'isolement. Ici, tu es porté par l'énergie du groupe. Si tu appliques le Protocole, tu avances." },
-            { q: "Puis-je annuler quand je veux ?", a: "Oui, instantanément. Un bouton dans ton espace membre. Pas de mail, pas de justification. Liberté totale." }
-        ];
 
         function ask(idx) {
             if (busy) return;
