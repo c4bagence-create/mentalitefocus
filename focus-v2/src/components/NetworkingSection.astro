@@ -326,8 +326,8 @@ const bubbleUsers = speechBubbles.map(b => ({
   @media (min-width: 1024px) {
     .content-wrapper {
       flex-direction: row;
-      gap: 2rem;
-      justify-content: space-between;
+      gap: 4rem;
+      justify-content: center;
       align-items: center;
     }
   }
@@ -342,8 +342,8 @@ const bubbleUsers = speechBubbles.map(b => ({
   @media (min-width: 1024px) {
     .text-content {
       text-align: left;
-      flex: 0 0 auto;
-      max-width: 320px;
+      flex: 0 0 280px;
+      max-width: 280px;
       order: 1;
     }
   }
@@ -1217,20 +1217,20 @@ const bubbleUsers = speechBubbles.map(b => ({
     50% { height: 12px; }
   }
 
-  /* Positionnement des bubbles */
-  .bubble-top-left { top: -5%; left: -35%; }
-  .bubble-top-right { top: 0%; right: -40%; }
-  .bubble-left { top: 35%; left: -45%; }
-  .bubble-right { top: 45%; right: -45%; }
-  .bubble-bottom-left { bottom: 20%; left: -35%; }
-  .bubble-bottom-right { bottom: 10%; right: -40%; }
+  /* Positionnement des bubbles - UNIQUEMENT autour du téléphone, pas sur le texte */
+  /* Mobile: bubbles autour */
+  .bubble-top-left { top: -8%; left: 50%; transform: translateX(-120%); }
+  .bubble-top-right { top: -5%; right: -10%; }
+  .bubble-left { display: none; } /* Caché en mobile */
+  .bubble-right { top: 40%; right: -15%; }
+  .bubble-bottom-left { bottom: 15%; left: 50%; transform: translateX(-120%); }
+  .bubble-bottom-right { bottom: 8%; right: -10%; }
 
-  /* Mobile: bubbles plus petits */
   @media (max-width: 480px) {
     .voice-bubble {
       padding: 0.375rem 0.5rem;
       gap: 0.375rem;
-      max-width: 130px;
+      max-width: 120px;
     }
     .vb-avatar {
       width: 1.25rem;
@@ -1240,20 +1240,13 @@ const bubbleUsers = speechBubbles.map(b => ({
     .vb-name { font-size: 0.5rem; }
     .vb-text { font-size: 0.4375rem; }
     .vb-wave { display: none; }
-    
-    .bubble-top-left { top: -10%; left: -15%; }
-    .bubble-top-right { top: -5%; right: -20%; }
-    .bubble-left { top: 30%; left: -20%; }
-    .bubble-right { top: 45%; right: -20%; }
-    .bubble-bottom-left { bottom: 25%; left: -15%; }
-    .bubble-bottom-right { bottom: 15%; right: -18%; }
   }
 
-  /* Desktop: bubbles plus grands */
-  @media (min-width: 769px) {
+  /* Desktop: bubbles SEULEMENT à droite du téléphone */
+  @media (min-width: 1024px) {
     .voice-bubble {
       padding: 0.625rem 1rem;
-      max-width: 220px;
+      max-width: 200px;
     }
     .vb-avatar {
       width: 2rem;
@@ -1262,12 +1255,13 @@ const bubbleUsers = speechBubbles.map(b => ({
     .vb-name { font-size: 0.75rem; }
     .vb-text { font-size: 0.625rem; }
     
-    .bubble-top-left { top: -8%; left: -50%; }
-    .bubble-top-right { top: 0%; right: -55%; }
-    .bubble-left { top: 35%; left: -55%; }
-    .bubble-right { top: 45%; right: -55%; }
-    .bubble-bottom-left { bottom: 20%; left: -50%; }
-    .bubble-bottom-right { bottom: 10%; right: -50%; }
+    /* Tous les bubbles à DROITE du téléphone uniquement */
+    .bubble-top-left { top: 5%; left: auto; right: -55%; transform: none; }
+    .bubble-top-right { top: 18%; right: -60%; }
+    .bubble-left { display: flex; top: 32%; left: auto; right: -50%; }
+    .bubble-right { top: 48%; right: -58%; }
+    .bubble-bottom-left { bottom: 30%; left: auto; right: -52%; transform: none; }
+    .bubble-bottom-right { bottom: 15%; right: -55%; }
   }
 
 </style>

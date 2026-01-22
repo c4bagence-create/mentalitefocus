@@ -1,59 +1,11 @@
 ---
 /**
  * PricingSection - "REJOINS FOCUS"
- * 2 Vraies cartes bancaires - Format horizontal desktop, vertical mobile
- * Puce = icônes de paiement sécurisé
+ * Design épuré et clair - Carte bancaire stylisée
  */
 ---
 
 <section class="pricing-section" id="pricing">
-  <!-- Floating Advantage Cards -->
-  <div class="floating-cards">
-    <div class="float-card fc-1">
-      <span class="fc-icon">📦</span>
-      <div class="fc-content">
-        <span class="fc-label">RESSOURCE</span>
-        <span class="fc-title">94 Thèmes Shopify Premium</span>
-      </div>
-    </div>
-    <div class="float-card fc-2">
-      <span class="fc-icon">📞</span>
-      <div class="fc-content">
-        <span class="fc-label">SOURCING</span>
-        <span class="fc-title">Agent Chinois Privé (WhatsApp)</span>
-      </div>
-    </div>
-    <div class="float-card fc-3">
-      <span class="fc-icon">📋</span>
-      <div class="fc-content">
-        <span class="fc-label">STRUCTURE</span>
-        <span class="fc-title">Notion Focus OS</span>
-      </div>
-    </div>
-    <div class="float-card fc-4">
-      <span class="fc-icon">🎯</span>
-      <div class="fc-content">
-        <span class="fc-label">VENTE</span>
-        <span class="fc-title">Live Closing</span>
-      </div>
-      <span class="fc-badge sold">SOLD</span>
-    </div>
-    <div class="float-card fc-5">
-      <span class="fc-icon">🤖</span>
-      <div class="fc-content">
-        <span class="fc-label">IA FOCUS</span>
-        <span class="fc-title">Prompts JSON Photoshoot</span>
-      </div>
-    </div>
-    <div class="float-card fc-6">
-      <span class="fc-icon">🚚</span>
-      <div class="fc-content">
-        <span class="fc-label">LOGISTIQUE</span>
-        <span class="fc-title">Contacts Fournisseurs Privés</span>
-      </div>
-    </div>
-  </div>
-
   <!-- Header -->
   <header class="section-header">
     <div class="badge" data-animate="fade-down" data-delay="0">
@@ -71,147 +23,119 @@
     </p>
   </header>
 
-  <!-- Slide Indicator Mobile -->
-  <div class="slide-indicator" id="slide-indicator">
-    <span class="slide-arrow left">←</span>
-    <span class="slide-text">Glisser</span>
-    <span class="slide-arrow right">→</span>
-  </div>
-
-  <!-- Cards Slider -->
-  <div class="cards-slider" id="pricing-cards">
+  <!-- Cards Container -->
+  <div class="cards-container" id="pricing-cards" data-animate="fade-up" data-delay="0.3">
+    
     <!-- FREE Card -->
-    <div class="bank-card card-free">
-      <div class="card-shine"></div>
+    <div class="pricing-card card-free">
+      <div class="card-header">
+        <span class="card-badge">GRATUIT</span>
+        <h3 class="card-title">Discord Public</h3>
+      </div>
       
-      <!-- Card Top Row -->
-      <div class="card-top-row">
-        <!-- Chip (Payment Icons) -->
-        <div class="card-chip">
-          <div class="chip-icons">
-            <span class="chip-icon">💳</span>
-            <span class="chip-icon">🔒</span>
-            <span class="chip-icon">✓</span>
-            <span class="chip-icon">🛡️</span>
-          </div>
-          <div class="chip-lines">
-            <span></span><span></span><span></span>
-          </div>
-        </div>
-        
-        <!-- Card Type Badge -->
-        <div class="card-type-badge">STANDARD</div>
+      <div class="card-price">
+        <span class="price-value">0€</span>
+        <span class="price-period">/mois</span>
       </div>
-
-      <!-- Card Body - Horizontal layout -->
-      <div class="card-body">
-        <!-- Left: Info -->
-        <div class="card-info">
-          <div class="card-brand">
-            <span class="brand-icon">💬</span>
-            <span class="brand-name">Discord Public</span>
-          </div>
-          
-          <div class="card-number">
-            <span>•••• •••• •••• </span>
-            <span class="number-highlight">FREE</span>
-          </div>
-          
-          <div class="card-features">
-            <div class="feature ok">✓ Salons de discussion généraux</div>
-            <div class="feature ok">✓ Réseautage basique</div>
-            <div class="feature no">✗ Stratégies & ressources</div>
-            <div class="feature no">✗ Lives exclusifs</div>
-          </div>
-        </div>
-
-        <!-- Right: Price -->
-        <div class="card-price-zone">
-          <div class="price-label">GRATUIT</div>
-          <div class="price-amount">0€</div>
-          <div class="price-period">/mois</div>
-          
-          <a href="https://discord.gg/focus" class="card-cta">
-            Rejoindre
-          </a>
-        </div>
-      </div>
-
-      <!-- Card Bottom -->
-      <div class="card-bottom-row">
-        <span class="card-holder">MEMBRE FOCUS</span>
-        <span class="card-valid">DÉCOUVRIR</span>
-      </div>
+      
+      <ul class="card-features">
+        <li class="feature ok">
+          <span class="feature-icon">✓</span>
+          Salons de discussion généraux
+        </li>
+        <li class="feature ok">
+          <span class="feature-icon">✓</span>
+          Réseautage basique
+        </li>
+        <li class="feature no">
+          <span class="feature-icon">✗</span>
+          Stratégies & ressources
+        </li>
+        <li class="feature no">
+          <span class="feature-icon">✗</span>
+          Lives exclusifs
+        </li>
+        <li class="feature no">
+          <span class="feature-icon">✗</span>
+          Accès experts
+        </li>
+      </ul>
+      
+      <a href="https://discord.gg/focus" class="card-cta cta-free">
+        Rejoindre gratuitement
+      </a>
     </div>
 
     <!-- PREMIUM Card -->
-    <div class="bank-card card-premium">
-      <div class="card-shine premium-shine"></div>
-      <div class="card-hologram"></div>
+    <div class="pricing-card card-premium">
+      <div class="popular-badge">★ POPULAIRE</div>
       
-      <!-- Popular Badge -->
-      <div class="popular-tag">★ LE PLUS POPULAIRE</div>
+      <div class="card-header">
+        <span class="card-badge premium-badge">PREMIUM</span>
+        <h3 class="card-title premium-title">Focus Business Club</h3>
+      </div>
       
-      <!-- Card Top Row -->
-      <div class="card-top-row">
-        <!-- Premium Chip -->
-        <div class="card-chip premium-chip">
-          <div class="chip-icons">
-            <svg class="chip-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z"/></svg>
-            <svg class="chip-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9.112 8.262L5.97 15.758H3.92L2.374 9.775c-.094-.368-.175-.503-.461-.658C1.447 8.864.677 8.627 0 8.479l.046-.217h3.3a.904.904 0 01.894.764l.817 4.338 2.018-5.102h2.037zm7.954 5.049c.008-1.979-2.736-2.088-2.717-2.972.006-.269.262-.555.822-.628a3.66 3.66 0 011.913.336l.34-1.59a5.207 5.207 0 00-1.814-.332c-1.917 0-3.266 1.02-3.278 2.479-.013 1.08.963 1.683 1.7 2.042.756.368 1.01.604 1.006.933-.005.504-.603.726-1.16.735-.975.015-1.54-.263-1.992-.474l-.351 1.642c.453.208 1.289.39 2.156.398 2.037 0 3.37-1.006 3.375-2.569"/></svg>
-            <svg class="chip-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.245 17.831h-6.49V6.168h6.49v11.663zM9.167 12A7.404 7.404 0 0112 6.169 7.417 7.417 0 000 12a7.417 7.417 0 0012 5.831A7.406 7.406 0 019.167 12zM24 12a7.417 7.417 0 01-12 5.831 7.406 7.406 0 000-11.663A7.417 7.417 0 0124 12z"/></svg>
-            <svg class="chip-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09z"/></svg>
-          </div>
-          <div class="chip-lines premium-lines">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="chip-glow"></div>
-        </div>
-        
-        <!-- Card Type Badge -->
-        <div class="card-type-badge premium-badge">PLATINUM</div>
+      <div class="card-price premium-price-zone">
+        <span class="price-value gold-text">9,90€</span>
+        <span class="price-period">/mois</span>
+        <span class="price-note">Sans engagement</span>
       </div>
-
-      <!-- Card Body -->
-      <div class="card-body">
-        <!-- Left: Info -->
-        <div class="card-info">
-          <div class="card-brand premium-brand">
-            <span class="brand-icon">👑</span>
-            <span class="brand-name">Focus Business Club</span>
-          </div>
-          
-          <div class="card-number premium-number">
-            <span>•••• •••• •••• </span>
-            <span class="number-highlight">PREMIUM</span>
-          </div>
-          
-          <div class="card-features premium-features">
-            <div class="feature ok gold">✓ Accès TOTAL salons privés</div>
-            <div class="feature ok gold">✓ Stratégies E-com, IA & Branding</div>
-            <div class="feature ok gold">✓ Lives & Q&A hebdomadaires</div>
-            <div class="feature ok gold">✓ Réseau d'entrepreneurs</div>
-            <div class="feature ok gold">✓ Support 24/7</div>
-          </div>
-        </div>
-
-        <!-- Right: Price -->
-        <div class="card-price-zone premium-price">
-          <div class="price-label">ACCÈS COMPLET</div>
-          <div class="price-amount">9,90€</div>
-          <div class="price-period">/mois • Sans engagement</div>
-          
-          <a href="https://espace.mentalitefocus.com/checkout" class="card-cta premium-cta">
-            Rejoindre le Club
-          </a>
+      
+      <ul class="card-features">
+        <li class="feature ok gold">
+          <span class="feature-icon gold-icon">✓</span>
+          Accès TOTAL salons privés
+        </li>
+        <li class="feature ok gold">
+          <span class="feature-icon gold-icon">✓</span>
+          Stratégies E-com, IA & Branding
+        </li>
+        <li class="feature ok gold">
+          <span class="feature-icon gold-icon">✓</span>
+          Lives & Q&A hebdomadaires
+        </li>
+        <li class="feature ok gold">
+          <span class="feature-icon gold-icon">✓</span>
+          Réseau d'entrepreneurs actifs
+        </li>
+        <li class="feature ok gold">
+          <span class="feature-icon gold-icon">✓</span>
+          Support prioritaire 24/7
+        </li>
+      </ul>
+      
+      <a href="https://espace.mentalitefocus.com/checkout" class="card-cta cta-premium">
+        Rejoindre le Club
+      </a>
+      
+      <!-- Payment Icons -->
+      <div class="payment-row">
+        <span class="payment-label">Paiement sécurisé</span>
+        <div class="payment-icons">
+          <span class="pay-icon">💳</span>
+          <span class="pay-icon">🔒</span>
         </div>
       </div>
+    </div>
+  </div>
 
-      <!-- Card Bottom -->
-      <div class="card-bottom-row premium-bottom">
-        <span class="card-holder">MEMBRE VIP FOCUS</span>
-        <span class="card-valid">VALID THRU ∞</span>
-      </div>
+  <!-- Floating Cards (Desktop only) -->
+  <div class="floating-perks">
+    <div class="perk-card perk-1">
+      <span class="perk-icon">📦</span>
+      <span class="perk-text">94 Thèmes Shopify</span>
+    </div>
+    <div class="perk-card perk-2">
+      <span class="perk-icon">📞</span>
+      <span class="perk-text">Agent Chinois Privé</span>
+    </div>
+    <div class="perk-card perk-3">
+      <span class="perk-icon">🤖</span>
+      <span class="perk-text">Prompts IA Focus</span>
+    </div>
+    <div class="perk-card perk-4">
+      <span class="perk-icon">📋</span>
+      <span class="perk-text">Notion Focus OS</span>
     </div>
   </div>
 
@@ -221,120 +145,15 @@
   .pricing-section {
     position: relative;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 4rem 1rem;
-    overflow: visible;
-  }
-
-  /* ===== FLOATING ADVANTAGE CARDS ===== */
-  .floating-cards {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 50;
-  }
-
-  .float-card {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border-medium);
-    border-radius: 0.75rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    animation: floatCard 6s ease-in-out infinite;
-    pointer-events: auto;
-    backdrop-filter: blur(10px);
-  }
-
-  .float-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 50px rgba(212, 175, 55, 0.2);
-  }
-
-  @keyframes floatCard {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-
-  .fc-icon {
-    font-size: 1.25rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--bg-input);
-    border-radius: 0.5rem;
-    flex-shrink: 0;
-  }
-
-  .fc-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
-  }
-
-  .fc-label {
-    font-size: 0.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--gold);
-  }
-
-  .fc-title {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    white-space: nowrap;
-  }
-
-  .fc-badge {
-    font-size: 0.5rem;
-    font-weight: 800;
-    padding: 0.125rem 0.375rem;
-    border-radius: 0.25rem;
-    text-transform: uppercase;
-  }
-
-  .fc-badge.sold {
-    background: #22c55e;
-    color: white;
-  }
-
-  /* Card Positions - Desktop */
-  .fc-1 { top: 15%; left: 5%; animation-delay: 0s; }
-  .fc-2 { top: 8%; right: 5%; animation-delay: 0.5s; }
-  .fc-3 { top: 45%; left: 3%; animation-delay: 1s; }
-  .fc-4 { top: 35%; right: 3%; animation-delay: 1.5s; }
-  .fc-5 { bottom: 25%; right: 5%; animation-delay: 2s; }
-  .fc-6 { bottom: 15%; left: 5%; animation-delay: 2.5s; }
-
-  /* Mobile: Hide some cards, reposition others */
-  @media (max-width: 1024px) {
-    .fc-1 { top: 2%; left: 5%; }
-    .fc-2 { top: 2%; right: 5%; }
-    .fc-3, .fc-4 { display: none; }
-    .fc-5 { bottom: 5%; right: 5%; }
-    .fc-6 { bottom: 5%; left: 5%; }
-  }
-
-  @media (max-width: 768px) {
-    .floating-cards {
-      display: none;
-    }
+    padding: 5rem 1.5rem;
   }
 
   /* Header */
   .section-header {
     text-align: center;
     margin-bottom: 3rem;
-    position: relative;
-    z-index: 10;
   }
 
   .badge {
@@ -367,7 +186,7 @@
   }
 
   .section-title {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-size: clamp(2.5rem, 8vw, 4rem);
     font-weight: 900;
     line-height: 0.9;
     color: var(--text-primary);
@@ -384,599 +203,322 @@
     font-size: 1rem;
     color: var(--text-secondary);
     margin-top: 1rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .section-desc .gold {
     color: var(--gold);
   }
 
-  /* Slide Indicator */
-  .slide-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 1rem;
+  /* Cards Container */
+  .cards-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  @media (min-width: 768px) {
+    .cards-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  /* Pricing Card Base */
+  .pricing-card {
+    position: relative;
+    padding: 2rem;
+    border-radius: 1.25rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-5px);
+  }
+
+  /* FREE Card */
+  .card-free {
     background: var(--bg-card);
     border: 1px solid var(--border-medium);
-    border-radius: 50px;
-    animation: slideIndicate 2s ease-in-out infinite;
-  }
-
-  @keyframes slideIndicate {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-  }
-
-  .slide-arrow {
-    font-size: 1rem;
-    color: var(--gold);
-    animation: arrowBounce 1s ease-in-out infinite;
-  }
-
-  .slide-arrow.left { animation-delay: 0s; }
-  .slide-arrow.right { animation-delay: 0.5s; }
-
-  @keyframes arrowBounce {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-  }
-
-  .slide-text {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  @media (min-width: 900px) {
-    .slide-indicator {
-      display: none;
-    }
-  }
-
-  /* Cards Slider - Mobile: horizontal scroll */
-  .cards-slider {
-    display: flex;
-    gap: 1.5rem;
-    padding: 1rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .cards-slider::-webkit-scrollbar {
-    display: none;
-  }
-
-  @media (min-width: 900px) {
-    .cards-slider {
-      flex-direction: row;
-      justify-content: center;
-      gap: 2.5rem;
-      overflow: visible;
-      padding: 2rem 1rem;
-    }
-  }
-
-  /* Bank Card Base - Mobile first vertical */
-  .bank-card {
-    position: relative;
-    flex: 0 0 85vw;
-    max-width: 380px;
-    min-height: 480px;
-    padding: 1.75rem;
-    border-radius: 1.25rem;
-    overflow: hidden;
-    scroll-snap-align: center;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    will-change: transform;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Desktop: Horizontal card */
-  @media (min-width: 900px) {
-    .bank-card {
-      flex: 0 0 auto;
-      width: 580px;
-      max-width: 580px;
-      min-height: auto;
-      aspect-ratio: 1.6 / 1;
-      padding: 2rem;
-    }
-  }
-
-  .bank-card:hover {
-    transform: translateY(-8px);
-  }
-
-  @media (min-width: 900px) {
-    .bank-card:hover {
-      transform: translateY(-10px) rotateX(3deg);
-    }
-  }
-
-  /* FREE Card Style */
-  .card-free {
-    background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 50%, #111 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   }
 
   .card-free:hover {
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   }
 
-  /* PREMIUM Card Style */
+  /* PREMIUM Card */
   .card-premium {
     background: linear-gradient(145deg, 
-      #1a1a1a 0%, 
-      color-mix(in srgb, var(--gold) 12%, #0d0d0d) 30%,
-      #0a0a0a 60%,
-      color-mix(in srgb, var(--gold) 8%, #111) 100%
+      color-mix(in srgb, var(--gold) 8%, var(--bg-card)) 0%,
+      var(--bg-card) 100%
     );
-    border: 2px solid color-mix(in srgb, var(--gold) 50%, transparent);
-    box-shadow: 
-      0 0 0 1px color-mix(in srgb, var(--gold) 20%, transparent),
-      0 25px 80px rgba(212, 175, 55, 0.2),
-      0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
   }
 
   .card-premium:hover {
-    box-shadow: 
-      0 0 0 2px color-mix(in srgb, var(--gold) 40%, transparent),
-      0 35px 100px rgba(212, 175, 55, 0.3),
-      0 15px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
   }
 
-  /* Card Shine */
-  .card-shine {
+  /* Popular Badge */
+  .popular-badge {
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-    animation: shine 4s ease-in-out infinite;
-  }
-
-  .premium-shine {
-    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.1), rgba(255,255,255,0.1), transparent);
-    animation: shine 3s ease-in-out infinite;
-  }
-
-  @keyframes shine {
-    0% { left: -100%; }
-    100% { left: 200%; }
-  }
-
-  /* Hologram */
-  .card-hologram {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 35px;
-    background: linear-gradient(135deg, 
-      rgba(212,175,55,0.4), 
-      rgba(255,255,255,0.3), 
-      rgba(212,175,55,0.3),
-      rgba(192,192,192,0.4)
-    );
-    background-size: 200% 200%;
-    border-radius: 4px;
-    animation: hologram 3s ease-in-out infinite;
-  }
-
-  @keyframes hologram {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-
-  /* Popular Tag */
-  .popular-tag {
-    position: absolute;
-    top: -1px;
-    right: 20px;
-    padding: 0.5rem 1.25rem;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.375rem 1rem;
     background: var(--gold);
     color: black;
     font-size: 0.6875rem;
-    font-weight: 900;
-    letter-spacing: 0.1em;
-    border-radius: 0 0 0.5rem 0.5rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    border-radius: 9999px;
+    white-space: nowrap;
   }
 
-  /* Card Top Row */
-  .card-top-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
+  /* Card Header */
+  .card-header {
+    margin-bottom: 1.5rem;
   }
 
-  /* Card Chip - Payment Icons as Chip */
-  .card-chip {
-    position: relative;
-    width: 65px;
-    height: 50px;
-    background: linear-gradient(135deg, #c9a227 0%, #a08020 50%, #c9a227 100%);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 
-      inset 0 2px 4px rgba(255,255,255,0.3),
-      inset 0 -2px 4px rgba(0,0,0,0.2),
-      0 2px 8px rgba(0,0,0,0.3);
-  }
-
-  .premium-chip {
-    width: 70px;
-    height: 55px;
-    background: linear-gradient(135deg, #f5e6b8 0%, #d4af37 30%, #b8860b 70%, #d4af37 100%);
-    box-shadow: 
-      inset 0 2px 4px rgba(255,255,255,0.5),
-      inset 0 -2px 4px rgba(0,0,0,0.2),
-      0 0 25px rgba(212,175,55,0.4),
-      0 4px 15px rgba(0,0,0,0.3);
-  }
-
-  .chip-icons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3px;
-    width: 38px;
-    height: 28px;
-  }
-
-  .chip-icon {
+  .card-badge {
+    display: inline-block;
     font-size: 0.625rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,0,0,0.15);
-    border-radius: 3px;
-  }
-
-  .chip-svg {
-    width: 14px;
-    height: 14px;
-    color: rgba(0,0,0,0.5);
-    padding: 2px;
-    background: rgba(0,0,0,0.1);
-    border-radius: 3px;
-  }
-
-  .chip-lines {
-    position: absolute;
-    left: 3px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .chip-lines span {
-    width: 4px;
-    height: 2px;
-    background: rgba(0,0,0,0.2);
-    border-radius: 1px;
-  }
-
-  .chip-glow {
-    position: absolute;
-    inset: -5px;
-    background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%);
-    animation: chipGlow 2s ease-in-out infinite;
-    pointer-events: none;
-  }
-
-  @keyframes chipGlow {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-  }
-
-  /* Card Type Badge */
-  .card-type-badge {
-    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.5);
-    padding: 0.375rem 1rem;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 6px;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
   }
 
   .premium-badge {
     color: var(--gold);
-    border-color: var(--gold);
-    background: rgba(212,175,55,0.15);
   }
 
-  /* Card Body */
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  @media (min-width: 900px) {
-    .card-body {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1.5rem;
-    }
-  }
-
-  /* Card Info */
-  .card-info {
-    flex: 1;
-  }
-
-  .card-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-    margin-bottom: 1rem;
-  }
-
-  .brand-icon {
-    font-size: 1.75rem;
-  }
-
-  .brand-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: rgba(255,255,255,0.8);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  @media (min-width: 900px) {
-    .brand-name {
-      font-size: 1.125rem;
-    }
-  }
-
-  .premium-brand .brand-name {
-    color: var(--gold);
-  }
-
-  .card-number {
-    font-family: 'Courier New', monospace;
-    font-size: 1.25rem;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 0.15em;
-    margin-bottom: 1rem;
-  }
-
-  @media (min-width: 900px) {
-    .card-number {
-      font-size: 1.375rem;
-    }
-  }
-
-  .number-highlight {
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: 800;
     color: var(--text-primary);
-    font-weight: 700;
+    margin: 0;
   }
 
-  .premium-number .number-highlight {
+  .premium-title {
     color: var(--gold);
   }
 
-  /* Features */
-  .card-features {
+  /* Card Price */
+  .card-price {
+    margin-bottom: 1.5rem;
     display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
+    align-items: baseline;
+    gap: 0.25rem;
+    flex-wrap: wrap;
   }
 
-  .feature {
-    font-size: 0.9375rem;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.3;
-  }
-
-  @media (min-width: 900px) {
-    .feature {
-      font-size: 0.875rem;
-    }
-  }
-
-  .feature.ok {
-    color: rgba(255,255,255,0.9);
-  }
-
-  .feature.no {
-    color: rgba(255,255,255,0.35);
-    text-decoration: line-through;
-  }
-
-  .feature.gold {
-    color: var(--gold);
-  }
-
-  /* Price Zone */
-  .card-price-zone {
-    text-align: center;
-    padding: 1.5rem;
-    background: rgba(255,255,255,0.03);
-    border-radius: 1rem;
-    border: 1px solid rgba(255,255,255,0.08);
-    margin-top: auto;
-  }
-
-  @media (min-width: 900px) {
-    .card-price-zone {
-      min-width: 160px;
-      padding: 1.25rem;
-    }
-  }
-
-  .premium-price {
-    background: rgba(212,175,55,0.08);
-    border-color: rgba(212,175,55,0.25);
-  }
-
-  .price-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 0.5rem;
-  }
-
-  .premium-price .price-label {
-    color: var(--gold);
-  }
-
-  .price-amount {
+  .price-value {
     font-size: 3rem;
     font-weight: 900;
     color: var(--text-primary);
     line-height: 1;
   }
 
-  @media (min-width: 900px) {
-    .price-amount {
-      font-size: 2.5rem;
-    }
-  }
-
-  .premium-price .price-amount {
-    font-size: 3.5rem;
+  .gold-text {
     background: linear-gradient(180deg, var(--gold-light), var(--gold));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  @media (min-width: 900px) {
-    .premium-price .price-amount {
-      font-size: 3rem;
-    }
-  }
-
   .price-period {
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--text-muted);
   }
 
-  /* CTA */
-  .card-cta {
-    display: inline-block;
-    padding: 0.875rem 1.75rem;
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+  .price-note {
+    width: 100%;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
   }
 
-  .card-free .card-cta {
-    background: rgba(255,255,255,0.1);
-    color: var(--text-primary);
-    border: 1px solid rgba(255,255,255,0.2);
-  }
-
-  .card-free .card-cta:hover {
-    background: rgba(255,255,255,0.18);
-  }
-
-  .premium-cta {
-    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-    color: black;
-    box-shadow: 0 4px 20px rgba(212,175,55,0.3);
-  }
-
-  .premium-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(212,175,55,0.5);
-  }
-
-  /* Card Bottom */
-  .card-bottom-row {
+  /* Card Features */
+  .card-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .feature {
+    display: flex;
     align-items: center;
-    margin-top: 1.25rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    gap: 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
   }
 
-  .premium-bottom {
-    border-color: rgba(212,175,55,0.25);
+  .feature.ok {
+    color: var(--text-primary);
   }
 
-  .card-holder {
+  .feature.no {
+    color: var(--text-muted);
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  .feature.gold {
+    color: var(--text-primary);
+  }
+
+  .feature-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .feature.ok .feature-icon {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+  }
+
+  .feature.no .feature-icon {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+  }
+
+  .gold-icon {
+    background: rgba(212, 175, 55, 0.2) !important;
+    color: var(--gold) !important;
+  }
+
+  /* Card CTA */
+  .card-cta {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
     font-size: 0.9375rem;
     font-weight: 700;
-    letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.6);
-    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
   }
 
-  @media (min-width: 900px) {
-    .card-holder {
-      font-size: 0.875rem;
+  .cta-free {
+    background: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-medium);
+  }
+
+  .cta-free:hover {
+    background: var(--bg-card-elevated);
+    border-color: var(--text-muted);
+  }
+
+  .cta-premium {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: black;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+  }
+
+  .cta-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+  }
+
+  /* Payment Row */
+  .payment-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .payment-label {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+  }
+
+  .payment-icons {
+    display: flex;
+    gap: 0.375rem;
+  }
+
+  .pay-icon {
+    font-size: 0.875rem;
+  }
+
+  /* Floating Perks - Desktop only */
+  .floating-perks {
+    display: none;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  @media (min-width: 1024px) {
+    .floating-perks {
+      display: block;
     }
   }
 
-  .premium-bottom .card-holder {
-    color: var(--gold);
+  .perk-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.875rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    animation: floatPerk 5s ease-in-out infinite;
+    pointer-events: auto;
   }
 
-  .card-valid {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.4);
-    letter-spacing: 0.1em;
-  }
-
-  /* Light Mode */
-  :global(.light) .card-free {
-    background: linear-gradient(145deg, #f5f5f5 0%, #e8e8e8 50%, #ddd 100%);
-    border-color: rgba(0,0,0,0.1);
-  }
-
-  :global(.light) .card-free .brand-name,
-  :global(.light) .card-free .card-number,
-  :global(.light) .card-free .feature {
-    color: rgba(0,0,0,0.6);
-  }
-
-  :global(.light) .card-free .feature.ok {
-    color: rgba(0,0,0,0.8);
-  }
-
-  :global(.light) .card-free .number-highlight,
-  :global(.light) .card-free .price-amount,
-  :global(.light) .card-free .card-holder {
+  .perk-card:hover {
+    border-color: var(--gold);
     color: var(--text-primary);
+  }
+
+  .perk-icon {
+    font-size: 1rem;
+  }
+
+  @keyframes floatPerk {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .perk-1 { top: 15%; left: -8%; animation-delay: 0s; }
+  .perk-2 { top: 25%; right: -8%; animation-delay: 0.5s; }
+  .perk-3 { bottom: 25%; left: -8%; animation-delay: 1s; }
+  .perk-4 { bottom: 15%; right: -8%; animation-delay: 1.5s; }
+
+  /* Light Mode Adjustments */
+  :global(.light) .card-free {
+    background: #fff;
   }
 
   :global(.light) .card-premium {
     background: linear-gradient(145deg, 
-      #fafafa 0%, 
-      color-mix(in srgb, var(--gold) 8%, #f5f5f5) 30%,
-      #f0f0f0 60%,
-      color-mix(in srgb, var(--gold) 5%, #f8f8f8) 100%
+      color-mix(in srgb, var(--gold) 5%, #fff) 0%,
+      #fff 100%
     );
   }
 </style>
