@@ -696,6 +696,11 @@ import AnimatedCTA from './AnimatedCTA.astro';
     color: black;
   }
 
+  .role-badge.staff {
+    background: #ED4245;
+    color: white;
+  }
+
   .role-badge.ecom {
     background: #95bf47;
     color: white;
@@ -1124,7 +1129,10 @@ import AnimatedCTA from './AnimatedCTA.astro';
     });
 
     // Get role badge info
+    const staffMembers = ['Sonny', 'Jamel', 'Midou', 'Zaid', 'Caldi'];
     const getRoleInfo = (user) => {
+      // Check if user is STAFF - Rouge directement
+      if (staffMembers.some(s => user.startsWith(s) || user === s)) return { cls: 'staff', text: 'ÉQUIPE' };
       if (user === 'Focus Team') return { cls: 'admin', text: 'ADMIN' };
       if (user.includes('_Ecom') || user.includes('_Drop')) return { cls: 'ecom', text: 'E-COM' };
       if (user.includes('_Ads') || user.includes('_Meta') || user.includes('_TikTok')) return { cls: 'ads', text: 'ADS' };

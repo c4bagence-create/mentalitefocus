@@ -783,10 +783,11 @@ const bubbleUsers = speechBubbles.map(b => ({
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .bubble-1 { top: 1.25rem; left: -8rem; }
-  .bubble-2 { top: 7.5rem; right: -9rem; }
-  .bubble-3 { bottom: 11.25rem; left: -9rem; }
-  .bubble-4 { bottom: 3.75rem; right: -8rem; }
+  /* Speech bubbles - TOUS à droite du phone, jamais à gauche */
+  .bubble-1 { top: -2rem; right: -12rem; left: auto; }
+  .bubble-2 { top: 6rem; right: -14rem; left: auto; }
+  .bubble-3 { bottom: 8rem; right: -13rem; left: auto; }
+  .bubble-4 { bottom: 1rem; right: -11rem; left: auto; }
 
   .bubble-header {
     display: flex;

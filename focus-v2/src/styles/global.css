@@ -530,6 +530,59 @@ img {
 }
 
 /* ============================================
+   GLOBAL PARTICLES - Très discret sur tout le site
+   ============================================ */
+.global-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.gp {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0;
+  animation: gpFloat 12s ease-in-out infinite;
+}
+
+.gp:nth-child(1) { left: 5%; top: 10%; animation-delay: 0s; }
+.gp:nth-child(2) { left: 15%; top: 30%; animation-delay: 1s; }
+.gp:nth-child(3) { left: 25%; top: 60%; animation-delay: 2s; }
+.gp:nth-child(4) { left: 40%; top: 20%; animation-delay: 3s; }
+.gp:nth-child(5) { left: 55%; top: 45%; animation-delay: 4s; }
+.gp:nth-child(6) { left: 70%; top: 15%; animation-delay: 5s; }
+.gp:nth-child(7) { left: 80%; top: 55%; animation-delay: 6s; }
+.gp:nth-child(8) { left: 90%; top: 25%; animation-delay: 7s; }
+.gp:nth-child(9) { left: 35%; top: 80%; animation-delay: 8s; }
+.gp:nth-child(10) { left: 60%; top: 70%; animation-delay: 9s; }
+.gp:nth-child(11) { left: 10%; top: 85%; animation-delay: 10s; }
+.gp:nth-child(12) { left: 85%; top: 90%; animation-delay: 11s; }
+
+@keyframes gpFloat {
+  0%, 100% { 
+    opacity: 0; 
+    transform: translateY(0) scale(0.5); 
+  }
+  25% { 
+    opacity: 0.25; 
+    transform: translateY(-20px) scale(1); 
+  }
+  50% { 
+    opacity: 0.15; 
+    transform: translateY(-40px) scale(0.8); 
+  }
+  75% { 
+    opacity: 0.1; 
+    transform: translateY(-60px) scale(0.6); 
+  }
+}
+
+/* ============================================
    PARTICLES HERO
    ============================================ */
 .particle-hero {

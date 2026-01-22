@@ -61,18 +61,11 @@ import DiscordSection from '../components/DiscordSection.astro';
         <span><strong class="text-gold">Sans bullshit.</strong></span>
       </p>
       
-      <!-- BANDEAU PRIX - Animation SLAM -->
-      <div class="price-slam-container mt-4 mb-8 overflow-visible flex items-center justify-center">
-        <a 
-          href="#pricing" 
-          class="price-slam-btn"
-          id="price-slam"
-        >
-          <span class="price-text">POUR 10€ / MOIS</span>
-          <span class="price-flash"></span>
+      <!-- BANDEAU PRIX - Simple étiquette qui se pose -->
+      <div class="price-tag-container">
+        <a href="#pricing" class="price-tag" id="price-tag">
+          <span class="tag-text">POUR 10€ / MOIS</span>
         </a>
-        <!-- Impact effect -->
-        <div class="slam-impact" id="slam-impact"></div>
       </div>
 
       <!-- STATS BAR -->
@@ -252,23 +245,14 @@ import DiscordSection from '../components/DiscordSection.astro';
   <script>
     // Footer animations
     document.addEventListener('DOMContentLoaded', () => {
-      // ===== PRICE SLAM ANIMATION =====
-      const priceBtn = document.getElementById('price-slam');
-      const slamImpact = document.getElementById('slam-impact');
+      // ===== PRICE TAG - Simple animation =====
+      const priceTag = document.getElementById('price-tag');
       
-      if (priceBtn) {
-        // Trigger slam animation after a delay (time to read title)
+      if (priceTag) {
+        // Trigger tag land animation after reading title
         setTimeout(() => {
-          priceBtn.classList.add('slammed');
-          
-          // Trigger impact effect at landing
-          setTimeout(() => {
-            if (slamImpact) {
-              slamImpact.classList.add('active');
-              setTimeout(() => slamImpact.classList.remove('active'), 600);
-            }
-          }, 400); // When button lands
-        }, 1200); // Delay after page load to read "TOUS LES BUSINESS"
+          priceTag.classList.add('landed');
+        }, 1200);
       }
 
       // Stats counter animation
@@ -342,128 +326,71 @@ import DiscordSection from '../components/DiscordSection.astro';
     animation-delay: 0.8s;
   }
 
-  /* ===== PRICE SLAM ANIMATION ===== */
-  .price-slam-container {
-    position: relative;
-    perspective: 1000px;
+  /* ===== PRICE TAG - Simple étiquette qui se pose ===== */
+  .price-tag-container {
+    margin: 1.5rem 0 2rem;
+    display: flex;
+    justify-content: center;
   }
 
-  .price-slam-btn {
-    position: relative;
+  .price-tag {
     display: inline-block;
-    padding: 1rem 2.5rem;
+    padding: 0.75rem 2rem;
     background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
     color: black;
     font-family: var(--font-display);
     font-weight: 900;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     text-decoration: none;
-    transform: translateY(-100vh) rotate(-8deg) scale(1.5);
-    opacity: 0;
-    box-shadow: 
-      0 20px 60px rgba(245, 158, 11, 0.5),
-      0 0 0 4px rgba(0, 0, 0, 0.1) inset;
-    z-index: 20;
-    cursor: pointer;
-    overflow: hidden;
     border-radius: 4px;
+    box-shadow: 
+      0 15px 40px rgba(245, 158, 11, 0.4),
+      0 0 0 3px rgba(0, 0, 0, 0.1) inset;
+    
+    /* Initial - caché en haut */
+    transform: translateY(-80vh) rotate(-8deg);
+    opacity: 0;
+    
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .price-slam-btn.slammed {
-    animation: priceSlam 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  .price-tag.landed {
+    animation: tagLand 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
 
-  @keyframes priceSlam {
+  @keyframes tagLand {
     0% {
-      transform: translateY(-100vh) rotate(-8deg) scale(1.5);
+      transform: translateY(-80vh) rotate(-8deg);
       opacity: 0;
     }
-    50% {
-      transform: translateY(10px) rotate(-2deg) scale(1.1);
+    60% {
+      transform: translateY(5px) rotate(-4deg);
       opacity: 1;
     }
-    70% {
-      transform: translateY(-8px) rotate(-3deg) scale(1.02);
-    }
-    85% {
-      transform: translateY(4px) rotate(-1deg) scale(0.98);
+    80% {
+      transform: translateY(-3px) rotate(-2deg);
     }
     100% {
-      transform: translateY(0) rotate(-2deg) scale(1);
+      transform: translateY(0) rotate(-3deg);
       opacity: 1;
     }
   }
 
-  .price-slam-btn:hover {
-    transform: translateY(-3px) rotate(-2deg) scale(1.05) !important;
-    box-shadow: 
-      0 30px 80px rgba(245, 158, 11, 0.6),
-      0 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  }
-
-  .price-text {
-    position: relative;
-    z-index: 2;
+  .tag-text {
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 
-  .price-flash {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.6) 50%,
-      transparent 100%
-    );
-    transform: translateX(-100%);
-    opacity: 0;
+  .price-tag:hover {
+    transform: translateY(-3px) rotate(-3deg) scale(1.05) !important;
+    box-shadow: 
+      0 20px 50px rgba(245, 158, 11, 0.5),
+      0 0 0 3px rgba(0, 0, 0, 0.1) inset;
   }
 
-  .price-slam-btn.slammed .price-flash {
-    animation: priceFlash 0.4s ease 0.6s forwards;
-  }
-
-  @keyframes priceFlash {
-    0% { transform: translateX(-100%); opacity: 1; }
-    100% { transform: translateX(100%); opacity: 0; }
-  }
-
-  /* Impact effect */
-  .slam-impact {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200px;
-    height: 200px;
-    transform: translate(-50%, -50%) scale(0);
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 70%);
-    pointer-events: none;
-    opacity: 0;
-  }
-
-  .slam-impact.active {
-    animation: impactWave 0.6s ease-out forwards;
-  }
-
-  @keyframes impactWave {
-    0% {
-      transform: translate(-50%, -50%) scale(0);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(3);
-      opacity: 0;
-    }
-  }
-
-  /* Responsive */
   @media (min-width: 768px) {
-    .price-slam-btn {
-      padding: 1.5rem 4rem;
-      font-size: 2.25rem;
+    .price-tag {
+      padding: 1rem 3rem;
+      font-size: 1.75rem;
     }
   }
   
