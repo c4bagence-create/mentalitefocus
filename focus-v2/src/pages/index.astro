@@ -1,0 +1,923 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Loader from '../components/Loader.astro';
+import HeroCards from '../components/HeroCards.astro';
+import NetworkingSection from '../components/NetworkingSection.astro';
+import ArsenalSection from '../components/ArsenalSection.astro';
+import ExpertsSection from '../components/ExpertsSection.astro';
+import PricingSection from '../components/PricingSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import FloatingBadge from '../components/FloatingBadge.astro';
+import DiscordSection from '../components/DiscordSection.astro';
+---
+
+<Layout title="Focus Business - L'Élite de l'Exécution">
+  <!-- Loader -->
+  <Loader />
+  
+  <!-- Navbar -->
+  <Navbar />
+  
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="hero">
+    
+    <!-- GLOW OR HERO -->
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-400/5 blur-[200px] rounded-full pointer-events-none z-0"></div>
+    
+    <!-- PARTICLES -->
+    <div class="particle-hero" style="left: 5%; top: 15%; animation-delay: 0s;"></div>
+    <div class="particle-hero" style="left: 15%; top: 40%; animation-delay: 0.5s;"></div>
+    <div class="particle-hero" style="left: 25%; top: 70%; animation-delay: 1s;"></div>
+    <div class="particle-hero" style="left: 35%; top: 25%; animation-delay: 1.5s;"></div>
+    <div class="particle-hero" style="left: 45%; top: 60%; animation-delay: 2s;"></div>
+    <div class="particle-hero" style="left: 55%; top: 35%; animation-delay: 2.5s;"></div>
+    <div class="particle-hero" style="left: 65%; top: 75%; animation-delay: 3s;"></div>
+    <div class="particle-hero" style="left: 75%; top: 20%; animation-delay: 3.5s;"></div>
+    <div class="particle-hero" style="left: 85%; top: 50%; animation-delay: 4s;"></div>
+    <div class="particle-hero" style="left: 95%; top: 65%; animation-delay: 4.5s;"></div>
+    <div class="particle-hero" style="left: 10%; top: 80%; animation-delay: 5s;"></div>
+    <div class="particle-hero" style="left: 90%; top: 30%; animation-delay: 5.5s;"></div>
+    
+    <!-- TEXTE CENTER -->
+    <div class="relative z-20 text-center mb-8 md:mb-16 mt-4 interactive-zone">
+      
+      <!-- BADGE -->
+      <div class="badge mb-6">
+        <span class="badge-dot"></span>
+        <span>Groupe Business</span>
+      </div>
+      
+      <!-- TITRE -->
+      <h1 class="text-5xl md:text-[8rem] lg:text-[10rem] font-black font-display tracking-tighter leading-[0.9] select-none mb-4">
+        <span class="inline-block text-primary" style="text-shadow: 0 0 60px rgba(255,255,255,0.4), 0 4px 0 rgba(212,175,55,0.3);">TOUS LES</span><br>
+        <span class="text-gradient-gold" style="filter: drop-shadow(0 0 30px rgba(212,175,55,0.5));">BUSINESS.</span>
+      </h1>
+      
+      <!-- SOUS-TITRE -->
+      <p class="text-muted text-sm md:text-lg mb-6 max-w-lg mx-auto">
+        <span><strong class="text-primary">Un groupe Discord.</strong></span>
+        <span>Tous les business models.</span>
+        <span><strong class="text-gold">Sans bullshit.</strong></span>
+      </p>
+      
+      <!-- BANDEAU PRIX - Animation SLAM -->
+      <div class="price-slam-container mt-4 mb-8 overflow-visible flex items-center justify-center">
+        <a 
+          href="#pricing" 
+          class="price-slam-btn"
+          id="price-slam"
+        >
+          <span class="price-text">POUR 10€ / MOIS</span>
+          <span class="price-flash"></span>
+        </a>
+        <!-- Impact effect -->
+        <div class="slam-impact" id="slam-impact"></div>
+      </div>
+
+      <!-- STATS BAR -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 md:gap-x-12 gap-y-2 mt-3 mx-auto w-fit">
+        <div class="text-center">
+          <div class="text-lg md:text-2xl font-black text-primary leading-none">5</div>
+          <div class="text-[7px] md:text-xs text-muted uppercase">Lives/Sem</div>
+        </div>
+        <div class="text-center">
+          <div class="text-lg md:text-2xl font-black text-primary leading-none">1000+</div>
+          <div class="text-[7px] md:text-xs text-muted uppercase">Membres</div>
+        </div>
+        <div class="text-center">
+          <div class="text-lg md:text-2xl font-black text-primary leading-none">+10M</div>
+          <div class="text-[7px] md:text-xs text-muted uppercase">CA Généré</div>
+        </div>
+        <div class="text-center">
+          <div class="text-lg md:text-2xl font-black text-primary leading-none">24/7</div>
+          <div class="text-[7px] md:text-xs text-muted uppercase">Support</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO CARDS -->
+    <HeroCards />
+  </section>
+  
+  <!-- SECTION ARSENAL - Nos domaines d'expertise -->
+  <ArsenalSection />
+  
+  <!-- SECTION DISCORD - Une communauté vivante & active -->
+  <DiscordSection />
+  
+  <!-- SECTION EXPERTS - Nos experts à votre service -->
+  <ExpertsSection />
+  
+  <!-- SECTION NETWORKING - Tu n'es plus seul -->
+  <NetworkingSection />
+  
+  <!-- SECTION PRICING/CTA -->
+  <PricingSection />
+  
+  <!-- SECTION FAQ -->
+  <FAQSection />
+  
+  <!-- FLOATING BADGE -->
+  <FloatingBadge />
+  
+  <!-- FOOTER -->
+  <footer class="footer-section" id="footer">
+    <!-- Animated Background -->
+    <div class="footer-bg">
+      <div class="footer-gradient"></div>
+      <div class="footer-particles">
+        <span class="fp"></span><span class="fp"></span><span class="fp"></span>
+        <span class="fp"></span><span class="fp"></span><span class="fp"></span>
+        <span class="fp"></span><span class="fp"></span>
+      </div>
+      <div class="footer-grid"></div>
+    </div>
+    
+    <div class="footer-content">
+      <!-- Animated Logo -->
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <span class="logo-char" style="--i:0">F</span>
+          <span class="logo-char" style="--i:1">O</span>
+          <span class="logo-char" style="--i:2">C</span>
+          <span class="logo-char" style="--i:3">U</span>
+          <span class="logo-char" style="--i:4">S</span>
+        </div>
+        <p class="footer-tagline">
+          <span class="tag-word">BUSINESS</span>
+          <span class="tag-word">COMMUNITY</span>
+        </p>
+        <p class="footer-desc">Le groupe Discord #1 des entrepreneurs ambitieux.</p>
+        
+        <!-- Stats animés -->
+        <div class="footer-stats">
+          <div class="stat">
+            <span class="stat-value" data-count="1200">0</span>
+            <span class="stat-label">Membres</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" data-count="50">0</span>
+            <span class="stat-label">Experts</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" data-count="24">0</span>
+            <span class="stat-label">Salons</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Links avec animations -->
+      <div class="footer-links">
+        <div class="link-group" style="--delay: 0.1s">
+          <h3 class="link-title">
+            <span class="title-icon">🧭</span>
+            Navigation
+          </h3>
+          <a href="#hero" class="link-item"><span class="link-arrow">→</span>Accueil</a>
+          <a href="#arsenal" class="link-item"><span class="link-arrow">→</span>Expertises</a>
+          <a href="#experts" class="link-item"><span class="link-arrow">→</span>Experts</a>
+          <a href="#pricing" class="link-item"><span class="link-arrow">→</span>Tarifs</a>
+        </div>
+        <div class="link-group" style="--delay: 0.2s">
+          <h3 class="link-title">
+            <span class="title-icon">📚</span>
+            Ressources
+          </h3>
+          <a href="#discord" class="link-item"><span class="link-arrow">→</span>Discord</a>
+          <a href="#faq" class="link-item"><span class="link-arrow">→</span>FAQ</a>
+          <a href="https://espace.mentalitefocus.com" class="link-item"><span class="link-arrow">→</span>Espace Membre</a>
+        </div>
+        <div class="link-group" style="--delay: 0.3s">
+          <h3 class="link-title">
+            <span class="title-icon">⚖️</span>
+            Légal
+          </h3>
+          <a href="/legal" class="link-item"><span class="link-arrow">→</span>Mentions légales</a>
+          <a href="/privacy" class="link-item"><span class="link-arrow">→</span>Confidentialité</a>
+          <a href="/terms" class="link-item"><span class="link-arrow">→</span>CGU</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p class="copyright">
+        <span class="copy-icon">©</span>
+        <span class="copy-year">2026</span>
+        <span class="copy-text">Focus Business Community</span>
+      </p>
+      
+      <!-- Social Links Animés -->
+      <div class="footer-social">
+        <a href="#" class="social-link" aria-label="Discord" style="--i:0">
+          <div class="social-bg"></div>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+          </svg>
+          <span class="social-tooltip">Discord</span>
+        </a>
+        <a href="#" class="social-link" aria-label="Instagram" style="--i:1">
+          <div class="social-bg"></div>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0z"/>
+          </svg>
+          <span class="social-tooltip">Instagram</span>
+        </a>
+        <a href="#" class="social-link" aria-label="TikTok" style="--i:2">
+          <div class="social-bg"></div>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+          </svg>
+          <span class="social-tooltip">TikTok</span>
+        </a>
+        <a href="#" class="social-link" aria-label="YouTube" style="--i:3">
+          <div class="social-bg"></div>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span class="social-tooltip">YouTube</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scroll-top" aria-label="Retour en haut">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+    </button>
+  </footer>
+  
+  <script>
+    // Footer animations
+    document.addEventListener('DOMContentLoaded', () => {
+      // ===== PRICE SLAM ANIMATION =====
+      const priceBtn = document.getElementById('price-slam');
+      const slamImpact = document.getElementById('slam-impact');
+      
+      if (priceBtn) {
+        // Trigger slam animation after a delay (time to read title)
+        setTimeout(() => {
+          priceBtn.classList.add('slammed');
+          
+          // Trigger impact effect at landing
+          setTimeout(() => {
+            if (slamImpact) {
+              slamImpact.classList.add('active');
+              setTimeout(() => slamImpact.classList.remove('active'), 600);
+            }
+          }, 400); // When button lands
+        }, 1200); // Delay after page load to read "TOUS LES BUSINESS"
+      }
+
+      // Stats counter animation
+      const observerOptions = { threshold: 0.5 };
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const stats = entry.target.querySelectorAll('[data-count]');
+            stats.forEach(stat => {
+              const target = parseInt(stat.dataset.count);
+              let current = 0;
+              const increment = target / 50;
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                  current = target;
+                  clearInterval(timer);
+                }
+                stat.textContent = Math.floor(current) + (target > 100 ? '+' : '');
+              }, 30);
+            });
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      const footerStats = document.querySelector('.footer-stats');
+      if (footerStats) statsObserver.observe(footerStats);
+      
+      // Scroll to top
+      const scrollTopBtn = document.getElementById('scroll-top');
+      scrollTopBtn?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</Layout>
+
+<style>
+  /* Hero section - full viewport with relative positioning for cards */
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 16px 0;
+    overflow: visible;
+    margin-bottom: -120px;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-section {
+      padding-top: 60px;
+      min-height: 100svh;
+      margin-bottom: -80px;
+    }
+  }
+  
+  /* Hero specific styles */
+  .interactive-zone {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 15;
+  }
+  
+  .bandeau {
+    animation-delay: 0.8s;
+  }
+
+  /* ===== PRICE SLAM ANIMATION ===== */
+  .price-slam-container {
+    position: relative;
+    perspective: 1000px;
+  }
+
+  .price-slam-btn {
+    position: relative;
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+    color: black;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transform: translateY(-100vh) rotate(-8deg) scale(1.5);
+    opacity: 0;
+    box-shadow: 
+      0 20px 60px rgba(245, 158, 11, 0.5),
+      0 0 0 4px rgba(0, 0, 0, 0.1) inset;
+    z-index: 20;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .price-slam-btn.slammed {
+    animation: priceSlam 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes priceSlam {
+    0% {
+      transform: translateY(-100vh) rotate(-8deg) scale(1.5);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(10px) rotate(-2deg) scale(1.1);
+      opacity: 1;
+    }
+    70% {
+      transform: translateY(-8px) rotate(-3deg) scale(1.02);
+    }
+    85% {
+      transform: translateY(4px) rotate(-1deg) scale(0.98);
+    }
+    100% {
+      transform: translateY(0) rotate(-2deg) scale(1);
+      opacity: 1;
+    }
+  }
+
+  .price-slam-btn:hover {
+    transform: translateY(-3px) rotate(-2deg) scale(1.05) !important;
+    box-shadow: 
+      0 30px 80px rgba(245, 158, 11, 0.6),
+      0 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  }
+
+  .price-text {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .price-flash {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  .price-slam-btn.slammed .price-flash {
+    animation: priceFlash 0.4s ease 0.6s forwards;
+  }
+
+  @keyframes priceFlash {
+    0% { transform: translateX(-100%); opacity: 1; }
+    100% { transform: translateX(100%); opacity: 0; }
+  }
+
+  /* Impact effect */
+  .slam-impact {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .slam-impact.active {
+    animation: impactWave 0.6s ease-out forwards;
+  }
+
+  @keyframes impactWave {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(3);
+      opacity: 0;
+    }
+  }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    .price-slam-btn {
+      padding: 1.5rem 4rem;
+      font-size: 2.25rem;
+    }
+  }
+  
+  /* Light mode adjustments */
+  :global(.light) .text-primary {
+    text-shadow: none !important;
+  }
+  
+  :global(.light) h1 span:first-child {
+    text-shadow: 0 0 60px rgba(0,0,0,0.1), 0 4px 0 rgba(184,134,11,0.2) !important;
+  }
+
+  /* ===== FOOTER - Ultra Animated ===== */
+  .footer-section {
+    position: relative;
+    padding: 5rem 1.5rem 2rem;
+    background: var(--bg-page);
+    overflow: hidden;
+  }
+
+  /* Background Effects */
+  .footer-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .footer-gradient {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse, var(--gold-glow) 0%, transparent 70%);
+    filter: blur(100px);
+    opacity: 0.2;
+    animation: footerGlow 4s ease-in-out infinite;
+  }
+
+  @keyframes footerGlow {
+    0%, 100% { opacity: 0.15; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.25; transform: translateX(-50%) scale(1.1); }
+  }
+
+  .footer-particles {
+    position: absolute;
+    inset: 0;
+  }
+
+  .fp {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: fpFloat 6s ease-in-out infinite;
+  }
+
+  .fp:nth-child(1) { left: 5%; top: 20%; animation-delay: 0s; }
+  .fp:nth-child(2) { left: 15%; top: 60%; animation-delay: 0.5s; }
+  .fp:nth-child(3) { left: 30%; top: 30%; animation-delay: 1s; }
+  .fp:nth-child(4) { left: 50%; top: 70%; animation-delay: 1.5s; }
+  .fp:nth-child(5) { left: 70%; top: 25%; animation-delay: 2s; }
+  .fp:nth-child(6) { left: 85%; top: 55%; animation-delay: 2.5s; }
+  .fp:nth-child(7) { left: 95%; top: 40%; animation-delay: 3s; }
+  .fp:nth-child(8) { left: 40%; top: 80%; animation-delay: 3.5s; }
+
+  @keyframes fpFloat {
+    0%, 100% { opacity: 0; transform: translateY(0) scale(0.5); }
+    50% { opacity: 0.6; transform: translateY(-30px) scale(1); }
+  }
+
+  .footer-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (min-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  /* Brand Section */
+  .footer-brand {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .footer-brand {
+      text-align: left;
+    }
+  }
+
+  .brand-logo {
+    display: flex;
+    justify-content: center;
+    gap: 0.125rem;
+  }
+
+  @media (min-width: 768px) {
+    .brand-logo {
+      justify-content: flex-start;
+    }
+  }
+
+  .logo-char {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 40px var(--gold-glow);
+    animation: logoFloat 3s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.1s);
+  }
+
+  @keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .footer-tagline {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-tagline {
+      justify-content: flex-start;
+    }
+  }
+
+  .tag-word {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    animation: tagPulse 2s ease-in-out infinite;
+  }
+
+  .tag-word:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes tagPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  .footer-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 auto 1.5rem;
+    max-width: 280px;
+  }
+
+  @media (min-width: 768px) {
+    .footer-desc {
+      margin: 0 0 1.5rem;
+      max-width: none;
+    }
+  }
+
+  /* Stats */
+  .footer-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-stats {
+      justify-content: flex-start;
+    }
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+
+  /* Links */
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .link-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    animation: linkGroupIn 0.6s ease forwards;
+    animation-delay: var(--delay);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  @keyframes linkGroupIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .link-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 0.5rem;
+  }
+
+  .title-icon {
+    font-size: 0.875rem;
+  }
+
+  .link-item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .link-arrow {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    color: var(--gold);
+  }
+
+  .link-item:hover {
+    color: var(--gold);
+    transform: translateX(5px);
+  }
+
+  .link-item:hover .link-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Footer Bottom */
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .copyright {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .copy-icon {
+    color: var(--gold);
+    animation: copyPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes copyPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .copy-year {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  /* Social Links */
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .social-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 0.75rem;
+    color: var(--text-secondary);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+    animation: socialIn 0.5s ease forwards;
+    animation-delay: calc(var(--i) * 0.1s);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  @keyframes socialIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .social-link svg {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+
+  .social-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .social-link:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 30px var(--gold-glow);
+  }
+
+  .social-link:hover .social-bg {
+    transform: translateY(0);
+  }
+
+  .social-link:hover svg {
+    color: black;
+    transform: scale(1.1);
+  }
+
+  .social-tooltip {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    padding: 0.375rem 0.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: 0.375rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  .social-link:hover .social-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Scroll to Top */
+  .scroll-top {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    animation: scrollTopPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollTopPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3); }
+    50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+  }
+
+  .scroll-top svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .scroll-top:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: black;
+    transform: translateY(-3px);
+  }
+
+  .scroll-top:hover svg {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .scroll-top {
+      bottom: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+</style>

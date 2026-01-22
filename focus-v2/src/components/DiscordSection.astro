@@ -1,0 +1,1297 @@
+---
+/**
+ * DiscordSection - Interface Discord ultra animée
+ * Messages dynamiques par salon
+ */
+
+// Catégories et salons
+const categories = [
+  {
+    name: 'Lives & Rediffusions',
+    emoji: '🎬',
+    channels: [
+      { id: 'rediff', icon: '📺', name: 'rediff-générale' },
+      { id: 'live', icon: '🎥', name: 'Live Public' },
+    ]
+  },
+  {
+    name: 'Important',
+    emoji: '🔴',
+    channels: [
+      { id: 'annonce', icon: '📢', name: 'annonce' },
+      { id: 'programme', icon: '📅', name: 'programme-live' },
+    ]
+  },
+  {
+    name: 'Général',
+    emoji: '💬',
+    channels: [
+      { id: 'general', icon: '💬', name: 'général', active: true },
+      { id: 'concours', icon: '🏆', name: 'concours' },
+      { id: 'presentation', icon: '📝', name: 'présentation' },
+    ]
+  },
+  {
+    name: 'Business',
+    emoji: '💼',
+    channels: [
+      { id: 'ecom', icon: '🛒', name: 'e-commerce' },
+      { id: 'ads', icon: '📈', name: 'publicité' },
+      { id: 'smma', icon: '📊', name: 'smma' },
+    ]
+  },
+  {
+    name: 'Résultats',
+    emoji: '⭐',
+    channels: [
+      { id: 'chiffres', icon: '💰', name: 'vos-chiffres' },
+      { id: 'avis', icon: '⭐', name: 'vos-avis' },
+    ]
+  },
+  {
+    name: 'Vocal',
+    emoji: '🎤',
+    channels: [
+      { id: 'vocal1', icon: '🎙️', name: 'Entraide', isVocal: true, users: 12 },
+      { id: 'vocal2', icon: '🔊', name: 'Business Talk', isVocal: true, users: 8 },
+    ]
+  },
+];
+
+// Messages par type de salon
+const messageTypes = {
+  annonce: [
+    { user: 'Focus Team', avatar: 'F', msg: '🚨 Nouveau live demain 19h ! Scaling Meta Ads jusqu\'à 10K€/jour', time: 'Aujourd\'hui' },
+    { user: 'Focus Team', avatar: 'F', msg: '📢 Mise à jour du Coffre : 15 nouveaux templates Notion ajoutés', time: 'Hier' },
+  ],
+  general: [
+    { user: 'Thomas_Ads', avatar: 'T', color: '#5865F2', msg: 'Qui a testé les nouvelles audiences Meta ?', time: '14:32' },
+    { user: 'Julie_Ecom', avatar: 'J', color: '#EC4899', msg: 'J\'ai scale de 500 à 2K€/jour cette semaine 🔥', time: '14:35' },
+    { user: 'Karim_Drop', avatar: 'K', color: '#F59E0B', msg: 'Quelqu\'un utilise CJ Dropshipping ?', time: '14:38' },
+    { user: 'Emma_SMMA', avatar: 'E', color: '#10B981', msg: 'Premier client à 3K/mois signé ce matin !', time: '14:42' },
+  ],
+  chiffres: [
+    { user: 'Lucas_Crypto', avatar: 'L', color: '#8B5CF6', msg: '📊 Store Shopify : 12,847€ ce mois. ATH battu !', time: '12:15' },
+    { user: 'Alex_SEO', avatar: 'A', color: '#06B6D4', msg: '💰 Affiliation : 4,200€ en passif ce mois', time: '13:22' },
+    { user: 'Maxime_Auto', avatar: 'M', color: '#EF4444', msg: '🚗 Vente Porsche : +22,000€ de marge nette', time: '15:45' },
+  ],
+  ecom: [
+    { user: 'Sophie_Drop', avatar: 'S', color: '#F472B6', msg: 'Quel agent vous utilisez pour les bijoux ?', time: '11:20' },
+    { user: 'Nathan_Ecom', avatar: 'N', color: '#22C55E', msg: 'J\'ai trouvé un winner en beauté, CTR à 4.2%', time: '11:45' },
+  ],
+  ads: [
+    { user: 'Romain_Meta', avatar: 'R', color: '#0081FB', msg: 'ASC vs CBO sur du scale, vos retours ?', time: '10:30' },
+    { user: 'Manon_TikTok', avatar: 'M', color: '#FE2C55', msg: 'TikTok Ads explose en ce moment, CPM à 2€', time: '10:55' },
+  ],
+};
+
+import AnimatedCTA from './AnimatedCTA.astro';
+---
+
+<section class="discord-section" id="discord">
+  <!-- Header -->
+  <header class="section-header">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span>Communauté Active</span>
+    </div>
+    
+    <h2 class="section-title">
+      UNE COMMUNAUTÉ<br>
+      <span class="text-gradient">VIVANTE & ACTIVE.</span>
+    </h2>
+    
+    <p class="section-desc">
+      Rejoins <strong>1,240+ entrepreneurs</strong> qui s'entraident, partagent leurs résultats 
+      et progressent ensemble <strong class="gold">chaque jour.</strong>
+    </p>
+  </header>
+
+  <!-- Discord Interface -->
+  <div class="discord-container">
+    <div class="discord-interface">
+      <!-- Server Sidebar -->
+      <div class="server-bar">
+        <div class="server-icon active">
+          <span>F</span>
+        </div>
+        <div class="server-divider"></div>
+        <div class="server-icon">📚</div>
+        <div class="server-icon">🎮</div>
+        <div class="server-icon add">+</div>
+      </div>
+
+      <!-- Channels Sidebar -->
+      <div class="channels-bar">
+        <div class="server-header">
+          <span class="server-name">Focus Business</span>
+          <span class="server-chevron">▼</span>
+        </div>
+
+        <div class="channels-list">
+          {categories.map(cat => (
+            <div class="channel-category">
+              <div class="category-header">
+                <span>{cat.emoji}</span>
+                <span>{cat.name}</span>
+              </div>
+              <div class="category-channels">
+                {cat.channels.map(ch => (
+                  <button 
+                    class={`channel-btn ${ch.active ? 'active' : ''} ${ch.isVocal ? 'vocal' : ''}`}
+                    data-channel={ch.id}
+                    type="button"
+                  >
+                    <span class="channel-icon">{ch.icon}</span>
+                    <span class="channel-name">{ch.name}</span>
+                    {ch.isVocal && (
+                      <span class="vocal-count">{ch.users}</span>
+                    )}
+                    {!ch.isVocal && (
+                      <span class="notif-count" data-notif-count={ch.id}>0</span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="user-panel">
+          <div class="user-avatar">T</div>
+          <div class="user-info">
+            <span class="user-name">Toi</span>
+            <span class="user-status">En ligne</span>
+          </div>
+          <div class="user-icons">
+            <span>🎤</span>
+            <span>🎧</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Area -->
+      <div class="chat-area">
+        <div class="chat-header">
+          <span class="chat-icon">💬</span>
+          <span class="chat-name" id="chat-channel-name">général</span>
+          <span class="chat-desc">Discussions générales entre entrepreneurs</span>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+          <!-- Messages will be injected by JS -->
+          <div class="typing-indicator" id="typing-indicator">
+            <span class="typing-avatar">T</span>
+            <span class="typing-text"><strong>Thomas_Ads</strong> est en train d'écrire...</span>
+          </div>
+        </div>
+
+        <div class="chat-input-area">
+          <button class="input-btn">+</button>
+          <input type="text" class="chat-input" placeholder="Envoyer un message dans #général" disabled />
+          <div class="input-icons">
+            <span>😀</span>
+            <span>🎁</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Members Sidebar -->
+      <div class="members-bar">
+        <div class="members-title">EN LIGNE — 127</div>
+        <div class="members-list">
+          <div class="member-item">
+            <span class="member-avatar gold">F</span>
+            <div class="member-info">
+              <span class="member-name gold">Focus Team</span>
+              <span class="member-role">Admin</span>
+            </div>
+          </div>
+          <div class="member-item">
+            <span class="member-avatar" style="background: #5865F2;">T</span>
+            <div class="member-info">
+              <span class="member-name">Thomas_Ads</span>
+              <span class="member-status">💬 Parle dans #général</span>
+            </div>
+          </div>
+          <div class="member-item">
+            <span class="member-avatar" style="background: #EC4899;">J</span>
+            <div class="member-info">
+              <span class="member-name">Julie_Ecom</span>
+            </div>
+          </div>
+          <div class="member-item">
+            <span class="member-avatar" style="background: #F59E0B;">K</span>
+            <div class="member-info">
+              <span class="member-name">Karim_Drop</span>
+            </div>
+          </div>
+          <div class="member-item">
+            <span class="member-avatar" style="background: #10B981;">E</span>
+            <div class="member-info">
+              <span class="member-name">Emma_SMMA</span>
+            </div>
+          </div>
+          <div class="member-item">
+            <span class="member-avatar" style="background: #8B5CF6;">L</span>
+            <div class="member-info">
+              <span class="member-name">Lucas_Crypto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Notifications -->
+    <div class="discord-notifs">
+      <div class="discord-notif notif-1" data-dn="1">
+        <span class="dn-icon">💰</span>
+        <span class="dn-text">Nouveau message dans #vos-chiffres</span>
+      </div>
+      <div class="discord-notif notif-2" data-dn="2">
+        <span class="dn-icon">🎥</span>
+        <span class="dn-text">Live en cours : Scaling Meta</span>
+      </div>
+      <div class="discord-notif notif-3" data-dn="3">
+        <span class="dn-icon">🔔</span>
+        <span class="dn-text">+5 nouveaux membres</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section-cta">
+    <AnimatedCTA 
+      href="#pricing"
+      label="Rejoindre"
+      title="Accéder au Discord"
+      subtitle="+1000 membres • 10€/mois"
+      variant="gold"
+    />
+  </div>
+</section>
+
+<style>
+  .discord-section {
+    position: relative;
+    width: 100%;
+    padding: 4rem 1.25rem;
+    background: var(--bg-section);
+    overflow: hidden;
+  }
+
+  /* Header */
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-card);
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .badge-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--text-primary);
+  }
+
+  .text-gradient {
+    background: linear-gradient(180deg, var(--gold-light), var(--gold), var(--gold-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-top: 1rem;
+  }
+
+  .section-desc strong { color: var(--text-primary); }
+  .section-desc .gold { color: var(--gold); }
+
+  /* Discord Container */
+  .discord-container {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .discord-interface {
+    display: flex;
+    height: 400px;
+    background: var(--discord-bg);
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--border-medium);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  }
+
+  @media (min-width: 768px) {
+    .discord-interface {
+      height: 450px;
+    }
+  }
+
+  /* Server Bar */
+  .server-bar {
+    width: 4.5rem;
+    background: #1e1f22;
+    padding: 0.75rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .server-bar {
+      display: flex;
+    }
+  }
+
+  .server-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--discord-sidebar);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    color: var(--discord-text);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .server-icon:hover,
+  .server-icon.active {
+    border-radius: 1rem;
+    background: #5865f2;
+    color: white;
+  }
+
+  .server-icon.active span {
+    font-weight: 900;
+    font-size: 1rem;
+  }
+
+  .server-icon.add {
+    background: transparent;
+    border: 2px dashed var(--discord-text);
+    color: #22c55e;
+    font-size: 1.25rem;
+  }
+
+  .server-divider {
+    width: 2rem;
+    height: 2px;
+    background: var(--discord-sidebar);
+    margin: 0.25rem 0;
+  }
+
+  /* Channels Bar */
+  .channels-bar {
+    flex-shrink: 0;
+    width: 100px;
+    background: var(--discord-sidebar);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  @media (min-width: 480px) {
+    .channels-bar {
+      width: 130px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .channels-bar {
+      width: 180px;
+    }
+  }
+
+  .server-header {
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-light);
+    cursor: pointer;
+  }
+
+  .server-name {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+  }
+
+  .server-chevron {
+    font-size: 0.625rem;
+    color: var(--discord-text);
+  }
+
+  .channels-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-medium) transparent;
+  }
+
+  .channel-category {
+    margin-bottom: 1rem;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--discord-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .category-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .channel-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 0.8125rem;
+    color: var(--discord-text);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+  }
+
+  .channel-btn:hover {
+    background: var(--discord-hover);
+    color: var(--text-primary);
+  }
+
+  .channel-btn.active {
+    background: var(--discord-hover);
+    color: var(--text-primary);
+  }
+
+  .channel-icon {
+    font-size: 0.875rem;
+  }
+
+  .channel-name {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .vocal-count {
+    font-size: 0.625rem;
+    background: var(--discord-bg);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    color: var(--gold);
+  }
+
+  .notif-count {
+    min-width: 1rem;
+    height: 1rem;
+    background: #ed4245;
+    border-radius: 9999px;
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: white;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.25rem;
+  }
+
+  .notif-count.active {
+    display: flex;
+    animation: notifBounce 0.3s ease;
+  }
+
+  @keyframes notifBounce {
+    0% { transform: scale(0.5); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  .user-panel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem;
+    background: #232428;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .user-avatar {
+    width: 2rem;
+    height: 2rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: black;
+  }
+
+  .user-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .user-name {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .user-status {
+    font-size: 0.625rem;
+    color: var(--gold);
+  }
+
+  .user-icons {
+    display: flex;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    opacity: 0.6;
+  }
+
+  /* Chat Area */
+  .chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--discord-chat);
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-light);
+    background: var(--discord-chat);
+  }
+
+  .chat-icon {
+    font-size: 1rem;
+    color: var(--discord-text);
+  }
+
+  .chat-name {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+  }
+
+  .chat-desc {
+    font-size: 0.625rem;
+    color: var(--discord-text);
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .chat-desc {
+      display: block;
+    }
+  }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  @media (min-width: 480px) {
+    .chat-messages {
+      padding: 12px 16px;
+      gap: 12px;
+    }
+  }
+
+  @keyframes messageIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .role-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 5px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  @media (min-width: 480px) {
+    .role-badge {
+      font-size: 10px;
+      padding: 2px 6px;
+    }
+  }
+
+  .role-badge.admin {
+    background: var(--gold);
+    color: black;
+  }
+
+  .role-badge.ecom {
+    background: #95bf47;
+    color: white;
+  }
+
+  .role-badge.ads {
+    background: #0081FB;
+    color: white;
+  }
+
+  .role-badge.smma {
+    background: #8B5CF6;
+    color: white;
+  }
+
+  .role-badge.crypto {
+    background: #F7931A;
+    color: white;
+  }
+
+  .role-badge.seo {
+    background: #34a853;
+    color: white;
+  }
+
+  .role-badge.auto {
+    background: #ff6600;
+    color: white;
+  }
+
+  .role-badge.member {
+    background: var(--discord-hover);
+    color: var(--discord-text);
+  }
+
+  .reaction {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px 8px;
+    background: var(--discord-hover);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--discord-text);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .reaction:hover {
+    background: var(--discord-input);
+    border-color: var(--border-medium);
+  }
+
+  .admin-avatar {
+    border: 2px solid var(--gold) !important;
+  }
+
+  .msg-author.gold {
+    color: var(--gold) !important;
+  }
+
+  .typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--discord-text);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .typing-indicator.active {
+    opacity: 1;
+  }
+
+  .typing-avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: #5865F2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .chat-input-area {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--discord-input);
+    margin: 0 1rem 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .input-btn {
+    width: 1.75rem;
+    height: 1.75rem;
+    min-width: 1.75rem;
+    min-height: 1.75rem;
+    background: var(--discord-text);
+    border: none;
+    border-radius: 50%;
+    color: var(--discord-bg);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .chat-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    outline: none;
+  }
+
+  .chat-input::placeholder {
+    color: var(--discord-text);
+  }
+
+  .input-icons {
+    display: flex;
+    gap: 0.25rem;
+    font-size: 1rem;
+    opacity: 0.6;
+  }
+
+  /* Members Bar */
+  .members-bar {
+    width: 180px;
+    background: var(--discord-sidebar);
+    padding: 1rem 0.5rem;
+    display: none;
+    flex-direction: column;
+    border-left: 1px solid var(--border-light);
+  }
+
+  @media (min-width: 1024px) {
+    .members-bar {
+      display: flex;
+    }
+  }
+
+  .members-title {
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--discord-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .member-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .member-item:hover {
+    background: var(--discord-hover);
+  }
+
+  .member-avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    background: var(--discord-text);
+  }
+
+  .member-avatar.gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: black;
+  }
+
+  .member-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .member-name {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .member-name.gold {
+    color: var(--gold);
+  }
+
+  .member-role,
+  .member-status {
+    font-size: 0.5625rem;
+    color: var(--discord-text);
+  }
+
+  /* Floating Notifications */
+  .discord-notifs {
+    position: absolute;
+    top: 0;
+    right: -1rem;
+    width: 200px;
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+  }
+
+  @media (min-width: 1200px) {
+    .discord-notifs {
+      display: flex;
+    }
+  }
+
+  .discord-notif {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: 0.5rem;
+    font-size: 0.625rem;
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateX(20px);
+    animation: notifSlide 8s ease-in-out infinite;
+  }
+
+  .notif-1 { animation-delay: 0s; }
+  .notif-2 { animation-delay: 2.5s; }
+  .notif-3 { animation-delay: 5s; }
+
+  @keyframes notifSlide {
+    0%, 100% { opacity: 0; transform: translateX(20px); }
+    10%, 30% { opacity: 1; transform: translateX(0); }
+    40%, 100% { opacity: 0; transform: translateX(-20px); }
+  }
+
+  .dn-icon {
+    font-size: 0.875rem;
+  }
+
+  /* CTA */
+  .section-cta {
+    text-align: center;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // ========================================
+    // SMART INTERVAL MANAGER
+    // ========================================
+    const discordSection = document.getElementById('discord');
+    let isVisible = false;
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+      if (isVisible) startAllIntervals();
+      else stopAllIntervals();
+    }, { threshold: 0.1 });
+    
+    if (discordSection) sectionObserver.observe(discordSection);
+    
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopAllIntervals();
+      else if (isVisible) startAllIntervals();
+    });
+    
+    const intervalConfigs = [];
+    
+    const createInterval = (callback, delay) => {
+      const config = { callback, delay, id: null };
+      intervalConfigs.push(config);
+      if (isVisible) config.id = setInterval(callback, delay);
+    };
+    
+    const startAllIntervals = () => {
+      intervalConfigs.forEach(config => {
+        if (!config.id) config.id = setInterval(config.callback, config.delay);
+      });
+    };
+    
+    const stopAllIntervals = () => {
+      intervalConfigs.forEach(config => {
+        if (config.id) { clearInterval(config.id); config.id = null; }
+      });
+    };
+
+    const chatMessages = document.getElementById('chat-messages');
+    const typingIndicator = document.getElementById('typing-indicator');
+    const channelNameEl = document.getElementById('chat-channel-name');
+    const channelBtns = document.querySelectorAll('.channel-btn:not(.vocal)');
+    const notifCounts = document.querySelectorAll('[data-notif-count]');
+
+    let currentChannel = 'general';
+
+    // Messages data embedded directly - PERTINENTS PAR SALON
+    const channelMessages = {
+      // ANNONCES - Annonces officielles Focus Team
+      annonce: [
+        { user: 'Focus Team', avatar: 'F', color: '#D4AF37', msg: '🚨 Nouveau live demain 19h ! Scaling Meta Ads jusqu\'à 10K€/jour', time: 'Aujourd\'hui' },
+        { user: 'Focus Team', avatar: 'F', color: '#D4AF37', msg: '📢 Mise à jour du Coffre : 15 nouveaux templates Notion ajoutés', time: 'Hier' },
+        { user: 'Focus Team', avatar: 'F', color: '#D4AF37', msg: '🎯 Nouveau partenariat avec un expert fiscalité ce weekend', time: 'Lundi' },
+      ],
+      // REDIFF - Rediffusions de lives
+      rediff: [
+        { user: 'Sonny', avatar: 'S', color: '#D4AF37', msg: '📺 Rediff du live Ads disponible - "Scale à 50K/mois"', time: '10:00' },
+        { user: 'Zaid', avatar: 'Z', color: '#8B5CF6', msg: '🎬 Replay E-com : Comment trouver un winner en 24h', time: '11:30' },
+        { user: 'Jamel', avatar: 'J', color: '#EC4899', msg: '📹 Rediff SMMA : Closer son premier client 3K/mois', time: '14:00' },
+        { user: 'Midou', avatar: 'M', color: '#10B981', msg: '🎥 Live SEO de la semaine dispo dans le coffre', time: '16:45' },
+      ],
+      // LIVE PUBLIC - Horaires et annonces de lives
+      live: [
+        { user: 'Sonny', avatar: 'S', color: '#D4AF37', msg: '🔴 LIVE CE SOIR 21h : Audit de vos stores en direct !', time: '15:00' },
+        { user: 'Caldi', avatar: 'C', color: '#EF4444', msg: '📅 Live demain 19h : Q&A Meta Ads - Préparez vos questions', time: '18:30' },
+        { user: 'Zaid', avatar: 'Z', color: '#8B5CF6', msg: '🎙️ Jeudi 20h : Masterclass TikTok Ads avec invité spécial', time: '12:00' },
+        { user: 'Jamel', avatar: 'J', color: '#EC4899', msg: '🔥 Vendredi 18h : Comment closer en DM - Techniques avancées', time: '09:15' },
+      ],
+      // PROGRAMME-LIVE - Planning des lives
+      programme: [
+        { user: 'Focus Team', avatar: 'F', color: '#D4AF37', msg: '📆 Programme Semaine 4 :\n• Lundi 19h : E-com\n• Mercredi 20h : Ads\n• Vendredi 18h : Q&A', time: 'Dimanche' },
+        { user: 'Focus Team', avatar: 'F', color: '#D4AF37', msg: '🗓️ Live exceptionnel samedi 15h : Scaling 0 à 100K/mois', time: 'Jeudi' },
+      ],
+      // GENERAL - Discussions générales business
+      general: [
+        { user: 'Thomas_Ads', avatar: 'T', color: '#5865F2', msg: 'Qui a testé les nouvelles audiences Meta ?', time: '14:32' },
+        { user: 'Julie_Ecom', avatar: 'J', color: '#EC4899', msg: 'J\'ai scale de 500 à 2K€/jour cette semaine 🔥', time: '14:35' },
+        { user: 'Karim_Drop', avatar: 'K', color: '#F59E0B', msg: 'Quelqu\'un utilise CJ Dropshipping ?', time: '14:38' },
+        { user: 'Emma_SMMA', avatar: 'E', color: '#10B981', msg: 'Premier client à 3K/mois signé ce matin !', time: '14:42' },
+      ],
+      // CONCOURS - Annonces de concours
+      concours: [
+        { user: 'Focus Team', avatar: 'F', color: '#D4AF37', msg: '🏆 CONCOURS : Gagne 1 mois gratuit ! Partage ton meilleur conseil business', time: 'Hier' },
+        { user: 'Lucas_Crypto', avatar: 'L', color: '#8B5CF6', msg: 'Mon conseil : Automatise tout ce qui peut l\'être 🚀', time: '14:22' },
+        { user: 'Sophie_Drop', avatar: 'S', color: '#F472B6', msg: 'Toujours tester 10 produits minimum avant de scale', time: '15:05' },
+      ],
+      // VOS-CHIFFRES - Résultats et performances
+      chiffres: [
+        { user: 'Lucas_Crypto', avatar: 'L', color: '#8B5CF6', msg: '📊 Store Shopify : 12,847€ ce mois. ATH battu !', time: '12:15' },
+        { user: 'Alex_SEO', avatar: 'A', color: '#06B6D4', msg: '💰 Affiliation : 4,200€ en passif ce mois', time: '13:22' },
+        { user: 'Maxime_Auto', avatar: 'M', color: '#EF4444', msg: '🚗 Vente 911 : +18,000€ de marge nette', time: '15:45' },
+        { user: 'Emma_SMMA', avatar: 'E', color: '#10B981', msg: '💵 3 clients signés cette semaine : 7,500€/mois récurrent', time: '16:30' },
+      ],
+      // E-COMMERCE - Discussions e-com
+      ecom: [
+        { user: 'Sophie_Drop', avatar: 'S', color: '#F472B6', msg: 'Quel agent vous utilisez pour les bijoux ?', time: '11:20' },
+        { user: 'Nathan_Ecom', avatar: 'N', color: '#22C55E', msg: 'J\'ai trouvé un winner en beauté, CTR à 4.2%', time: '11:45' },
+        { user: 'Julie_Ecom', avatar: 'J', color: '#EC4899', msg: 'CJ ou Wiio pour les délais de livraison ?', time: '12:30' },
+        { user: 'Karim_Drop', avatar: 'K', color: '#F59E0B', msg: 'Ma fiche produit convertit à 3.8%, qui veut review ?', time: '14:15' },
+      ],
+      // ADS - Publicité Meta/TikTok/Google
+      ads: [
+        { user: 'Romain_Meta', avatar: 'R', color: '#0081FB', msg: 'ASC vs CBO sur du scale, vos retours ?', time: '10:30' },
+        { user: 'Manon_TikTok', avatar: 'M', color: '#FE2C55', msg: 'TikTok Ads explose en ce moment, CPM à 2€', time: '10:55' },
+        { user: 'Thomas_Ads', avatar: 'T', color: '#5865F2', msg: 'Lookalike 1% vs 3% sur une audience froide ?', time: '11:20' },
+        { user: 'Alex_Google', avatar: 'A', color: '#34a853', msg: 'Performance Max vs Search pour du lead gen ?', time: '13:00' },
+      ],
+      // SMMA - Agence marketing
+      smma: [
+        { user: 'Emma_SMMA', avatar: 'E', color: '#10B981', msg: 'Comment vous gérez les clients difficiles ?', time: '09:30' },
+        { user: 'Pierre_Agency', avatar: 'P', color: '#8B5CF6', msg: 'Quel outil pour le reporting client ? Databox ?', time: '10:15' },
+        { user: 'Marie_SMMA', avatar: 'M', color: '#EC4899', msg: 'Combien vous facturez pour du Meta Ads management ?', time: '11:00' },
+      ],
+      // VOS-AVIS - Témoignages
+      avis: [
+        { user: 'Nathan_Ecom', avatar: 'N', color: '#22C55E', msg: '⭐⭐⭐⭐⭐ Focus m\'a permis de passer de 0 à 5K/mois en 3 mois', time: '10:00' },
+        { user: 'Sophie_Drop', avatar: 'S', color: '#F472B6', msg: 'La communauté est incroyable, toujours quelqu\'un pour aider 🙏', time: '14:30' },
+        { user: 'Romain_Meta', avatar: 'R', color: '#0081FB', msg: 'Les lives sont une mine d\'or, j\'ai optimisé mes ads grâce à Sonny', time: '16:00' },
+      ],
+    };
+
+    // Notification counters state
+    const notifState = {};
+    notifCounts.forEach(el => {
+      const id = el.getAttribute('data-notif-count');
+      notifState[id] = 0;
+    });
+
+    // Get role badge info
+    const getRoleInfo = (user) => {
+      if (user === 'Focus Team') return { cls: 'admin', text: 'ADMIN' };
+      if (user.includes('_Ecom') || user.includes('_Drop')) return { cls: 'ecom', text: 'E-COM' };
+      if (user.includes('_Ads') || user.includes('_Meta') || user.includes('_TikTok')) return { cls: 'ads', text: 'ADS' };
+      if (user.includes('_SMMA')) return { cls: 'smma', text: 'SMMA' };
+      if (user.includes('_Crypto')) return { cls: 'crypto', text: 'CRYPTO' };
+      if (user.includes('_SEO')) return { cls: 'seo', text: 'SEO' };
+      if (user.includes('_Auto')) return { cls: 'auto', text: 'AUTO' };
+      return { cls: 'member', text: 'MEMBRE' };
+    };
+
+    // Create message element using DOM methods (more reliable)
+    const createMessageElement = (msg) => {
+      const isAdmin = msg.user === 'Focus Team';
+      const avatarColor = msg.color || '#D4AF37';
+      const roleInfo = getRoleInfo(msg.user);
+      const reactions = Math.floor(Math.random() * 10) + 1;
+      const hasFireReaction = Math.random() > 0.5;
+      const fireCount = Math.floor(Math.random() * 5) + 1;
+
+      // Main message container
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'message';
+      messageDiv.style.cssText = 'display: flex; flex-direction: row; align-items: flex-start; gap: 12px; padding: 8px 0;';
+
+      // Avatar
+      const avatar = document.createElement('div');
+      avatar.className = 'msg-avatar' + (isAdmin ? ' admin-avatar' : '');
+      avatar.style.cssText = `
+        width: 40px; height: 40px; min-width: 40px; min-height: 40px;
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        font-size: 14px; font-weight: 700; color: white; flex-shrink: 0;
+        background-color: ${avatarColor};
+      `;
+      avatar.textContent = msg.avatar;
+      messageDiv.appendChild(avatar);
+
+      // Content container
+      const content = document.createElement('div');
+      content.className = 'msg-content';
+      content.style.cssText = 'flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px;';
+
+      // Header row
+      const header = document.createElement('div');
+      header.className = 'msg-header';
+      header.style.cssText = 'display: flex; align-items: center; gap: 8px; flex-wrap: wrap;';
+
+      // Author name
+      const author = document.createElement('span');
+      author.className = 'msg-author' + (isAdmin ? ' gold' : '');
+      author.style.cssText = 'font-weight: 600; font-size: 14px; color: ' + (isAdmin ? 'var(--gold)' : 'var(--text-primary)') + ';';
+      author.textContent = msg.user;
+      header.appendChild(author);
+
+      // Role badge
+      const badge = document.createElement('span');
+      badge.className = 'role-badge ' + roleInfo.cls;
+      badge.textContent = roleInfo.text;
+      header.appendChild(badge);
+
+      // Time
+      const time = document.createElement('span');
+      time.className = 'msg-time';
+      time.style.cssText = 'font-size: 11px; color: var(--discord-text);';
+      time.textContent = msg.time;
+      header.appendChild(time);
+
+      content.appendChild(header);
+
+      // Message text
+      const text = document.createElement('div');
+      text.className = 'msg-text';
+      text.style.cssText = 'font-size: 14px; color: var(--text-secondary); line-height: 1.5;';
+      text.textContent = msg.msg;
+      content.appendChild(text);
+
+      // Reactions
+      const reactionsDiv = document.createElement('div');
+      reactionsDiv.className = 'msg-reactions';
+      reactionsDiv.style.cssText = 'display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap;';
+
+      const reaction1 = document.createElement('span');
+      reaction1.className = 'reaction';
+      reaction1.textContent = '👍 ' + reactions;
+      reactionsDiv.appendChild(reaction1);
+
+      if (hasFireReaction) {
+        const reaction2 = document.createElement('span');
+        reaction2.className = 'reaction';
+        reaction2.textContent = '🔥 ' + fireCount;
+        reactionsDiv.appendChild(reaction2);
+      }
+
+      content.appendChild(reactionsDiv);
+      messageDiv.appendChild(content);
+
+      return messageDiv;
+    };
+
+    // Render messages for a channel
+    const renderMessages = (channelId) => {
+      const messages = channelMessages[channelId] || channelMessages.general;
+      
+      // Clear existing messages
+      while (chatMessages.firstChild) {
+        chatMessages.removeChild(chatMessages.firstChild);
+      }
+      
+      messages.forEach((msg, idx) => {
+        setTimeout(() => {
+          const msgEl = createMessageElement(msg);
+          msgEl.style.animation = 'messageIn 0.3s ease';
+          chatMessages.appendChild(msgEl);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, idx * 400);
+      });
+
+      // Re-add typing indicator
+      setTimeout(() => {
+        chatMessages.appendChild(typingIndicator);
+      }, messages.length * 400 + 100);
+    };
+
+    // Update notification counter
+    const updateNotifCounter = (channelId) => {
+      const el = document.querySelector('[data-notif-count="' + channelId + '"]');
+      if (el && channelId !== currentChannel) {
+        notifState[channelId] = (notifState[channelId] || 0) + Math.floor(Math.random() * 3) + 1;
+        el.textContent = notifState[channelId] > 99 ? '99+' : notifState[channelId];
+        el.classList.add('active');
+      }
+    };
+
+    // Clear notification counter
+    const clearNotifCounter = (channelId) => {
+      const el = document.querySelector('[data-notif-count="' + channelId + '"]');
+      if (el) {
+        notifState[channelId] = 0;
+        el.textContent = '0';
+        el.classList.remove('active');
+      }
+    };
+
+    // Channel switching
+    channelBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const channelId = btn.getAttribute('data-channel');
+        if (!channelId) return;
+
+        channelBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const channelName = btn.querySelector('.channel-name');
+        if (channelName && channelNameEl) {
+          channelNameEl.textContent = channelName.textContent || 'général';
+        }
+
+        currentChannel = channelId;
+        renderMessages(channelId);
+        clearNotifCounter(channelId);
+      });
+    });
+
+    // Initial render
+    renderMessages('general');
+
+    // Typing indicator animation
+    createInterval(() => {
+      typingIndicator.classList.add('active');
+      setTimeout(() => {
+        typingIndicator.classList.remove('active');
+      }, 3000);
+    }, 6000);
+
+    // Increment notification counters randomly
+    const channelIds = ['annonce', 'programme', 'concours', 'presentation', 'ecom', 'ads', 'smma', 'chiffres', 'avis'];
+    createInterval(() => {
+      const randomChannel = channelIds[Math.floor(Math.random() * channelIds.length)];
+      updateNotifCounter(randomChannel);
+    }, 2000);
+  });
+</script>

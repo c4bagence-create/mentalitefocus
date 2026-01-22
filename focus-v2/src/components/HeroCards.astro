@@ -1,0 +1,508 @@
+---
+/**
+ * HeroCards - Layout exact + animations dynamiques sur toutes les cartes
+ */
+---
+
+<div class="cards-wrapper">
+  
+  <!-- SHOPIFY - Haut gauche, GRANDE -->
+  <div class="hero-card card-shopify" id="card-shopify">
+    <div class="notif-badge" style="background:#95BF47;color:#002e25">NOUVELLE COMMANDE</div>
+    <div class="card-header">
+      <svg class="logo-svg" viewBox="0 0 109 124" fill="none"><path d="M94.27 24.7c-.07-.6-.57-.92-1-.95-.4-.03-8.8-.13-8.8-.13s-5.84-5.67-6.57-6.4c-.72-.73-2.14-.5-2.68-.34 0 0-1.4.43-3.72 1.16a25.52 25.52 0 00-1.76-4.32C66.8 7.25 62.03 4.3 56.37 4.3c-.28 0-.56 0-.84.03-.4-.5-.88-.9-1.4-1.26C51.6 1.13 48.62 0 45.17.08c-6.72.16-13.4 5.03-18.86 13.72-3.84 6.1-6.76 13.78-7.6 19.7l-13.2 4.1c-4.13 1.3-4.25 1.43-4.78 5.32C.3 46.4-8.1 109.88-8.1 109.88L74.2 124l43.68-9.43S94.34 25.3 94.27 24.7z" fill="#95BF47"/><path d="M93.27 23.75c-.42-.03-8.8-.13-8.8-.13s-5.85-5.67-6.58-6.4c-.26-.26-.6-.4-.97-.45v107.1l43.68-9.43S94.34 25.3 94.27 24.7c-.07-.6-.57-.92-1-.95z" fill="#5E8E3E"/></svg>
+      <span class="live-indicator">LIVE</span>
+    </div>
+    <div class="card-value" id="shop-val">1,420 €</div>
+    <div class="card-label" style="color:#95BF47">Total sales today</div>
+    <div class="shop-orders">
+      <div class="order-item" id="order1">📦 Commande #4521</div>
+      <div class="order-item" id="order2">📦 Commande #4522</div>
+    </div>
+  </div>
+
+  <!-- FOCUS AI - Haut centre, descendu -->
+  <div class="hero-card card-gpt" id="card-gpt">
+    <div class="terminal-bar">
+      <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+      <span class="terminal-title">FOCUS AI v4.0</span>
+    </div>
+    <div class="terminal-body">
+      <div class="term-line"><span class="prompt">$</span> <span id="ai-cmd"></span><span class="cursor">|</span></div>
+      <div class="term-output" id="ai-output"></div>
+    </div>
+  </div>
+
+  <!-- BITCOIN - Haut droite, GRANDE -->
+  <div class="hero-card card-bitcoin" id="card-crypto">
+    <div class="notif-badge" style="background:#F7931A;color:black">📈 PUMP</div>
+    <div class="crypto-row">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" class="btc-icon" alt="BTC">
+      <span class="crypto-name">Bitcoin</span>
+      <span class="live-badge">LIVE</span>
+    </div>
+    <div class="crypto-price-row">
+      <span class="crypto-price" id="btc-val">$98,420</span>
+      <span class="crypto-pct" id="btc-percent">+2.4%</span>
+    </div>
+    <div class="crypto-chart" id="crypto-chart"></div>
+  </div>
+
+  <!-- REVOLUT - Milieu gauche -->
+  <div class="hero-card card-revolut" id="card-revolut">
+    <div class="notif-badge" style="background:#BFFF37;color:black;font-weight:800">PAIEMENT EFFECTUÉ</div>
+    <div class="revolut-header">
+      <svg class="revolut-logo" viewBox="0 0 120 32"><path d="M6 8H13C15.21 8 17 9.79 17 12C17 13.86 15.76 15.41 14.08 15.86L18 22H14.5L11 16H9V22H6V8ZM9 13H13C13.55 13 14 12.55 14 12C14 11.45 13.55 11 13 11H9V13Z" fill="#7F84F6"/><circle cx="21" cy="21" r="4" fill="#191C1F" stroke="#7F84F6" stroke-width="2"/><text x="35" y="21" font-family="Arial" font-weight="700" font-size="12" fill="#FFF">Revolut</text></svg>
+      <span class="pulse-dot" style="background:#BFFF37"></span>
+    </div>
+    <div class="revolut-list" id="revolut-list"></div>
+  </div>
+
+  <!-- STRIPE - Bas gauche, moyenne -->
+  <div class="hero-card card-stripe" id="card-stripe">
+    <div class="notif-badge" style="background:white;color:#635BFF">💰 PAIEMENT REÇU</div>
+    <div class="stripe-text">stripe</div>
+    <div class="card-value" id="stripe-val">+ 997 €</div>
+    <div class="card-label" style="color:rgba(255,255,255,0.7)">Closing - High Ticket</div>
+    <div class="stripe-graph" id="stripe-graph"></div>
+  </div>
+
+  <!-- QONTO - Droite milieu, GRANDE -->
+  <div class="hero-card card-qonto" id="card-qonto">
+    <div class="notif-badge" style="background:#63EBE4;color:#262A3E">VIREMENT REÇU</div>
+    <div class="qonto-header">
+      <svg class="qonto-logo" viewBox="0 0 120 32"><circle cx="16" cy="16" r="10" stroke="#6B5AED" stroke-width="2.5" fill="none"/><circle cx="16" cy="16" r="4" fill="#6B5AED"/><circle cx="12" cy="12" r="2" fill="#63EBE4"/><circle cx="20" cy="12" r="2" fill="#63EBE4"/><circle cx="12" cy="20" r="2" fill="#63EBE4"/><circle cx="20" cy="20" r="2" fill="#63EBE4"/><text x="35" y="21" font-family="Arial" font-weight="700" font-size="13" fill="#FAFAFC">Qonto</text></svg>
+      <span class="live-indicator" style="background:rgba(99,235,228,0.2);color:#63EBE4">LIVE</span>
+    </div>
+    <div class="qonto-val" id="qonto-val">+ 4,300 €</div>
+    <div class="card-label" style="color:rgba(250,250,252,0.6)">Virement instantané reçu</div>
+    <div class="qonto-progress"><div class="qonto-bar" id="qonto-bar"></div></div>
+  </div>
+
+  <!-- TIKTOK - Bas centre-droite, TRÈS GRANDE -->
+  <div class="hero-card card-tiktok" id="card-tiktok">
+    <div class="notif-badge" style="background:linear-gradient(135deg,#FE2C55,#FF0050);color:white">🔥 VIRAL</div>
+    <div class="tt-header">
+      <svg class="tt-logo" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" fill="#FE2C55" transform="translate(2,2)"/><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" fill="#00F2EA" transform="translate(-2,-2)"/><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" fill="white"/></svg>
+      <span class="pulse-dot glow-pink"></span>
+    </div>
+    <div class="tt-views" id="tt-views">10.2M</div>
+    <div class="tt-label">Vues • Tendance #1</div>
+    <div class="tt-tags">
+      <span class="tag-likes">❤️ <span id="tt-likes">892K</span></span>
+      <span class="tag-comments">💬 <span id="tt-comments">12.4K</span></span>
+    </div>
+  </div>
+
+  <!-- YOUTUBE - Bas droite -->
+  <div class="hero-card card-youtube" id="card-youtube">
+    <div class="notif-badge" style="background:#FF0000;color:white">🔔 NOUVEL ABONNÉ</div>
+    <div class="yt-header">
+      <div class="yt-icon"><div class="yt-play"></div></div>
+      <span class="yt-name">YouTube</span>
+    </div>
+    <div class="card-value" id="yt-val">1.2M</div>
+    <div class="card-label" style="color:#9CA3AF">Abonnés</div>
+    <div class="yt-bar"><div class="yt-progress" id="yt-progress"></div></div>
+  </div>
+
+</div>
+
+<style>
+  .cards-wrapper { position: absolute; inset: 0; pointer-events: none; z-index: 10; }
+
+  .hero-card {
+    position: absolute; pointer-events: auto;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    font-family: 'Space Grotesk', sans-serif;
+    animation: float 6s ease-in-out infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+  }
+
+  .hero-card:hover {
+    transform: translateY(-10px) scale(1.05) !important;
+    box-shadow: 0 35px 60px -15px rgba(212, 175, 55, 0.5);
+    z-index: 30;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+    50% { transform: translateY(-12px) rotate(var(--r, 0deg)); }
+  }
+
+  /* BRANDED */
+  .card-shopify { background: linear-gradient(135deg, #002e25, #004c3f); border: 2px solid #95BF47; }
+  .card-gpt { background: linear-gradient(145deg, #0a0a0a, #111); border: 1px solid #D4AF37; overflow: hidden; }
+  .card-stripe { background: linear-gradient(135deg, #635BFF, #4B45B2); border: none; }
+  .card-bitcoin { background: linear-gradient(135deg, #0a0a0a, #1a1a1a); border: 2px solid #F7931A; }
+  .card-tiktok { background: linear-gradient(135deg, #000, #0a0a0a); border: 2px solid #FE2C55; }
+  .card-youtube { background: linear-gradient(135deg, #1a1a1a, #0f0f0f); border-left: 4px solid #FF0000; }
+  .card-qonto { background: linear-gradient(135deg, #1a1d2e, #262A3E); border: 2px solid #6B5AED; }
+  .card-revolut { background: linear-gradient(135deg, #0f1113, #191C1F); border: 2px solid #6FA0FF; }
+
+  .notif-badge {
+    position: absolute; top: 0; left: 0; width: 100%;
+    font-weight: 800; font-size: 10px; text-align: center; padding: 6px 0;
+    letter-spacing: 0.5px; transform: translateY(-100%);
+    transition: transform 0.3s ease; border-radius: 16px 16px 0 0;
+  }
+  .hero-card:hover .notif-badge, .hero-card.show-notif .notif-badge { transform: translateY(0); }
+
+  /* Live indicators */
+  .live-indicator { font-size: 9px; font-weight: 800; color: #22c55e; background: rgba(34,197,94,0.2); padding: 3px 8px; border-radius: 4px; animation: livePulse 1.5s infinite; }
+  .live-badge { font-size: 8px; font-weight: 800; color: #22c55e; background: rgba(34,197,94,0.2); padding: 2px 6px; border-radius: 4px; margin-left: auto; animation: livePulse 1.5s infinite; }
+  @keyframes livePulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+  .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .logo-svg { height: 40px; width: auto; }
+  .pulse-dot { width: 10px; height: 10px; border-radius: 50%; animation: pulse 2s infinite; }
+  .glow-pink { background: #FE2C55; box-shadow: 0 0 15px #FE2C55; }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.3); } }
+  .card-value { font-size: 36px; font-weight: 700; color: white; letter-spacing: -1px; }
+  .card-label { font-size: 11px; font-family: monospace; text-transform: uppercase; margin-top: 4px; }
+
+  /* SHOPIFY orders */
+  .shop-orders { margin-top: 10px; border-top: 1px solid rgba(149,191,71,0.3); padding-top: 8px; }
+  .order-item { font-size: 10px; color: #95BF47; padding: 3px 0; opacity: 0; animation: slideIn 0.5s forwards; }
+  @keyframes slideIn { to { opacity: 1; transform: translateX(0); } from { opacity: 0; transform: translateX(-10px); } }
+
+  /* TERMINAL / AI */
+  .terminal-bar { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: #000; border-radius: 16px 16px 0 0; margin: -18px -18px 10px -18px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.red { background: #ff5f57; }
+  .dot.yellow { background: #ffbd2e; }
+  .dot.green { background: #28c840; }
+  .terminal-title { font-size: 10px; font-weight: 600; color: #D4AF37; margin-left: auto; }
+  .terminal-body { font-family: 'Courier New', monospace; font-size: 11px; }
+  .term-line { color: #666; margin-bottom: 6px; }
+  .prompt { color: #D4AF37; }
+  .cursor { color: #D4AF37; animation: blink 0.8s infinite; }
+  @keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
+  .term-output { color: #10B981; font-weight: 600; min-height: 16px; }
+
+  /* STRIPE graph */
+  .stripe-text { font-size: 26px; font-weight: 700; color: white; font-style: italic; margin-bottom: 6px; }
+  .stripe-graph { display: flex; align-items: flex-end; gap: 4px; height: 35px; margin-top: 12px; }
+  :global(.stripe-bar) { flex: 1; background: rgba(255,255,255,0.4); border-radius: 2px; transition: height 0.4s ease, background 0.3s; }
+  :global(.stripe-bar.active) { background: white; }
+
+  /* CRYPTO */
+  .crypto-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .btc-icon { width: 28px; height: 28px; }
+  .crypto-name { font-weight: 700; color: white; font-size: 16px; }
+  .crypto-price-row { display: flex; justify-content: space-between; align-items: center; }
+  .crypto-price { font-size: 26px; font-weight: 700; font-family: monospace; color: white; }
+  .crypto-pct { font-family: monospace; font-size: 13px; padding: 4px 10px; border-radius: 6px; font-weight: 600; }
+  .crypto-chart { height: 32px; display: flex; align-items: flex-end; gap: 3px; margin-top: 12px; }
+  :global(.crypto-bar) { flex: 1; background: linear-gradient(to top, #F7931A, #FFB347); border-radius: 2px; transition: height 0.5s ease; }
+
+  /* TIKTOK */
+  .tt-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .tt-logo { width: 50px; height: 50px; filter: drop-shadow(0 0 10px rgba(254,44,85,0.5)); }
+  .tt-views { font-size: 38px; font-weight: 900; color: white; }
+  .tt-label { font-size: 11px; color: #9CA3AF; text-transform: uppercase; margin-bottom: 10px; }
+  .tt-tags { display: flex; gap: 10px; }
+  .tag-likes { font-size: 11px; padding: 5px 12px; border-radius: 12px; background: rgba(254,44,85,0.2); color: #FE2C55; font-weight: 600; }
+  .tag-comments { font-size: 11px; padding: 5px 12px; border-radius: 12px; background: rgba(0,242,234,0.2); color: #00F2EA; font-weight: 600; }
+
+  /* YOUTUBE */
+  .yt-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .yt-icon { width: 32px; height: 32px; background: #FF0000; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+  .yt-play { width: 0; height: 0; border-top: 6px solid transparent; border-left: 10px solid white; border-bottom: 6px solid transparent; margin-left: 2px; }
+  .yt-name { font-weight: 700; color: white; font-size: 18px; }
+  .yt-bar { height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; margin-top: 10px; overflow: hidden; }
+  .yt-progress { height: 100%; background: #FF0000; border-radius: 2px; transition: width 0.5s ease; }
+
+  /* QONTO */
+  .qonto-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .qonto-logo { height: 28px; }
+  .qonto-val { font-size: 32px; font-weight: 700; color: #63EBE4; }
+  .qonto-progress { height: 4px; background: rgba(99,235,228,0.2); border-radius: 2px; margin-top: 10px; overflow: hidden; }
+  .qonto-bar { height: 100%; background: #63EBE4; border-radius: 2px; transition: width 0.5s ease; }
+
+  /* REVOLUT */
+  .revolut-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .revolut-logo { height: 26px; }
+  .revolut-list { display: flex; flex-direction: column; gap: 6px; min-height: 50px; }
+  :global(.rev-item) { display: flex; justify-content: space-between; font-size: 12px; animation: revSlide 0.4s ease; }
+  :global(.rev-item span:first-child) { color: #C6D9FD; }
+  :global(.rev-item span:last-child) { color: #FFF; font-weight: 700; }
+  @keyframes revSlide { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ============================================
+     DESKTOP (> 1200px) - CARTES RAPPROCHÉES
+     ============================================ */
+  @media (min-width: 1201px) {
+    #card-shopify { width: 260px; padding: 20px; top: 15%; left: 5%; --r: -1deg; animation-delay: 0s; }
+    #card-gpt { width: 220px; padding: 16px; top: 14%; left: 36%; --r: 1deg; animation-delay: 0.5s; }
+    #card-crypto { width: 230px; padding: 18px; top: 12%; right: 6%; --r: 2deg; animation-delay: 0.3s; }
+    #card-revolut { width: 210px; padding: 16px; top: 42%; left: 4%; --r: -2deg; animation-delay: 1s; }
+    #card-stripe { width: 220px; padding: 18px; bottom: 22%; left: 6%; --r: 2deg; animation-delay: 1.5s; }
+    #card-qonto { width: 240px; padding: 18px; top: 35%; right: 5%; --r: -1deg; animation-delay: 0.8s; }
+    #card-tiktok { width: 260px; padding: 20px; bottom: 18%; right: 25%; --r: 1deg; animation-delay: 1.8s; }
+    #card-youtube { width: 190px; padding: 16px; bottom: 24%; right: 6%; --r: -2deg; animation-delay: 2s; }
+  }
+
+  /* TABLETTE */
+  @media (min-width: 769px) and (max-width: 1200px) {
+    #card-shopify { width: 190px; padding: 14px; top: 8%; left: 1%; }
+    #card-gpt { width: 170px; padding: 12px; top: 8%; left: 35%; }
+    #card-crypto { width: 175px; padding: 14px; top: 6%; right: 2%; }
+    #card-revolut { width: 165px; padding: 14px; top: 38%; left: 1%; }
+    #card-stripe { width: 170px; padding: 14px; bottom: 12%; left: 2%; }
+    #card-qonto { width: 180px; padding: 14px; top: 28%; right: 1%; }
+    #card-tiktok { width: 185px; padding: 14px; bottom: 8%; right: 15%; }
+    #card-youtube { width: 150px; padding: 12px; bottom: 15%; right: 2%; }
+    
+    .logo-svg { height: 28px; } .card-value { font-size: 24px; } .card-label { font-size: 9px; }
+    .tt-logo { width: 32px; height: 32px; } .tt-views { font-size: 24px; } .tt-tags { display: none; }
+    .crypto-price { font-size: 20px; } .qonto-val { font-size: 24px; }
+    .shop-orders, .stripe-graph, .qonto-progress, .yt-bar { display: none; }
+    .notif-badge { display: none; }
+  }
+
+  /* MOBILE - CARTES LIBRES/DISPERSÉES */
+  @media (max-width: 768px) {
+    .hero-card { border-radius: 12px; }
+    
+    #card-shopify { width: 105px; padding: 9px; top: 14%; left: 2%; --r: -3deg; }
+    #card-gpt { width: 95px; padding: 8px; top: 18%; left: 35%; --r: 2deg; }
+    #card-crypto { width: 100px; padding: 9px; top: 12%; right: 2%; --r: 1deg; }
+    #card-revolut { width: 100px; padding: 9px; top: 28%; left: 0; --r: -2deg; }
+    #card-stripe { width: 100px; padding: 9px; top: 50%; left: 2%; --r: 3deg; }
+    #card-qonto { width: 105px; padding: 9px; top: 24%; right: 0; --r: -1deg; }
+    #card-tiktok { width: 105px; padding: 9px; top: 48%; right: 2%; --r: 2deg; }
+    #card-youtube { width: 95px; padding: 8px; top: 68%; right: 5%; --r: -2deg; }
+    
+    .logo-svg { height: 20px; } .card-value { font-size: 16px; } .card-label { font-size: 7px; }
+    .notif-badge, .shop-orders, .stripe-graph, .qonto-progress, .yt-bar { display: none; }
+    .pulse-dot { width: 6px; height: 6px; }
+    .terminal-bar { padding: 5px 8px; margin: -10px -10px 6px -10px; }
+    .dot { width: 7px; height: 7px; } .terminal-title { font-size: 8px; }
+    .terminal-body { font-size: 8px; } .term-output { min-height: 12px; }
+    .btc-icon { width: 16px; height: 16px; } .crypto-name { font-size: 11px; }
+    .crypto-price { font-size: 14px; } .crypto-pct { font-size: 9px; padding: 2px 5px; }
+    .crypto-chart { height: 18px; } .live-badge { font-size: 6px; padding: 1px 4px; }
+    .tt-logo { width: 24px; height: 24px; } .tt-views { font-size: 16px; }
+    .tt-label { font-size: 7px; margin-bottom: 0; } .tt-tags { display: none; }
+    .yt-icon { width: 20px; height: 20px; } .yt-name { font-size: 12px; }
+    .qonto-logo, .revolut-logo { height: 18px; } .qonto-val { font-size: 16px; }
+    .revolut-list { min-height: 35px; gap: 4px; }
+    :global(.rev-item) { font-size: 9px; }
+    .live-indicator { font-size: 7px; padding: 2px 5px; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // ========================================
+    // SMART INTERVAL MANAGER
+    // Pauses intervals when hero section is not visible
+    // ========================================
+    const heroSection = document.getElementById('hero');
+    const intervals = [];
+    let isVisible = true;
+    
+    // Track visibility of hero section
+    const heroObserver = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+      if (isVisible) {
+        startAllIntervals();
+      } else {
+        stopAllIntervals();
+      }
+    }, { threshold: 0.1 });
+    
+    if (heroSection) heroObserver.observe(heroSection);
+    
+    // Also pause when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopAllIntervals();
+      else if (isVisible) startAllIntervals();
+    });
+    
+    const intervalConfigs = [];
+    
+    const createInterval = (callback, delay) => {
+      const config = { callback, delay, id: null };
+      intervalConfigs.push(config);
+      if (isVisible) config.id = setInterval(callback, delay);
+    };
+    
+    const startAllIntervals = () => {
+      intervalConfigs.forEach(config => {
+        if (!config.id) config.id = setInterval(config.callback, config.delay);
+      });
+    };
+    
+    const stopAllIntervals = () => {
+      intervalConfigs.forEach(config => {
+        if (config.id) { clearInterval(config.id); config.id = null; }
+      });
+    };
+
+    // === SHOPIFY ANIMATION ===
+    let shopVal = 1420;
+    const shopEl = document.getElementById('shop-val');
+    const order1 = document.getElementById('order1');
+    const order2 = document.getElementById('order2');
+    let orderNum = 4523;
+    
+    createInterval(() => {
+      const add = Math.floor(Math.random() * 150) + 50;
+      shopVal += add;
+      if (shopEl) shopEl.textContent = shopVal.toLocaleString('fr-FR') + ' €';
+      if (order1 && order2) {
+        order2.textContent = order1.textContent;
+        order1.textContent = `📦 Commande #${orderNum++}`;
+        order1.style.animation = 'none';
+        order1.offsetHeight;
+        order1.style.animation = 'slideIn 0.5s forwards';
+      }
+    }, 3000);
+
+    // === FOCUS AI TYPING ===
+    const commands = ['init_focus()', 'load_ai_model()', 'connect_members()', 'sync_data()', 'ACCESS GRANTED ✓'];
+    const cmdEl = document.getElementById('ai-cmd');
+    const outputEl = document.getElementById('ai-output');
+    let cmdIndex = 0;
+    let charIndex = 0;
+    
+    const typeCommand = () => {
+      if (!cmdEl || !outputEl || !isVisible) return;
+      const cmd = commands[cmdIndex % commands.length];
+      
+      if (charIndex < cmd.length) {
+        cmdEl.textContent += cmd[charIndex];
+        charIndex++;
+        setTimeout(typeCommand, 60);
+      } else {
+        setTimeout(() => {
+          outputEl.textContent = cmdIndex === 4 ? '🟢 ACCESS GRANTED' : '✓ Done';
+          setTimeout(() => {
+            cmdEl.textContent = '';
+            outputEl.textContent = '';
+            charIndex = 0;
+            cmdIndex++;
+            setTimeout(typeCommand, 500);
+          }, 1500);
+        }, 300);
+      }
+    };
+    setTimeout(typeCommand, 1000);
+
+    // === CRYPTO CHART ===
+    const chart = document.getElementById('crypto-chart');
+    if (chart) {
+      for (let i = 0; i < 14; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'crypto-bar';
+        bar.style.height = `${Math.random() * 50 + 40}%`;
+        chart.appendChild(bar);
+      }
+      createInterval(() => {
+        chart.querySelectorAll('.crypto-bar').forEach((bar) => {
+          (bar as HTMLElement).style.height = `${Math.random() * 50 + 40}%`;
+        });
+      }, 2000);
+    }
+
+    // === BITCOIN LIVE ===
+    createInterval(() => {
+      const el = document.getElementById('btc-val');
+      const pct = document.getElementById('btc-percent');
+      if (!el || !pct) return;
+      const base = 98420, v = base + Math.floor((Math.random() - 0.5) * 800);
+      const p = ((v - base) / base * 100).toFixed(2);
+      el.textContent = '$' + v.toLocaleString('en-US');
+      const isUp = parseFloat(p) >= 0;
+      pct.textContent = (isUp ? '+' : '') + p + '%';
+      pct.style.color = isUp ? '#22c55e' : '#ef4444';
+      pct.style.background = isUp ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)';
+    }, 2500);
+
+    // === STRIPE GRAPH ===
+    const stripeGraph = document.getElementById('stripe-graph');
+    if (stripeGraph) {
+      for (let i = 0; i < 8; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'stripe-bar';
+        bar.style.height = `${Math.random() * 60 + 30}%`;
+        stripeGraph.appendChild(bar);
+      }
+      createInterval(() => {
+        const bars = stripeGraph.querySelectorAll('.stripe-bar');
+        bars.forEach((bar, i) => {
+          (bar as HTMLElement).style.height = `${Math.random() * 60 + 30}%`;
+          bar.classList.toggle('active', i === bars.length - 1);
+        });
+      }, 2500);
+    }
+
+    // === QONTO ANIMATION ===
+    let qontoVal = 4300;
+    const qontoEl = document.getElementById('qonto-val');
+    const qontoBar = document.getElementById('qonto-bar');
+    createInterval(() => {
+      qontoVal += Math.floor(Math.random() * 500) + 100;
+      if (qontoEl) qontoEl.textContent = '+ ' + qontoVal.toLocaleString('fr-FR') + ' €';
+      if (qontoBar) qontoBar.style.width = `${Math.min((qontoVal / 10000) * 100, 100)}%`;
+    }, 4000);
+
+    // === TIKTOK ANIMATION ===
+    let ttViews = 10200000;
+    let ttLikes = 892000;
+    const ttViewsEl = document.getElementById('tt-views');
+    const ttLikesEl = document.getElementById('tt-likes');
+    createInterval(() => {
+      ttViews += Math.floor(Math.random() * 50000) + 10000;
+      ttLikes += Math.floor(Math.random() * 1000) + 200;
+      if (ttViewsEl) ttViewsEl.textContent = (ttViews / 1000000).toFixed(1) + 'M';
+      if (ttLikesEl) ttLikesEl.textContent = (ttLikes / 1000).toFixed(0) + 'K';
+    }, 3500);
+
+    // === YOUTUBE PROGRESS ===
+    const ytProgress = document.getElementById('yt-progress');
+    let ytWidth = 65;
+    createInterval(() => {
+      ytWidth = Math.min(ytWidth + Math.random() * 3, 95);
+      if (ytProgress) ytProgress.style.width = `${ytWidth}%`;
+    }, 3000);
+
+    // === REVOLUT TRANSACTIONS ===
+    const transactions = [
+      ['✈️ Air France', '- 850 €'], ['🍽️ Restaurant', '- 320 €'], ['🛒 Amazon', '- 156 €'],
+      ['☕ Starbucks', '- 12 €'], ['🚗 Uber', '- 45 €'], ['🎮 Steam', '- 60 €'],
+      ['📱 Apple', '- 1,200 €'], ['👜 Gucci', '- 890 €'], ['🍕 Deliveroo', '- 35 €']
+    ];
+    const revList = document.getElementById('revolut-list');
+    let revIndex = 0;
+    
+    const addTransaction = () => {
+      if (!revList) return;
+      const [name, amount] = transactions[revIndex % transactions.length];
+      const item = document.createElement('div');
+      item.className = 'rev-item';
+      item.innerHTML = `<span>${name}</span><span>${amount}</span>`;
+      revList.insertBefore(item, revList.firstChild);
+      if (revList.children.length > 3) revList.removeChild(revList.lastChild);
+      revIndex++;
+    };
+    addTransaction(); addTransaction();
+    createInterval(addTransaction, 4000);
+
+    // === NOTIFICATIONS (desktop only) ===
+    if (window.innerWidth > 768) {
+      const cards = ['card-shopify', 'card-stripe', 'card-crypto', 'card-tiktok', 'card-youtube', 'card-qonto', 'card-revolut'];
+      createInterval(() => {
+        const card = document.getElementById(cards[Math.floor(Math.random() * cards.length)]);
+        if (card) { card.classList.add('show-notif'); setTimeout(() => card.classList.remove('show-notif'), 2500); }
+      }, 3000);
+    }
+  });
+</script>

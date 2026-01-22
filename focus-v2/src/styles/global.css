@@ -1,0 +1,656 @@
+/* ============================================
+   FOCUS BUSINESS - Global Styles
+   Migration Astro - Rendu identique au site HTML
+   ============================================ */
+
+@import "tailwindcss";
+
+/* ============================================
+   CSS VARIABLES - DARK MODE (défaut)
+   ============================================ */
+:root,
+.dark {
+  /* Backgrounds - Pure Black/Dark */
+  --bg-page: #000000;
+  --bg-section: #030303;
+  --bg-card: #0a0a0a;
+  --bg-card-elevated: #0f0f0f;
+  --bg-input: #141414;
+  --bg-overlay: rgba(0, 0, 0, 0.9);
+  
+  /* Textes - White for contrast */
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #888888;
+  --text-light: #555555;
+  
+  /* Bordures - Subtle white */
+  --border-light: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  
+  /* Or Focus - Used sparingly */
+  --gold: #D4AF37;
+  --gold-light: #F5E6B8;
+  --gold-dark: #8B7024;
+  --gold-glow: rgba(212, 175, 55, 0.25);
+  --gold-bg: rgba(212, 175, 55, 0.08);
+  
+  /* Ombres - Subtle with slight gold tint */
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-gold: 0 0 40px rgba(212, 175, 55, 0.15);
+  
+  /* Discord */
+  --discord-bg: #0a0a0a;
+  --discord-sidebar: #0f0f0f;
+  --discord-chat: #141414;
+  --discord-input: #1a1a1a;
+  --discord-hover: #1f1f1f;
+  --discord-text: #888888;
+  --discord-text-light: #cccccc;
+}
+
+/* ============================================
+   CSS VARIABLES - LIGHT MODE
+   ============================================ */
+.light {
+  /* Backgrounds - Pure White */
+  --bg-page: #FFFFFF;
+  --bg-section: #FAFAFA;
+  --bg-card: #FFFFFF;
+  --bg-card-elevated: #F8F8F8;
+  --bg-input: #F0F0F0;
+  --bg-overlay: rgba(255, 255, 255, 0.95);
+  
+  /* Textes - Black for contrast */
+  --text-primary: #000000;
+  --text-secondary: #1a1a1a;
+  --text-muted: #666666;
+  --text-light: #999999;
+  
+  /* Bordures - Subtle black */
+  --border-light: rgba(0, 0, 0, 0.06);
+  --border-medium: rgba(0, 0, 0, 0.1);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  
+  /* Or Focus - Same gold */
+  --gold: #D4AF37;
+  --gold-light: #F5E6B8;
+  --gold-dark: #B8860B;
+  --gold-glow: rgba(212, 175, 55, 0.3);
+  --gold-bg: rgba(212, 175, 55, 0.08);
+  
+  /* Ombres - Subtle dark shadows */
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-gold: 0 0 40px rgba(212, 175, 55, 0.2);
+  
+  /* Discord - Light mode clean */
+  --discord-bg: #F5F5F5;
+  --discord-sidebar: #EBEBEB;
+  --discord-chat: #FFFFFF;
+  --discord-input: #E8E8E8;
+  --discord-hover: #E0E0E0;
+  --discord-text: #555555;
+  --discord-text-light: #1a1a1a;
+}
+
+/* ============================================
+   TAILWIND THEME EXTENSION
+   ============================================ */
+@theme {
+  /* Colors */
+  --color-bg-page: var(--bg-page);
+  --color-bg-section: var(--bg-section);
+  --color-bg-card: var(--bg-card);
+  --color-bg-card-elevated: var(--bg-card-elevated);
+  --color-bg-input: var(--bg-input);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  
+  --color-border-light: var(--border-light);
+  --color-border-medium: var(--border-medium);
+  
+  /* Fonts */
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-float-delayed: float 7s ease-in-out 2s infinite;
+  --animate-breathe: breathe 3s ease-in-out infinite;
+  --animate-slam-in: slamIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  --animate-fade-in: fadeIn 0.6s ease-out forwards;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  text-rendering: optimizeSpeed;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.bg-page { background-color: var(--bg-page); }
+.bg-section { background-color: var(--bg-section); }
+.bg-card { background-color: var(--bg-card); }
+.bg-card-elevated { background-color: var(--bg-card-elevated); }
+.bg-input { background-color: var(--bg-input); }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+
+.text-gold { color: var(--gold); }
+.bg-gold { background-color: var(--gold); }
+.bg-gold-glow { background-color: var(--gold-bg); }
+
+.border-light { border-color: var(--border-light); }
+.border-medium { border-color: var(--border-medium); }
+
+.shadow-gold { box-shadow: var(--shadow-gold); }
+
+/* Gradient text gold */
+.text-gradient-gold {
+  background: linear-gradient(to bottom, var(--gold-light), var(--gold), var(--gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   GPU ACCELERATION - Performance
+   ============================================ */
+.gpu-accelerated,
+.glass-card,
+.hero-card,
+.expert-card,
+.discord-card,
+.pricing-card,
+.speech-bubble,
+[class*="animate-"],
+[class*="orbit-"] {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Contain layout for heavy sections */
+section {
+  contain: layout style;
+}
+
+.expert-grid {
+  contain: layout style paint;
+}
+
+/* Hero stack needs relative positioning for absolute children */
+.hero-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+}
+
+/* Optimize images */
+img {
+  content-visibility: auto;
+}
+
+/* ============================================
+   KEYFRAMES
+   ============================================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(var(--rotation, 0deg)); }
+  50% { transform: translateY(-15px) rotate(var(--rotation, 0deg)); }
+}
+
+@keyframes floatMobile {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.02); }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes slamIn {
+  0% { opacity: 0; transform: translateY(-50px) scale(0.8) rotate(-10deg); }
+  70% { transform: translateY(5px) scale(1.02) rotate(-1deg); }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotate(-2deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 20px var(--gold-glow); }
+  50% { box-shadow: 0 0 40px var(--gold-glow), 0 0 60px var(--gold-glow); }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* ============================================
+   ANIMATION CLASSES
+   ============================================ */
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-slow { animation: float 8s ease-in-out infinite; }
+.animate-float-delayed { animation: float 7s ease-in-out 2s infinite; }
+.animate-breathe { animation: breathe 3s ease-in-out infinite; }
+.animate-slam-in { animation: slamIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+.animate-pulse-gold { animation: pulse-gold 2s ease-in-out infinite; }
+
+/* ============================================
+   GLASS MORPHISM
+   ============================================ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: var(--shadow-medium);
+}
+
+.light .glass-card {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--border-medium);
+}
+
+/* ============================================
+   GLOW EFFECTS
+   ============================================ */
+.glow-gold {
+  box-shadow: 0 0 30px var(--gold-glow);
+}
+
+.glow-focus {
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.2), 0 0 80px rgba(212, 175, 55, 0.1);
+}
+
+/* ============================================
+   SCROLLBAR DISCORD STYLE
+   ============================================ */
+.discord-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.discord-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.discord-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.discord-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   LOADER STYLES
+   ============================================ */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-letter {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--gold);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: loaderLetterIn 0.6s ease forwards;
+}
+
+.loader-letter:nth-child(2) { animation-delay: 0.1s; }
+.loader-letter:nth-child(3) { animation-delay: 0.2s; }
+.loader-letter:nth-child(4) { animation-delay: 0.3s; }
+.loader-letter:nth-child(5) { animation-delay: 0.4s; }
+.loader-letter:nth-child(6) { animation-delay: 0.5s; }
+
+@keyframes loaderLetterIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    color: var(--gold);
+    -webkit-text-stroke: 0;
+  }
+}
+
+.loader-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: loaderShine 1.5s ease 0.8s forwards;
+}
+
+@keyframes loaderShine {
+  to { left: 100%; }
+}
+
+.loader-bar-container {
+  width: 200px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin-top: 30px;
+  overflow: hidden;
+}
+
+.loader-bar-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+  border-radius: 3px;
+  animation: loaderBar 1.5s ease forwards;
+}
+
+@keyframes loaderBar {
+  to { width: 100%; }
+}
+
+.loader-text {
+  margin-top: 15px;
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Hero Cards styles moved to HeroCards.astro component */
+
+/* ============================================
+   BADGE STYLES
+   ============================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-medium);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+/* ============================================
+   CTA BUTTON STYLES
+   ============================================ */
+.cta-main {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000;
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transform: rotate(-2deg);
+  box-shadow: var(--shadow-gold);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-main:hover {
+  transform: rotate(-2deg) scale(1.05);
+  box-shadow: 0 0 80px var(--gold-glow);
+}
+
+@media (min-width: 768px) {
+  .cta-main {
+    padding: 1.5rem 4rem;
+    font-size: 2.25rem;
+  }
+}
+
+/* ============================================
+   NOTIF BADGE (Hero Cards)
+   ============================================ */
+.notif-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  padding: 4px 10px;
+  font-size: 9px;
+  font-weight: 800;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transform: scale(0.8) translateY(-5px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 10;
+}
+
+.glass-card:hover .notif-badge,
+.hero-card:hover .notif-badge {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ============================================
+   PARTICLES HERO
+   ============================================ */
+.particle-hero {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: particleFloat 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-30px) translateX(10px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-50px) translateX(-10px);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateY(-20px) translateX(15px);
+    opacity: 0.5;
+  }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* GPU acceleration for animated elements */
+[class*="animate"],
+[class*="float"],
+[class*="pulse"],
+[class*="glow"],
+[class*="shimmer"],
+.card-shine,
+.speech-bubble,
+.satellite,
+.particle,
+.ring {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Pause animations when not in viewport - JS will add .in-view class */
+.pause-when-hidden {
+  animation-play-state: paused;
+}
+
+.pause-when-hidden.in-view {
+  animation-play-state: running;
+}
+
+/* Pause ALL nested animations when section not in view */
+.pause-when-hidden:not(.in-view) *,
+.pause-when-hidden:not(.in-view) *::before,
+.pause-when-hidden:not(.in-view) *::after {
+  animation-play-state: paused !important;
+}
+
+.pause-when-hidden.in-view *,
+.pause-when-hidden.in-view *::before,
+.pause-when-hidden.in-view *::after {
+  animation-play-state: running;
+}
+
+/* Optimize expensive properties */
+.optimize-paint {
+  contain: layout paint;
+  content-visibility: auto;
+}
+
+/* ============================================
+   MOBILE PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+@media (max-width: 768px) {
+  /* Reduce blur on mobile */
+  .glass-card,
+  [class*="backdrop-filter"] {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  /* Simplify shadows on mobile */
+  .shadow-gold,
+  .glow-gold,
+  .glow-focus {
+    box-shadow: 0 0 20px var(--gold-glow);
+  }
+  
+  /* Disable some expensive effects on mobile */
+  .particle-hero {
+    display: none;
+  }
+}
+
+/* ============================================
+   INTERSECTION OBSERVER DATA ATTRIBUTE
+   For JS interval management
+   ============================================ */
+[data-animate-on-view] {
+  --animation-state: paused;
+}
+
+[data-animate-on-view].in-view {
+  --animation-state: running;
+}

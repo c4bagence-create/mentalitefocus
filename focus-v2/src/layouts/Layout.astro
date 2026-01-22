@@ -1,0 +1,272 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+}
+
+const siteUrl = "https://mentalite-focus.com";
+const siteName = "Focus Business";
+const defaultTitle = "Focus Business | Club Privé pour Entrepreneurs E-commerce & SMMA";
+const defaultDescription = "Rejoins la communauté #1 des entrepreneurs e-commerce, dropshipping, SMMA et business en ligne. +1240 membres actifs, experts dédiés, Discord privé. Pour seulement 10€/mois.";
+const defaultKeywords = "club business, groupe business, formation ecommerce, communauté entrepreneurs, dropshipping france, smma formation, business en ligne, ecommerce formation, club entrepreneur, groupe entrepreneur, formation shopify, formation ads, meta ads, tiktok ads, communauté ecommerce, mentoring business, coaching entrepreneur, discord business, groupe privé entrepreneur, formation business en ligne";
+const defaultImage = `${siteUrl}/og-image.jpg`;
+
+const { 
+  title = defaultTitle, 
+  description = defaultDescription,
+  canonical = siteUrl
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
+    <!-- SEO Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={defaultKeywords} />
+    <meta name="author" content="Focus Business" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="French" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="canonical" href={canonical} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={defaultImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="fr_FR" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={defaultImage} />
+    
+    <!-- Meta Domain Verification -->
+    <meta name="facebook-domain-verification" content="v3o0xh2rtjxcq6t3bashmawguip8la" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+    
+    <!-- Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Focus Business",
+      "url": siteUrl,
+      "logo": `${siteUrl}/favicon.svg`,
+      "description": defaultDescription,
+      "sameAs": [
+        "https://discord.gg/focus-business"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": "French"
+      },
+      "offers": {
+        "@type": "Offer",
+        "name": "Accès Focus Business",
+        "price": "9.90",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      }
+    })} />
+    
+    <!-- Theme Script - Avant le rendu pour éviter le flash -->
+    <script is:inline>
+      // Appliquer le thème immédiatement
+      (function() {
+        const theme = localStorage.getItem('focus-theme') || 'dark';
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        document.documentElement.classList.toggle('light', theme === 'light');
+      })();
+    </script>
+    
+    <!-- Meta Pixel Code -->
+    <script is:inline>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '26364309749823828');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=26364309749823828&ev=PageView&noscript=1"/></noscript>
+    
+    <!-- Klaviyo -->
+    <script is:inline type="text/javascript" async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=pk_e30db79da52c39592f7b89b7244f30c9ce"></script>
+    
+    <!-- Microsoft Clarity -->
+    <script is:inline type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "v50k153mjn");
+    </script>
+  </head>
+  
+  <body class="bg-page text-primary antialiased overflow-x-hidden">
+    <slot />
+    
+    <!-- GSAP + ScrollTrigger -->
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <!-- VanillaTilt -->
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    
+    <!-- Smart Animations & Performance -->
+    <script is:inline>
+      // ========================================
+      // PERFORMANCE MANAGER - Gestion centralisée
+      // ========================================
+      window.FocusPerf = {
+        intervals: new Map(),
+        observers: new Map(),
+        
+        // Créer un interval qui se pause quand hors viewport
+        createSmartInterval: function(sectionId, callback, delay) {
+          const section = document.getElementById(sectionId);
+          if (!section) return null;
+          
+          let intervalId = null;
+          
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                if (!intervalId) {
+                  intervalId = setInterval(callback, delay);
+                  this.intervals.set(sectionId + '_' + Date.now(), intervalId);
+                }
+              } else {
+                if (intervalId) {
+                  clearInterval(intervalId);
+                  intervalId = null;
+                }
+              }
+            });
+          }, { rootMargin: '50px' });
+          
+          observer.observe(section);
+          this.observers.set(sectionId, observer);
+          
+          return intervalId;
+        },
+        
+        // Nettoyer tous les intervals d'une section
+        clearSectionIntervals: function(sectionId) {
+          this.intervals.forEach((id, key) => {
+            if (key.startsWith(sectionId)) {
+              clearInterval(id);
+              this.intervals.delete(key);
+            }
+          });
+        }
+      };
+
+      // Intersection Observer for scroll animations
+      const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+            entry.target.style.opacity = '1';
+          }
+        });
+      }, observerOptions);
+      
+      // Observe all sections
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.observe').forEach(el => {
+          el.style.opacity = '0';
+          observer.observe(el);
+        });
+        
+        // Init VanillaTilt on cards (desktop only for perf)
+        if (typeof VanillaTilt !== 'undefined' && window.innerWidth > 768) {
+          VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 6,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.1,
+            scale: 1.01
+          });
+        }
+      });
+      
+      // Page visibility - pause ALL animations when tab inactive
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          // Pause all intervals
+          window.FocusPerf.intervals.forEach((id) => clearInterval(id));
+          window.FocusPerf.intervals.clear();
+          // Pause CSS animations
+          document.body.style.setProperty('--global-animation-state', 'paused');
+        } else {
+          document.body.style.setProperty('--global-animation-state', 'running');
+        }
+      });
+      
+      // Theme toggle function
+      window.toggleTheme = function() {
+        const html = document.documentElement;
+        const isDark = html.classList.contains('dark');
+        
+        html.classList.toggle('dark', !isDark);
+        html.classList.toggle('light', isDark);
+        localStorage.setItem('focus-theme', isDark ? 'light' : 'dark');
+      };
+
+      // Performance: Pause animations when not visible
+      const animObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            // Dispatch custom event for JS animations
+            entry.target.dispatchEvent(new CustomEvent('section-visible'));
+          } else {
+            entry.target.classList.remove('in-view');
+            entry.target.dispatchEvent(new CustomEvent('section-hidden'));
+          }
+        });
+      }, { rootMargin: '100px' });
+
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.add('pause-when-hidden');
+        animObserver.observe(section);
+      });
+    </script>
+  </body>
+</html>

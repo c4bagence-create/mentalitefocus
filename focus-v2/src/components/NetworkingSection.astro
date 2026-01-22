@@ -1,0 +1,1417 @@
+---
+/**
+ * NetworkingSection - "TU N'ES PLUS SEUL"
+ * Section Discord avec appel vocal simulé
+ * Architecture Astro avec données typées
+ */
+import { voiceUsers, speechBubbles } from '../data/networking';
+import AnimatedCTA from './AnimatedCTA.astro';
+
+// Récupérer les 4 premiers utilisateurs pour les bulles
+const bubbleUsers = speechBubbles.map(b => ({
+  ...b,
+  user: voiceUsers.find(u => u.id === b.userId)!
+}));
+---
+
+<section class="networking-section" id="networking">
+  <!-- Glow effects -->
+  <div class="glow glow-1" aria-hidden="true"></div>
+  <div class="glow glow-2" aria-hidden="true"></div>
+  <div class="glow glow-3" aria-hidden="true"></div>
+
+  <div class="content-wrapper">
+    <!-- BLOC 1: Text Content (Gauche) -->
+    <div class="text-content">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>Networking Puissant</span>
+      </div>
+      
+      <h2 class="section-title">
+        TU N'ES PLUS<br>
+        <span class="text-gradient">SEUL.</span>
+      </h2>
+      
+      <p class="section-desc">
+        Quand t'es bloqué à 2h du mat', <strong>+1000 membres</strong> sont là pour t'aider. 
+        Pas de théorie, des gens qui ont la dalle comme toi.
+      </p>
+      
+      <blockquote class="quote">
+        <p class="quote-text">
+          Quand tu as un doute technique, tu ne cherches pas sur Google. 
+          <strong>Tu demandes à un mec qui l'a fait hier.</strong>
+        </p>
+        <p class="quote-sub">500+ experts connectés en permanence. Des réponses, pas de la théorie.</p>
+      </blockquote>
+    </div>
+
+    <!-- BLOC 2: Phone + Bubbles Container (Centre) -->
+    <div class="phone-area">
+      <!-- Speech Bubbles Desktop -->
+      <div class="speech-bubbles desktop-only">
+        {bubbleUsers.map((bubble, index) => (
+          <div 
+            class={`speech-bubble bubble-${index + 1} ${bubble.position}`}
+            style={`--delay: ${bubble.delay}s;`}
+            data-bubble={bubble.userId}
+          >
+            <div class="bubble-header">
+              <span 
+                class="bubble-avatar" 
+                style={`background: ${bubble.user.color};`}
+              >
+                {bubble.user.avatar}
+              </span>
+              <span class="bubble-name">{bubble.user.name}</span>
+              <span class="bubble-icon">🎙️</span>
+            </div>
+            <p class="bubble-text">"{bubble.user.message}"</p>
+            <div class="voice-wave">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Phone Mockup -->
+      <div class="phone-mockup">
+        <div class="phone-notch"></div>
+        
+        <div class="phone-screen">
+          <!-- Status Bar -->
+          <div class="status-bar">
+            <span class="time" data-phone-time>23:42</span>
+            <div class="status-icons">
+              <span>📶</span>
+              <span>🔋</span>
+            </div>
+          </div>
+          
+          <!-- Discord Header -->
+          <div class="discord-header">
+            <div class="channel-info">
+              <span class="channel-icon">🎧</span>
+              <div class="channel-text">
+                <span class="channel-name">Entraide</span>
+                <span class="channel-status">
+                  En appel (<span data-call-count>{voiceUsers.length}</span>)
+                </span>
+              </div>
+            </div>
+            <button class="mic-btn active" aria-label="Micro activé">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Users List - Scrollable -->
+          <div class="users-list" data-users-list>
+            {voiceUsers.map((user, index) => (
+              <div 
+                class={`voice-user ${index === 0 ? 'talking' : ''}`}
+                data-user={user.id}
+              >
+                <div class="user-avatar-wrap">
+                  <span class="user-avatar" style={`background: ${user.color};`}>
+                    {user.avatar}
+                  </span>
+                  <span class="online-dot"></span>
+                </div>
+                <div class="user-info">
+                  <span class="user-name">{user.name}</span>
+                  <span class="user-status" data-status>
+                    {index === 0 ? 'Parle...' : 'Écoute'}
+                  </span>
+                </div>
+                {index === 0 && (
+                  <svg class="mic-indicator" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                  </svg>
+                )}
+              </div>
+            ))}
+          </div>
+          
+          <!-- Bottom Bar -->
+          <div class="phone-bottom">
+            <div class="self-user">
+              <span class="self-avatar">T</span>
+              <div class="self-info">
+                <span class="self-name">Toi</span>
+                <span class="self-status">Connecté</span>
+              </div>
+            </div>
+            <div class="action-buttons">
+              <button class="action-btn" aria-label="Mute">🎤</button>
+              <button class="action-btn hangup" aria-label="Raccrocher">📞</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Call Popups -->
+      <div class="call-popups">
+        <div class="call-popup popup-1" data-popup="1">
+          <span class="popup-icon">📞</span>
+          <span class="popup-text">Thomas rejoint l'appel</span>
+        </div>
+        <div class="call-popup popup-2" data-popup="2">
+          <span class="popup-icon">🎙️</span>
+          <span class="popup-text">Julie partage son écran</span>
+        </div>
+        <div class="call-popup popup-3" data-popup="3">
+          <span class="popup-icon">🔔</span>
+          <span class="popup-text">+3 nouveaux membres</span>
+        </div>
+      </div>
+
+      <!-- Speaking Now Indicator -->
+      <div class="speaking-now" data-speaking-now>
+        <div class="speaking-wave">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <span class="speaking-name" data-speaking-name>Thomas_Ads</span>
+        <span class="speaking-label">parle...</span>
+      </div>
+
+      <!-- Messages flottants autour du téléphone -->
+      <div class="side-messages" id="side-messages">
+        <!-- Top messages -->
+        <div class="side-msg msg-top-left msg-1" data-msg="0"></div>
+        <div class="side-msg msg-top-right msg-2" data-msg="1"></div>
+        <!-- Side messages -->
+        <div class="side-msg msg-left msg-3" data-msg="2"></div>
+        <div class="side-msg msg-right msg-4" data-msg="3"></div>
+        <!-- Bottom messages -->
+        <div class="side-msg msg-bottom-left msg-5" data-msg="4"></div>
+        <div class="side-msg msg-bottom-right msg-6" data-msg="5"></div>
+      </div>
+    </div>
+
+
+    <!-- BLOC 3: CTA (Droite sur desktop) -->
+    <div class="cta-block">
+      <AnimatedCTA 
+        href="#pricing"
+        label="Communauté"
+        title="Rejoindre le groupe"
+        subtitle="+1000 membres actifs • 10€/mois"
+        variant="gold"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .networking-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 4rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--bg-section);
+  }
+
+  /* Glows */
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(100px);
+  }
+
+  .glow-1 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 900px;
+    background: var(--gold-glow);
+    opacity: 0.3;
+  }
+
+  .glow-2 {
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 500px;
+    background: var(--gold-glow);
+    opacity: 0.2;
+  }
+
+  .glow-3 {
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    background: var(--gold-glow);
+    opacity: 0.15;
+  }
+
+  /* Content Wrapper - 3 columns layout */
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1400px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 1024px) {
+    .content-wrapper {
+      flex-direction: row;
+      gap: 2rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  /* BLOC 1: Text Content (Gauche) */
+  .text-content {
+    max-width: 400px;
+    text-align: center;
+    order: 1;
+  }
+
+  @media (min-width: 1024px) {
+    .text-content {
+      text-align: left;
+      flex: 0 0 auto;
+      max-width: 320px;
+      order: 1;
+    }
+  }
+
+  /* BLOC 3: CTA Block (Droite sur desktop, en bas sur mobile) */
+  .cta-block {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 1024px) {
+    .cta-block {
+      flex: 0 0 auto;
+      max-width: 320px;
+      order: 3;
+    }
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-card);
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .badge-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+    text-shadow: 0 0 60px color-mix(in srgb, var(--text-primary) 20%, transparent);
+  }
+
+  .text-gradient {
+    background: linear-gradient(180deg, var(--gold-light), var(--gold), var(--gold-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-desc strong {
+    color: var(--text-primary);
+  }
+
+  .quote {
+    border-left: 2px solid color-mix(in srgb, var(--gold) 30%, transparent);
+    padding-left: 1.25rem;
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .quote {
+      display: block;
+    }
+  }
+
+  .quote-text {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .quote-text strong {
+    color: var(--text-primary);
+  }
+
+  .quote-sub {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  /* BLOC 2: Phone Area (Centre) */
+  .phone-area {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+    overflow: visible;
+  }
+
+  @media (min-width: 1024px) {
+    .phone-area {
+      flex: 1 1 auto;
+      order: 2;
+    }
+  }
+
+  /* Phone Mockup - Responsive */
+  .phone-mockup {
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 9/19;
+    background: var(--discord-bg);
+    border-radius: 2.5rem;
+    border: 4px solid color-mix(in srgb, var(--text-primary) 20%, transparent);
+    box-shadow: 
+      0 0 0 1px color-mix(in srgb, var(--text-primary) 10%, transparent),
+      0 50px 100px -20px rgba(0, 0, 0, 0.5),
+      0 0 60px color-mix(in srgb, var(--gold) 15%, transparent);
+    overflow: hidden;
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .phone-mockup {
+      max-width: 280px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .phone-mockup {
+      max-width: 300px;
+    }
+  }
+
+  .phone-notch {
+    position: absolute;
+    top: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5.5rem;
+    height: 1.75rem;
+    background: black;
+    border-radius: 1.25rem;
+    z-index: 20;
+  }
+
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--discord-bg);
+  }
+
+  .status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 1.25rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .status-icons {
+    display: flex;
+    gap: 0.375rem;
+    font-size: 0.625rem;
+  }
+
+  .discord-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: var(--discord-sidebar);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .channel-info {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .channel-icon {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+  }
+
+  .channel-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+  }
+
+  .channel-status {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .mic-btn {
+    width: 2.25rem;
+    height: 2.25rem;
+    background: var(--discord-bg);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-muted);
+  }
+
+  .mic-btn.active {
+    color: #ef4444;
+  }
+
+  /* Users List - Scrollable */
+  .users-list {
+    flex: 1;
+    background: var(--discord-bg);
+    padding: 0.5rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-medium) transparent;
+  }
+
+  .users-list::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .users-list::-webkit-scrollbar-thumb {
+    background: var(--border-medium);
+    border-radius: 2px;
+  }
+
+  .voice-user {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.25rem;
+    transition: background 0.2s;
+  }
+
+  .voice-user:hover {
+    background: var(--discord-hover);
+  }
+
+  .voice-user.talking {
+    background: color-mix(in srgb, var(--gold) 10%, transparent);
+  }
+
+  .user-avatar-wrap {
+    position: relative;
+  }
+
+  .user-avatar {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: white;
+    transition: box-shadow 0.2s;
+  }
+
+  .voice-user.talking .user-avatar {
+    box-shadow: 0 0 0 3px var(--gold), 0 0 20px color-mix(in srgb, var(--gold) 50%, transparent);
+    animation: talkingPulse 1s infinite;
+  }
+
+  @keyframes talkingPulse {
+    0%, 100% { box-shadow: 0 0 0 3px var(--gold), 0 0 15px color-mix(in srgb, var(--gold) 40%, transparent); }
+    50% { box-shadow: 0 0 0 4px var(--gold), 0 0 25px color-mix(in srgb, var(--gold) 60%, transparent); }
+  }
+
+  .online-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--gold);
+    border: 2px solid var(--discord-bg);
+    border-radius: 50%;
+  }
+
+  .user-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .user-name {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .user-status {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+  }
+
+  .voice-user.talking .user-status {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .mic-indicator {
+    color: var(--gold);
+  }
+
+  /* Bottom Bar */
+  .phone-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: var(--discord-sidebar);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .self-user {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .self-avatar {
+    width: 2rem;
+    height: 2rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 0.75rem;
+    color: black;
+  }
+
+  .self-name {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+  }
+
+  .self-status {
+    font-size: 0.625rem;
+    color: var(--gold);
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 0.625rem;
+  }
+
+  .action-btn {
+    width: 2rem;
+    height: 2rem;
+    background: var(--bg-input);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+
+  .action-btn.hangup {
+    background: color-mix(in srgb, #ef4444 20%, transparent);
+  }
+
+  /* Speech Bubbles - Hidden in 3-column layout */
+  .speech-bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    display: none;
+  }
+
+  @media (min-width: 1400px) {
+    .speech-bubbles {
+      display: block;
+    }
+  }
+
+  .speech-bubble {
+    position: absolute;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: 0.75rem;
+    padding: 0.75rem 0.875rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 180px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: bubbleAppear 0.5s ease forwards;
+    animation-delay: var(--delay);
+  }
+
+  @keyframes bubbleAppear {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .bubble-1 { top: 1.25rem; left: -8rem; }
+  .bubble-2 { top: 7.5rem; right: -9rem; }
+  .bubble-3 { bottom: 11.25rem; left: -9rem; }
+  .bubble-4 { bottom: 3.75rem; right: -8rem; }
+
+  .bubble-header {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .bubble-avatar {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5625rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .bubble-name {
+    font-size: 0.5625rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .bubble-icon {
+    margin-left: auto;
+    font-size: 0.625rem;
+  }
+
+  .bubble-text {
+    font-size: 0.6875rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .voice-wave {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+    margin-top: 0.375rem;
+  }
+
+  .voice-wave span {
+    width: 0.1875rem;
+    height: 0.5rem;
+    background: var(--gold);
+    border-radius: 0.125rem;
+    animation: voiceWave 0.6s ease-in-out infinite;
+  }
+
+  .voice-wave span:nth-child(2) { animation-delay: 0.1s; height: 0.75rem; }
+  .voice-wave span:nth-child(3) { animation-delay: 0.2s; height: 0.375rem; }
+  .voice-wave span:nth-child(4) { animation-delay: 0.3s; height: 0.875rem; }
+  .voice-wave span:nth-child(5) { animation-delay: 0.4s; height: 0.5625rem; }
+
+  @keyframes voiceWave {
+    0%, 100% { transform: scaleY(0.5); opacity: 0.6; }
+    50% { transform: scaleY(1); opacity: 1; }
+  }
+
+  /* Call Popups - Only visible on larger screens */
+  .call-popups {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: none;
+  }
+
+  @media (min-width: 1400px) {
+    .call-popups {
+      display: block;
+    }
+  }
+
+  .call-popup {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: 0.5rem;
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    animation: popupSlide 6s ease-in-out infinite;
+  }
+
+  .popup-1 { top: -2rem; left: -1rem; animation-delay: 0s; }
+  .popup-2 { top: 50%; right: -3rem; animation-delay: 2s; }
+  .popup-3 { bottom: 1rem; left: -2rem; animation-delay: 4s; }
+
+  .popup-icon {
+    font-size: 0.875rem;
+  }
+
+  @keyframes popupSlide {
+    0%, 100% { opacity: 0; transform: translateX(-10px); }
+    10%, 25% { opacity: 1; transform: translateX(0); }
+    35%, 100% { opacity: 0; transform: translateX(10px); }
+  }
+
+  /* Speaking Now Indicator */
+  .speaking-now {
+    position: absolute;
+    top: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--gold-bg);
+    border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+    border-radius: 9999px;
+    animation: speakingFloat 3s ease-in-out infinite;
+  }
+
+  @keyframes speakingFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-5px); }
+  }
+
+  .speaking-wave {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+  }
+
+  .speaking-wave span {
+    width: 0.2rem;
+    height: 0.75rem;
+    background: var(--gold);
+    border-radius: 0.1rem;
+    animation: speakWave 0.8s ease-in-out infinite;
+  }
+
+  .speaking-wave span:nth-child(1) { animation-delay: 0s; }
+  .speaking-wave span:nth-child(2) { animation-delay: 0.1s; height: 1rem; }
+  .speaking-wave span:nth-child(3) { animation-delay: 0.2s; height: 0.5rem; }
+  .speaking-wave span:nth-child(4) { animation-delay: 0.3s; height: 0.875rem; }
+
+  @keyframes speakWave {
+    0%, 100% { transform: scaleY(0.4); }
+    50% { transform: scaleY(1); }
+  }
+
+  .speaking-name {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .speaking-label {
+    font-size: 0.625rem;
+    color: var(--text-muted);
+  }
+
+  /* Live Feed - Only on very large screens */
+  .live-feed {
+    position: absolute;
+    bottom: 10%;
+    left: -180px;
+    width: 200px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: none;
+  }
+
+  @media (min-width: 1400px) {
+    .live-feed {
+      display: block;
+    }
+  }
+
+  .feed-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(239, 68, 68, 0.1);
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #ef4444;
+  }
+
+  .feed-dot {
+    width: 0.375rem;
+    height: 0.375rem;
+    background: #ef4444;
+    border-radius: 50%;
+    animation: feedPulse 1s infinite;
+  }
+
+  @keyframes feedPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .feed-messages {
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    scrollbar-width: none;
+  }
+
+  .feed-messages::-webkit-scrollbar {
+    display: none;
+  }
+
+  .feed-msg {
+    display: flex;
+    gap: 0.375rem;
+    padding: 0.375rem;
+    background: var(--bg-input);
+    border-radius: 0.375rem;
+    animation: feedMsgIn 0.3s ease;
+  }
+
+  @keyframes feedMsgIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .feed-avatar {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .feed-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .feed-name {
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+  }
+
+  .feed-text {
+    font-size: 0.5rem;
+    color: var(--text-muted);
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Call Status - Only on very large screens */
+  .call-status {
+    position: absolute;
+    top: 15%;
+    right: -140px;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 9999px;
+    animation: callFloat 3s ease-in-out infinite;
+  }
+
+  @media (min-width: 1400px) {
+    .call-status {
+      display: flex;
+    }
+  }
+
+  @keyframes callFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .call-pulse {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: callPulse 1.5s infinite;
+  }
+
+  @keyframes callPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  }
+
+  .call-text {
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: #22c55e;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .call-duration {
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+  }
+
+  /* Side Messages - Messages flottants autour du téléphone */
+  .side-messages {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 15;
+  }
+
+  .side-msg {
+    position: absolute;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    padding: 0.625rem 0.875rem;
+    border-radius: 1rem;
+    font-size: 0.6875rem;
+    color: var(--text-primary);
+    line-height: 1.3;
+    max-width: 160px;
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .side-msg.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Positionnement autour du téléphone */
+  /* Top messages */
+  .msg-top-left {
+    top: -10%;
+    left: -30%;
+    border-radius: 1rem 1rem 1rem 0.25rem;
+  }
+
+  .msg-top-right {
+    top: -5%;
+    right: -35%;
+    border-radius: 1rem 1rem 0.25rem 1rem;
+  }
+
+  /* Side messages */
+  .msg-left {
+    top: 40%;
+    left: -40%;
+    border-radius: 1rem 1rem 0.25rem 1rem;
+  }
+
+  .msg-right {
+    top: 35%;
+    right: -40%;
+    border-radius: 1rem 1rem 1rem 0.25rem;
+  }
+
+  /* Bottom messages */
+  .msg-bottom-left {
+    bottom: 15%;
+    left: -35%;
+    border-radius: 1rem 0.25rem 1rem 1rem;
+  }
+
+  .msg-bottom-right {
+    bottom: 10%;
+    right: -30%;
+    border-radius: 0.25rem 1rem 1rem 1rem;
+  }
+
+  /* Mobile: messages plus petits, repositionnés */
+  @media (max-width: 480px) {
+    .side-msg {
+      max-width: 110px;
+      font-size: 0.5625rem;
+      padding: 0.4rem 0.5rem;
+    }
+    .msg-top-left { top: -15%; left: -20%; }
+    .msg-top-right { top: -10%; right: -25%; }
+    .msg-left { top: 35%; left: -25%; }
+    .msg-right { top: 40%; right: -25%; }
+    .msg-bottom-left { bottom: 20%; left: -20%; }
+    .msg-bottom-right { bottom: 15%; right: -20%; }
+  }
+
+  /* Tablette: messages moyens */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .side-msg {
+      max-width: 140px;
+      font-size: 0.6875rem;
+    }
+  }
+
+  /* Desktop: messages plus grands et plus espacés */
+  @media (min-width: 769px) {
+    .side-msg {
+      max-width: 180px;
+      font-size: 0.75rem;
+    }
+    .msg-top-left { top: -10%; left: -45%; }
+    .msg-top-right { top: -5%; right: -50%; }
+    .msg-left { top: 40%; left: -50%; }
+    .msg-right { top: 35%; right: -50%; }
+    .msg-bottom-left { bottom: 15%; left: -45%; }
+    .msg-bottom-right { bottom: 10%; right: -45%; }
+  }
+
+  .side-msg .msg-user {
+    display: block;
+    font-size: 0.5625rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.25rem;
+  }
+
+  .side-msg .msg-text {
+    display: block;
+    color: var(--text-secondary);
+  }
+
+  /* Animation de pulse sur certains messages */
+  .side-msg.msg-1::before,
+  .side-msg.msg-4::before {
+    content: '🎙️';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 0.625rem;
+    animation: micPulse 1.5s ease-in-out infinite;
+  }
+
+  .side-msg.msg-3::before {
+    content: '🎙️';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: auto;
+    font-size: 0.625rem;
+    animation: micPulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes micPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+  }
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // ========================================
+    // SMART INTERVAL MANAGER
+    // ========================================
+    const networkingSection = document.getElementById('networking');
+    const intervals = [];
+    let isVisible = false;
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+      if (isVisible) startAllIntervals();
+      else stopAllIntervals();
+    }, { threshold: 0.1 });
+    
+    if (networkingSection) sectionObserver.observe(networkingSection);
+    
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopAllIntervals();
+      else if (isVisible) startAllIntervals();
+    });
+    
+    const intervalConfigs = [];
+    
+    const createInterval = (callback, delay) => {
+      const config = { callback, delay, id: null };
+      intervalConfigs.push(config);
+      if (isVisible) config.id = setInterval(callback, delay);
+    };
+    
+    const startAllIntervals = () => {
+      intervalConfigs.forEach(config => {
+        if (!config.id) config.id = setInterval(config.callback, config.delay);
+      });
+    };
+    
+    const stopAllIntervals = () => {
+      intervalConfigs.forEach(config => {
+        if (config.id) { clearInterval(config.id); config.id = null; }
+      });
+    };
+
+    const users = document.querySelectorAll('[data-user]');
+    const bubbles = document.querySelectorAll('[data-bubble]');
+    const feedMessages = document.getElementById('feed-messages');
+    const mlcMessages = document.getElementById('mlc-messages');
+    const callDuration = document.querySelector('[data-call-duration]');
+    let currentSpeaker = 0;
+    const speakerIds = ['thomas', 'karim', 'julie', 'mehdi'];
+
+    // Business-focused vocal messages
+    const liveMessages = [
+      { name: 'Thomas_Ads', avatar: 'T', color: '#5865F2', msg: 'J\'ai un CPC à 14 centimes, c\'est bien ?' },
+      { name: 'Julie_Ecom', avatar: 'J', color: '#EC4899', msg: 'T\'en penses quoi de ma créa ?' },
+      { name: 'Karim_Drop', avatar: 'K', color: '#F59E0B', msg: 'Mon CTR est à 3.2%, je scale ou pas ?' },
+      { name: 'Emma_SMMA', avatar: 'E', color: '#10B981', msg: 'Combien vous facturez pour du Meta Ads ?' },
+      { name: 'Lucas_SEO', avatar: 'L', color: '#8B5CF6', msg: 'J\'ai rankée en 2 semaines sur un mot clé' },
+      { name: 'Alex_Crypto', avatar: 'A', color: '#06B6D4', msg: 'Qui a testé les lookalike sur TikTok ?' },
+      { name: 'Maxime_Auto', avatar: 'M', color: '#EF4444', msg: 'J\'ai trouvé une 911 à 45K, c\'est une bonne affaire ?' },
+      { name: 'Sophie_Inf', avatar: 'S', color: '#F472B6', msg: 'Comment vous négociez vos deals influenceurs ?' },
+      { name: 'Pierre_SMMA', avatar: 'P', color: '#22C55E', msg: 'Premier client signé ce matin ! 2K/mois' },
+      { name: 'Marie_Ecom', avatar: 'M', color: '#A855F7', msg: 'Mon produit fait 12K ce mois, merci Focus !' },
+    ];
+
+    // Add message to desktop live feed
+    const addFeedMessage = () => {
+      if (!feedMessages) return;
+      
+      const msg = liveMessages[Math.floor(Math.random() * liveMessages.length)];
+      const msgEl = document.createElement('div');
+      msgEl.className = 'feed-msg';
+      msgEl.innerHTML = `
+        <div class="feed-avatar" style="background: ${msg.color}">${msg.avatar}</div>
+        <div class="feed-content">
+          <span class="feed-name">${msg.name}</span>
+          <span class="feed-text">${msg.msg}</span>
+        </div>
+      `;
+      
+      feedMessages.appendChild(msgEl);
+      feedMessages.scrollTop = feedMessages.scrollHeight;
+      
+      while (feedMessages.children.length > 5) {
+        feedMessages.removeChild(feedMessages.firstChild);
+      }
+    };
+
+    // Side Messages - Messages flottants sur les côtés du téléphone
+    const sideMsgs = document.querySelectorAll('.side-msg');
+    let sideMsgIndex = 0;
+    const sideMessages = [
+      { user: 'Thomas_Ads', text: "CPC à 0,14€ c'est bien ?" },
+      { user: 'Julie_Ecom', text: "Mon CTR est à 3.2%" },
+      { user: 'Karim_Immo', text: "Deal signé à 12K ! 🔥" },
+      { user: 'Emma_SMMA', text: "Client fermé ce matin" },
+      { user: 'Lucas_SEO', text: "Top 1 Google en 2 semaines" },
+      { user: 'Maxime_Auto', text: "Vendu en 3h seulement" },
+      { user: 'Alex_Crypto', text: "Qui teste TikTok Ads ?" },
+      { user: 'Sophie_Inf', text: "+8K ce mois, merci !" },
+    ];
+
+    const showSideMsgs = () => {
+      if (!sideMsgs.length) return;
+      
+      // Hide all first with stagger
+      sideMsgs.forEach((m, i) => {
+        setTimeout(() => m.classList.remove('visible'), i * 100);
+      });
+      
+      // Show 6 messages with stagger after a short delay
+      setTimeout(() => {
+        for (let i = 0; i < 6; i++) {
+          const idx = (sideMsgIndex + i) % sideMessages.length;
+          const msg = sideMessages[idx];
+          const el = sideMsgs[i];
+          if (el) {
+            el.innerHTML = `<span class="msg-user">${msg.user}</span><span class="msg-text">${msg.text}</span>`;
+            setTimeout(() => el.classList.add('visible'), i * 200);
+          }
+        }
+        sideMsgIndex = (sideMsgIndex + 3) % sideMessages.length;
+      }, 500);
+    };
+
+    // Initial messages
+    setTimeout(showSideMsgs, 800);
+    createInterval(showSideMsgs, 5000);
+
+    // Desktop feed messages
+    setTimeout(addFeedMessage, 500);
+    setTimeout(addFeedMessage, 1500);
+    setTimeout(addFeedMessage, 2500);
+    createInterval(addFeedMessage, 3000);
+
+    // Call duration timer
+    let seconds = 754; // Start at 12:34
+    const updateDuration = () => {
+      seconds++;
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      if (callDuration) {
+        callDuration.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+      }
+    };
+    createInterval(updateDuration, 1000);
+
+    // Rotate who's talking
+    createInterval(() => {
+      users.forEach(user => {
+        const userId = user.getAttribute('data-user');
+        const statusEl = user.querySelector('[data-status]');
+        
+        if (userId === speakerIds[currentSpeaker]) {
+          user.classList.add('talking');
+          if (statusEl) {
+            statusEl.textContent = 'Parle...';
+          }
+        } else {
+          user.classList.remove('talking');
+          if (statusEl) {
+            statusEl.textContent = 'Écoute';
+          }
+        }
+      });
+
+      // Highlight corresponding bubble
+      bubbles.forEach(bubble => {
+        const bubbleId = bubble.getAttribute('data-bubble');
+        bubble.style.opacity = bubbleId === speakerIds[currentSpeaker] ? '1' : '0.4';
+      });
+
+      // Update speaking-now indicator
+      const speakingNameEl = document.querySelector('[data-speaking-name]');
+      const speakerNames = ['Thomas_Ads', 'Karim_Immo', 'Julie_Ecom', 'Mehdi_Dev'];
+      if (speakingNameEl) {
+        speakingNameEl.textContent = speakerNames[currentSpeaker];
+      }
+
+      currentSpeaker = (currentSpeaker + 1) % speakerIds.length;
+    }, 3000);
+
+    // Update time
+    const timeEl = document.querySelector('[data-phone-time]');
+    const updateTime = () => {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2, '0');
+      const m = now.getMinutes().toString().padStart(2, '0');
+      if (timeEl) timeEl.textContent = `${h}:${m}`;
+    };
+    updateTime();
+    createInterval(updateTime, 60000);
+
+    // Random call count fluctuation
+    const countEl = document.querySelector('[data-call-count]');
+    createInterval(() => {
+      if (countEl) {
+        const baseCount = 30;
+        const variation = Math.floor(Math.random() * 5) - 2;
+        countEl.textContent = (baseCount + variation).toString();
+      }
+    }, 8000);
+  });
+</script>

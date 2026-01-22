@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build
+focus-v2/node_modules/
+focus-v2/dist/
+focus-v2/.astro/
+
+# Backups (keep local only)
+backups/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local env
+.env
+.env.local
