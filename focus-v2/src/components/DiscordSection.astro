@@ -569,7 +569,7 @@ import AnimatedCTA from './AnimatedCTA.astro';
     gap: 0.5rem;
     padding: 0.625rem;
     background: #232428;
-    border-top: 1px solid var(--border-light);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .user-avatar {
@@ -594,12 +594,12 @@ import AnimatedCTA from './AnimatedCTA.astro';
     display: block;
     font-size: 0.75rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #ffffff;
   }
 
   .user-status {
     font-size: 0.625rem;
-    color: var(--gold);
+    color: #23a55a;
   }
 
   .user-icons {
@@ -734,9 +734,9 @@ import AnimatedCTA from './AnimatedCTA.astro';
   .reaction {
     display: inline-flex;
     align-items: center;
-    gap: 3px;
-    padding: 3px 8px;
-    background: var(--discord-hover);
+    gap: 4px;
+    padding: 4px 10px;
+    background: rgba(88, 101, 242, 0.1);
     border: 1px solid var(--border-light);
     border-radius: 4px;
     font-size: 12px;
@@ -746,8 +746,19 @@ import AnimatedCTA from './AnimatedCTA.astro';
   }
 
   .reaction:hover {
-    background: var(--discord-input);
-    border-color: var(--border-medium);
+    background: rgba(88, 101, 242, 0.2);
+    border-color: #5865F2;
+  }
+
+  .reaction.reacted {
+    background: rgba(88, 101, 242, 0.3);
+    border-color: #5865F2;
+  }
+
+  .react-count {
+    font-weight: 600;
+    min-width: 1rem;
+    text-align: center;
   }
 
   .admin-avatar {
@@ -1196,13 +1207,35 @@ import AnimatedCTA from './AnimatedCTA.astro';
 
       const reaction1 = document.createElement('span');
       reaction1.className = 'reaction';
-      reaction1.textContent = '👍 ' + reactions;
+      reaction1.dataset.count = reactions;
+      reaction1.innerHTML = '👍 <span class="react-count">' + reactions + '</span>';
+      reaction1.onclick = function() {
+        this.classList.toggle('reacted');
+        const countEl = this.querySelector('.react-count');
+        let count = parseInt(this.dataset.count);
+        if (this.classList.contains('reacted')) {
+          count++;
+        }
+        this.dataset.count = count;
+        countEl.textContent = count;
+      };
       reactionsDiv.appendChild(reaction1);
 
       if (hasFireReaction) {
         const reaction2 = document.createElement('span');
         reaction2.className = 'reaction';
-        reaction2.textContent = '🔥 ' + fireCount;
+        reaction2.dataset.count = fireCount;
+        reaction2.innerHTML = '🔥 <span class="react-count">' + fireCount + '</span>';
+        reaction2.onclick = function() {
+          this.classList.toggle('reacted');
+          const countEl = this.querySelector('.react-count');
+          let count = parseInt(this.dataset.count);
+          if (this.classList.contains('reacted')) {
+            count++;
+          }
+          this.dataset.count = count;
+          countEl.textContent = count;
+        };
         reactionsDiv.appendChild(reaction2);
       }
 

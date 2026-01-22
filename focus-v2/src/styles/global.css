@@ -42,11 +42,12 @@
   --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.6);
   --shadow-gold: 0 0 40px rgba(212, 175, 55, 0.15);
   
-  /* Discord */
-  --discord-bg: #0a0a0a;
-  --discord-sidebar: #0f0f0f;
-  --discord-chat: #141414;
-  --discord-input: #1a1a1a;
+  /* Discord - Real Discord Colors */
+  --discord-bg: #313338;
+  --discord-sidebar: #2B2D31;
+  --discord-chat: #313338;
+  --discord-input: #383A40;
+  --discord-accent: #5865F2;
   --discord-hover: #1f1f1f;
   --discord-text: #888888;
   --discord-text-light: #cccccc;
@@ -88,11 +89,12 @@
   --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.1);
   --shadow-gold: 0 0 40px rgba(212, 175, 55, 0.2);
   
-  /* Discord - Light mode clean */
-  --discord-bg: #F5F5F5;
-  --discord-sidebar: #EBEBEB;
+  /* Discord - Light mode (Real Discord Light Theme) */
+  --discord-bg: #FFFFFF;
+  --discord-sidebar: #F2F3F5;
   --discord-chat: #FFFFFF;
-  --discord-input: #E8E8E8;
+  --discord-input: #EBEDEF;
+  --discord-accent: #5865F2;
   --discord-hover: #E0E0E0;
   --discord-text: #555555;
   --discord-text-light: #1a1a1a;
