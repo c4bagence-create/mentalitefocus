@@ -91,24 +91,24 @@ import AnimatedCTA from './AnimatedCTA.astro';
 <section class="discord-section" id="discord">
   <!-- Header -->
   <header class="section-header">
-    <div class="badge">
+    <div class="badge" data-animate="fade-down" data-delay="0">
       <span class="badge-dot"></span>
       <span>Communauté Active</span>
     </div>
     
-    <h2 class="section-title">
+    <h2 class="section-title" data-animate="fade-up" data-delay="0.1">
       UNE COMMUNAUTÉ<br>
       <span class="text-gradient">VIVANTE & ACTIVE.</span>
     </h2>
     
-    <p class="section-desc">
+    <p class="section-desc" data-animate="fade-up" data-delay="0.2">
       Rejoins <strong>1,240+ entrepreneurs</strong> qui s'entraident, partagent leurs résultats 
       et progressent ensemble <strong class="gold">chaque jour.</strong>
     </p>
   </header>
 
   <!-- Discord Interface -->
-  <div class="discord-container">
+  <div class="discord-container" data-animate="fade-scale" data-delay="0.3" data-duration="1">
     <div class="discord-interface">
       <!-- Server Sidebar -->
       <div class="server-bar">

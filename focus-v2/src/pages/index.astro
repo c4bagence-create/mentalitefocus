@@ -43,19 +43,19 @@ import DiscordSection from '../components/DiscordSection.astro';
     <div class="relative z-20 text-center mb-8 md:mb-16 mt-4 interactive-zone">
       
       <!-- BADGE -->
-      <div class="badge mb-6">
+      <div class="badge mb-6" data-animate="fade-down" data-delay="0.2">
         <span class="badge-dot"></span>
         <span>Groupe Business</span>
       </div>
       
       <!-- TITRE -->
-      <h1 class="text-5xl md:text-[8rem] lg:text-[10rem] font-black font-display tracking-tighter leading-[0.9] select-none mb-4">
+      <h1 class="text-5xl md:text-[8rem] lg:text-[10rem] font-black font-display tracking-tighter leading-[0.9] select-none mb-4" data-animate="zoom-in" data-delay="0.4" data-duration="1">
         <span class="inline-block text-primary" style="text-shadow: 0 0 60px rgba(255,255,255,0.4), 0 4px 0 rgba(212,175,55,0.3);">TOUS LES</span><br>
         <span class="text-gradient-gold" style="filter: drop-shadow(0 0 30px rgba(212,175,55,0.5));">BUSINESS.</span>
       </h1>
       
       <!-- SOUS-TITRE -->
-      <p class="text-muted text-sm md:text-lg mb-6 max-w-lg mx-auto">
+      <p class="text-muted text-sm md:text-lg mb-6 max-w-lg mx-auto" data-animate="fade-up" data-delay="0.6">
         <span><strong class="text-primary">Un groupe Discord.</strong></span>
         <span>Tous les business models.</span>
         <span><strong class="text-gold">Sans bullshit.</strong></span>
@@ -76,20 +76,20 @@ import DiscordSection from '../components/DiscordSection.astro';
       </div>
 
       <!-- STATS BAR -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 md:gap-x-12 gap-y-2 mt-3 mx-auto w-fit">
-        <div class="text-center">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 md:gap-x-12 gap-y-2 mt-3 mx-auto w-fit" data-stagger="0.1">
+        <div class="text-center" data-stagger-item>
           <div class="text-lg md:text-2xl font-black text-primary leading-none">5</div>
           <div class="text-[7px] md:text-xs text-muted uppercase">Lives/Sem</div>
         </div>
-        <div class="text-center">
+        <div class="text-center" data-stagger-item>
           <div class="text-lg md:text-2xl font-black text-primary leading-none">1000+</div>
           <div class="text-[7px] md:text-xs text-muted uppercase">Membres</div>
         </div>
-        <div class="text-center">
+        <div class="text-center" data-stagger-item>
           <div class="text-lg md:text-2xl font-black text-primary leading-none">+10M</div>
           <div class="text-[7px] md:text-xs text-muted uppercase">CA Généré</div>
         </div>
-        <div class="text-center">
+        <div class="text-center" data-stagger-item>
           <div class="text-lg md:text-2xl font-black text-primary leading-none">24/7</div>
           <div class="text-[7px] md:text-xs text-muted uppercase">Support</div>
         </div>
@@ -136,7 +136,7 @@ import DiscordSection from '../components/DiscordSection.astro';
     
     <div class="footer-content">
       <!-- Animated Logo -->
-      <div class="footer-brand">
+      <div class="footer-brand" data-animate="fade-right" data-delay="0">
         <div class="brand-logo">
           <span class="logo-char" style="--i:0">F</span>
           <span class="logo-char" style="--i:1">O</span>
@@ -168,7 +168,7 @@ import DiscordSection from '../components/DiscordSection.astro';
       </div>
 
       <!-- Links avec animations -->
-      <div class="footer-links">
+      <div class="footer-links" data-animate="fade-left" data-delay="0.2">
         <div class="link-group" style="--delay: 0.1s">
           <h3 class="link-title">
             <span class="title-icon">🧭</span>

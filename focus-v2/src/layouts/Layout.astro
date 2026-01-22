@@ -195,25 +195,98 @@ const {
         }
       };
 
-      // Intersection Observer for scroll animations
-      const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
-            entry.target.style.opacity = '1';
-          }
-        });
-      }, observerOptions);
-      
-      // Observe all sections
+      // ========================================
+      // SCROLL ANIMATIONS - Ultra stylées
+      // ========================================
       document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.observe').forEach(el => {
-          el.style.opacity = '0';
-          observer.observe(el);
-        });
+        // Animation types avec leurs transforms initiaux
+        const animationTypes = {
+          'fade-up': { transform: 'translateY(60px)', opacity: '0' },
+          'fade-down': { transform: 'translateY(-60px)', opacity: '0' },
+          'fade-left': { transform: 'translateX(-60px)', opacity: '0' },
+          'fade-right': { transform: 'translateX(60px)', opacity: '0' },
+          'fade-scale': { transform: 'scale(0.8)', opacity: '0' },
+          'fade-rotate': { transform: 'rotate(-5deg) scale(0.9)', opacity: '0' },
+          'zoom-in': { transform: 'scale(0.5)', opacity: '0' },
+          'flip-up': { transform: 'perspective(1000px) rotateX(30deg)', opacity: '0' },
+        };
+
+        // Sélectionner tous les éléments animables
+        const animatedElements = document.querySelectorAll('[data-animate]');
         
+        // Appliquer les styles initiaux
+        animatedElements.forEach(el => {
+          const type = el.dataset.animate || 'fade-up';
+          const delay = el.dataset.delay || '0';
+          const duration = el.dataset.duration || '0.8';
+          const styles = animationTypes[type] || animationTypes['fade-up'];
+          
+          el.style.opacity = styles.opacity;
+          el.style.transform = styles.transform;
+          el.style.transition = `all ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`;
+          el.style.willChange = 'transform, opacity';
+        });
+
+        // Observer pour déclencher les animations
+        const scrollObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0) translateX(0) scale(1) rotate(0deg) rotateX(0deg)';
+              entry.target.classList.add('animated');
+              
+              // Optionnel: arrêter d'observer après animation
+              // scrollObserver.unobserve(entry.target);
+            }
+          });
+        }, { 
+          threshold: 0.1, 
+          rootMargin: '0px 0px -80px 0px' 
+        });
+
+        animatedElements.forEach(el => scrollObserver.observe(el));
+
+        // Stagger animation pour les groupes
+        document.querySelectorAll('[data-stagger]').forEach(container => {
+          const children = container.querySelectorAll('[data-stagger-item]');
+          const baseDelay = parseFloat(container.dataset.stagger) || 0.1;
+          
+          children.forEach((child, index) => {
+            child.style.opacity = '0';
+            child.style.transform = 'translateY(40px)';
+            child.style.transition = `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * baseDelay}s`;
+          });
+
+          const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const items = entry.target.querySelectorAll('[data-stagger-item]');
+                items.forEach(item => {
+                  item.style.opacity = '1';
+                  item.style.transform = 'translateY(0)';
+                });
+              }
+            });
+          }, { threshold: 0.2 });
+
+          staggerObserver.observe(container);
+        });
+
+        // Parallax simple pour certains éléments
+        const parallaxElements = document.querySelectorAll('[data-parallax]');
+        if (parallaxElements.length > 0 && window.innerWidth > 768) {
+          window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            parallaxElements.forEach(el => {
+              const speed = parseFloat(el.dataset.parallax) || 0.5;
+              const rect = el.getBoundingClientRect();
+              if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.style.transform = `translateY(${scrollY * speed * 0.1}px)`;
+              }
+            });
+          }, { passive: true });
+        }
+
         // Init VanillaTilt on cards (desktop only for perf)
         if (typeof VanillaTilt !== 'undefined' && window.innerWidth > 768) {
           VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
