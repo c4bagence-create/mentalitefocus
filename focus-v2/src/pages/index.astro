@@ -193,6 +193,67 @@ import DiscordSection from '../components/DiscordSection.astro';
       </div>
     </div>
 
+    <!-- Newsletter Form Ultra Stylé -->
+    <div class="newsletter-section" data-animate="fade-up" data-delay="0.3">
+      <div class="newsletter-container">
+        <div class="newsletter-glow"></div>
+        <div class="newsletter-content">
+          <div class="newsletter-text">
+            <h3 class="newsletter-title">
+              <span class="nl-icon">✨</span>
+              Reste dans la boucle
+            </h3>
+            <p class="newsletter-desc">Reçois nos stratégies exclusives, cas d'études et opportunités avant tout le monde.</p>
+          </div>
+          <form class="newsletter-form" id="klaviyo-form">
+            <div class="form-wrapper">
+              <div class="input-container">
+                <div class="input-glow"></div>
+                <input 
+                  type="email" 
+                  id="klaviyo-email"
+                  placeholder="ton@email.com" 
+                  required 
+                  autocomplete="email"
+                  class="newsletter-input"
+                />
+                <div class="input-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                </div>
+              </div>
+              <button type="submit" class="newsletter-btn" id="klaviyo-submit">
+                <span class="btn-text">M'inscrire</span>
+                <span class="btn-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </span>
+                <span class="btn-loader"></span>
+              </button>
+            </div>
+            <p class="form-hint">
+              <span class="hint-icon">🔒</span>
+              0 spam. Désinscription en 1 clic.
+            </p>
+          </form>
+        </div>
+        <!-- Success State -->
+        <div class="newsletter-success" id="newsletter-success">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <h4 class="success-title">Bienvenue dans le cercle ! 🎉</h4>
+          <p class="success-text">Check ta boîte mail pour confirmer.</p>
+        </div>
+      </div>
+    </div>
+
     <!-- Bottom Bar -->
     <div class="footer-bottom">
       <p class="copyright">
@@ -287,6 +348,149 @@ import DiscordSection from '../components/DiscordSection.astro';
       scrollTopBtn?.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
+
+      // ========================================
+      // KLAVIYO INTEGRATION
+      // ========================================
+      
+      // Newsletter Form Submission
+      const klaviyoForm = document.getElementById('klaviyo-form');
+      const klaviyoEmail = document.getElementById('klaviyo-email');
+      const klaviyoSubmit = document.getElementById('klaviyo-submit');
+      const newsletterSuccess = document.getElementById('newsletter-success');
+      const newsletterContainer = document.querySelector('.newsletter-container');
+
+      if (klaviyoForm) {
+        klaviyoForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const email = klaviyoEmail?.value?.trim();
+          if (!email) return;
+
+          // Loading state
+          klaviyoSubmit?.classList.add('loading');
+
+          try {
+            // Klaviyo Identify & Track (via Klaviyo.js onsite)
+            if (typeof _learnq !== 'undefined') {
+              // Identify the user
+              _learnq.push(['identify', { 
+                '$email': email,
+                '$source': 'Focus Website Footer'
+              }]);
+              
+              // Track the signup event
+              _learnq.push(['track', 'Newsletter Signup', {
+                'source': 'Footer Form',
+                'page': window.location.href,
+                'timestamp': new Date().toISOString()
+              }]);
+            }
+
+            // Show success
+            newsletterContainer?.classList.add('submitted');
+            newsletterSuccess?.classList.add('show');
+
+            // Track with Meta Pixel
+            if (typeof fbq !== 'undefined') {
+              fbq('track', 'Lead', { content_name: 'Newsletter Footer' });
+            }
+
+          } catch (error) {
+            console.error('Klaviyo error:', error);
+          }
+
+          klaviyoSubmit?.classList.remove('loading');
+        });
+      }
+
+      // ========================================
+      // CTA CLICK TRACKING
+      // ========================================
+      
+      // Track all CTA clicks
+      const ctaSelectors = [
+        '.premium-cta',           // CTAs entre sections
+        '.card-btn',              // Pricing CTAs
+        '.price-tag',             // Hero CTA
+        '[href*="stripe"]',       // Stripe links
+        '[href*="discord"]',      // Discord links
+        'a[href="#pricing"]',     // Links to pricing
+        'a[href="#premium-card"]' // Direct card links
+      ];
+
+      const allCTAs = document.querySelectorAll(ctaSelectors.join(', '));
+      
+      allCTAs.forEach(cta => {
+        cta.addEventListener('click', () => {
+          const ctaText = cta.textContent?.trim() || 'Unknown CTA';
+          const ctaHref = cta.getAttribute('href') || '';
+          const sectionId = cta.closest('section')?.id || 'unknown';
+
+          // Klaviyo Track
+          if (typeof _learnq !== 'undefined') {
+            _learnq.push(['track', 'CTA Clicked', {
+              'cta_text': ctaText.substring(0, 50),
+              'cta_href': ctaHref,
+              'section': sectionId,
+              'page': window.location.href,
+              'timestamp': new Date().toISOString()
+            }]);
+          }
+
+          // Meta Pixel Track
+          if (typeof fbq !== 'undefined') {
+            fbq('trackCustom', 'CTAClick', {
+              cta_text: ctaText.substring(0, 50),
+              section: sectionId
+            });
+          }
+
+          console.log('📊 CTA Tracked:', ctaText.substring(0, 30), '| Section:', sectionId);
+        });
+      });
+
+      // Track Pricing Card Views
+      const pricingSection = document.getElementById('pricing');
+      if (pricingSection) {
+        const pricingObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              if (typeof _learnq !== 'undefined') {
+                _learnq.push(['track', 'Viewed Pricing', {
+                  'page': window.location.href
+                }]);
+              }
+              if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent', { content_name: 'Pricing Section' });
+              }
+              pricingObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+        
+        pricingObserver.observe(pricingSection);
+      }
+
+      // Track scroll depth
+      let scrollMilestones = { '25': false, '50': false, '75': false, '100': false };
+      window.addEventListener('scroll', () => {
+        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        
+        Object.keys(scrollMilestones).forEach(milestone => {
+          if (scrollPercent >= parseInt(milestone) && !scrollMilestones[milestone]) {
+            scrollMilestones[milestone] = true;
+            
+            if (typeof _learnq !== 'undefined') {
+              _learnq.push(['track', 'Scroll Depth', {
+                'depth': milestone + '%',
+                'page': window.location.href
+              }]);
+            }
+          }
+        });
+      }, { passive: true });
+
     });
   </script>
 </Layout>
@@ -668,6 +872,314 @@ import DiscordSection from '../components/DiscordSection.astro';
   .link-item:hover .link-arrow {
     opacity: 1;
     transform: translateX(0);
+  }
+
+  /* ===== NEWSLETTER SECTION - Ultra Stylé ===== */
+  .newsletter-section {
+    max-width: 800px;
+    margin: 3rem auto 0;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .newsletter-container {
+    position: relative;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    overflow: hidden;
+  }
+
+  .newsletter-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg 60deg,
+      rgba(212, 175, 55, 0.1) 60deg 120deg,
+      transparent 120deg 360deg
+    );
+    animation: nlRotate 8s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes nlRotate {
+    to { transform: rotate(360deg); }
+  }
+
+  .newsletter-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .newsletter-text {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .newsletter-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .nl-icon {
+    animation: nlSparkle 2s ease-in-out infinite;
+  }
+
+  @keyframes nlSparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50% { transform: scale(1.2) rotate(10deg); opacity: 0.8; }
+  }
+
+  .newsletter-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  @media (min-width: 540px) {
+    .form-wrapper {
+      flex-direction: row;
+    }
+  }
+
+  .input-container {
+    position: relative;
+    flex: 1;
+  }
+
+  .input-glow {
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(90deg, var(--gold), transparent, var(--gold));
+    background-size: 200% 100%;
+    border-radius: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: inputGlowMove 3s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  @keyframes inputGlowMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .input-container:focus-within .input-glow {
+    opacity: 1;
+  }
+
+  .newsletter-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 2.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 0.75rem;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  .newsletter-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .newsletter-input:focus {
+    border-color: var(--gold);
+    background: var(--bg-elevated);
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+    pointer-events: none;
+  }
+
+  .input-container:focus-within .input-icon {
+    color: var(--gold);
+  }
+
+  .newsletter-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(135deg, var(--gold) 0%, #B8860B 100%);
+    border: none;
+    border-radius: 0.75rem;
+    color: black;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .newsletter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .newsletter-btn:hover::before {
+    left: 100%;
+  }
+
+  .newsletter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+  }
+
+  .btn-icon {
+    display: flex;
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.3s ease;
+  }
+
+  .newsletter-btn:hover .btn-icon {
+    transform: translateX(3px);
+  }
+
+  .btn-loader {
+    display: none;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(0,0,0,0.2);
+    border-top-color: black;
+    border-radius: 50%;
+    animation: btnSpin 0.8s linear infinite;
+  }
+
+  @keyframes btnSpin {
+    to { transform: rotate(360deg); }
+  }
+
+  .newsletter-btn.loading .btn-text,
+  .newsletter-btn.loading .btn-icon {
+    display: none;
+  }
+
+  .newsletter-btn.loading .btn-loader {
+    display: block;
+  }
+
+  .form-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .hint-icon {
+    font-size: 0.875rem;
+  }
+
+  /* Success State */
+  .newsletter-success {
+    display: none;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .newsletter-success.show {
+    display: block;
+    animation: successIn 0.5s ease forwards;
+  }
+
+  @keyframes successIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .success-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0 auto 1rem;
+    background: linear-gradient(135deg, var(--gold), #B8860B);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    animation: successBounce 0.6s ease;
+  }
+
+  @keyframes successBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  .success-icon svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .success-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+  }
+
+  .success-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .newsletter-container.submitted .newsletter-content {
+    display: none;
   }
 
   /* Footer Bottom */
