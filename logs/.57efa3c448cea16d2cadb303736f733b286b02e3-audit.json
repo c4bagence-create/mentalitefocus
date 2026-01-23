@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/c4b/mentalitefocus/logs/.57efa3c448cea16d2cadb303736f733b286b02e3-audit.json",
+    "files": [
+        {
+            "date": 1769105526272,
+            "name": "/Users/c4b/mentalitefocus/logs/mcp-puppeteer-2026-01-22.log",
+            "hash": "7a2f41c2cdcba3530d7b4a8b5c97bc6837eb5c51950908ef9accba70b22cfd0b"
+        }
+    ],
+    "hashType": "sha256"
+}
