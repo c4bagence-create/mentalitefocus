@@ -19,14 +19,117 @@
     </h2>
 
     <p class="section-desc">
-      Accès illimité à tout l'écosystème. <strong>Pour le prix d'un kebab.</strong>
+      Accès illimité à tout l'écosystème. <strong>Pour le prix d'un repas.</strong>
     </p>
+
+    <div class="pricing-subtitle">
+      <p class="subtitle-main">Pour ceux qui veulent des résultats.</p>
+      <p class="subtitle-sub">Sans engagement. Annulation facile.</p>
+    </div>
   </header>
 
-  <!-- Premium Card - Carte bancaire 3D -->
-  <div class="card-container">
+  <!-- Carte CENTURION Ultra Premium -->
+  <div class="centurion-card">
+    <!-- Background layers avec textures -->
+    <div class="card-texture"></div>
+    <div class="card-pattern"></div>
+    <div class="card-reflection"></div>
+    <div class="card-hologram"></div>
+
+    <!-- Chip métal 3D -->
+    <div class="metal-chip">
+      <div class="chip-surface">
+        <div class="chip-grid"></div>
+      </div>
+      <div class="chip-shine"></div>
+    </div>
+
+    <!-- Bande magnétique stylée -->
+    <div class="magnetic-strip"></div>
+
+    <!-- Contactless métal -->
+    <div class="contactless-waves">
+      <svg viewBox="0 0 40 40" fill="none">
+        <path d="M14 20c0-3.31 2.69-6 6-6" stroke="url(#metalGradient)" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M11 20c0-4.97 4.03-9 9-9" stroke="url(#metalGradient)" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+        <path d="M8 20c0-6.63 5.37-12 12-12" stroke="url(#metalGradient)" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+        <defs>
+          <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#d4af37"/>
+            <stop offset="50%" style="stop-color:#f4d03f"/>
+            <stop offset="100%" style="stop-color:#d4af37"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- Contenu carte -->
+    <div class="centurion-content">
+      <!-- Header premium -->
+      <div class="centurion-header">
+        <div class="brand-elite">
+          <span class="brand-focus">FOCUS</span>
+          <div class="brand-separator"></div>
+          <span class="brand-tier">BUSINESS CLUB</span>
+        </div>
+        <div class="tier-badge">PLATINUM</div>
+      </div>
+
+      <!-- Body layout -->
+      <div class="centurion-body">
+        <!-- Left: Benefits avec design épuré -->
+        <div class="benefits-elite">
+          <div class="benefit-elite">
+            <div class="benefit-marker"></div>
+            <span>Accès illimité salons privés</span>
+          </div>
+          <div class="benefit-elite">
+            <div class="benefit-marker"></div>
+            <span>Stratégies E-com, IA & Branding</span>
+          </div>
+          <div class="benefit-elite">
+            <div class="benefit-marker"></div>
+            <span>Lives & Q&A hebdomadaires</span>
+          </div>
+          <div class="benefit-elite">
+            <div class="benefit-marker"></div>
+            <span>Réseau entrepreneurs premium</span>
+          </div>
+          <div class="benefit-elite">
+            <div class="benefit-marker"></div>
+            <span>Support prioritaire 24/7</span>
+          </div>
+        </div>
+
+        <!-- Right: Prix avec effet métal 3D -->
+        <div class="price-elite">
+          <div class="price-label-elite">TARIF MENSUEL</div>
+          <div class="price-display">
+            <div class="price-metal">
+              <span class="price-number">9,90</span>
+              <span class="currency-symbol">€</span>
+            </div>
+            <div class="price-period-elite">/MOIS</div>
+          </div>
+          <div class="price-detail">Sans engagement</div>
+        </div>
+      </div>
+
+      <!-- Footer avec CTA premium -->
+      <div class="centurion-footer">
+        <a href="https://espace.mentalitefocus.com/checkout" class="cta-centurion" id="premium-card">
+          <div class="cta-bg-metal"></div>
+          <span class="cta-text-elite">DEVENIR MEMBRE PREMIUM</span>
+          <div class="cta-icon-arrow">→</div>
+        </a>
+        <div class="card-number">•••• •••• •••• 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ancienne carte 3D masquée -->
+  <div class="card-container-old" style="display: none;">
     <div class="premium-card-3d">
-      <!-- Carte bancaire -->
       <div class="credit-card">
         <!-- Background gradient -->
         <div class="card-bg"></div>
@@ -77,7 +180,7 @@
 
         <!-- CTA Button -->
         <a href="https://espace.mentalitefocus.com/checkout" class="card-cta" id="premium-card">
-          <span>REJOINDRE LE CLUB</span>
+          <span>ACCÉDER AU PREMIUM MAINTENANT</span>
         </a>
       </div>
 
@@ -85,61 +188,51 @@
       <div class="benefit-card benefit-1">
         <div class="benefit-check">✓</div>
         <div class="benefit-icon">
-          <svg viewBox="0 0 24 24" fill="#95BF47">
-            <path d="M3 3h18v18H3V3zm3 3v12h12V6H6zm3 3h6v6H9V9z"/>
+          <svg viewBox="0 0 24 24" fill="#10B981">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
           </svg>
         </div>
-        <span class="benefit-text">97 Thèmes Shopify</span>
+        <span class="benefit-text">Accès TOTAL aux salons privés</span>
       </div>
 
       <div class="benefit-card benefit-2">
         <div class="benefit-check">✓</div>
         <div class="benefit-icon">
           <svg viewBox="0 0 24 24" fill="#FFD700">
-            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
           </svg>
         </div>
-        <span class="benefit-text">Prompts IA Premium</span>
+        <span class="benefit-text">Stratégies E-com, IA & Branding</span>
       </div>
 
       <div class="benefit-card benefit-3">
         <div class="benefit-check">✓</div>
         <div class="benefit-icon">
           <svg viewBox="0 0 24 24" fill="#EC4899">
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
           </svg>
         </div>
-        <span class="benefit-text">Notion Focus OS</span>
+        <span class="benefit-text">Lives & Q&A hebdomadaires</span>
       </div>
 
       <div class="benefit-card benefit-4">
         <div class="benefit-check">✓</div>
         <div class="benefit-icon">
           <svg viewBox="0 0 24 24" fill="#06B6D4">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
           </svg>
         </div>
-        <span class="benefit-text">Agent Sourcing</span>
+        <span class="benefit-text">Réseau d'entrepreneurs ambitieux</span>
       </div>
 
       <div class="benefit-card benefit-5">
         <div class="benefit-check">✓</div>
         <div class="benefit-icon">
           <svg viewBox="0 0 24 24" fill="#8B5CF6">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
           </svg>
         </div>
-        <span class="benefit-text">Lives Exclusifs</span>
-      </div>
-
-      <div class="benefit-card benefit-6">
-        <div class="benefit-check">✓</div>
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24" fill="#10B981">
-            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-          </svg>
-        </div>
-        <span class="benefit-text">Communauté VIP</span>
+        <span class="benefit-text">Entraide et réponses rapides 24/7</span>
       </div>
     </div>
   </div>
@@ -216,12 +309,965 @@
     font-weight: 700;
   }
 
-  /* Card Container */
-  .card-container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .pricing-subtitle {
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .subtitle-main {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle-sub {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* CENTURION CARD - Ultra Premium Design */
+  .centurion-card {
     position: relative;
-    perspective: 2000px;
+    width: 100%;
+    max-width: 380px;
+    min-height: 280px;
+    margin: 0 auto;
+    border-radius: 18px;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(25, 25, 28, 1) 0%, rgba(12, 12, 15, 1) 100%);
+    padding: 1.75rem 1.5rem;
+    overflow: hidden;
+    box-shadow:
+      0 25px 70px rgba(0, 0, 0, 0.7),
+      0 0 0 1px rgba(212, 175, 55, 0.25),
+      0 0 50px rgba(212, 175, 55, 0.08),
+      inset 0 1px 2px rgba(255, 255, 255, 0.05),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+  }
+
+  .centurion-card:hover {
+    transform: translateY(-8px) rotateX(2deg);
+    box-shadow:
+      0 40px 100px rgba(0, 0, 0, 0.8),
+      0 0 0 1px rgba(212, 175, 55, 0.4),
+      0 0 70px rgba(212, 175, 55, 0.15),
+      0 0 100px rgba(212, 175, 55, 0.05),
+      inset 0 2px 4px rgba(255, 255, 255, 0.08),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  @media (min-width: 768px) {
+    .centurion-card {
+      max-width: 980px;
+      min-height: 400px;
+      padding: 3.5rem 3rem;
+      border-radius: 24px;
+    }
+  }
+
+  /* Texture Layer - Carbon fiber subtle */
+  .card-texture {
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.01) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(255, 255, 255, 0.01) 3px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(0, 0, 0, 0.02) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.02) 3px
+      );
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  /* Pattern géométrique */
+  .card-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 70% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 40%),
+      radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  /* Reflection métallique */
+  .card-reflection {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.02) 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.01) 75%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .centurion-card:hover .card-reflection {
+    opacity: 1;
+  }
+
+  /* Hologram effect */
+  .card-hologram {
+    position: absolute;
+    inset: -50%;
+    background: conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      rgba(212, 175, 55, 0.05) 60deg,
+      rgba(148, 210, 244, 0.03) 120deg,
+      rgba(212, 175, 55, 0.05) 180deg,
+      rgba(255, 105, 180, 0.03) 240deg,
+      rgba(212, 175, 55, 0.05) 300deg,
+      transparent 360deg
+    );
+    transform: translateX(-100%) translateY(-100%) rotate(0deg);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .centurion-card:hover .card-hologram {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+    opacity: 1;
+  }
+
+  /* Metal Chip 3D */
+  .metal-chip {
+    position: absolute;
+    top: 1.75rem;
+    left: 1.5rem;
+    width: 44px;
+    height: 36px;
+    background: linear-gradient(135deg,
+      #e8d7a4 0%,
+      #d4af37 20%,
+      #f4d03f 40%,
+      #d4af37 60%,
+      #b8941f 80%,
+      #d4af37 100%
+    );
+    border-radius: 7px;
+    box-shadow:
+      0 4px 14px rgba(0, 0, 0, 0.6),
+      0 2px 5px rgba(0, 0, 0, 0.4),
+      inset 0 1.5px 2px rgba(255, 255, 255, 0.4),
+      inset 0 -1.5px 2px rgba(0, 0, 0, 0.4);
+    padding: 5px;
+    transform: translateZ(10px);
+    transition: all 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .metal-chip {
+      top: 3.5rem;
+      left: 3rem;
+      width: 62px;
+      height: 50px;
+      padding: 7px;
+      border-radius: 9px;
+    }
+  }
+
+  .centurion-card:hover .metal-chip {
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.7),
+      0 3px 9px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(212, 175, 55, 0.3),
+      inset 0 2px 4px rgba(255, 255, 255, 0.5),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .chip-surface {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(212, 175, 55, 0.1) 50%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chip-grid {
+    width: 100%;
+    height: 100%;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.2) 0px,
+        transparent 1px,
+        transparent 3px,
+        rgba(0, 0, 0, 0.2) 4px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.2) 0px,
+        transparent 1px,
+        transparent 3px,
+        rgba(0, 0, 0, 0.2) 4px
+      );
+  }
+
+  .chip-shine {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 45%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.2) 55%,
+      transparent 100%
+    );
+    animation: chipShine 4s ease-in-out infinite;
+  }
+
+  @keyframes chipShine {
+    0%, 100% { transform: translateX(-100%) translateY(-100%); }
+    50% { transform: translateX(0%) translateY(0%); }
+  }
+
+  /* Bande magnétique */
+  .magnetic-strip {
+    position: absolute;
+    top: 5.5rem;
+    right: 0;
+    width: 30%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0.4) 20%,
+      rgba(212, 175, 55, 0.6) 50%,
+      rgba(212, 175, 55, 0.4) 80%,
+      transparent 100%
+    );
+    opacity: 0.4;
+  }
+
+  @media (min-width: 768px) {
+    .magnetic-strip {
+      top: 8rem;
+      width: 25%;
+      height: 3px;
+    }
+  }
+
+  /* Contactless waves métal */
+  .contactless-waves {
+    position: absolute;
+    top: 1.75rem;
+    left: 4rem;
+    width: 28px;
+    height: 28px;
+    transform: rotate(90deg);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .contactless-waves {
+      top: 3.5rem;
+      left: 7rem;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .centurion-card:hover .contactless-waves {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+  }
+
+  /* Content layout */
+  .centurion-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .centurion-content {
+      gap: 2.5rem;
+    }
+  }
+
+  /* Header Elite */
+  .centurion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  }
+
+  @media (min-width: 768px) {
+    .centurion-header {
+      padding-top: 4.5rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  .brand-elite {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  @media (min-width: 768px) {
+    .brand-elite {
+      gap: 1rem;
+    }
+  }
+
+  .brand-focus {
+    font-size: 1.25rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.7) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+
+  @media (min-width: 768px) {
+    .brand-focus {
+      font-size: 2.25rem;
+      letter-spacing: 0.15em;
+    }
+  }
+
+  .brand-separator {
+    width: 1.5px;
+    height: 18px;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0.6) 50%,
+      transparent 100%
+    );
+  }
+
+  @media (min-width: 768px) {
+    .brand-separator {
+      width: 2px;
+      height: 24px;
+    }
+  }
+
+  .brand-tier {
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(212, 175, 55, 0.9);
+    text-shadow:
+      0 0 12px rgba(212, 175, 55, 0.6),
+      0 2px 5px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 768px) {
+    .brand-tier {
+      font-size: 0.875rem;
+      letter-spacing: 0.2em;
+    }
+  }
+
+  .tier-badge {
+    padding: 0.25rem 0.625rem;
+    background: linear-gradient(135deg,
+      rgba(212, 175, 55, 0.15) 0%,
+      rgba(212, 175, 55, 0.08) 100%
+    );
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 5px;
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(212, 175, 55, 0.95);
+    text-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .tier-badge {
+      padding: 0.375rem 0.875rem;
+      border-radius: 6px;
+      font-size: 0.625rem;
+      letter-spacing: 0.12em;
+    }
+  }
+
+  /* Body layout */
+  .centurion-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+  }
+
+  @media (min-width: 768px) {
+    .centurion-body {
+      flex-direction: row;
+      gap: 4rem;
+      align-items: center;
+    }
+  }
+
+  /* Benefits Elite */
+  .benefits-elite {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    flex: 1;
+  }
+
+  @media (min-width: 768px) {
+    .benefits-elite {
+      gap: 1rem;
+    }
+  }
+
+  .benefit-elite {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    transition: all 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .benefit-elite {
+      gap: 0.875rem;
+    }
+  }
+
+  .benefit-elite:hover {
+    transform: translateX(4px);
+  }
+
+  .benefit-marker {
+    width: 5px;
+    height: 5px;
+    background: linear-gradient(135deg,
+      rgba(212, 175, 55, 1) 0%,
+      rgba(244, 208, 63, 1) 100%
+    );
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow:
+      0 0 6px rgba(212, 175, 55, 0.6),
+      0 1.5px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .benefit-marker {
+      width: 6px;
+      height: 6px;
+    }
+  }
+
+  .benefit-marker::after {
+    content: '';
+    position: absolute;
+    inset: -2.5px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
+
+  @media (min-width: 768px) {
+    .benefit-marker::after {
+      inset: -3px;
+    }
+  }
+
+  .benefit-elite span {
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+  }
+
+  @media (min-width: 768px) {
+    .benefit-elite span {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+  }
+
+  /* Price Elite Section */
+  .price-elite {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.25rem;
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(212, 175, 55, 0.08) 0%,
+      transparent 70%
+    );
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow:
+      0 3px 12px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  @media (min-width: 768px) {
+    .price-elite {
+      align-items: flex-end;
+      flex-shrink: 0;
+      min-width: 280px;
+      gap: 0.75rem;
+      padding: 1.5rem;
+      border-radius: 16px;
+    }
+  }
+
+  .price-label-elite {
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(212, 175, 55, 0.7);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (min-width: 768px) {
+    .price-label-elite {
+      font-size: 0.625rem;
+      letter-spacing: 0.15em;
+    }
+  }
+
+  .price-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  @media (min-width: 768px) {
+    .price-display {
+      align-items: flex-end;
+      gap: 0.5rem;
+    }
+  }
+
+  .price-metal {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    line-height: 1;
+  }
+
+  @media (min-width: 768px) {
+    .price-metal {
+      gap: 0.375rem;
+    }
+  }
+
+  .currency-symbol {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg,
+      #f4d03f 0%,
+      #d4af37 40%,
+      #e8d7a4 50%,
+      #d4af37 60%,
+      #b8941f 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 3px 9px rgba(212, 175, 55, 0.5))
+            drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+  }
+
+  .price-number {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg,
+      #f4d03f 0%,
+      #d4af37 30%,
+      #e8d7a4 50%,
+      #d4af37 70%,
+      #b8941f 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.03em;
+    filter: drop-shadow(0 5px 12px rgba(212, 175, 55, 0.6))
+            drop-shadow(0 0 24px rgba(212, 175, 55, 0.4))
+            drop-shadow(0 2px 5px rgba(0, 0, 0, 0.4));
+  }
+
+  @media (min-width: 768px) {
+    .currency-symbol {
+      font-size: 2.5rem;
+    }
+    .price-number {
+      font-size: 5.5rem;
+    }
+  }
+
+  .price-period-elite {
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: rgba(212, 175, 55, 0.6);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 768px) {
+    .price-period-elite {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+    }
+  }
+
+  .price-detail {
+    font-size: 0.5625rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+  }
+
+  @media (min-width: 768px) {
+    .price-detail {
+      font-size: 0.625rem;
+    }
+  }
+
+  /* Footer Centurion */
+  .centurion-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .centurion-footer {
+      gap: 1.25rem;
+      padding-top: 1.5rem;
+    }
+  }
+
+  /* CTA Centurion - Ultra Premium Button */
+  .cta-centurion {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(135deg,
+      #e8d7a4 0%,
+      #d4af37 20%,
+      #f4d03f 40%,
+      #d4af37 60%,
+      #b8941f 80%,
+      #d4af37 100%
+    );
+    color: #000;
+    font-size: 0.625rem;
+    font-weight: 900;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 10px;
+    box-shadow:
+      0 6px 18px rgba(212, 175, 55, 0.5),
+      0 3px 9px rgba(0, 0, 0, 0.3),
+      inset 0 1.5px 3px rgba(255, 255, 255, 0.4),
+      inset 0 -1.5px 3px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .cta-centurion {
+      font-size: 1rem;
+      padding: 1.375rem 3rem;
+      gap: 1rem;
+      border-radius: 14px;
+      letter-spacing: 0.1em;
+    }
+  }
+
+  .cta-bg-metal {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 45%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0.3) 55%,
+      transparent 100%
+    );
+    transform: translateX(-150%) skewX(-20deg);
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .cta-centurion:hover .cta-bg-metal {
+    transform: translateX(150%) skewX(-20deg);
+  }
+
+  .cta-centurion:hover {
+    transform: translateY(-2px) scale(1.015);
+    box-shadow:
+      0 10px 28px rgba(212, 175, 55, 0.6),
+      0 5px 14px rgba(0, 0, 0, 0.4),
+      0 0 35px rgba(212, 175, 55, 0.3),
+      inset 0 2px 5px rgba(255, 255, 255, 0.5),
+      inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (min-width: 768px) {
+    .cta-centurion:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow:
+        0 12px 32px rgba(212, 175, 55, 0.6),
+        0 6px 16px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(212, 175, 55, 0.3),
+        inset 0 2px 6px rgba(255, 255, 255, 0.5),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .cta-text-elite {
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .cta-icon-arrow {
+    position: relative;
+    z-index: 1;
+    font-size: 0.875rem;
+    font-weight: 900;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @media (min-width: 768px) {
+    .cta-icon-arrow {
+      font-size: 1.25rem;
+    }
+  }
+
+  .cta-centurion:hover .cta-icon-arrow {
+    transform: translateX(4px);
+  }
+
+  @media (min-width: 768px) {
+    .cta-centurion:hover .cta-icon-arrow {
+      transform: translateX(6px);
+    }
+  }
+
+  /* Card Number */
+  .card-number {
+    font-size: 0.5625rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: rgba(212, 175, 55, 0.4);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-family: 'Courier New', monospace;
+  }
+
+  @media (min-width: 768px) {
+    .card-number {
+      font-size: 0.6875rem;
+      letter-spacing: 0.15em;
+    }
+  }
+
+  /* Light Mode - Centurion White Edition */
+  :global(.light) .centurion-card {
+    background: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(250, 250, 252, 1) 100%
+    );
+    box-shadow:
+      0 35px 90px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(212, 175, 55, 0.3),
+      0 0 60px rgba(212, 175, 55, 0.12),
+      inset 0 1px 2px rgba(255, 255, 255, 1),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.08);
+  }
+
+  :global(.light) .centurion-card:hover {
+    box-shadow:
+      0 50px 120px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(212, 175, 55, 0.45),
+      0 0 80px rgba(212, 175, 55, 0.18),
+      0 0 120px rgba(212, 175, 55, 0.08),
+      inset 0 2px 4px rgba(255, 255, 255, 1),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.light) .card-texture {
+    background:
+      repeating-linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.01) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.01) 3px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(0, 0, 0, 0.015) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.015) 3px
+      );
+  }
+
+  :global(.light) .centurion-header {
+    border-bottom-color: rgba(212, 175, 55, 0.2);
+  }
+
+  :global(.light) .brand-focus {
+    background: linear-gradient(135deg,
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  :global(.light) .brand-tier {
+    color: rgba(184, 148, 31, 0.95);
+  }
+
+  :global(.light) .tier-badge {
+    background: linear-gradient(135deg,
+      rgba(212, 175, 55, 0.2) 0%,
+      rgba(212, 175, 55, 0.12) 100%
+    );
+    border-color: rgba(212, 175, 55, 0.4);
+    color: rgba(184, 148, 31, 1);
+  }
+
+  :global(.light) .benefit-elite span {
+    color: rgba(0, 0, 0, 0.85);
+  }
+
+  :global(.light) .price-elite {
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(212, 175, 55, 0.12) 0%,
+      transparent 70%
+    );
+    border-color: rgba(212, 175, 55, 0.25);
+  }
+
+  :global(.light) .price-label-elite {
+    color: rgba(184, 148, 31, 0.8);
+  }
+
+  :global(.light) .price-period-elite {
+    color: rgba(184, 148, 31, 0.7);
+  }
+
+  :global(.light) .price-detail {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  :global(.light) .centurion-footer {
+    border-top-color: rgba(212, 175, 55, 0.15);
+  }
+
+  :global(.light) .card-number {
+    color: rgba(184, 148, 31, 0.5);
+  }
+
+  :global(.light) .magnetic-strip {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(184, 148, 31, 0.3) 20%,
+      rgba(184, 148, 31, 0.5) 50%,
+      rgba(184, 148, 31, 0.3) 80%,
+      transparent 100%
+    );
+  }
+
+  /* Light mode - Prix plus visible avec or foncé */
+  :global(.light) .currency-symbol {
+    background: linear-gradient(135deg,
+      #b8941f 0%,
+      #8a6e19 40%,
+      #9d7e1d 50%,
+      #8a6e19 60%,
+      #74590f 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 3px 8px rgba(138, 110, 25, 0.4))
+            drop-shadow(0 0 15px rgba(138, 110, 25, 0.2));
+  }
+
+  :global(.light) .price-number {
+    background: linear-gradient(135deg,
+      #b8941f 0%,
+      #8a6e19 30%,
+      #9d7e1d 50%,
+      #8a6e19 70%,
+      #74590f 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 4px 10px rgba(138, 110, 25, 0.5))
+            drop-shadow(0 0 20px rgba(138, 110, 25, 0.3))
+            drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3));
   }
 
   /* Premium Card 3D Container */
@@ -622,58 +1668,45 @@
 
   /* Benefit Positions */
   .benefit-1 {
-    top: 8%;
+    top: 5%;
     left: -12%;
     animation-delay: 0s;
   }
 
   .benefit-2 {
-    top: 22%;
+    top: 25%;
     right: -12%;
     animation-delay: 0.8s;
   }
 
   .benefit-3 {
-    top: 40%;
+    top: 45%;
     left: -12%;
     animation-delay: 1.6s;
   }
 
   .benefit-4 {
-    top: 56%;
+    top: 65%;
     right: -12%;
     animation-delay: 2.4s;
   }
 
   .benefit-5 {
-    bottom: 18%;
+    bottom: 8%;
     left: -12%;
     animation-delay: 3.2s;
   }
 
-  .benefit-6 {
-    bottom: 5%;
-    right: -12%;
-    animation-delay: 4s;
-  }
-
   /* Light Mode */
-  :global(.light) .premium-card {
-    background: white;
-    border-color: rgba(0,0,0,0.1);
+  :global(.light) .premium-bank-card {
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.12),
+      0 0 1px rgba(0, 0, 0, 0.1) inset;
   }
 
-  :global(.light) .premium-card:hover {
-    border-color: var(--gold);
-  }
-
-  :global(.light) .card-badge {
-    background: var(--gold);
-    color: black;
-  }
-
-  :global(.light) .floating-perk {
-    background: white;
-    border-color: rgba(0,0,0,0.1);
+  :global(.light) .premium-bank-card:hover {
+    box-shadow:
+      0 25px 70px rgba(0, 0, 0, 0.15),
+      0 0 1px rgba(0, 0, 0, 0.12) inset;
   }
 </style>

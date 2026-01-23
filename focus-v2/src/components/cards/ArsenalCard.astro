@@ -27,7 +27,7 @@ const tagClass = tagColors[card.tagColor];
   <div class="card-left">
     <slot name="left" />
   </div>
-  
+
   <div class="card-right">
     <slot name="right" />
   </div>
@@ -113,5 +113,17 @@ const tagClass = tagColors[card.tagColor];
 
   .card-snap {
     background: #FFFC00;
+  }
+
+  /* IA Card - Full width terminal */
+  .card-ia .card-left {
+    flex: 1;
+    width: 100%;
+    padding: 0;
+    border: none;
+  }
+
+  .card-ia .card-right {
+    display: none;
   }
 </style>

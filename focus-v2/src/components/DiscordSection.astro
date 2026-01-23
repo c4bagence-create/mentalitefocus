@@ -61,8 +61,8 @@ const categories = [
 // Messages par type de salon
 const messageTypes = {
   annonce: [
-    { user: 'Focus Team', avatar: 'F', msg: '🚨 Nouveau live demain 19h ! Scaling Meta Ads jusqu\'à 10K€/jour', time: 'Aujourd\'hui' },
-    { user: 'Focus Team', avatar: 'F', msg: '📢 Mise à jour du Coffre : 15 nouveaux templates Notion ajoutés', time: 'Hier' },
+    { user: 'Alexandre', avatar: 'A', role: 'Staff', roleColor: '#EF4444', msg: '🚨 Nouveau live demain 19h ! Scaling Meta Ads jusqu\'à 10K€/jour', time: 'Aujourd\'hui' },
+    { user: 'Sarah', avatar: 'S', role: 'Staff', roleColor: '#EF4444', msg: '📢 Mise à jour du Coffre : 15 nouveaux templates Notion ajoutés', time: 'Hier' },
   ],
   general: [
     { user: 'Thomas_Ads', avatar: 'T', color: '#5865F2', msg: 'Qui a testé les nouvelles audiences Meta ?', time: '14:32' },
@@ -315,6 +315,18 @@ import AnimatedCTA from './AnimatedCTA.astro';
     padding: 4rem 1.25rem;
     background: var(--bg-section);
     overflow: hidden;
+
+    /* Discord Colors - Toujours les vraies couleurs Discord */
+    --discord-bg: #313338;
+    --discord-sidebar: #2b2d31;
+    --discord-chat: #313338;
+    --discord-hover: #404249;
+    --discord-text: #b5bac1;
+    --discord-input: #383a40;
+    --discord-header-bg: #2b2d31;
+    --discord-channel-text: #949ba4;
+    --discord-channel-hover: #404249;
+    --discord-icon: #b5bac1;
   }
 
   /* Header */
@@ -484,13 +496,13 @@ import AnimatedCTA from './AnimatedCTA.astro';
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     cursor: pointer;
   }
 
   .server-name {
     font-weight: 700;
-    color: var(--text-primary);
+    color: #ffffff;
     font-size: 0.875rem;
   }
 
@@ -548,12 +560,12 @@ import AnimatedCTA from './AnimatedCTA.astro';
 
   .channel-btn:hover {
     background: var(--discord-hover);
-    color: var(--text-primary);
+    color: #ffffff;
   }
 
   .channel-btn.active {
     background: var(--discord-hover);
-    color: var(--text-primary);
+    color: #ffffff;
   }
 
   .channel-icon {
@@ -661,7 +673,7 @@ import AnimatedCTA from './AnimatedCTA.astro';
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     background: var(--discord-chat);
   }
 
@@ -672,7 +684,7 @@ import AnimatedCTA from './AnimatedCTA.astro';
 
   .chat-name {
     font-weight: 700;
-    color: var(--text-primary);
+    color: #ffffff;
     font-size: 0.875rem;
   }
 
@@ -873,7 +885,7 @@ import AnimatedCTA from './AnimatedCTA.astro';
     background: transparent;
     border: none;
     font-size: 0.875rem;
-    color: var(--text-primary);
+    color: #ffffff;
     outline: none;
   }
 
@@ -966,7 +978,7 @@ import AnimatedCTA from './AnimatedCTA.astro';
     display: block;
     font-size: 0.75rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1134,6 +1146,13 @@ import AnimatedCTA from './AnimatedCTA.astro';
         { user: 'Lucas_Crypto', avatar: 'L', color: '#8B5CF6', msg: 'Mon conseil : Automatise tout ce qui peut l\'être 🚀', time: '14:22' },
         { user: 'Sophie_Drop', avatar: 'S', color: '#F472B6', msg: 'Toujours tester 10 produits minimum avant de scale', time: '15:05' },
       ],
+      // PRÉSENTATION - Présentations des membres
+      presentation: [
+        { user: 'Thomas_Ads', avatar: 'T', color: '#5865F2', msg: 'Salut ! Moi c\'est Thomas, 24 ans, spécialisé Meta Ads. Ici pour progresser avec vous 💪', time: '09:15' },
+        { user: 'Julie_Ecom', avatar: 'J', color: '#EC4899', msg: 'Hello ! Julie, e-commerce depuis 2 ans, dropshipping & POD. Ravie de vous rejoindre 🎉', time: '10:30' },
+        { user: 'Karim_Drop', avatar: 'K', color: '#F59E0B', msg: 'Yo la team ! Karim ici, je me lance dans le dropshipping. Hâte d\'apprendre avec vous !', time: '11:45' },
+        { user: 'Emma_SMMA', avatar: 'E', color: '#10B981', msg: 'Coucou ! Emma, je monte mon agence SMMA. Contente de faire partie de cette communauté 🚀', time: '14:20' },
+      ],
       // VOS-CHIFFRES - Résultats et performances
       chiffres: [
         { user: 'Lucas_Crypto', avatar: 'L', color: '#8B5CF6', msg: '📊 Store Shopify : 12,847€ ce mois. ATH battu !', time: '12:15' },
@@ -1176,26 +1195,20 @@ import AnimatedCTA from './AnimatedCTA.astro';
       notifState[id] = 0;
     });
 
-    // Get role badge info
-    const staffMembers = ['Sonny', 'Jamel', 'Midou', 'Zaid', 'Caldi'];
+    // Get role badge info - Only staff members get badges
+    const staffMembers = ['Sonny', 'Jamel', 'Midou', 'Zaid', 'Caldi', 'Alexandre', 'Sarah'];
     const getRoleInfo = (user) => {
-      // Check if user is STAFF - Rouge directement
-      if (staffMembers.some(s => user.startsWith(s) || user === s)) return { cls: 'staff', text: 'ÉQUIPE' };
-      if (user === 'Focus Team') return { cls: 'admin', text: 'ADMIN' };
-      if (user.includes('_Ecom') || user.includes('_Drop')) return { cls: 'ecom', text: 'E-COM' };
-      if (user.includes('_Ads') || user.includes('_Meta') || user.includes('_TikTok')) return { cls: 'ads', text: 'ADS' };
-      if (user.includes('_SMMA')) return { cls: 'smma', text: 'SMMA' };
-      if (user.includes('_Crypto')) return { cls: 'crypto', text: 'CRYPTO' };
-      if (user.includes('_SEO')) return { cls: 'seo', text: 'SEO' };
-      if (user.includes('_Auto')) return { cls: 'auto', text: 'AUTO' };
-      return { cls: 'member', text: 'MEMBRE' };
+      // Check if user is STAFF - Rouge uniquement pour le staff
+      if (staffMembers.some(s => user.startsWith(s) || user === s)) return { cls: 'staff', text: 'STAFF' };
+      // Pas de badge pour les membres normaux
+      return null;
     };
 
     // Create message element using DOM methods (more reliable)
     const createMessageElement = (msg) => {
-      const isAdmin = msg.user === 'Focus Team';
-      const avatarColor = msg.color || '#D4AF37';
-      const roleInfo = getRoleInfo(msg.user);
+      const isStaff = msg.role === 'Staff';
+      const avatarColor = msg.color || (isStaff ? msg.roleColor : '#D4AF37');
+      const roleInfo = isStaff ? { cls: 'staff', text: 'STAFF', color: msg.roleColor } : getRoleInfo(msg.user);
       const reactions = Math.floor(Math.random() * 10) + 1;
       const hasFireReaction = Math.random() > 0.5;
       const fireCount = Math.floor(Math.random() * 5) + 1;
@@ -1207,7 +1220,7 @@ import AnimatedCTA from './AnimatedCTA.astro';
 
       // Avatar
       const avatar = document.createElement('div');
-      avatar.className = 'msg-avatar' + (isAdmin ? ' admin-avatar' : '');
+      avatar.className = 'msg-avatar' + (isStaff ? ' staff-avatar' : '');
       avatar.style.cssText = `
         width: 40px; height: 40px; min-width: 40px; min-height: 40px;
         border-radius: 50%; display: flex; align-items: center; justify-content: center;
@@ -1227,18 +1240,21 @@ import AnimatedCTA from './AnimatedCTA.astro';
       header.className = 'msg-header';
       header.style.cssText = 'display: flex; align-items: center; gap: 8px; flex-wrap: wrap;';
 
-      // Author name
+      // Author name - Rouge pour staff
       const author = document.createElement('span');
-      author.className = 'msg-author' + (isAdmin ? ' gold' : '');
-      author.style.cssText = 'font-weight: 600; font-size: 14px; color: ' + (isAdmin ? 'var(--gold)' : 'var(--text-primary)') + ';';
+      author.className = 'msg-author';
+      const isStaffUser = roleInfo !== null;
+      author.style.cssText = `font-weight: 600; font-size: 14px; color: ${isStaffUser ? '#EF4444' : '#ffffff'};`;
       author.textContent = msg.user;
       header.appendChild(author);
 
-      // Role badge
-      const badge = document.createElement('span');
-      badge.className = 'role-badge ' + roleInfo.cls;
-      badge.textContent = roleInfo.text;
-      header.appendChild(badge);
+      // Role badge - Seulement pour le staff
+      if (roleInfo !== null) {
+        const badge = document.createElement('span');
+        badge.className = 'role-badge ' + roleInfo.cls;
+        badge.textContent = roleInfo.text;
+        header.appendChild(badge);
+      }
 
       // Time
       const time = document.createElement('span');
@@ -1252,7 +1268,7 @@ import AnimatedCTA from './AnimatedCTA.astro';
       // Message text
       const text = document.createElement('div');
       text.className = 'msg-text';
-      text.style.cssText = 'font-size: 14px; color: var(--text-secondary); line-height: 1.5;';
+      text.style.cssText = 'font-size: 14px; color: #dbdee1; line-height: 1.5;';
       text.textContent = msg.msg;
       content.appendChild(text);
 
