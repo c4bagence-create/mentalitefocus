@@ -401,6 +401,16 @@ import DiscordSection from '../components/DiscordSection.astro';
             newsletterContainer?.classList.add('submitted');
             newsletterSuccess?.classList.add('show');
 
+            // Google Analytics
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'generate_lead', {
+                'currency': 'EUR',
+                'value': 0,
+                'lead_source': 'newsletter_footer'
+              });
+              console.log('✅ Google Analytics - Lead tracked');
+            }
+
             // Track with Meta Pixel
             if (typeof fbq !== 'undefined') {
               fbq('track', 'Lead', { content_name: 'Newsletter Footer' });
@@ -466,6 +476,28 @@ import DiscordSection from '../components/DiscordSection.astro';
             }]);
           }
 
+          // Google Analytics Track
+          if (typeof gtag !== 'undefined') {
+            if (ctaHref.includes('stripe') || ctaHref.includes('espace.mentalitefocus')) {
+              gtag('event', 'begin_checkout', {
+                'currency': 'EUR',
+                'value': 9.90,
+                'items': [{
+                  'item_name': 'Focus Business Membership',
+                  'item_category': 'Subscription',
+                  'price': 9.90,
+                  'quantity': 1
+                }]
+              });
+            } else {
+              gtag('event', 'cta_click', {
+                'cta_name': ctaText.substring(0, 50),
+                'cta_location': sectionId,
+                'cta_url': ctaHref
+              });
+            }
+          }
+
           // Meta Pixel Track
           if (typeof fbq !== 'undefined') {
             fbq('trackCustom', 'CTAClick', {
@@ -513,53 +545,165 @@ import DiscordSection from '../components/DiscordSection.astro';
         });
       });
 
-      // Track Pricing Card Views
-      const pricingSection = document.getElementById('pricing');
-      if (pricingSection) {
-        const pricingObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              if (typeof _learnq !== 'undefined') {
-                _learnq.push(['track', 'Viewed Pricing', {
-                  'page': window.location.href
-                }]);
-              }
-              if (typeof fbq !== 'undefined') {
-                fbq('track', 'ViewContent', { content_name: 'Pricing Section' });
-              }
-              // Snapchat - Vue du pricing
-              if (typeof snaptr !== 'undefined') {
-                snaptr('track', 'VIEW_CONTENT', {
-                  'content_type': 'pricing',
-                  'item_category': 'Focus Business Membership'
-                });
-              }
-              pricingObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.5 });
-        
-        pricingObserver.observe(pricingSection);
-      }
+      // ========================================
+      // SECTION VIEWS TRACKING
+      // ========================================
 
-      // Track scroll depth
+      // Track all important sections
+      const sectionsToTrack = ['hero', 'discord', 'arsenal', 'experts', 'networking', 'pricing', 'faq'];
+
+      sectionsToTrack.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                // Google Analytics
+                if (typeof gtag !== 'undefined') {
+                  gtag('event', 'section_view', {
+                    'section_name': sectionId,
+                    'engagement_type': 'scroll'
+                  });
+                }
+
+                // Klaviyo (keep existing for pricing)
+                if (sectionId === 'pricing' && typeof _learnq !== 'undefined') {
+                  _learnq.push(['track', 'Viewed Pricing', {
+                    'page': window.location.href
+                  }]);
+                }
+
+                // Meta Pixel (keep existing for pricing)
+                if (sectionId === 'pricing' && typeof fbq !== 'undefined') {
+                  fbq('track', 'ViewContent', { content_name: 'Pricing Section' });
+                }
+
+                // Snapchat (keep existing for pricing)
+                if (sectionId === 'pricing' && typeof snaptr !== 'undefined') {
+                  snaptr('track', 'VIEW_CONTENT', {
+                    'content_type': 'pricing',
+                    'item_category': 'Focus Business Membership'
+                  });
+                }
+
+                console.log('📊 Section Viewed:', sectionId);
+                sectionObserver.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.3 });
+
+          sectionObserver.observe(section);
+        }
+      });
+
+      // ========================================
+      // SCROLL DEPTH TRACKING
+      // ========================================
+
       let scrollMilestones = { '25': false, '50': false, '75': false, '100': false };
       window.addEventListener('scroll', () => {
         const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-        
+
         Object.keys(scrollMilestones).forEach(milestone => {
           if (scrollPercent >= parseInt(milestone) && !scrollMilestones[milestone]) {
             scrollMilestones[milestone] = true;
-            
+
+            // Google Analytics
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'scroll', {
+                'percent_scrolled': parseInt(milestone)
+              });
+            }
+
+            // Klaviyo
             if (typeof _learnq !== 'undefined') {
               _learnq.push(['track', 'Scroll Depth', {
                 'depth': milestone + '%',
                 'page': window.location.href
               }]);
             }
+
+            console.log('📊 Scroll Depth:', milestone + '%');
           }
         });
       }, { passive: true });
+
+      // ========================================
+      // SOCIAL LINKS TRACKING
+      // ========================================
+
+      document.querySelectorAll('.social-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const platform = link.getAttribute('aria-label') || 'Unknown';
+
+          // Google Analytics
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'social_click', {
+              'social_network': platform.toLowerCase(),
+              'link_location': 'footer'
+            });
+          }
+
+          console.log('📊 Social Click:', platform);
+        });
+      });
+
+      // ========================================
+      // ENGAGEMENT TIME TRACKING
+      // ========================================
+
+      let engagementStartTime = Date.now();
+      let isEngaged = true;
+
+      // Track when user leaves/returns
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          isEngaged = false;
+          const engagementTime = Math.floor((Date.now() - engagementStartTime) / 1000);
+
+          // Google Analytics
+          if (typeof gtag !== 'undefined' && engagementTime > 10) {
+            gtag('event', 'user_engagement', {
+              'engagement_time_msec': engagementTime * 1000
+            });
+          }
+        } else {
+          engagementStartTime = Date.now();
+          isEngaged = true;
+        }
+      });
+
+      // Track engagement every 30 seconds
+      setInterval(() => {
+        if (isEngaged && !document.hidden) {
+          const engagementTime = Math.floor((Date.now() - engagementStartTime) / 1000);
+
+          if (engagementTime >= 30 && typeof gtag !== 'undefined') {
+            gtag('event', 'user_engagement', {
+              'engagement_time_msec': engagementTime * 1000
+            });
+            engagementStartTime = Date.now(); // Reset
+          }
+        }
+      }, 30000);
+
+      // ========================================
+      // FORM FOCUS TRACKING
+      // ========================================
+
+      const newsletterInput = document.getElementById('klaviyo-email');
+      if (newsletterInput) {
+        newsletterInput.addEventListener('focus', () => {
+          // Google Analytics
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_start', {
+              'form_name': 'newsletter',
+              'form_location': 'footer'
+            });
+          }
+          console.log('📊 Newsletter Form Started');
+        });
+      }
 
     });
   </script>

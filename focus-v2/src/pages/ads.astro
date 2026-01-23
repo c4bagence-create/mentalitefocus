@@ -243,6 +243,16 @@ const adsCanonical = "https://mentalitefocus.com/ads";
 
       console.log('🔍 Newsletter signup initiated:', email);
 
+      // Google Analytics
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'generate_lead', {
+          'currency': 'EUR',
+          'value': 0,
+          'lead_source': 'newsletter_ads_page'
+        });
+        console.log('✅ Google Analytics - Lead tracked (Newsletter ADS)');
+      }
+
       // Track newsletter signup with all pixels
       if (typeof fbq !== 'undefined') {
         fbq('track', 'Lead', {
@@ -301,6 +311,20 @@ const adsCanonical = "https://mentalitefocus.com/ads";
     footerCTA.addEventListener('click', () => {
       console.log('🎯 Footer CTA clicked (ADS page)');
 
+      // Google Analytics
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'begin_checkout', {
+          'currency': 'EUR',
+          'value': 9.90,
+          'items': [{
+            'item_name': 'Focus Business Membership',
+            'item_category': 'Subscription',
+            'price': 9.90,
+            'quantity': 1
+          }]
+        });
+      }
+
       if (typeof fbq !== 'undefined') {
         fbq('track', 'InitiateCheckout', {
           value: 9.90,
@@ -321,7 +345,7 @@ const adsCanonical = "https://mentalitefocus.com/ads";
           value: 9.90,
           currency: 'EUR',
           content_type: 'product',
-          content_name: 'Focus Business Membership - ADS'
+          'content_name': 'Focus Business Membership - ADS'
         });
       }
 
@@ -331,6 +355,85 @@ const adsCanonical = "https://mentalitefocus.com/ads";
           'Source': 'Footer CTA ADS'
         }]);
       }
+    });
+  }
+
+  // ========================================
+  // SCROLL DEPTH TRACKING
+  // ========================================
+
+  let scrollMilestones = { '25': false, '50': false, '75': false, '100': false };
+  window.addEventListener('scroll', () => {
+    const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+
+    Object.keys(scrollMilestones).forEach(milestone => {
+      if (scrollPercent >= parseInt(milestone) && !scrollMilestones[milestone]) {
+        scrollMilestones[milestone] = true;
+
+        // Google Analytics
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'scroll', {
+            'percent_scrolled': parseInt(milestone),
+            'page_type': 'ads'
+          });
+        }
+
+        console.log('📊 Scroll Depth (ADS):', milestone + '%');
+      }
+    });
+  }, { passive: true });
+
+  // ========================================
+  // ENGAGEMENT TIME TRACKING
+  // ========================================
+
+  let engagementStartTime = Date.now();
+  let isEngaged = true;
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      isEngaged = false;
+      const engagementTime = Math.floor((Date.now() - engagementStartTime) / 1000);
+
+      if (typeof gtag !== 'undefined' && engagementTime > 10) {
+        gtag('event', 'user_engagement', {
+          'engagement_time_msec': engagementTime * 1000,
+          'page_type': 'ads'
+        });
+      }
+    } else {
+      engagementStartTime = Date.now();
+      isEngaged = true;
+    }
+  });
+
+  setInterval(() => {
+    if (isEngaged && !document.hidden) {
+      const engagementTime = Math.floor((Date.now() - engagementStartTime) / 1000);
+
+      if (engagementTime >= 30 && typeof gtag !== 'undefined') {
+        gtag('event', 'user_engagement', {
+          'engagement_time_msec': engagementTime * 1000,
+          'page_type': 'ads'
+        });
+        engagementStartTime = Date.now();
+      }
+    }
+  }, 30000);
+
+  // ========================================
+  // FORM FOCUS TRACKING
+  // ========================================
+
+  if (newsletterEmail) {
+    newsletterEmail.addEventListener('focus', () => {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'form_start', {
+          'form_name': 'newsletter',
+          'form_location': 'ads_page'
+        });
+      }
+      console.log('📊 Newsletter Form Started (ADS)');
     });
   }
 </script>
