@@ -3,7 +3,6 @@ node_modules/
 
 # Build
 focus-v2/node_modules/
-focus-v2/dist/
 focus-v2/.astro/
 
 # Backups (keep local only)
