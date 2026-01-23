@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement confirmé - Focus Business</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+    .checkmark {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: bounce 0.6s ease;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 0.5rem;
+    }
+    .loader {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(212, 175, 55, 0.3);
+      border-top-color: #d4af37;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 0.5rem;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .debug {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: rgba(0, 255, 0, 0.05);
+      border: 1px solid rgba(0, 255, 0, 0.2);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .debug h3 {
+      color: #00ff00;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .debug ul {
+      list-style: none;
+      padding: 0;
+    }
+    .debug li {
+      padding: 0.25rem 0;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .debug li.success {
+      color: #00ff00;
+    }
+  </style>
+
+  <!-- ========================================
+       META PIXEL CODE
+       ======================================== -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '26364309749823828');
+    fbq('track', 'PageView');
+
+    // 🎯 META PURCHASE EVENT
+    fbq('track', 'Purchase', {
+      value: 9.90,
+      currency: 'EUR',
+      content_name: 'Focus Business Subscription',
+      content_type: 'product',
+      content_ids: ['focus-premium'],
+      num_items: 1
+    });
+
+    console.log('✅ Meta Pixel - PageView fired');
+    console.log('✅ Meta Pixel - Purchase fired: 9.90 EUR');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=26364309749823828&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <!-- ========================================
+       SNAPCHAT PIXEL CODE
+       ======================================== -->
+  <script type="text/javascript">
+    (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function(){a.handleRequest?
+    a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];
+    var s='script';r=t.createElement(s);r.async=!0;r.src=n;
+    var u=t.getElementsByTagName(s)[0];u.parentNode.insertBefore(r,u);})(window,
+    document,'https://sc-static.net/scevent.min.js');
+
+    snaptr('init', '827ae1c2-5cf7-44db-9761-0a858ab2e2e6');
+    snaptr('track', 'PAGE_VIEW');
+
+    // 🎯 SNAPCHAT PURCHASE EVENT
+    snaptr('track', 'PURCHASE', {
+      price: 9.90,
+      currency: 'EUR',
+      transaction_id: 'focus_' + Date.now(),
+      item_category: 'subscription',
+      item_ids: ['focus-premium']
+    });
+
+    console.log('✅ Snapchat Pixel - PAGE_VIEW fired');
+    console.log('✅ Snapchat Pixel - PURCHASE fired: 9.90 EUR');
+  </script>
+
+  <!-- ========================================
+       TIKTOK PIXEL CODE
+       ======================================== -->
+  <script type="text/javascript">
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+      ttq.load('D5PCBC3C77UDCU1J2LHG');
+      ttq.page();
+
+      // 🎯 TIKTOK COMPLETE PAYMENT EVENT
+      ttq.track('CompletePayment', {
+        value: 9.90,
+        currency: 'EUR',
+        content_type: 'product',
+        content_name: 'Focus Business Premium Subscription',
+        content_id: 'focus-premium',
+        quantity: 1
+      });
+
+      console.log('✅ TikTok Pixel - PageView fired');
+      console.log('✅ TikTok Pixel - CompletePayment fired: 9.90 EUR');
+    }(window, document, 'ttq');
+  </script>
+
+  <!-- ========================================
+       KLAVIYO CODE
+       ======================================== -->
+  <script async type='text/javascript' src='https://static.klaviyo.com/onsite/js/SRshwY/klaviyo.js?company_id=SRshwY'></script>
+  <script type="text/javascript">
+    // Initialize Klaviyo proxy
+    !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();
+
+    // Wait for Klaviyo to load and track purchase
+    setTimeout(function() {
+      if (window.klaviyo && typeof window.klaviyo.push === 'function') {
+        // 🎯 KLAVIYO PURCHASE EVENT
+        window.klaviyo.push(['track', 'Placed Order', {
+          '$value': 9.90,
+          'Currency': 'EUR',
+          'Product Name': 'Focus Business Premium Subscription',
+          'Product ID': 'focus-premium',
+          'Quantity': 1,
+          'OrderId': 'focus_' + Date.now()
+        }]);
+
+        console.log('✅ Klaviyo - Placed Order tracked: 9.90 EUR');
+
+        // Track also as "Ordered Product" for better segmentation
+        window.klaviyo.push(['track', 'Ordered Product', {
+          '$value': 9.90,
+          'ProductName': 'Focus Business Premium',
+          'ProductID': 'focus-premium',
+          'Currency': 'EUR'
+        }]);
+
+        console.log('✅ Klaviyo - Ordered Product tracked');
+      } else {
+        console.warn('⚠️ Klaviyo not loaded yet');
+      }
+    }, 500);
+  </script>
+
+  <!-- Microsoft Clarity (optional but useful for analytics) -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "v50k153mjn");
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="checkmark">✅</div>
+    <h1>Paiement confirmé!</h1>
+    <p>Bienvenue dans Focus Business 🔥</p>
+    <p>Ton abonnement Premium est maintenant actif.</p>
+    <p style="margin-top: 1.5rem;">Redirection vers Discord dans <span id="countdown">5</span> secondes<span class="loader"></span></p>
+
+    <!-- Debug info (à retirer en production si désiré) -->
+    <div class="debug" id="debugPanel">
+      <h3>🔍 Debug - Pixels Fired</h3>
+      <ul id="debugList">
+        <li>Chargement des pixels...</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // ========================================
+    // DEBUG TRACKING
+    // ========================================
+    const debugList = document.getElementById('debugList');
+    debugList.innerHTML = '';
+
+    function addDebugLine(text) {
+      const li = document.createElement('li');
+      li.className = 'success';
+      li.textContent = text;
+      debugList.appendChild(li);
+    }
+
+    // Check if pixels fired
+    setTimeout(function() {
+      if (typeof fbq !== 'undefined') {
+        addDebugLine('✅ Meta Pixel loaded');
+      } else {
+        debugList.innerHTML += '<li style="color: red;">❌ Meta Pixel failed</li>';
+      }
+
+      if (typeof snaptr !== 'undefined') {
+        addDebugLine('✅ Snapchat Pixel loaded');
+      } else {
+        debugList.innerHTML += '<li style="color: red;">❌ Snapchat Pixel failed</li>';
+      }
+
+      if (typeof ttq !== 'undefined') {
+        addDebugLine('✅ TikTok Pixel loaded');
+      } else {
+        debugList.innerHTML += '<li style="color: red;">❌ TikTok Pixel failed</li>';
+      }
+
+      if (typeof window.klaviyo !== 'undefined') {
+        addDebugLine('✅ Klaviyo loaded');
+      } else {
+        debugList.innerHTML += '<li style="color: red;">❌ Klaviyo failed</li>';
+      }
+
+      addDebugLine('💰 Purchase value: 9.90 EUR');
+    }, 1000);
+
+    // ========================================
+    // COUNTDOWN & REDIRECT
+    // ========================================
+    let seconds = 5;
+    const countdownEl = document.getElementById('countdown');
+
+    const timer = setInterval(() => {
+      seconds--;
+      countdownEl.textContent = seconds;
+
+      if (seconds <= 0) {
+        clearInterval(timer);
+
+        // 🔗 REMPLACER PAR TON VRAI LIEN DISCORD
+        // Option 1: Lien d'invitation Discord
+        window.location.href = 'https://discord.gg/focus-business';
+
+        // Option 2: Lien direct vers ton serveur
+        // window.location.href = 'https://discord.com/channels/TON_SERVER_ID';
+
+        // Option 3: Si tu as un système custom
+        // window.location.href = 'https://espace.mentalitefocus.com/welcome';
+      }
+    }, 1000);
+
+    // Optional: Track time spent on page
+    let timeSpent = 0;
+    const trackTime = setInterval(() => {
+      timeSpent++;
+      if (timeSpent === 5) {
+        // User stayed on page for 5 seconds - good engagement
+        if (typeof fbq !== 'undefined') {
+          fbq('trackCustom', 'ConfirmationPageEngagement', {
+            time_spent: timeSpent
+          });
+        }
+      }
+    }, 1000);
+
+    // Clean up on page leave
+    window.addEventListener('beforeunload', () => {
+      clearInterval(timer);
+      clearInterval(trackTime);
+    });
+  </script>
+</body>
+</html>

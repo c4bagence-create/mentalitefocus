@@ -383,20 +383,22 @@ import DiscordSection from '../components/DiscordSection.astro';
           klaviyoSubmit?.classList.add('loading');
 
           try {
-            // Klaviyo Identify & Track (via Klaviyo.js onsite)
-            if (typeof _learnq !== 'undefined') {
+            // Klaviyo Identify & Track (nouvelle API avec proxy)
+            if (typeof window.klaviyo !== 'undefined') {
               // Identify the user
-              _learnq.push(['identify', { 
+              window.klaviyo.push(['identify', {
                 '$email': email,
                 '$source': 'Focus Website Footer'
               }]);
-              
+
               // Track the signup event
-              _learnq.push(['track', 'Newsletter Signup', {
+              window.klaviyo.push(['track', 'Newsletter Signup', {
                 'source': 'Footer Form',
                 'page': window.location.href,
                 'timestamp': new Date().toISOString()
               }]);
+
+              console.log('✅ Klaviyo - Newsletter Signup tracked');
             }
 
             // Show success
@@ -406,6 +408,7 @@ import DiscordSection from '../components/DiscordSection.astro';
             // Track with Meta Pixel
             if (typeof fbq !== 'undefined') {
               fbq('track', 'Lead', { content_name: 'Newsletter Footer' });
+              console.log('✅ Meta - Lead tracked');
             }
 
             // Track with Snapchat Pixel
@@ -413,10 +416,20 @@ import DiscordSection from '../components/DiscordSection.astro';
               snaptr('track', 'SIGN_UP', {
                 'sign_up_method': 'newsletter'
               });
+              console.log('✅ Snapchat - SIGN_UP tracked');
+            }
+
+            // Track with TikTok Pixel
+            if (typeof ttq !== 'undefined') {
+              ttq.track('Subscribe', {
+                'content_type': 'newsletter',
+                'description': 'Newsletter Footer Signup'
+              });
+              console.log('✅ TikTok - Subscribe tracked');
             }
 
           } catch (error) {
-            console.error('Klaviyo error:', error);
+            console.error('Newsletter signup error:', error);
           }
 
           klaviyoSubmit?.classList.remove('loading');
@@ -478,6 +491,24 @@ import DiscordSection from '../components/DiscordSection.astro';
               snaptr('track', 'VIEW_CONTENT', {
                 'content_type': 'cta_click',
                 'item_category': sectionId
+              });
+            }
+          }
+
+          // TikTok Pixel Track
+          if (typeof ttq !== 'undefined') {
+            // Si c'est un lien Stripe = InitiateCheckout
+            if (ctaHref.includes('stripe')) {
+              ttq.track('InitiateCheckout', {
+                'value': 9.90,
+                'currency': 'EUR',
+                'content_type': 'product',
+                'content_name': 'Focus Business Membership'
+              });
+            } else {
+              ttq.track('ClickButton', {
+                'content_type': 'cta',
+                'content_name': ctaText.substring(0, 50)
               });
             }
           }
