@@ -900,19 +900,18 @@ import DiscordSection from '../components/DiscordSection.astro';
 
   .newsletter-container {
     position: relative;
-    background: linear-gradient(145deg, #0a0a0a 0%, #0d0d0d 100%);
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
     border-radius: 16px;
     padding: 2.5rem;
     overflow: hidden;
-    box-shadow:
-      0 8px 24px rgba(0, 0, 0, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.02);
-    transition: border-color 0.3s ease;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
   }
 
   .newsletter-container:hover {
-    border-color: rgba(212, 175, 55, 0.25);
+    border-color: var(--gold);
+    box-shadow: var(--shadow-gold);
   }
 
   /* Background Orbs - Masqués pour style sobre */
@@ -950,21 +949,21 @@ import DiscordSection from '../components/DiscordSection.astro';
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: rgba(212, 175, 55, 0.08);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: var(--gold-bg);
+    border: 1px solid var(--border-medium);
     border-radius: 9999px;
     font-size: 0.625rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #d4af37;
+    color: var(--gold);
     margin-bottom: 1.25rem;
   }
 
   .nl-badge-dot {
     width: 0.4375rem;
     height: 0.4375rem;
-    background: #d4af37;
+    background: var(--gold);
     border-radius: 50%;
     opacity: 0.9;
   }
@@ -988,7 +987,7 @@ import DiscordSection from '../components/DiscordSection.astro';
   }
 
   .nl-gradient {
-    background: linear-gradient(135deg, #e0bb47 0%, #d4af37 50%, #c9a227 100%);
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

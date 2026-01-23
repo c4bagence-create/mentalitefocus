@@ -464,19 +464,18 @@ const adsCanonical = "https://mentalitefocus.com/ads";
 
   .newsletter-container {
     position: relative;
-    background: linear-gradient(145deg, #0a0a0a 0%, #0d0d0d 100%);
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
     border-radius: 16px;
     padding: 2.5rem;
     overflow: hidden;
-    box-shadow:
-      0 8px 24px rgba(0, 0, 0, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.02);
-    transition: border-color 0.3s ease;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
   }
 
   .newsletter-container:hover {
-    border-color: rgba(212, 175, 55, 0.25);
+    border-color: var(--gold);
+    box-shadow: var(--shadow-gold);
   }
 
   .newsletter-form {
@@ -551,7 +550,7 @@ const adsCanonical = "https://mentalitefocus.com/ads";
     justify-content: center;
     gap: 0.625rem;
     padding: 0.9375rem 1.75rem;
-    background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
     border: none;
     border-radius: 8px;
     color: #000000;
@@ -561,16 +560,12 @@ const adsCanonical = "https://mentalitefocus.com/ads";
     cursor: pointer;
     transition: all 0.2s ease;
     white-space: nowrap;
-    box-shadow:
-      0 4px 12px rgba(212, 175, 55, 0.25),
-      inset 0 0.5px 0 rgba(255, 255, 255, 0.25);
+    box-shadow: var(--shadow-medium);
   }
 
   .newsletter-btn:hover {
-    background: linear-gradient(135deg, #e0bb47 0%, #d4af37 100%);
-    box-shadow:
-      0 6px 16px rgba(212, 175, 55, 0.3),
-      inset 0 0.5px 0 rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    box-shadow: var(--shadow-gold);
   }
 
   .btn-icon {
@@ -584,17 +579,5 @@ const adsCanonical = "https://mentalitefocus.com/ads";
     transform: translateX(4px);
   }
 
-  /* Light mode adjustments */
-  :global(.light) .newsletter-container {
-    background: linear-gradient(145deg, #FFFFFF 0%, #FAFAFA 100%);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-  }
-
-  :global(.light) .newsletter-input {
-    background: var(--bg-input);
-  }
-
-  :global(.light) .newsletter-input:focus {
-    background: var(--bg-card);
-  }
+  /* Les styles s'adaptent automatiquement grâce aux variables CSS */
 </style>
