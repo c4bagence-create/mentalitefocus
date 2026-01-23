@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
-import Loader from '../components/Loader.astro';
 import HeroCards from '../components/HeroCards.astro';
 import NetworkingSection from '../components/NetworkingSection.astro';
 import ArsenalSection from '../components/ArsenalSection.astro';
@@ -18,9 +17,6 @@ const adsCanonical = "https://mentalitefocus.com/ads";
 ---
 
 <Layout title={adsTitle} description={adsDescription} canonical={adsCanonical}>
-  <!-- Loader -->
-  <Loader />
-
   <!-- Navbar -->
   <Navbar />
 
