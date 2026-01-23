@@ -41,7 +41,7 @@ const adsCanonical = "https://mentalitefocus.com/ads";
     <div class="particle-hero" style="left: 90%; top: 30%; animation-delay: 5.5s;"></div>
 
     <!-- TEXTE CENTER - Copy adapté pour ads -->
-    <div class="relative z-20 text-center mb-8 md:mb-16 mt-4 interactive-zone">
+    <div class="relative z-20 text-center mb-8 md:mb-16 mt-24 md:mt-32 interactive-zone">
 
       <!-- BADGE -->
       <div class="badge mb-6" data-animate="fade-down" data-delay="0.2">
@@ -62,11 +62,9 @@ const adsCanonical = "https://mentalitefocus.com/ads";
         <span class="subtitle-line"><strong class="text-gold">Les vraies méthodes.</strong></span>
       </p>
 
-      <!-- BANDEAU PRIX - Simple étiquette qui se pose -->
-      <div class="price-tag-container">
-        <a href="#pricing" class="price-tag" id="price-tag">
-          <span class="tag-text">POUR 10€ / MOIS</span>
-        </a>
+      <!-- BANDEAU PRIX - Badge orange -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full text-black font-bold text-sm mb-6" data-animate="fade-up" data-delay="0.7">
+        <span>POUR 10€ / MOIS</span>
       </div>
 
       <!-- STATS BAR -->
@@ -135,18 +133,32 @@ const adsCanonical = "https://mentalitefocus.com/ads";
         </div>
 
         <form class="newsletter-form" id="newsletter-form">
-          <div class="input-wrapper">
-            <input
-              type="email"
-              placeholder="ton@email.com"
-              class="newsletter-input"
-              id="newsletter-email"
-              required
-            />
+          <div class="form-wrapper">
+            <div class="input-container">
+              <input
+                type="email"
+                placeholder="ton@email.com"
+                class="newsletter-input"
+                id="newsletter-email"
+                required
+                autocomplete="email"
+              />
+              <div class="input-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+              </div>
+            </div>
+            <button type="submit" class="newsletter-btn" id="newsletter-submit">
+              <span class="btn-text">Accéder gratuitement</span>
+              <span class="btn-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </span>
+            </button>
           </div>
-          <button type="submit" class="newsletter-btn">
-            Accéder gratuitement
-          </button>
         </form>
 
         <p class="text-xs text-muted text-center mt-4">
@@ -310,3 +322,199 @@ const adsCanonical = "https://mentalitefocus.com/ads";
     });
   }
 </script>
+
+<style>
+  /* Hero section - full viewport with relative positioning for cards */
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 16px 0;
+    overflow: visible;
+    margin-bottom: -120px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding-top: 60px;
+      min-height: 100svh;
+      margin-bottom: -80px;
+    }
+  }
+
+  /* Hero specific styles */
+  .interactive-zone {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 15;
+  }
+
+  /* Hero subtitle - 3 lignes sur mobile */
+  .hero-subtitle {
+    text-align: center;
+  }
+
+  .subtitle-line {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .subtitle-line {
+      display: inline;
+    }
+
+    .subtitle-line:not(:last-child)::after {
+      content: ' ';
+    }
+  }
+
+  /* ===== NEWSLETTER SECTION - Premium sobre incrusté ===== */
+  .newsletter-section {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .newsletter-container {
+    position: relative;
+    background: linear-gradient(145deg, #0a0a0a 0%, #0d0d0d 100%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 16px;
+    padding: 2.5rem;
+    overflow: hidden;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    transition: border-color 0.3s ease;
+  }
+
+  .newsletter-container:hover {
+    border-color: rgba(212, 175, 55, 0.25);
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  @media (min-width: 540px) {
+    .form-wrapper {
+      flex-direction: row;
+    }
+  }
+
+  .input-container {
+    position: relative;
+    flex: 1;
+  }
+
+  .newsletter-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 2.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 0.75rem;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  .newsletter-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .newsletter-input:focus {
+    border-color: var(--gold);
+    background: var(--bg-card-elevated);
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+    pointer-events: none;
+  }
+
+  .input-container:focus-within .input-icon {
+    color: var(--gold);
+  }
+
+  /* Newsletter Button - Style sobre */
+  .newsletter-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 0.9375rem 1.75rem;
+    background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
+    border: none;
+    border-radius: 8px;
+    color: #000000;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    box-shadow:
+      0 4px 12px rgba(212, 175, 55, 0.25),
+      inset 0 0.5px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  .newsletter-btn:hover {
+    background: linear-gradient(135deg, #e0bb47 0%, #d4af37 100%);
+    box-shadow:
+      0 6px 16px rgba(212, 175, 55, 0.3),
+      inset 0 0.5px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-icon {
+    display: flex;
+    width: 1.125rem;
+    height: 1.125rem;
+    transition: transform 0.3s ease;
+  }
+
+  .newsletter-btn:hover .btn-icon {
+    transform: translateX(4px);
+  }
+
+  /* Light mode adjustments */
+  :global(.light) .newsletter-container {
+    background: linear-gradient(145deg, #FFFFFF 0%, #FAFAFA 100%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+
+  :global(.light) .newsletter-input {
+    background: var(--bg-input);
+  }
+
+  :global(.light) .newsletter-input:focus {
+    background: var(--bg-card);
+  }
+</style>
