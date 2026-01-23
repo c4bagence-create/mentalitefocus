@@ -1,0 +1,2714 @@
+---
+/**
+ * ExpertsSection - "NOS EXPERTS À VOTRE SERVICE"
+ * Desktop: Cartes flottantes interactives
+ * Mobile: Slider horizontal pleine largeur
+ * Visuels ultra animés style dashboard
+ */
+import { experts } from '../data/experts';
+import AnimatedCTA from './AnimatedCTA.astro';
+import IACard from './cards/IACard.astro';
+---
+
+<section class="experts-section" id="experts">
+  <!-- Glow effects -->
+  <div class="glow glow-1" aria-hidden="true"></div>
+  <div class="glow glow-2" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="section-header">
+    <div class="badge" data-animate="fade-down" data-delay="0">
+      <span class="badge-dot"></span>
+      <span>8 Experts</span>
+    </div>
+    
+    <h2 class="section-title" data-animate="fade-up" data-delay="0.1">
+      NOS EXPERTS<br>
+      <span class="text-gradient">À VOTRE SERVICE</span>
+    </h2>
+    
+    <p class="section-desc" data-animate="fade-up" data-delay="0.2">
+      <strong>Les meilleurs dans leur domaine.</strong> Disponibles. 
+      <strong class="gold">Pour toi.</strong>
+    </p>
+  </header>
+
+  <!-- Desktop Floating Cards -->
+  <div class="experts-floating" id="experts-floating">
+    {experts.map((expert, idx) => (
+      <article 
+        class={`float-card card-${expert.type}`}
+        data-expert={expert.id}
+        data-index={idx}
+        style={`--delay: ${idx * 0.1}s; --float-offset: ${(idx % 3) * 15}px;`}
+      >
+        <!-- Visual Zone - Full Visual -->
+        <div class="visual-zone">
+          {/* INFLUENCE - Instagram Style */}
+          {expert.type === 'influence' && (
+            <div class="vis-influence-full">
+              <div class="insta-header">
+                <div class="insta-logo">
+                  <svg viewBox="0 0 24 24" fill="url(#instaGrad)">
+                    <defs>
+                      <linearGradient id="instaGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#FFDC80"/>
+                        <stop offset="25%" style="stop-color:#F77737"/>
+                        <stop offset="50%" style="stop-color:#E1306C"/>
+                        <stop offset="75%" style="stop-color:#833AB4"/>
+                        <stop offset="100%" style="stop-color:#5851DB"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+                  </svg>
+                </div>
+                <span class="insta-name">focus.lifestyle</span>
+                <span class="live-badge">LIVE</span>
+              </div>
+              <div class="insta-story">
+                <div class="story-content">
+                  <span class="story-product">👜</span>
+                  <div class="story-overlay">
+                    <span class="swipe-up">Swipe Up</span>
+                    <span class="swipe-arrow">↑</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-stats">
+                <div class="stat"><span class="stat-icon">👁️</span><span class="stat-num" data-views>142,847</span></div>
+                <div class="stat"><span class="stat-icon">❤️</span><span class="stat-num" data-likes>24.5K</span></div>
+                <div class="stat"><span class="stat-icon">💬</span><span class="stat-num">8.9K</span></div>
+                <div class="stat"><span class="stat-icon">↗️</span><span class="stat-num">3.2K</span></div>
+              </div>
+              <div class="insta-notifs">
+                <div class="notif new"><span>📸</span> Story vue par @luxe.paris</div>
+                <div class="notif"><span>🤝</span> Nouveau partenariat reçu</div>
+              </div>
+            </div>
+          )}
+
+          {/* ADS - Meta Ads Dashboard */}
+          {expert.type === 'ads' && (
+            <div class="vis-ads-full">
+              <div class="meta-header">
+                <svg class="meta-logo" viewBox="0 0 24 24" fill="#0081FB">
+                  <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 008.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
+                </svg>
+                <span class="meta-title">Meta Ads Manager</span>
+                <span class="meta-status active">● Campagne Active</span>
+              </div>
+              <div class="meta-kpis">
+                <div class="kpi">
+                  <span class="kpi-label">Dépenses</span>
+                  <span class="kpi-value" data-spend>€4,247</span>
+                </div>
+                <div class="kpi highlight">
+                  <span class="kpi-label">Revenue</span>
+                  <span class="kpi-value big" data-revenue>€28,470</span>
+                </div>
+                <div class="kpi gold-border">
+                  <span class="kpi-label">ROAS</span>
+                  <span class="kpi-value gold" data-roas>6.7x</span>
+                </div>
+              </div>
+              <div class="meta-graph">
+                <svg viewBox="0 0 200 60" class="graph-svg">
+                  <defs>
+                    <linearGradient id="graphGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" style="stop-color:#0081FB;stop-opacity:0.3"/>
+                      <stop offset="100%" style="stop-color:#0081FB;stop-opacity:0"/>
+                    </linearGradient>
+                  </defs>
+                  <path class="graph-area" d="M0,50 Q30,45 50,35 T100,25 T150,15 T200,10 L200,60 L0,60 Z" fill="url(#graphGrad)"/>
+                  <path class="graph-line" d="M0,50 Q30,45 50,35 T100,25 T150,15 T200,10" fill="none" stroke="#0081FB" stroke-width="2"/>
+                  <circle class="graph-dot" cx="200" cy="10" r="4" fill="#0081FB"/>
+                </svg>
+                <span class="graph-label">+156% cette semaine</span>
+              </div>
+              <div class="meta-campaigns">
+                <div class="campaign active"><span class="camp-dot"></span>Scale Campaign #1<span class="camp-status">🔥 Scaling</span></div>
+                <div class="campaign"><span class="camp-dot"></span>Retargeting<span class="camp-status">Active</span></div>
+              </div>
+            </div>
+          )}
+
+          {/* FISCAL - LLC Certificate */}
+          {expert.type === 'fiscal' && (
+            <div class="vis-fiscal-full">
+              <div class="cert-header">
+                <div class="cert-seal">
+                  <div class="seal-outer"></div>
+                  <div class="seal-inner">NM</div>
+                </div>
+                <div class="cert-titles">
+                  <span class="cert-state">State of New Mexico</span>
+                  <span class="cert-type">Certificate of Organization</span>
+                </div>
+              </div>
+              <div class="cert-body">
+                <div class="cert-field">
+                  <span class="field-label">Entity Name</span>
+                  <span class="field-value">FOCUS HOLDING LLC</span>
+                </div>
+                <div class="cert-field">
+                  <span class="field-label">Entity ID</span>
+                  <span class="field-value">#7294018-LLC</span>
+                </div>
+                <div class="cert-field">
+                  <span class="field-label">Formation Date</span>
+                  <span class="field-value">January 19, 2026</span>
+                </div>
+                <div class="cert-field">
+                  <span class="field-label">Status</span>
+                  <span class="field-value status-active">ACTIVE ✓</span>
+                </div>
+              </div>
+              <div class="cert-tax">
+                <span class="tax-label">Federal Tax Classification</span>
+                <span class="tax-type">DISREGARDED ENTITY</span>
+                <div class="tax-rate">
+                  <span class="rate-label">Effective Tax Rate</span>
+                  <span class="rate-value">0%</span>
+                </div>
+              </div>
+              <div class="cert-stamp">
+                <span class="stamp-text">TAX EXEMPT</span>
+                <span class="stamp-verified">VERIFIED ✓</span>
+              </div>
+            </div>
+          )}
+
+          {/* IA - AI Terminal with FOCUS AI ASCII art */}
+          {expert.type === 'ia' && (
+            <IACard />
+          )}
+
+          {/* SHOPIFY - Dashboard */}
+          {expert.type === 'shopify' && (
+            <div class="vis-shopify-full">
+              <div class="shop-header">
+                <svg class="shop-logo" viewBox="0 0 24 24" fill="#95bf47">
+                  <path d="M15.337 3.415c-.142-.06-.345-.09-.553-.078-.208.012-.462.097-.684.27-.274.213-.444.512-.544.844-.052.173-.078.352-.078.53 0 .13.014.258.04.383l.04.173-1.12.344-.445-2.73c-.032-.183-.18-.32-.365-.32h-1.54l-.018-.08c-.127-.498-.577-.751-1.12-.751-.27 0-.527.068-.757.203-.23.135-.42.33-.56.574l-.5.87h-.002L6.13 8.15l-1.74.536-.04-.175c-.08-.346-.226-.664-.44-.92-.215-.255-.5-.435-.84-.52-.34-.085-.71-.07-1.07.044l-1.6.486 1.77 10.91c.03.183.18.316.363.316h6.185l-.73 2.42c-.06.202.06.41.263.47.202.06.41-.06.47-.263l.95-3.147h6.39c.19 0 .35-.142.368-.33l1.22-11.33c.01-.09-.01-.18-.06-.26-.05-.076-.12-.135-.21-.165l-2.85-.877z"/>
+                </svg>
+                <span class="shop-name">FocusStore</span>
+                <span class="shop-status">● Online</span>
+              </div>
+              <div class="shop-main-stat">
+                <span class="main-label">Ventes aujourd'hui</span>
+                <span class="main-value" data-shop-sales>€4,892</span>
+                <span class="main-change up">↑ 24% vs hier</span>
+              </div>
+              <div class="shop-mini-stats">
+                <div class="mini-stat">
+                  <span class="ms-val">127</span>
+                  <span class="ms-label">Commandes</span>
+                </div>
+                <div class="mini-stat">
+                  <span class="ms-val">€38.50</span>
+                  <span class="ms-label">Panier Moy.</span>
+                </div>
+                <div class="mini-stat">
+                  <span class="ms-val">3.2%</span>
+                  <span class="ms-label">Conv. Rate</span>
+                </div>
+              </div>
+              <div class="shop-orders" data-shop-orders>
+                <div class="order new">
+                  <span class="order-icon">📦</span>
+                  <div class="order-info">
+                    <span class="order-id">Commande #2847</span>
+                    <span class="order-time">Il y a 12s</span>
+                  </div>
+                  <span class="order-amount">+€124.90</span>
+                </div>
+                <div class="order">
+                  <span class="order-icon">📦</span>
+                  <div class="order-info">
+                    <span class="order-id">Commande #2846</span>
+                    <span class="order-time">Il y a 3 min</span>
+                  </div>
+                  <span class="order-amount">+€49.90</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* SEO - Google Search */}
+          {expert.type === 'seo' && (
+            <div class="vis-seo-full">
+              <div class="google-chrome">
+                <div class="chrome-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="chrome-url">
+                  <span class="lock">🔒</span>
+                  <span>google.com/search?q=formation+business</span>
+                </div>
+              </div>
+              <div class="google-header">
+                <span class="google-g" style="color:#4285f4">G</span>
+                <span class="google-g" style="color:#ea4335">o</span>
+                <span class="google-g" style="color:#fbbc05">o</span>
+                <span class="google-g" style="color:#4285f4">g</span>
+                <span class="google-g" style="color:#34a853">l</span>
+                <span class="google-g" style="color:#ea4335">e</span>
+              </div>
+              <div class="google-search">
+                <span class="search-icon">🔍</span>
+                <span class="search-query">formation business elite</span>
+              </div>
+              <div class="google-results">
+                <div class="result first" data-seo-result>
+                  <span class="result-pos">🥇 #1</span>
+                  <div class="result-content">
+                    <span class="result-url">https://mentalitefocus.com</span>
+                    <span class="result-title">Formation Business Elite | Focus</span>
+                    <span class="result-desc">La formation business #1 en France...</span>
+                  </div>
+                  <span class="result-crown">👑</span>
+                </div>
+                <div class="result">
+                  <span class="result-pos">#2</span>
+                  <span class="result-url dim">concurrent.fr</span>
+                </div>
+                <div class="result">
+                  <span class="result-pos">#3</span>
+                  <span class="result-url dim">autre-site.com</span>
+                </div>
+              </div>
+              <div class="seo-progress">
+                <span class="prog-text">Progression: #10 → #1 en 3 mois</span>
+                <div class="prog-bar"><div class="prog-fill"></div></div>
+              </div>
+            </div>
+          )}
+
+          {/* AUTO - Dashboard Animé */}
+          {expert.type === 'auto' && (
+            <div class="vis-auto-full" data-auto-dashboard>
+              <div class="auto-dash-header">
+                <span class="dash-icon">🚗</span>
+                <span class="dash-title">Mon Garage</span>
+                <span class="dash-count" data-auto-count>3 véhicules</span>
+              </div>
+              <div class="auto-listings" data-auto-listings>
+                <div class="auto-item" data-auto-item="porsche">
+                  <div class="auto-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=150&h=90&fit=crop" alt="Porsche 911" loading="lazy"/>
+                    <span class="auto-badge pending" data-auto-badge>⏳ En vente</span>
+                  </div>
+                  <div class="auto-details">
+                    <span class="auto-name">Porsche 911</span>
+                    <span class="auto-profit" data-auto-profit>+€18,000</span>
+                  </div>
+                </div>
+                <div class="auto-item" data-auto-item="bmw">
+                  <div class="auto-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=150&h=90&fit=crop" alt="BMW M4" loading="lazy"/>
+                    <span class="auto-badge transit" data-auto-badge>🚚 En route</span>
+                  </div>
+                  <div class="auto-details">
+                    <span class="auto-name">BMW M4</span>
+                    <span class="auto-eta" data-auto-eta>J+3</span>
+                  </div>
+                </div>
+                <div class="auto-item" data-auto-item="mercedes">
+                  <div class="auto-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=150&h=90&fit=crop" alt="Mercedes AMG" loading="lazy"/>
+                    <span class="auto-badge deal" data-auto-badge>🔥 DEAL</span>
+                  </div>
+                  <div class="auto-details">
+                    <span class="auto-name">Mercedes AMG</span>
+                    <span class="auto-margin" data-auto-margin>+€22K pot.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="auto-stats">
+                <div class="auto-stat">
+                  <span class="as-value" data-auto-total>€67K</span>
+                  <span class="as-label">Marge totale</span>
+                </div>
+                <div class="auto-stat">
+                  <span class="as-value" data-auto-sales>12</span>
+                  <span class="as-label">Ventes/mois</span>
+                </div>
+              </div>
+              <!-- Notification popup animée -->
+              <div class="auto-notif" data-auto-notif>
+                <span class="notif-icon">🎉</span>
+                <span class="notif-text">VENDU !</span>
+              </div>
+            </div>
+          )}
+
+          {/* SMMA - Invoice */}
+          {expert.type === 'smma' && (
+            <div class="vis-smma-full">
+              <div class="inv-header">
+                <div class="inv-logo">
+                  <span class="inv-logo-text">FOCUS</span>
+                  <span class="inv-logo-sub">AGENCY</span>
+                </div>
+                <div class="inv-meta">
+                  <span class="inv-number">Facture #2026-042</span>
+                  <span class="inv-date">22 Janvier 2026</span>
+                </div>
+              </div>
+              <div class="inv-client">
+                <span class="client-label">Facturer à</span>
+                <span class="client-name">Tech Startup SAS</span>
+                <span class="client-addr">Paris, France</span>
+              </div>
+              <div class="inv-items">
+                <div class="inv-item">
+                  <span class="item-name">Gestion Ads (Meta + Google)</span>
+                  <span class="item-price">€2,000</span>
+                </div>
+                <div class="inv-item">
+                  <span class="item-name">Création x10 visuels</span>
+                  <span class="item-price">€1,500</span>
+                </div>
+                <div class="inv-item">
+                  <span class="item-name">Stratégie & Consulting</span>
+                  <span class="item-price">€1,500</span>
+                </div>
+              </div>
+              <div class="inv-total">
+                <span class="total-label">TOTAL</span>
+                <span class="total-amount">€5,000</span>
+              </div>
+              <div class="inv-stamp">PAYÉ ✓</div>
+              <div class="inv-recurring">
+                <span class="rec-badge">↻ Récurrent</span>
+                <span class="rec-text">Chaque mois depuis 8 mois</span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <!-- Info Zone -->
+        <div class="info-zone">
+          <span class="card-role">{expert.role}</span>
+          <h3 class="card-name">{expert.name}</h3>
+          <p class="card-desc">{expert.description}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <!-- Mobile Slider - Réutilise les visuels desktop -->
+  <div class="experts-slider">
+    <div class="slider-track" id="experts-track-mobile">
+      {experts.map((expert, idx) => (
+        <article class={`slide-card slide-${expert.type}`}>
+          <div class="slide-visual">
+            {/* Réutilise exactement les visuels desktop */}
+            {expert.type === 'influence' && (
+              <div class="vis-influence-full">
+                <div class="insta-header">
+                  <div class="insta-logo">📸</div>
+                  <span class="insta-name">focus.lifestyle</span>
+                  <span class="live-badge">LIVE</span>
+                </div>
+                <div class="insta-story">
+                  <div class="story-content">
+                    <span class="story-product">👜</span>
+                  </div>
+                </div>
+                <div class="insta-stats">
+                  <div class="stat"><span class="stat-icon">👁️</span><span class="stat-num">142K</span></div>
+                  <div class="stat"><span class="stat-icon">❤️</span><span class="stat-num">24K</span></div>
+                  <div class="stat"><span class="stat-icon">💬</span><span class="stat-num">8.9K</span></div>
+                </div>
+                <div class="insta-notifs">
+                  <div class="notif new"><span>📸</span> Story vue par @luxe</div>
+                  <div class="notif"><span>🤝</span> Partenariat reçu</div>
+                </div>
+              </div>
+            )}
+
+            {expert.type === 'ads' && (
+              <div class="vis-ads-full">
+                <div class="meta-header">
+                  <span class="meta-logo">📊</span>
+                  <span class="meta-title">Meta Ads</span>
+                  <span class="meta-status active">● Active</span>
+                </div>
+                <div class="meta-kpis">
+                  <div class="kpi">
+                    <span class="kpi-label">Dépenses</span>
+                    <span class="kpi-value">€4,247</span>
+                  </div>
+                  <div class="kpi highlight">
+                    <span class="kpi-label">Revenue</span>
+                    <span class="kpi-value big">€28K</span>
+                  </div>
+                  <div class="kpi gold-border">
+                    <span class="kpi-label">ROAS</span>
+                    <span class="kpi-value gold">6.7x</span>
+                  </div>
+                </div>
+                <div class="meta-graph">
+                  <svg viewBox="0 0 200 60" class="graph-svg">
+                    <path class="graph-area" d="M0,50 Q30,45 50,35 T100,25 T150,15 T200,10 L200,60 L0,60 Z" fill="url(#graphGrad)"/>
+                    <path class="graph-line" d="M0,50 Q30,45 50,35 T100,25 T150,15 T200,10" fill="none" stroke="#0081FB" stroke-width="2"/>
+                  </svg>
+                  <span class="graph-label">+156% cette semaine</span>
+                </div>
+              </div>
+            )}
+
+            {expert.type === 'fiscal' && (
+              <div class="vis-fiscal-full">
+                <div class="cert-header">
+                  <div class="cert-seal">
+                    <div class="seal-inner">NM</div>
+                  </div>
+                  <div class="cert-titles">
+                    <span class="cert-state">New Mexico</span>
+                    <span class="cert-type">Certificate of Organization</span>
+                  </div>
+                </div>
+                <div class="cert-body">
+                  <div class="cert-field">
+                    <span class="field-label">Entity</span>
+                    <span class="field-value">FOCUS HOLDING LLC</span>
+                  </div>
+                  <div class="cert-field">
+                    <span class="field-label">Status</span>
+                    <span class="field-value status-active">ACTIVE ✓</span>
+                  </div>
+                </div>
+                <div class="cert-tax">
+                  <span class="tax-label">Effective Tax Rate</span>
+                  <span class="rate-value">0%</span>
+                </div>
+                <div class="cert-stamp">
+                  <span class="stamp-text">TAX EXEMPT</span>
+                </div>
+              </div>
+            )}
+
+            {expert.type === 'ia' && (
+              <IACard />
+            )}
+
+            {expert.type === 'shopify' && (
+              <div class="vis-shopify-full">
+                <div class="shop-header">
+                  <span class="shop-logo">🛍️</span>
+                  <span class="shop-name">FocusStore</span>
+                  <span class="shop-status">● Online</span>
+                </div>
+                <div class="shop-main-stat">
+                  <span class="main-label">Ventes aujourd'hui</span>
+                  <span class="main-value">€4,892</span>
+                  <span class="main-change up">↑ 24%</span>
+                </div>
+                <div class="shop-mini-stats">
+                  <div class="mini-stat">
+                    <span class="ms-val">127</span>
+                    <span class="ms-label">Cmd</span>
+                  </div>
+                  <div class="mini-stat">
+                    <span class="ms-val">€38</span>
+                    <span class="ms-label">Panier</span>
+                  </div>
+                  <div class="mini-stat">
+                    <span class="ms-val">3.2%</span>
+                    <span class="ms-label">Conv</span>
+                  </div>
+                </div>
+                <div class="shop-orders">
+                  <div class="order new">
+                    <span class="order-icon">📦</span>
+                    <div class="order-info">
+                      <span class="order-id">#2847</span>
+                      <span class="order-time">12s</span>
+                    </div>
+                    <span class="order-amount">+€124</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {expert.type === 'seo' && (
+              <div class="vis-seo-full">
+                <div class="google-chrome">
+                  <div class="chrome-dots"><span></span><span></span><span></span></div>
+                  <div class="chrome-url"><span class="lock">🔒</span>google.com</div>
+                </div>
+                <div class="google-header">
+                  <span class="google-g" style="color:#4285f4">G</span>
+                  <span class="google-g" style="color:#ea4335">o</span>
+                  <span class="google-g" style="color:#fbbc05">o</span>
+                  <span class="google-g" style="color:#4285f4">g</span>
+                  <span class="google-g" style="color:#34a853">l</span>
+                  <span class="google-g" style="color:#ea4335">e</span>
+                </div>
+                <div class="google-results">
+                  <div class="result first">
+                    <span class="result-pos">🥇 #1</span>
+                    <div class="result-content">
+                      <span class="result-url">mentalitefocus.com</span>
+                      <span class="result-title">Focus Business</span>
+                    </div>
+                    <span class="result-crown">👑</span>
+                  </div>
+                  <div class="result"><span class="result-pos">#2</span><span class="result-url dim">concurrent.fr</span></div>
+                </div>
+                <div class="seo-progress">
+                  <span class="prog-text">#10 → #1 en 3 mois</span>
+                  <div class="prog-bar"><div class="prog-fill"></div></div>
+                </div>
+              </div>
+            )}
+
+            {expert.type === 'auto' && (
+              <div class="vis-auto-full">
+                <div class="auto-dash-header">
+                  <span class="dash-icon">🚗</span>
+                  <span class="dash-title">Mon Garage</span>
+                  <span class="dash-count">3 véhicules</span>
+                </div>
+                <div class="auto-listings">
+                  <div class="auto-item sold">
+                    <div class="auto-img-wrap">
+                      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=100&h=60&fit=crop" alt="Porsche 911" loading="lazy"/>
+                      <span class="auto-badge sold">✓ VENDU</span>
+                    </div>
+                    <div class="auto-details">
+                      <span class="auto-name">Porsche 911</span>
+                      <span class="auto-profit">+€18,000</span>
+                    </div>
+                  </div>
+                  <div class="auto-item transit">
+                    <div class="auto-img-wrap">
+                      <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=100&h=60&fit=crop" alt="BMW M4" loading="lazy"/>
+                      <span class="auto-badge transit">🚚 En route</span>
+                    </div>
+                    <div class="auto-details">
+                      <span class="auto-name">BMW M4</span>
+                      <span class="auto-eta">J+3</span>
+                    </div>
+                  </div>
+                  <div class="auto-item deal">
+                    <div class="auto-img-wrap">
+                      <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=100&h=60&fit=crop" alt="Mercedes AMG" loading="lazy"/>
+                      <span class="auto-badge deal">🔥 DEAL</span>
+                    </div>
+                    <div class="auto-details">
+                      <span class="auto-name">Mercedes AMG</span>
+                      <span class="auto-margin">+€22K pot.</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="auto-stats">
+                  <div class="auto-stat">
+                    <span class="as-value">€67K</span>
+                    <span class="as-label">Marge totale</span>
+                  </div>
+                  <div class="auto-stat">
+                    <span class="as-value">12</span>
+                    <span class="as-label">Ventes/mois</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {expert.type === 'smma' && (
+              <div class="vis-smma-full mobile-smma">
+                <div class="smma-header">
+                  <div class="smma-logo">
+                    <span class="logo-f">F</span>
+                    <span class="logo-text">AGENCY</span>
+                  </div>
+                  <span class="smma-inv-num">#2026-042</span>
+                </div>
+                <div class="smma-client">
+                  <span class="smma-client-label">Client</span>
+                  <span class="smma-client-name">Tech Startup SAS</span>
+                </div>
+                <div class="smma-services">
+                  <div class="smma-service">
+                    <span class="svc-name">📊 Gestion Ads</span>
+                    <span class="svc-price">€2,000</span>
+                  </div>
+                  <div class="smma-service">
+                    <span class="svc-name">🎨 Création x10</span>
+                    <span class="svc-price">€1,500</span>
+                  </div>
+                  <div class="smma-service">
+                    <span class="svc-name">💡 Consulting</span>
+                    <span class="svc-price">€1,500</span>
+                  </div>
+                </div>
+                <div class="smma-total-bar">
+                  <span class="smma-total-label">Total mensuel</span>
+                  <span class="smma-total-value">€5,000</span>
+                </div>
+                <button class="smma-pay-btn">
+                  <span class="pay-icon">✓</span>
+                  <span class="pay-text">PAYÉ</span>
+                  <div class="pay-shine"></div>
+                </button>
+              </div>
+            )}
+          </div>
+          <div class="slide-info">
+            <span class="slide-role">{expert.role}</span>
+            <h3 class="slide-name">{expert.name}</h3>
+            <p class="slide-desc">{expert.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section-cta">
+    <AnimatedCTA 
+      href="#pricing"
+      label="Accès"
+      title="Consulter les experts"
+      subtitle="8 domaines • 10€/mois"
+      variant="dark"
+    />
+  </div>
+</section>
+
+<style>
+  .experts-section {
+    position: relative;
+    width: 100%;
+    padding: 4rem 1.25rem;
+    overflow: hidden;
+    background: var(--bg-section);
+  }
+
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(120px);
+  }
+
+  .glow-1 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    background: var(--gold-glow);
+    opacity: 0.25;
+  }
+
+  .glow-2 {
+    top: 20%;
+    right: 0;
+    width: 400px;
+    height: 400px;
+    background: var(--gold-glow);
+    opacity: 0.15;
+  }
+
+  /* Header */
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-card);
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .badge-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--text-primary);
+  }
+
+  .text-gradient {
+    background: linear-gradient(180deg, var(--gold-light), var(--gold), var(--gold-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-top: 1rem;
+  }
+
+  .section-desc strong { color: var(--text-primary); }
+  .section-desc .gold { color: var(--gold); }
+
+  /* ===== DESKTOP FLOATING CARDS ===== */
+  .experts-floating {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    perspective: 1000px;
+  }
+
+  @media (min-width: 768px) {
+    .experts-floating {
+      display: flex;
+    }
+  }
+
+  .float-card {
+    width: 280px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .float-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px var(--gold-glow);
+    z-index: 100;
+  }
+
+  /* Visual Zone - Takes most of the card */
+  .visual-zone {
+    height: 320px;
+    overflow: hidden;
+  }
+
+  /* Info Zone */
+  .info-zone {
+    padding: 1rem;
+    text-align: center;
+    background: var(--bg-card-elevated);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .card-role {
+    font-size: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+
+  .card-name {
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin: 0.25rem 0;
+  }
+
+  .card-desc {
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* ===== VISUAL STYLES ===== */
+
+  /* Instagram / Influence */
+  .vis-influence-full {
+    height: 100%;
+    background: linear-gradient(135deg, #833AB4, #E1306C, #F77737);
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .insta-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .insta-logo {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .insta-logo svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .insta-name {
+    flex: 1;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .live-badge {
+    background: #ff0050;
+    color: white;
+    font-size: 0.5rem;
+    font-weight: 900;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    animation: livePulse 1s infinite;
+  }
+
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .insta-story {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .story-content {
+    text-align: center;
+  }
+
+  .story-product {
+    font-size: 3rem;
+    display: block;
+    animation: productBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes productBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .story-overlay {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+  }
+
+  .swipe-up {
+    font-size: 0.625rem;
+    display: block;
+  }
+
+  .swipe-arrow {
+    font-size: 1rem;
+    animation: swipeUp 1s ease-in-out infinite;
+  }
+
+  @keyframes swipeUp {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .insta-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5rem 0;
+    margin: 0.5rem 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+  }
+
+  .stat {
+    text-align: center;
+    color: white;
+  }
+
+  .stat-icon {
+    font-size: 0.75rem;
+    display: block;
+  }
+
+  .stat-num {
+    font-size: 0.625rem;
+    font-weight: 700;
+  }
+
+  .insta-notifs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .notif {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 0.375rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    animation: notifSlideIn 0.5s ease;
+  }
+
+  .notif.new {
+    background: rgba(255, 255, 255, 0.25);
+    animation: notifPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes notifPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes notifSlideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  /* Meta Ads */
+  .vis-ads-full {
+    height: 100%;
+    background: white;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(.dark) .vis-ads-full {
+    background: #1a1a2e;
+  }
+
+  .meta-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .meta-logo {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .meta-title {
+    flex: 1;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .meta-status {
+    font-size: 0.5rem;
+    color: #22c55e;
+  }
+
+  .meta-kpis {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .kpi {
+    flex: 1;
+    background: var(--bg-input);
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    text-align: center;
+  }
+
+  .kpi.highlight {
+    background: color-mix(in srgb, #0081FB 10%, transparent);
+    border: 1px solid color-mix(in srgb, #0081FB 30%, transparent);
+  }
+
+  .kpi.gold-border {
+    border: 1px solid var(--gold);
+  }
+
+  .kpi-label {
+    display: block;
+    font-size: 0.4375rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .kpi-value {
+    font-size: 0.875rem;
+    font-weight: 900;
+    color: var(--text-primary);
+  }
+
+  .kpi-value.big {
+    font-size: 1rem;
+  }
+
+  .kpi-value.gold {
+    color: var(--gold);
+  }
+
+  .meta-graph {
+    flex: 1;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  .graph-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .graph-line {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: drawGraph 3s ease-in-out infinite;
+  }
+
+  @keyframes drawGraph {
+    0% { stroke-dashoffset: 300; }
+    50%, 100% { stroke-dashoffset: 0; }
+  }
+
+  .graph-dot {
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes dotPulse {
+    0%, 100% { r: 4; }
+    50% { r: 6; }
+  }
+
+  .graph-label {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 0.5rem;
+    color: #22c55e;
+    font-weight: 700;
+  }
+
+  .meta-campaigns {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .campaign {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.5rem;
+    color: var(--text-secondary);
+    padding: 0.375rem 0.5rem;
+    background: var(--bg-input);
+    border-radius: 0.25rem;
+  }
+
+  .campaign.active {
+    background: color-mix(in srgb, #0081FB 10%, transparent);
+  }
+
+  .camp-dot {
+    width: 0.375rem;
+    height: 0.375rem;
+    background: var(--text-muted);
+    border-radius: 50%;
+  }
+
+  .campaign.active .camp-dot {
+    background: #0081FB;
+    animation: pulse 1s infinite;
+  }
+
+  .camp-status {
+    margin-left: auto;
+    font-size: 0.4375rem;
+  }
+
+  /* ... more visual styles ... */
+
+  /* Common visual patterns */
+  .vis-fiscal-full,
+  .vis-ia-full,
+  .vis-shopify-full,
+  .vis-seo-full,
+  .vis-auto-full,
+  .vis-smma-full {
+    height: 100%;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.625rem;
+  }
+
+  .vis-fiscal-full {
+    background: #fffef5;
+    font-family: serif;
+  }
+
+  :global(.dark) .vis-fiscal-full {
+    background: #1a1918;
+  }
+
+  .cert-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .cert-seal {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .seal-outer {
+    position: absolute;
+    inset: 0;
+    border: 2px solid #8B4513;
+    border-radius: 50%;
+  }
+
+  .seal-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-weight: 900;
+    font-size: 0.75rem;
+    color: #8B4513;
+  }
+
+  .cert-titles {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cert-state {
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+  }
+
+  .cert-type {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-style: italic;
+  }
+
+  .cert-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .cert-field {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+    border-bottom: 1px dashed var(--border-light);
+  }
+
+  .field-label {
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 0.5rem;
+  }
+
+  .field-value {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 0.5rem;
+  }
+
+  .status-active {
+    color: #22c55e;
+  }
+
+  .cert-tax {
+    background: var(--bg-input);
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    margin: 0.5rem 0;
+    font-family: var(--font-sans);
+  }
+
+  .tax-label {
+    font-size: 0.4375rem;
+    color: var(--text-muted);
+    display: block;
+  }
+
+  .tax-type {
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .tax-rate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .rate-label {
+    font-size: 0.4375rem;
+    color: var(--text-muted);
+  }
+
+  .rate-value {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #22c55e;
+  }
+
+  .cert-stamp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+    padding: 0.5rem;
+    border: 2px solid #22c55e;
+    border-radius: 0.375rem;
+    transform: rotate(-2deg);
+  }
+
+  .stamp-text {
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: #22c55e;
+    font-family: var(--font-sans);
+  }
+
+  .stamp-verified {
+    font-size: 0.5rem;
+    color: #22c55e;
+    font-family: var(--font-sans);
+  }
+
+  /* IA Terminal */
+  .vis-ia-full {
+    background: #1e1e1e;
+    padding: 0;
+  }
+
+  .term-chrome {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: #2d2d2d;
+  }
+
+  .term-dots {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .td {
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+  }
+
+  .td.red { background: #ff5f57; }
+  .td.yellow { background: #ffbd2e; }
+  .td.green { background: #28c840; }
+
+  .term-title {
+    flex: 1;
+    text-align: center;
+    font-size: 0.5rem;
+    color: #888;
+  }
+
+  .term-body {
+    flex: 1;
+    padding: 0.75rem;
+    font-family: var(--font-mono);
+    overflow: hidden;
+  }
+
+  .term-line {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .prompt-user { color: #22c55e; }
+  .prompt-sep { color: white; }
+  .prompt-path { color: #60a5fa; }
+  .prompt-dollar { color: white; }
+  .prompt-cmd { color: white; }
+
+  .prompt-cursor {
+    width: 0.5rem;
+    height: 0.875rem;
+    background: var(--gold);
+    animation: cursorBlink 1s infinite;
+  }
+
+  @keyframes cursorBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .term-output {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .out-line {
+    font-size: 0.5rem;
+    color: #888;
+  }
+
+  .out-line.success {
+    color: #22c55e;
+  }
+
+  .term-result {
+    background: #2d2d2d;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .result-label {
+    font-size: 0.4375rem;
+    color: #888;
+    display: block;
+  }
+
+  .result-text {
+    font-size: 0.625rem;
+    color: var(--gold);
+  }
+
+  .term-stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    background: #2d2d2d;
+    font-size: 0.4375rem;
+    color: #666;
+  }
+
+  .ts-item.status {
+    color: #22c55e;
+  }
+
+  /* Shopify */
+  .vis-shopify-full {
+    background: white;
+  }
+
+  :global(.dark) .vis-shopify-full {
+    background: var(--bg-card);
+  }
+
+  .shop-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .shop-logo {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .shop-name {
+    flex: 1;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .shop-status {
+    font-size: 0.5rem;
+    color: #22c55e;
+  }
+
+  .shop-main-stat {
+    background: color-mix(in srgb, #95bf47 10%, transparent);
+    border: 1px solid color-mix(in srgb, #95bf47 30%, transparent);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .main-label {
+    display: block;
+    font-size: 0.5rem;
+    color: var(--text-muted);
+  }
+
+  .main-value {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #95bf47;
+  }
+
+  .main-change {
+    font-size: 0.5rem;
+    font-weight: 700;
+  }
+
+  .main-change.up {
+    color: #22c55e;
+  }
+
+  .shop-mini-stats {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .mini-stat {
+    flex: 1;
+    text-align: center;
+    padding: 0.375rem;
+    background: var(--bg-input);
+    border-radius: 0.375rem;
+  }
+
+  .ms-val {
+    display: block;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .ms-label {
+    font-size: 0.4375rem;
+    color: var(--text-muted);
+  }
+
+  .shop-orders {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .order {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: var(--bg-input);
+    border-radius: 0.375rem;
+  }
+
+  .order.new {
+    background: color-mix(in srgb, #95bf47 15%, transparent);
+    animation: orderPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes orderPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(149, 191, 71, 0.4); }
+    50% { box-shadow: 0 0 0 4px rgba(149, 191, 71, 0); }
+  }
+
+  .order-icon {
+    font-size: 1rem;
+  }
+
+  .order-info {
+    flex: 1;
+  }
+
+  .order-id {
+    display: block;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.5rem;
+  }
+
+  .order-time {
+    font-size: 0.4375rem;
+    color: var(--text-muted);
+  }
+
+  .order-amount {
+    font-weight: 900;
+    color: #95bf47;
+  }
+
+  /* SEO */
+  .vis-seo-full {
+    background: white;
+  }
+
+  :global(.dark) .vis-seo-full {
+    background: var(--bg-card);
+  }
+
+  .google-chrome {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.5rem;
+    background: #f1f3f4;
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.dark) .google-chrome {
+    background: #2d2d2d;
+  }
+
+  .chrome-dots {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .chrome-dots span {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: #ccc;
+    border-radius: 50%;
+  }
+
+  .chrome-url {
+    flex: 1;
+    font-size: 0.4375rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .lock {
+    font-size: 0.5rem;
+  }
+
+  .google-header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .google-g {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .google-search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-input);
+    border-radius: 9999px;
+    margin-bottom: 0.75rem;
+  }
+
+  .search-icon {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .search-query {
+    color: var(--text-primary);
+  }
+
+  .google-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  .result {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+  }
+
+  .result.first {
+    background: var(--gold-bg);
+    border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  }
+
+  .result-pos {
+    font-weight: 700;
+    color: var(--text-muted);
+    min-width: 2rem;
+  }
+
+  .result.first .result-pos {
+    color: var(--gold);
+  }
+
+  .result-content {
+    flex: 1;
+  }
+
+  .result-url {
+    display: block;
+    font-size: 0.5rem;
+    color: #1a0dab;
+  }
+
+  :global(.dark) .result-url {
+    color: #8ab4f8;
+  }
+
+  .result-url.dim {
+    color: var(--text-muted);
+  }
+
+  .result-title {
+    font-weight: 700;
+    color: #1a0dab;
+    display: block;
+    font-size: 0.625rem;
+  }
+
+  :global(.dark) .result-title {
+    color: #8ab4f8;
+  }
+
+  .result-desc {
+    font-size: 0.5rem;
+    color: var(--text-muted);
+    display: block;
+  }
+
+  .result-crown {
+    font-size: 1rem;
+  }
+
+  .seo-progress {
+    padding: 0.5rem;
+    background: var(--bg-input);
+    border-radius: 0.375rem;
+  }
+
+  .prog-text {
+    font-size: 0.5rem;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .prog-bar {
+    height: 0.25rem;
+    background: var(--border-medium);
+    border-radius: 0.125rem;
+    overflow: hidden;
+  }
+
+  .prog-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), #22c55e);
+    width: 0%;
+    animation: progGrow 3s ease-in-out infinite;
+  }
+
+  @keyframes progGrow {
+    0% { width: 0%; }
+    50%, 100% { width: 100%; }
+  }
+
+  /* Auto / LeBonCoin */
+  .vis-auto-full {
+    background: white;
+  }
+
+  :global(.dark) .vis-auto-full {
+    background: var(--bg-card);
+  }
+
+  .lbc-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .lbc-logo-icon {
+    font-size: 1.25rem;
+  }
+
+  .lbc-title {
+    font-weight: 700;
+    color: #ff6600;
+  }
+
+  .lbc-cat {
+    margin-left: auto;
+    font-size: 0.5rem;
+    color: var(--text-muted);
+  }
+
+  .lbc-listing {
+    margin-bottom: 0.5rem;
+  }
+
+  .listing-img {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    height: 100px;
+    margin-bottom: 0.5rem;
+  }
+
+  .listing-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .listing-badge {
+    position: absolute;
+    top: 0.375rem;
+    left: 0.375rem;
+    background: #ff6600;
+    color: white;
+    font-size: 0.5rem;
+    font-weight: 900;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+  }
+
+  .listing-views {
+    position: absolute;
+    bottom: 0.375rem;
+    right: 0.375rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 0.4375rem;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+  }
+
+  .listing-title {
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+  }
+
+  .listing-specs {
+    font-size: 0.5rem;
+    color: var(--text-muted);
+  }
+
+  .lbc-deal {
+    background: var(--bg-input);
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .deal-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.125rem;
+  }
+
+  .deal-row.sell span:last-child {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .deal-profit {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.375rem;
+    border-top: 1px dashed var(--border-light);
+    margin-top: 0.25rem;
+  }
+
+  .profit-amount {
+    font-weight: 900;
+    color: #22c55e;
+    font-size: 0.75rem;
+  }
+
+  .lbc-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .status-badge.sold {
+    background: #ff6600;
+    color: white;
+    font-size: 0.5rem;
+    font-weight: 900;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+  .status-time {
+    font-size: 0.5rem;
+    color: var(--text-muted);
+  }
+
+  /* Auto Dashboard (Mobile) */
+  .auto-dash-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .dash-icon {
+    font-size: 1.25rem;
+  }
+
+  .dash-title {
+    font-weight: 700;
+    color: var(--text-primary);
+    flex: 1;
+  }
+
+  .dash-count {
+    font-size: 0.5rem;
+    background: var(--gold-bg);
+    color: var(--gold);
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-weight: 700;
+  }
+
+  .auto-listings {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  .auto-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: var(--bg-input);
+    border-radius: 0.5rem;
+    animation: autoItemSlide 0.5s ease forwards;
+    opacity: 0;
+  }
+
+  .auto-item:nth-child(1) { animation-delay: 0.1s; }
+  .auto-item:nth-child(2) { animation-delay: 0.2s; }
+  .auto-item:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes autoItemSlide {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .auto-img-wrap {
+    position: relative;
+    width: 60px;
+    height: 40px;
+    border-radius: 0.375rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .auto-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .auto-badge {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    font-size: 0.4375rem;
+    font-weight: 700;
+    padding: 0.0625rem 0.25rem;
+    border-radius: 0.125rem;
+    background: rgba(0,0,0,0.7);
+    color: white;
+  }
+
+  .auto-badge.sold {
+    background: #22c55e;
+  }
+
+  .auto-badge.transit {
+    background: #f59e0b;
+  }
+
+  .auto-badge.deal {
+    background: #ef4444;
+    animation: dealPulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes dealPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .auto-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .auto-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.6875rem;
+  }
+
+  .auto-profit {
+    font-weight: 700;
+    color: #22c55e;
+    font-size: 0.625rem;
+  }
+
+  .auto-eta {
+    font-size: 0.5rem;
+    color: #f59e0b;
+    font-weight: 600;
+  }
+
+  .auto-margin {
+    font-size: 0.5rem;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .auto-stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .auto-stat {
+    text-align: center;
+    flex: 1;
+  }
+
+  .as-value {
+    display: block;
+    font-size: 1rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .as-label {
+    font-size: 0.4375rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Auto Notification Popup */
+  .auto-notif {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 10px 40px rgba(34, 197, 94, 0.4);
+    z-index: 20;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .auto-notif.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .auto-notif .notif-icon {
+    font-size: 1.5rem;
+  }
+
+  .auto-notif .notif-text {
+    font-size: 1rem;
+    font-weight: 900;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .auto-badge.pending {
+    background: #6b7280;
+  }
+
+  .auto-badge.sold {
+    background: #22c55e;
+    animation: soldPulse 0.5s ease;
+  }
+
+  @keyframes soldPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  .auto-item.selling {
+    animation: itemSelling 0.8s ease;
+  }
+
+  @keyframes itemSelling {
+    0%, 100% { background: var(--bg-input); }
+    50% { background: rgba(34, 197, 94, 0.2); box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); }
+  }
+
+  /* SMMA Invoice */
+  .vis-smma-full {
+    background: white;
+    position: relative;
+  }
+
+  :global(.dark) .vis-smma-full {
+    background: var(--bg-card);
+  }
+
+  .inv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .inv-logo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inv-logo-text {
+    font-size: 1rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .inv-logo-sub {
+    font-size: 0.4375rem;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+  }
+
+  .inv-meta {
+    text-align: right;
+  }
+
+  .inv-number {
+    display: block;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.5rem;
+  }
+
+  .inv-date {
+    font-size: 0.4375rem;
+    color: var(--text-muted);
+  }
+
+  .inv-client {
+    margin-bottom: 0.75rem;
+  }
+
+  .client-label {
+    font-size: 0.4375rem;
+    color: var(--text-muted);
+    display: block;
+  }
+
+  .client-name {
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+  }
+
+  .client-addr {
+    font-size: 0.4375rem;
+    color: var(--text-muted);
+  }
+
+  .inv-items {
+    margin-bottom: 0.5rem;
+  }
+
+  .inv-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+    border-bottom: 1px dashed var(--border-light);
+    font-size: 0.5rem;
+  }
+
+  .item-name {
+    color: var(--text-secondary);
+  }
+
+  .item-price {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .inv-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: var(--bg-input);
+    border-radius: 0.375rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .total-label {
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .total-amount {
+    font-size: 1rem;
+    font-weight: 900;
+    color: var(--gold);
+  }
+
+  .inv-stamp {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: rotate(-15deg);
+    background: color-mix(in srgb, #22c55e 15%, transparent);
+    border: 2px solid #22c55e;
+    color: #22c55e;
+    font-size: 0.75rem;
+    font-weight: 900;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+  }
+
+  .inv-recurring {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .rec-badge {
+    background: var(--gold-bg);
+    color: var(--gold);
+    font-size: 0.4375rem;
+    font-weight: 700;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+  }
+
+  .rec-text {
+    font-size: 0.4375rem;
+    color: var(--text-muted);
+  }
+
+  /* Mobile SMMA Card - Optimisé */
+  .mobile-smma {
+    padding: 1rem !important;
+  }
+
+  .smma-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .smma-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .logo-f {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--gold);
+    color: black;
+    font-weight: 900;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25rem;
+  }
+
+  .logo-text {
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+
+  .smma-inv-num {
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .smma-client {
+    margin-bottom: 0.75rem;
+  }
+
+  .smma-client-label {
+    font-size: 0.5rem;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 0.125rem;
+  }
+
+  .smma-client-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .smma-services {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .smma-service {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: var(--bg-input);
+    border-radius: 0.375rem;
+    animation: svcSlide 0.4s ease forwards;
+    opacity: 0;
+  }
+
+  .smma-service:nth-child(1) { animation-delay: 0.1s; }
+  .smma-service:nth-child(2) { animation-delay: 0.2s; }
+  .smma-service:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes svcSlide {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .svc-name {
+    font-size: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .svc-price {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .smma-total-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem;
+    background: var(--gold-bg);
+    border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+    border-radius: 0.375rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .smma-total-label {
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .smma-total-value {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--gold);
+  }
+
+  .smma-pay-btn {
+    position: relative;
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    animation: btnPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes btnPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  }
+
+  .pay-icon {
+    font-size: 1rem;
+  }
+
+  .pay-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: payShine 2s ease-in-out infinite;
+  }
+
+  @keyframes payShine {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+  }
+
+  /* ===== MOBILE SLIDER ===== */
+  .experts-slider {
+    display: block;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .experts-slider {
+      display: none;
+    }
+  }
+
+  .slider-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem;
+    scrollbar-width: none;
+  }
+
+  .slider-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slide-card {
+    flex: 0 0 calc(100vw - 3rem);
+    scroll-snap-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+    max-height: 500px;
+  }
+
+  .slide-visual {
+    flex: 3;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  /* Les visuels desktop dans le slider mobile */
+  .slide-visual > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .slide-visual .vis-influence-full,
+  .slide-visual .vis-ads-full,
+  .slide-visual .vis-fiscal-full,
+  .slide-visual .vis-ia-full,
+  .slide-visual .vis-shopify-full,
+  .slide-visual .vis-seo-full,
+  .slide-visual .vis-auto-full,
+  .slide-visual .vis-smma-full {
+    height: 100%;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .slide-info {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--bg-card-elevated);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .slide-role {
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+
+  .slide-name {
+    font-size: 1rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin: 0.375rem 0;
+  }
+
+  .slide-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* CTA */
+  .section-cta {
+    text-align: center;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // ========================================
+    // SMART INTERVAL MANAGER
+    // ========================================
+    const expertsSection = document.getElementById('experts');
+    let isVisible = false;
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+      if (isVisible) startAllIntervals();
+      else stopAllIntervals();
+    }, { threshold: 0.1 });
+    
+    if (expertsSection) sectionObserver.observe(expertsSection);
+    
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopAllIntervals();
+      else if (isVisible) startAllIntervals();
+    });
+    
+    const intervalConfigs = [];
+    
+    const createInterval = (callback, delay) => {
+      const config = { callback, delay, id: null };
+      intervalConfigs.push(config);
+      if (isVisible) config.id = setInterval(callback, delay);
+    };
+    
+    const startAllIntervals = () => {
+      intervalConfigs.forEach(config => {
+        if (!config.id) config.id = setInterval(config.callback, config.delay);
+      });
+    };
+    
+    const stopAllIntervals = () => {
+      intervalConfigs.forEach(config => {
+        if (config.id) { clearInterval(config.id); config.id = null; }
+      });
+    };
+
+    // IA Terminal typing
+    const cmds = [
+      'Génère 10 noms de produits winner',
+      'Écris un script de vente high ticket',
+      'Analyse cette landing page',
+      'Crée une séquence email 5 jours',
+    ];
+    let cmdIdx = 0, charIdx = 0;
+    const cmdEls = document.querySelectorAll('[data-ai-cmd]');
+
+    const typeCmd = () => {
+      if (!isVisible) return setTimeout(typeCmd, 100);
+      const cmd = cmds[cmdIdx];
+      cmdEls.forEach(el => el.textContent = cmd.substring(0, charIdx));
+      charIdx++;
+      if (charIdx <= cmd.length) {
+        setTimeout(typeCmd, 50);
+      } else {
+        setTimeout(() => {
+          charIdx = 0;
+          cmdIdx = (cmdIdx + 1) % cmds.length;
+          typeCmd();
+        }, 3000);
+      }
+    };
+    typeCmd();
+
+    // Dynamic counters
+    createInterval(() => {
+      // Meta Ads
+      document.querySelectorAll('[data-spend]').forEach(el => {
+        el.textContent = '€' + (4000 + Math.floor(Math.random() * 500)).toLocaleString('fr-FR');
+      });
+      document.querySelectorAll('[data-revenue]').forEach(el => {
+        el.textContent = '€' + (25000 + Math.floor(Math.random() * 5000)).toLocaleString('fr-FR');
+      });
+      document.querySelectorAll('[data-roas]').forEach(el => {
+        el.textContent = (5.5 + Math.random() * 2).toFixed(1) + 'x';
+      });
+
+      // Shopify
+      document.querySelectorAll('[data-shop-sales]').forEach(el => {
+        el.textContent = '€' + (4000 + Math.floor(Math.random() * 1500)).toLocaleString('fr-FR');
+      });
+
+      // Instagram
+      document.querySelectorAll('[data-views]').forEach(el => {
+        el.textContent = (140000 + Math.floor(Math.random() * 5000)).toLocaleString('fr-FR');
+      });
+    }, 3000);
+
+    // === AUTO DASHBOARD ANIMATION ===
+    const autoDashboards = document.querySelectorAll('[data-auto-dashboard]');
+    
+    autoDashboards.forEach(dashboard => {
+      const items = dashboard.querySelectorAll('[data-auto-item]');
+      const notif = dashboard.querySelector('[data-auto-notif]');
+      const totalEl = dashboard.querySelector('[data-auto-total]');
+      const salesEl = dashboard.querySelector('[data-auto-sales]');
+      
+      let totalMargin = 67;
+      let salesCount = 12;
+      let currentItemIndex = 0;
+      
+      const carStatuses = [
+        { badge: '⏳ En vente', class: 'pending' },
+        { badge: '👀 Visite...', class: 'pending' },
+        { badge: '💬 Négociation', class: 'transit' },
+        { badge: '✓ VENDU', class: 'sold' },
+      ];
+      
+      const animateAutoSale = () => {
+        if (!isVisible) return;
+        
+        const item = items[currentItemIndex];
+        if (!item) return;
+        
+        const badge = item.querySelector('[data-auto-badge]');
+        let statusIndex = 0;
+        
+        // Animate through statuses
+        const cycleStatus = () => {
+          if (statusIndex < carStatuses.length) {
+            const status = carStatuses[statusIndex];
+            badge.textContent = status.badge;
+            badge.className = 'auto-badge ' + status.class;
+            
+            if (status.class === 'sold') {
+              // Show sold notification
+              item.classList.add('selling');
+              if (notif) {
+                notif.classList.add('show');
+                setTimeout(() => notif.classList.remove('show'), 2000);
+              }
+              
+              // Update totals
+              totalMargin += Math.floor(Math.random() * 10) + 15;
+              salesCount++;
+              if (totalEl) totalEl.textContent = '€' + totalMargin + 'K';
+              if (salesEl) salesEl.textContent = salesCount.toString();
+              
+              setTimeout(() => {
+                item.classList.remove('selling');
+                // Reset to pending for next cycle
+                setTimeout(() => {
+                  badge.textContent = '⏳ En vente';
+                  badge.className = 'auto-badge pending';
+                  currentItemIndex = (currentItemIndex + 1) % items.length;
+                }, 2000);
+              }, 500);
+            }
+            
+            statusIndex++;
+            if (statusIndex < carStatuses.length) {
+              setTimeout(cycleStatus, 1500);
+            }
+          }
+        };
+        
+        cycleStatus();
+      };
+      
+      // Start auto animation cycle
+      setTimeout(animateAutoSale, 2000);
+      createInterval(animateAutoSale, 10000);
+    });
+  });
+</script>

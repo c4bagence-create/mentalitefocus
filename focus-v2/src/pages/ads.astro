@@ -1,0 +1,316 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Loader from '../components/Loader.astro';
+import HeroCards from '../components/HeroCards.astro';
+import NetworkingSection from '../components/NetworkingSection.astro';
+import ArsenalSection from '../components/ArsenalSection.astro';
+import ExpertsSection from '../components/ExpertsSection.astro';
+import PricingSection from '../components/PricingSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import FloatingBadge from '../components/FloatingBadge.astro';
+import DiscordSection from '../components/DiscordSection.astro';
+
+// Props pour la page ADS - Copywriting adapté
+const adsTitle = "Focus Business - Tu paies ou tu fais le p'tit ?";
+const adsDescription = "Arrête de faire le p'tit. Rejoins 1240 mecs qui font le plein chaque mois. E-commerce, SMMA, LLC - Les vraies méthodes pour faire du cash. 9.90€/mois.";
+const adsCanonical = "https://mentalite-focus.com/ads";
+---
+
+<Layout title={adsTitle} description={adsDescription} canonical={adsCanonical}>
+  <!-- Loader -->
+  <Loader />
+
+  <!-- Navbar -->
+  <Navbar />
+
+  <!-- HERO SECTION - Version ADS -->
+  <section class="hero-section" id="hero">
+
+    <!-- GLOW OR HERO -->
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-400/5 blur-[200px] rounded-full pointer-events-none z-0"></div>
+
+    <!-- PARTICLES -->
+    <div class="particle-hero" style="left: 5%; top: 15%; animation-delay: 0s;"></div>
+    <div class="particle-hero" style="left: 15%; top: 40%; animation-delay: 0.5s;"></div>
+    <div class="particle-hero" style="left: 25%; top: 70%; animation-delay: 1s;"></div>
+    <div class="particle-hero" style="left: 35%; top: 25%; animation-delay: 1.5s;"></div>
+    <div class="particle-hero" style="left: 45%; top: 60%; animation-delay: 2s;"></div>
+    <div class="particle-hero" style="left: 55%; top: 35%; animation-delay: 2.5s;"></div>
+    <div class="particle-hero" style="left: 65%; top: 75%; animation-delay: 3s;"></div>
+    <div class="particle-hero" style="left: 75%; top: 20%; animation-delay: 3.5s;"></div>
+    <div class="particle-hero" style="left: 85%; top: 50%; animation-delay: 4s;"></div>
+    <div class="particle-hero" style="left: 95%; top: 65%; animation-delay: 4.5s;"></div>
+    <div class="particle-hero" style="left: 10%; top: 80%; animation-delay: 5s;"></div>
+    <div class="particle-hero" style="left: 90%; top: 30%; animation-delay: 5.5s;"></div>
+
+    <!-- TEXTE CENTER - Copy adapté pour ads -->
+    <div class="relative z-20 text-center mb-8 md:mb-16 mt-4 interactive-zone">
+
+      <!-- BADGE -->
+      <div class="badge mb-6" data-animate="fade-down" data-delay="0.2">
+        <span class="badge-dot"></span>
+        <span>TU PAIES OU TU FAIS LE P'TIT ?</span>
+      </div>
+
+      <!-- TITRE - Version ADS plus directe -->
+      <h1 class="text-5xl md:text-[8rem] lg:text-[10rem] font-black font-display tracking-tighter leading-[0.9] select-none mb-4" data-animate="zoom-in" data-delay="0.4" data-duration="1">
+        <span class="inline-block text-primary" style="text-shadow: 0 0 60px rgba(255,255,255,0.4), 0 4px 0 rgba(212,175,55,0.3);">FAIS LE</span><br>
+        <span class="text-gradient-gold" style="filter: drop-shadow(0 0 30px rgba(212,175,55,0.5));">PLEIN.</span>
+      </h1>
+
+      <!-- SOUS-TITRE - Copy masculin -->
+      <p class="hero-subtitle text-muted text-sm md:text-lg mb-6 max-w-lg mx-auto" data-animate="fade-up" data-delay="0.6">
+        <span class="subtitle-line"><strong class="text-primary">1240 mecs qui font du cash.</strong></span>
+        <span class="subtitle-line">E-commerce, SMMA, LLC.</span>
+        <span class="subtitle-line"><strong class="text-gold">Les vraies méthodes.</strong></span>
+      </p>
+
+      <!-- BANDEAU PRIX - Simple étiquette qui se pose -->
+      <div class="price-tag-container">
+        <a href="#pricing" class="price-tag" id="price-tag">
+          <span class="tag-text">POUR 10€ / MOIS</span>
+        </a>
+      </div>
+
+      <!-- STATS BAR -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 md:gap-x-12 gap-y-2 mt-3 mx-auto w-fit" data-stagger="0.1">
+        <div class="text-center" data-stagger-item>
+          <div class="text-lg md:text-2xl font-black text-primary leading-none">5</div>
+          <div class="text-[7px] md:text-xs text-muted uppercase">Lives/Sem</div>
+        </div>
+        <div class="text-center" data-stagger-item>
+          <div class="text-lg md:text-2xl font-black text-primary leading-none">1240</div>
+          <div class="text-[7px] md:text-xs text-muted uppercase">Membres</div>
+        </div>
+        <div class="text-center" data-stagger-item>
+          <div class="text-lg md:text-2xl font-black text-primary leading-none">+10M</div>
+          <div class="text-[7px] md:text-xs text-muted uppercase">CA Généré</div>
+        </div>
+        <div class="text-center" data-stagger-item>
+          <div class="text-lg md:text-2xl font-black text-primary leading-none">24/7</div>
+          <div class="text-[7px] md:text-xs text-muted uppercase">Support</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO CARDS -->
+    <HeroCards />
+  </section>
+
+  <!-- SECTION ARSENAL - Nos domaines d'expertise -->
+  <ArsenalSection />
+
+  <!-- SECTION DISCORD - Une communauté vivante & active -->
+  <DiscordSection />
+
+  <!-- SECTION EXPERTS - Nos domaines d'expertise -->
+  <ExpertsSection />
+
+  <!-- SECTION NETWORKING - Réseau & Connexions -->
+  <NetworkingSection />
+
+  <!-- SECTION PRICING - Abonnement -->
+  <PricingSection />
+
+  <!-- SECTION FAQ - Questions fréquentes -->
+  <FAQSection />
+
+  <!-- NEWSLETTER FOOTER -->
+  <footer class="py-24 relative overflow-hidden bg-page-light dark:bg-page">
+    <!-- Glow -->
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-amber-400/10 blur-[200px] rounded-full"></div>
+      <div class="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-amber-500/10 blur-[200px] rounded-full"></div>
+    </div>
+
+    <!-- Container -->
+    <div class="container-custom relative z-10">
+
+      <!-- Newsletter Section - Copy adapté -->
+      <div class="newsletter-container mx-auto mb-16 max-w-3xl">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl md:text-5xl font-black text-primary mb-4 font-display">
+            Arrête de faire le p'tit
+          </h2>
+          <p class="text-base md:text-lg text-muted max-w-xl mx-auto">
+            Rejoins 1240 mecs qui font le plein. Reçois les vraies méthodes pour faire du cash directement dans ta boîte.
+          </p>
+        </div>
+
+        <form class="newsletter-form" id="newsletter-form">
+          <div class="input-wrapper">
+            <input
+              type="email"
+              placeholder="ton@email.com"
+              class="newsletter-input"
+              id="newsletter-email"
+              required
+            />
+          </div>
+          <button type="submit" class="newsletter-btn">
+            Accéder gratuitement
+          </button>
+        </form>
+
+        <p class="text-xs text-muted text-center mt-4">
+          On déteste le spam autant que toi. Désinscris-toi quand tu veux.
+        </p>
+      </div>
+
+      <!-- Stats Footer -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto text-center">
+        <div>
+          <div class="text-3xl md:text-4xl font-black text-gradient-gold mb-1">1240</div>
+          <div class="text-sm text-muted">Membres actifs</div>
+        </div>
+        <div>
+          <div class="text-3xl md:text-4xl font-black text-gradient-gold mb-1">+10M€</div>
+          <div class="text-sm text-muted">CA généré</div>
+        </div>
+        <div>
+          <div class="text-3xl md:text-4xl font-black text-gradient-gold mb-1">24/7</div>
+          <div class="text-sm text-muted">Support Discord</div>
+        </div>
+        <div>
+          <div class="text-3xl md:text-4xl font-black text-gradient-gold mb-1">5+</div>
+          <div class="text-sm text-muted">Lives/semaine</div>
+        </div>
+      </div>
+
+      <!-- CTA Final -->
+      <div class="text-center">
+        <a
+          href="https://espace.mentalitefocus.com/checkout"
+          class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gold to-amber-500 text-black font-bold text-lg rounded-xl hover:scale-105 transition-transform shadow-lg shadow-gold/20"
+          id="footer-cta"
+        >
+          <span>Rejoindre Focus</span>
+          <span class="text-2xl">→</span>
+        </a>
+        <p class="text-sm text-muted mt-4">9.90€/mois • Annule quand tu veux</p>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="flex flex-wrap justify-center gap-6 mt-12 text-sm text-muted">
+        <a href="/legal" class="hover:text-primary transition-colors">Mentions légales</a>
+        <span>•</span>
+        <a href="/privacy" class="hover:text-primary transition-colors">Confidentialité</a>
+        <span>•</span>
+        <a href="/terms" class="hover:text-primary transition-colors">CGV</a>
+      </div>
+
+      <!-- Copyright -->
+      <p class="text-center text-xs text-muted mt-8">
+        © 2026 Focus Business. Tous droits réservés.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating Badge -->
+  <FloatingBadge />
+</Layout>
+
+<script>
+  // Newsletter form tracking
+  const newsletterForm = document.getElementById('newsletter-form');
+  const newsletterEmail = document.getElementById('newsletter-email') as HTMLInputElement;
+
+  if (newsletterForm && newsletterEmail) {
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = newsletterEmail.value;
+
+      console.log('🔍 Newsletter signup initiated:', email);
+
+      // Track newsletter signup with all pixels
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead', {
+          content_name: 'Newsletter Signup ADS',
+          value: 0,
+          currency: 'EUR'
+        });
+        console.log('✅ Meta - Lead tracked (Newsletter ADS)');
+      }
+
+      if (typeof snaptr !== 'undefined') {
+        snaptr('track', 'SIGN_UP', {
+          sign_up_method: 'newsletter',
+          user_email: email
+        });
+        console.log('✅ Snapchat - SIGN_UP tracked (Newsletter ADS)');
+      }
+
+      if (typeof window.ttq !== 'undefined') {
+        window.ttq.track('Subscribe', {
+          content_type: 'newsletter',
+          value: 0,
+          currency: 'EUR'
+        });
+        console.log('✅ TikTok - Subscribe tracked (Newsletter ADS)');
+      }
+
+      // Klaviyo tracking
+      if (typeof window._learnq !== 'undefined') {
+        window._learnq.push(['identify', {
+          '$email': email
+        }]);
+        window._learnq.push(['track', 'Newsletter Signup', {
+          'Source': 'Footer Newsletter ADS',
+          'Email': email
+        }]);
+        console.log('✅ Klaviyo (_learnq) - Newsletter Signup tracked (ADS)');
+      } else if (typeof window.klaviyo !== 'undefined') {
+        window.klaviyo.push(['identify', { '$email': email }]);
+        window.klaviyo.push(['track', 'Newsletter Signup', {
+          'Source': 'Footer Newsletter ADS',
+          'Email': email
+        }]);
+        console.log('✅ Klaviyo (fallback) - Newsletter Signup tracked (ADS)');
+      }
+
+      // Success message
+      newsletterEmail.value = '';
+      alert('✅ Merci ! Check tes emails pour confirmer ton inscription.');
+    });
+  }
+
+  // Footer CTA tracking
+  const footerCTA = document.getElementById('footer-cta');
+  if (footerCTA) {
+    footerCTA.addEventListener('click', () => {
+      console.log('🎯 Footer CTA clicked (ADS page)');
+
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'InitiateCheckout', {
+          value: 9.90,
+          currency: 'EUR',
+          content_name: 'Focus Business Premium - Footer CTA ADS'
+        });
+      }
+
+      if (typeof snaptr !== 'undefined') {
+        snaptr('track', 'START_CHECKOUT', {
+          price: 9.90,
+          currency: 'EUR'
+        });
+      }
+
+      if (typeof window.ttq !== 'undefined') {
+        window.ttq.track('InitiateCheckout', {
+          value: 9.90,
+          currency: 'EUR',
+          content_type: 'product',
+          content_name: 'Focus Business Membership - ADS'
+        });
+      }
+
+      if (typeof window.klaviyo !== 'undefined') {
+        window.klaviyo.push(['track', 'Started Checkout', {
+          '$value': 9.90,
+          'Source': 'Footer CTA ADS'
+        }]);
+      }
+    });
+  }
+</script>

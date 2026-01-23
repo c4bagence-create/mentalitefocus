@@ -1,0 +1,190 @@
+---
+/**
+ * AnimatedCTA - Bouton CTA compact et élégant
+ * Design minimaliste avec animations fluides
+ */
+interface Props {
+  href: string;
+  label?: string;
+  title: string;
+  subtitle?: string;
+  variant?: 'gold' | 'white' | 'dark';
+}
+
+const { href, label, title, subtitle, variant = 'gold' } = Astro.props;
+---
+
+<a href={href} class={`cta-btn cta-${variant}`} data-cta>
+  <span class="cta-text">
+    {label && <span class="cta-label">{label}</span>}
+    <span class="cta-title">{title}</span>
+  </span>
+  <span class="cta-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  </span>
+  <span class="cta-shine"></span>
+</a>
+
+<style>
+  /* CTA Compact et Élégant */
+  .cta-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.5rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  /* Variante Gold */
+  .cta-gold {
+    background: var(--gold);
+    color: black;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+  }
+
+  .cta-gold:hover {
+    background: var(--gold-light);
+    box-shadow: 0 6px 30px rgba(212, 175, 55, 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* Variante White - Adaptatif light/dark */
+  .cta-white {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-medium);
+  }
+
+  .cta-white:hover {
+    background: var(--bg-card-elevated);
+    border-color: var(--gold);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
+  }
+
+  /* Variante Dark - S'adapte au mode */
+  .cta-dark {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+  }
+
+  :global(.dark) .cta-dark {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.light) .cta-dark {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .cta-dark:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* Texte */
+  .cta-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .cta-label {
+    font-size: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .cta-gold .cta-label { color: rgba(0, 0, 0, 0.6); }
+
+  .cta-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  /* Icône */
+  .cta-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .cta-gold .cta-icon {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .cta-white .cta-icon,
+  .cta-dark .cta-icon {
+    background: var(--gold);
+  }
+
+  .cta-icon svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .cta-gold .cta-icon svg { stroke: black; }
+  .cta-white .cta-icon svg,
+  .cta-dark .cta-icon svg { stroke: black; }
+
+  .cta-btn:hover .cta-icon {
+    transform: translateX(3px);
+  }
+
+  /* Shine Effect */
+  .cta-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+  }
+
+  .cta-btn:hover .cta-shine {
+    left: 150%;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .cta-btn {
+      padding: 0.75rem 1.25rem;
+      gap: 0.5rem;
+    }
+
+    .cta-title {
+      font-size: 0.8125rem;
+    }
+
+    .cta-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    .cta-icon svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+  }
+</style>
