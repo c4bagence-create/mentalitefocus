@@ -55,10 +55,10 @@ import DiscordSection from '../components/DiscordSection.astro';
       </h1>
       
       <!-- SOUS-TITRE -->
-      <p class="text-muted text-sm md:text-lg mb-6 max-w-lg mx-auto" data-animate="fade-up" data-delay="0.6">
-        <span><strong class="text-primary">Un groupe Discord.</strong></span>
-        <span>Tous les business models.</span>
-        <span><strong class="text-gold">Sans bullshit.</strong></span>
+      <p class="hero-subtitle text-muted text-sm md:text-lg mb-6 max-w-lg mx-auto" data-animate="fade-up" data-delay="0.6">
+        <span class="subtitle-line"><strong class="text-primary">Un groupe Discord.</strong></span>
+        <span class="subtitle-line">Tous les business models.</span>
+        <span class="subtitle-line"><strong class="text-gold">Sans bullshit.</strong></span>
       </p>
       
       <!-- BANDEAU PRIX - Simple étiquette qui se pose -->
@@ -160,72 +160,59 @@ import DiscordSection from '../components/DiscordSection.astro';
         </div>
       </div>
 
-      <!-- Links avec animations -->
-      <div class="footer-links" data-animate="fade-left" data-delay="0.2">
-        <div class="link-group" style="--delay: 0.1s">
-          <h3 class="link-title">
-            <span class="title-icon">🧭</span>
-            Navigation
-          </h3>
-          <a href="#hero" class="link-item"><span class="link-arrow">→</span>Accueil</a>
-          <a href="#arsenal" class="link-item"><span class="link-arrow">→</span>Expertises</a>
-          <a href="#experts" class="link-item"><span class="link-arrow">→</span>Experts</a>
-          <a href="#pricing" class="link-item"><span class="link-arrow">→</span>Tarifs</a>
-        </div>
-        <div class="link-group" style="--delay: 0.2s">
-          <h3 class="link-title">
-            <span class="title-icon">📚</span>
-            Ressources
-          </h3>
-          <a href="#discord" class="link-item"><span class="link-arrow">→</span>Discord</a>
-          <a href="#faq" class="link-item"><span class="link-arrow">→</span>FAQ</a>
-          <a href="https://espace.mentalitefocus.com" class="link-item"><span class="link-arrow">→</span>Espace Membre</a>
-        </div>
-        <div class="link-group" style="--delay: 0.3s">
-          <h3 class="link-title">
-            <span class="title-icon">⚖️</span>
-            Légal
-          </h3>
-          <a href="/legal" class="link-item"><span class="link-arrow">→</span>Mentions légales</a>
-          <a href="/privacy" class="link-item"><span class="link-arrow">→</span>Confidentialité</a>
-          <a href="/terms" class="link-item"><span class="link-arrow">→</span>CGU</a>
-        </div>
-      </div>
     </div>
 
-    <!-- Newsletter Form Ultra Stylé -->
+    <!-- Newsletter Form Ultra Premium 3D -->
     <div class="newsletter-section" data-animate="fade-up" data-delay="0.3">
       <div class="newsletter-container">
+        <!-- Background Effects -->
+        <div class="nl-bg-orbs">
+          <span class="nl-orb nl-orb-1"></span>
+          <span class="nl-orb nl-orb-2"></span>
+          <span class="nl-orb nl-orb-3"></span>
+        </div>
         <div class="newsletter-glow"></div>
+        <div class="nl-grid"></div>
+
         <div class="newsletter-content">
           <div class="newsletter-text">
+            <div class="nl-badge">
+              <span class="nl-badge-dot"></span>
+              <span>Newsletter Exclusive</span>
+            </div>
             <h3 class="newsletter-title">
-              <span class="nl-icon">✨</span>
-              Reste dans la boucle
+              <span class="nl-gradient">Rejoins le cercle privilégié</span>
             </h3>
-            <p class="newsletter-desc">Reçois nos stratégies exclusives, cas d'études et opportunités avant tout le monde.</p>
+            <p class="newsletter-desc">
+              <strong>Stratégies avancées</strong>, opportunités exclusives et <strong>insights</strong> réservés aux membres.
+              <span class="nl-highlight">100% gratuit.</span>
+            </p>
           </div>
           <form class="newsletter-form" id="klaviyo-form">
             <div class="form-wrapper">
               <div class="input-container">
                 <div class="input-glow"></div>
-                <input 
-                  type="email" 
+                <div class="input-particles">
+                  <span></span><span></span><span></span>
+                </div>
+                <input
+                  type="email"
                   id="klaviyo-email"
-                  placeholder="ton@email.com" 
-                  required 
+                  placeholder="ton@email.com"
+                  required
                   autocomplete="email"
                   class="newsletter-input"
                 />
                 <div class="input-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    <polyline points="22,6 12,13 2,6"/>
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                   </svg>
                 </div>
+                <div class="input-sparkle"></div>
               </div>
               <button type="submit" class="newsletter-btn" id="klaviyo-submit">
-                <span class="btn-text">M'inscrire</span>
+                <span class="btn-glow"></span>
+                <span class="btn-text">Accéder gratuitement</span>
                 <span class="btn-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <line x1="5" y1="12" x2="19" y2="12"/>
@@ -235,10 +222,26 @@ import DiscordSection from '../components/DiscordSection.astro';
                 <span class="btn-loader"></span>
               </button>
             </div>
-            <p class="form-hint">
-              <span class="hint-icon">🔒</span>
-              0 spam. Désinscription en 1 clic.
-            </p>
+            <div class="form-features">
+              <span class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                </svg>
+                <span>0 spam</span>
+              </span>
+              <span class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                </svg>
+                <span>Désinscription 1 clic</span>
+              </span>
+              <span class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                </svg>
+                <span>+12K inscrits</span>
+              </span>
+            </div>
           </form>
         </div>
         <!-- Success State -->
@@ -249,13 +252,22 @@ import DiscordSection from '../components/DiscordSection.astro';
             </svg>
           </div>
           <h4 class="success-title">Bienvenue dans le cercle ! 🎉</h4>
-          <p class="success-text">Check ta boîte mail pour confirmer.</p>
+          <p class="success-text">Vérifie ta boîte mail pour confirmer ton inscription.</p>
         </div>
       </div>
     </div>
 
     <!-- Bottom Bar -->
     <div class="footer-bottom">
+      <!-- Legal Links -->
+      <div class="footer-legal">
+        <a href="/legal" class="legal-link">Mentions légales</a>
+        <span class="legal-separator">•</span>
+        <a href="/privacy" class="legal-link">Confidentialité</a>
+        <span class="legal-separator">•</span>
+        <a href="/terms" class="legal-link">CGU</a>
+      </div>
+
       <p class="copyright">
         <span class="copy-icon">©</span>
         <span class="copy-year">2026</span>
@@ -396,6 +408,13 @@ import DiscordSection from '../components/DiscordSection.astro';
               fbq('track', 'Lead', { content_name: 'Newsletter Footer' });
             }
 
+            // Track with Snapchat Pixel
+            if (typeof snaptr !== 'undefined') {
+              snaptr('track', 'SIGN_UP', {
+                'sign_up_method': 'newsletter'
+              });
+            }
+
           } catch (error) {
             console.error('Klaviyo error:', error);
           }
@@ -446,6 +465,23 @@ import DiscordSection from '../components/DiscordSection.astro';
             });
           }
 
+          // Snapchat Pixel Track
+          if (typeof snaptr !== 'undefined') {
+            // Si c'est un lien Stripe = InitiateCheckout
+            if (ctaHref.includes('stripe')) {
+              snaptr('track', 'START_CHECKOUT', {
+                'currency': 'EUR',
+                'price': 9.90,
+                'item_category': 'Focus Business Membership'
+              });
+            } else {
+              snaptr('track', 'VIEW_CONTENT', {
+                'content_type': 'cta_click',
+                'item_category': sectionId
+              });
+            }
+          }
+
           console.log('📊 CTA Tracked:', ctaText.substring(0, 30), '| Section:', sectionId);
         });
       });
@@ -463,6 +499,13 @@ import DiscordSection from '../components/DiscordSection.astro';
               }
               if (typeof fbq !== 'undefined') {
                 fbq('track', 'ViewContent', { content_name: 'Pricing Section' });
+              }
+              // Snapchat - Vue du pricing
+              if (typeof snaptr !== 'undefined') {
+                snaptr('track', 'VIEW_CONTENT', {
+                  'content_type': 'pricing',
+                  'item_category': 'Focus Business Membership'
+                });
               }
               pricingObserver.unobserve(entry.target);
             }
@@ -528,6 +571,25 @@ import DiscordSection from '../components/DiscordSection.astro';
   
   .bandeau {
     animation-delay: 0.8s;
+  }
+
+  /* Hero subtitle - 3 lignes sur mobile */
+  .hero-subtitle {
+    text-align: center;
+  }
+
+  .subtitle-line {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .subtitle-line {
+      display: inline;
+    }
+
+    .subtitle-line:not(:last-child)::after {
+      content: ' ';
+    }
   }
 
   /* ===== PRICE TAG - Simple étiquette qui se pose ===== */
@@ -682,17 +744,12 @@ import DiscordSection from '../components/DiscordSection.astro';
   .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 3rem;
     position: relative;
     z-index: 1;
-  }
-
-  @media (min-width: 768px) {
-    .footer-content {
-      grid-template-columns: 1fr 2fr;
-    }
   }
 
   /* Brand Section */
@@ -700,22 +757,10 @@ import DiscordSection from '../components/DiscordSection.astro';
     text-align: center;
   }
 
-  @media (min-width: 768px) {
-    .footer-brand {
-      text-align: left;
-    }
-  }
-
   .brand-logo {
     display: flex;
     justify-content: center;
     gap: 0.125rem;
-  }
-
-  @media (min-width: 768px) {
-    .brand-logo {
-      justify-content: flex-start;
-    }
   }
 
   .logo-char {
@@ -737,12 +782,6 @@ import DiscordSection from '../components/DiscordSection.astro';
     justify-content: center;
     gap: 0.5rem;
     margin: 0.5rem 0 1rem;
-  }
-
-  @media (min-width: 768px) {
-    .footer-tagline {
-      justify-content: flex-start;
-    }
   }
 
   .tag-word {
@@ -767,14 +806,8 @@ import DiscordSection from '../components/DiscordSection.astro';
     color: var(--text-secondary);
     line-height: 1.6;
     margin: 0 auto 1.5rem;
-    max-width: 280px;
-  }
-
-  @media (min-width: 768px) {
-    .footer-desc {
-      margin: 0 0 1.5rem;
-      max-width: none;
-    }
+    max-width: 500px;
+    text-align: center;
   }
 
   /* Stats */
@@ -782,12 +815,6 @@ import DiscordSection from '../components/DiscordSection.astro';
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .footer-stats {
-      justify-content: flex-start;
-    }
   }
 
   .stat {
@@ -810,73 +837,34 @@ import DiscordSection from '../components/DiscordSection.astro';
     color: var(--text-muted);
   }
 
-  /* Links */
-  .footer-links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .link-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
-    animation: linkGroupIn 0.6s ease forwards;
-    animation-delay: var(--delay);
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  @keyframes linkGroupIn {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .link-title {
+  /* Legal Links */
+  .footer-legal {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.625rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin: 0 0 0.5rem;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
   }
 
-  .title-icon {
-    font-size: 0.875rem;
-  }
-
-  .link-item {
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
+  .legal-link {
     font-size: 0.75rem;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
   }
 
-  .link-arrow {
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: all 0.3s ease;
+  .legal-link:hover {
     color: var(--gold);
   }
 
-  .link-item:hover {
-    color: var(--gold);
-    transform: translateX(5px);
+  .legal-separator {
+    color: var(--text-muted);
+    font-size: 0.75rem;
   }
 
-  .link-item:hover .link-arrow {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  /* ===== NEWSLETTER SECTION - Ultra Stylé ===== */
+  /* ===== NEWSLETTER SECTION - Premium sobre incrusté ===== */
   .newsletter-section {
-    max-width: 800px;
+    max-width: 900px;
     margin: 3rem auto 0;
     padding: 0 1rem;
     position: relative;
@@ -885,31 +873,38 @@ import DiscordSection from '../components/DiscordSection.astro';
 
   .newsletter-container {
     position: relative;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    border-radius: 1.25rem;
-    padding: 2rem;
+    background: linear-gradient(145deg, #0a0a0a 0%, #0d0d0d 100%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 16px;
+    padding: 2.5rem;
     overflow: hidden;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    transition: border-color 0.3s ease;
   }
 
+  .newsletter-container:hover {
+    border-color: rgba(212, 175, 55, 0.25);
+  }
+
+  /* Background Orbs - Masqués pour style sobre */
+  .nl-bg-orbs {
+    display: none;
+  }
+
+  .nl-orb {
+    display: none;
+  }
+
+  /* Rotating Glow - Masqué pour style sobre */
   .newsletter-glow {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg 60deg,
-      rgba(212, 175, 55, 0.1) 60deg 120deg,
-      transparent 120deg 360deg
-    );
-    animation: nlRotate 8s linear infinite;
-    pointer-events: none;
+    display: none;
   }
 
-  @keyframes nlRotate {
-    to { transform: rotate(360deg); }
+  /* Grid Pattern - Masqué pour style sobre */
+  .nl-grid {
+    display: none;
   }
 
   .newsletter-content {
@@ -919,37 +914,76 @@ import DiscordSection from '../components/DiscordSection.astro';
 
   .newsletter-text {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Badge - Style sobre */
+  .nl-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 9999px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #d4af37;
+    margin-bottom: 1.25rem;
+  }
+
+  .nl-badge-dot {
+    width: 0.4375rem;
+    height: 0.4375rem;
+    background: #d4af37;
+    border-radius: 50%;
+    opacity: 0.9;
   }
 
   .newsletter-title {
     font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 800;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 700;
     color: var(--text-primary);
-    margin: 0 0 0.5rem;
+    margin: 0 0 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    line-height: 1.2;
   }
 
   .nl-icon {
-    animation: nlSparkle 2s ease-in-out infinite;
+    display: none;
   }
 
-  @keyframes nlSparkle {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-    50% { transform: scale(1.2) rotate(10deg); opacity: 0.8; }
+  .nl-gradient {
+    background: linear-gradient(135deg, #e0bb47 0%, #d4af37 50%, #c9a227 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .newsletter-desc {
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: var(--text-secondary);
     margin: 0;
-    max-width: 400px;
+    max-width: 550px;
     margin: 0 auto;
-    line-height: 1.5;
+    line-height: 1.6;
+  }
+
+  .newsletter-desc strong {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  .nl-highlight {
+    color: var(--gold);
+    font-weight: 700;
   }
 
   .newsletter-form {
@@ -979,14 +1013,7 @@ import DiscordSection from '../components/DiscordSection.astro';
   }
 
   .input-glow {
-    position: absolute;
-    inset: -2px;
-    background: linear-gradient(90deg, var(--gold), transparent, var(--gold));
-    background-size: 200% 100%;
-    border-radius: 0.75rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    animation: inputGlowMove 3s ease-in-out infinite;
+    display: none;
     z-index: -1;
   }
 
@@ -1037,62 +1064,77 @@ import DiscordSection from '../components/DiscordSection.astro';
     color: var(--gold);
   }
 
+  /* Input Particles - Masqués pour style sobre */
+  .input-particles {
+    display: none;
+  }
+
+  @keyframes particleFloat {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0; }
+    25% { opacity: 1; }
+    50% { transform: translateY(-10px) scale(1.2); opacity: 0.8; }
+    75% { opacity: 0.6; }
+  }
+
+  /* Input Sparkle - Masqué pour style sobre */
+  .input-sparkle {
+    display: none;
+  }
+
+  /* Newsletter Button - Style sobre */
   .newsletter-btn {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.5rem;
-    background: linear-gradient(135deg, var(--gold) 0%, #B8860B 100%);
+    gap: 0.625rem;
+    padding: 0.9375rem 1.75rem;
+    background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
     border: none;
-    border-radius: 0.75rem;
-    color: black;
+    border-radius: 8px;
+    color: #000000;
     font-size: 0.9375rem;
     font-weight: 700;
     font-family: inherit;
     cursor: pointer;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     white-space: nowrap;
+    box-shadow:
+      0 4px 12px rgba(212, 175, 55, 0.25),
+      inset 0 0.5px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  .btn-glow {
+    display: none;
   }
 
   .newsletter-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.5s ease;
-  }
-
-  .newsletter-btn:hover::before {
-    left: 100%;
+    display: none;
   }
 
   .newsletter-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, #e0bb47 0%, #d4af37 100%);
+    box-shadow:
+      0 6px 16px rgba(212, 175, 55, 0.3),
+      inset 0 0.5px 0 rgba(255, 255, 255, 0.3);
   }
 
   .btn-icon {
     display: flex;
-    width: 1rem;
-    height: 1rem;
+    width: 1.125rem;
+    height: 1.125rem;
     transition: transform 0.3s ease;
   }
 
   .newsletter-btn:hover .btn-icon {
-    transform: translateX(3px);
+    transform: translateX(4px);
   }
 
   .btn-loader {
     display: none;
-    width: 1rem;
-    height: 1rem;
-    border: 2px solid rgba(0,0,0,0.2);
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 2px solid rgba(0, 0, 0, 0.2);
     border-top-color: black;
     border-radius: 50%;
     animation: btnSpin 0.8s linear infinite;
@@ -1103,7 +1145,8 @@ import DiscordSection from '../components/DiscordSection.astro';
   }
 
   .newsletter-btn.loading .btn-text,
-  .newsletter-btn.loading .btn-icon {
+  .newsletter-btn.loading .btn-icon,
+  .newsletter-btn.loading .btn-glow {
     display: none;
   }
 
@@ -1111,17 +1154,30 @@ import DiscordSection from '../components/DiscordSection.astro';
     display: block;
   }
 
-  .form-hint {
+  /* Form Features */
+  .form-features {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .feature-item {
     display: flex;
     align-items: center;
     gap: 0.375rem;
     font-size: 0.75rem;
+    font-weight: 600;
     color: var(--text-muted);
-    margin: 0;
   }
 
-  .hint-icon {
-    font-size: 0.875rem;
+  .feature-item svg {
+    width: 1rem;
+    height: 1rem;
+    color: #10B981;
+    flex-shrink: 0;
   }
 
   /* Success State */

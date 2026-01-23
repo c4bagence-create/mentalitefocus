@@ -10,7 +10,7 @@ interface Props {
 const siteUrl = "https://mentalite-focus.com";
 const siteName = "Focus Business";
 const defaultTitle = "Focus Business | Club Privé pour Entrepreneurs E-commerce & SMMA";
-const defaultDescription = "Rejoins la communauté #1 des entrepreneurs e-commerce, dropshipping, SMMA et business en ligne. +1240 membres actifs, experts dédiés, Discord privé. Pour seulement 10€/mois.";
+const defaultDescription = "Rejoins la communauté #1 des entrepreneurs e-commerce, dropshipping, SMMA et business en ligne. +1240 membres actifs, experts dédiés, Discord privé. Pour seulement 9.90€/mois.";
 const defaultKeywords = "club business, groupe business, formation ecommerce, communauté entrepreneurs, dropshipping france, smma formation, business en ligne, ecommerce formation, club entrepreneur, groupe entrepreneur, formation shopify, formation ads, meta ads, tiktok ads, communauté ecommerce, mentoring business, coaching entrepreneur, discord business, groupe privé entrepreneur, formation business en ligne";
 const defaultImage = `${siteUrl}/og-image.jpg`;
 
@@ -124,8 +124,22 @@ const {
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=26364309749823828&ev=PageView&noscript=1"/></noscript>
     
     <!-- Klaviyo -->
+    <script async type='text/javascript' src='https://static.klaviyo.com/onsite/js/SRshwY/klaviyo.js?company_id=SRshwY'></script>
     <script is:inline type="text/javascript">
-      !function(){window._learnq=window._learnq||[];window.klaviyo=window.klaviyo||[];var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=pk_e30db79da52c39592f7b89b7244f30c9ce";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
+      //Initialize Klaviyo object on page load
+      !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();
+    </script>
+    
+    <!-- Snapchat Pixel Code -->
+    <script is:inline type="text/javascript">
+      (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
+      {a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};
+      a.queue=[];var s='script';r=t.createElement(s);r.async=!0;
+      r.src=n;var u=t.getElementsByTagName(s)[0];
+      u.parentNode.insertBefore(r,u);})(window,document,
+      'https://sc-static.net/scevent.min.js');
+      snaptr('init', '827ae1c2-5cf7-44db-9761-0a858ab2e2e6');
+      snaptr('track', 'PAGE_VIEW');
     </script>
     
     <!-- Microsoft Clarity -->

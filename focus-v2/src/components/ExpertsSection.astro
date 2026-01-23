@@ -7,6 +7,7 @@
  */
 import { experts } from '../data/experts';
 import AnimatedCTA from './AnimatedCTA.astro';
+import IACard from './cards/IACard.astro';
 ---
 
 <section class="experts-section" id="experts">
@@ -177,42 +178,9 @@ import AnimatedCTA from './AnimatedCTA.astro';
             </div>
           )}
 
-          {/* IA - AI Terminal */}
+          {/* IA - AI Terminal with FOCUS AI ASCII art */}
           {expert.type === 'ia' && (
-            <div class="vis-ia-full">
-              <div class="term-chrome">
-                <div class="term-dots">
-                  <span class="td red"></span>
-                  <span class="td yellow"></span>
-                  <span class="td green"></span>
-                </div>
-                <span class="term-title">FOCUS AI — claude-3.5-sonnet</span>
-              </div>
-              <div class="term-body">
-                <div class="term-line">
-                  <span class="prompt-user">focus@ai</span>
-                  <span class="prompt-sep">:</span>
-                  <span class="prompt-path">~</span>
-                  <span class="prompt-dollar">$</span>
-                  <span class="prompt-cmd" data-ai-cmd></span>
-                  <span class="prompt-cursor"></span>
-                </div>
-                <div class="term-output">
-                  <span class="out-line success">✓ Analyzing request...</span>
-                  <span class="out-line">→ Processing 847 data points</span>
-                  <span class="out-line success">✓ Generation complete</span>
-                </div>
-                <div class="term-result">
-                  <span class="result-label">Output:</span>
-                  <span class="result-text" data-ai-output>10 product names generated</span>
-                </div>
-              </div>
-              <div class="term-stats">
-                <span class="ts-item">Tokens: <span data-ai-tokens>2,847</span></span>
-                <span class="ts-item">Latency: 0.3s</span>
-                <span class="ts-item status">● Ready</span>
-              </div>
-            </div>
+            <IACard />
           )}
 
           {/* SHOPIFY - Dashboard */}
@@ -522,33 +490,7 @@ import AnimatedCTA from './AnimatedCTA.astro';
             )}
 
             {expert.type === 'ia' && (
-              <div class="vis-ia-full">
-                <div class="term-chrome">
-                  <div class="term-dots">
-                    <span class="td red"></span>
-                    <span class="td yellow"></span>
-                    <span class="td green"></span>
-                  </div>
-                  <span class="term-title">FOCUS AI</span>
-                </div>
-                <div class="term-body">
-                  <div class="term-line">
-                    <span class="prompt-user">focus@ai</span>
-                    <span class="prompt-sep">:</span>
-                    <span class="prompt-dollar">$</span>
-                    <span class="prompt-cmd" data-ai-cmd></span>
-                    <span class="prompt-cursor"></span>
-                  </div>
-                  <div class="term-output">
-                    <span class="out-line success">✓ Analyzing...</span>
-                    <span class="out-line success">✓ Complete</span>
-                  </div>
-                  <div class="term-result">
-                    <span class="result-label">Output:</span>
-                    <span class="result-text">10 products generated</span>
-                  </div>
-                </div>
-              </div>
+              <IACard />
             )}
 
             {expert.type === 'shopify' && (

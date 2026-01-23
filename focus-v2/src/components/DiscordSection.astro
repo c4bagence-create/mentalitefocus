@@ -198,7 +198,7 @@ import AnimatedCTA from './AnimatedCTA.astro';
 
       <!-- Members Sidebar -->
       <div class="members-bar">
-        <div class="members-title">EN LIGNE — 127</div>
+        <div class="members-title">EN LIGNE — 132</div>
         <div class="members-list">
           <div class="member-item">
             <span class="member-avatar gold">F</span>
@@ -207,6 +207,43 @@ import AnimatedCTA from './AnimatedCTA.astro';
               <span class="member-role">Admin</span>
             </div>
           </div>
+          <!-- STAFF -->
+          <div class="member-item">
+            <span class="member-avatar staff-avatar" style="background: #ED4245;">S</span>
+            <div class="member-info">
+              <span class="member-name">Sonny</span>
+              <span class="member-role staff-role">STAFF</span>
+            </div>
+          </div>
+          <div class="member-item">
+            <span class="member-avatar staff-avatar" style="background: #ED4245;">J</span>
+            <div class="member-info">
+              <span class="member-name">Jamel</span>
+              <span class="member-role staff-role">STAFF</span>
+            </div>
+          </div>
+          <div class="member-item">
+            <span class="member-avatar staff-avatar" style="background: #ED4245;">M</span>
+            <div class="member-info">
+              <span class="member-name">Midou</span>
+              <span class="member-role staff-role">STAFF</span>
+            </div>
+          </div>
+          <div class="member-item">
+            <span class="member-avatar staff-avatar" style="background: #ED4245;">Z</span>
+            <div class="member-info">
+              <span class="member-name">Zaid</span>
+              <span class="member-role staff-role">STAFF</span>
+            </div>
+          </div>
+          <div class="member-item">
+            <span class="member-avatar staff-avatar" style="background: #ED4245;">C</span>
+            <div class="member-info">
+              <span class="member-name">Caldi</span>
+              <span class="member-role staff-role">STAFF</span>
+            </div>
+          </div>
+          <!-- Membres actifs -->
           <div class="member-item">
             <span class="member-avatar" style="background: #5865F2;">T</span>
             <div class="member-info">
@@ -915,6 +952,11 @@ import AnimatedCTA from './AnimatedCTA.astro';
     color: black;
   }
 
+  .member-avatar.staff-avatar {
+    border: 2px solid #ED4245;
+    box-shadow: 0 0 10px rgba(237, 66, 69, 0.3);
+  }
+
   .member-info {
     flex: 1;
     min-width: 0;
@@ -938,6 +980,12 @@ import AnimatedCTA from './AnimatedCTA.astro';
   .member-status {
     font-size: 0.5625rem;
     color: var(--discord-text);
+  }
+
+  .member-role.staff-role {
+    color: #ED4245;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 
   /* Floating Notifications */

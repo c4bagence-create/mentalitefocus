@@ -1,142 +1,326 @@
 ---
 /**
- * IACard - Contenu de la carte IA Automation
+ * IACard - Terminal IA avec ASCII Art FOCUS
  */
 ---
 
-<div class="ia-chat" slot="left">
-  <div class="chat-msg user">
-    <span class="avatar">👤</span>
-    <span class="msg" data-ia-user>"Crée-moi une boutique Shopify winner."</span>
-  </div>
-  <div class="chat-msg ai">
-    <span class="avatar">🤖</span>
-    <div class="msg-wrap">
-      <span class="msg" data-ia-ai>Génération de la structure...</span>
-      <div class="typing">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="ia-terminal" slot="right">
+<div class="ia-terminal-full">
   <div class="term-bar">
     <span class="dot red"></span>
     <span class="dot yellow"></span>
     <span class="dot green"></span>
+    <span class="term-title">focus-ai — bash</span>
   </div>
-  <pre class="term-code" data-ia-code set:html={`{"status": "generating",
- "progress": 87%,
- "model": "claude-3.5"}`}></pre>
-  <div class="progress">
-    <div class="progress-fill" data-ia-progress></div>
+
+  <div class="term-content">
+    <!-- Prompt user avec animation d'écriture -->
+    <div class="term-line">
+      <span class="term-prompt">user@focus</span>
+      <span class="term-path">~</span>
+      <span class="term-dollar">$</span>
+      <span class="term-command typing-text">generate-ascii "FOCUS AI"</span>
+      <span class="cursor">▋</span>
+    </div>
+
+    <!-- Réponse ASCII FOCUS AI -->
+    <div class="term-output">
+      <pre class="ascii-art" data-reveal-ascii>
+<span style="animation-delay: 0s;">███████╗ ██████╗  ██████╗██╗   ██╗███████╗</span>
+<span style="animation-delay: 0.15s;">██╔════╝██╔═══██╗██╔════╝██║   ██║██╔════╝</span>
+<span style="animation-delay: 0.3s;">█████╗  ██║   ██║██║     ██║   ██║███████╗</span>
+<span style="animation-delay: 0.45s;">██╔══╝  ██║   ██║██║     ██║   ██║╚════██║</span>
+<span style="animation-delay: 0.6s;">██║     ╚██████╔╝╚██████╗╚██████╔╝███████║</span>
+<span style="animation-delay: 0.75s;">╚═╝      ╚═════╝  ╚═════╝ ╚═════╝ ╚══════╝</span>
+<span style="animation-delay: 0.9s;"> </span>
+<span style="animation-delay: 1.05s;"> █████╗ ██╗</span>
+<span style="animation-delay: 1.2s;">██╔══██╗██║</span>
+<span style="animation-delay: 1.35s;">███████║██║</span>
+<span style="animation-delay: 1.5s;">██╔══██║██║</span>
+<span style="animation-delay: 1.65s;">██║  ██║██║</span>
+<span style="animation-delay: 1.8s;">╚═╝  ╚═╝╚═╝</span></pre>
+
+      <div class="term-status">
+        <span class="status-line">✓ Intelligence Artificielle initialisée</span>
+        <span class="status-line">✓ GPT-4 • Claude • Gemini actifs</span>
+        <span class="status-line">✓ Agents autonomes prêts</span>
+        <span class="status-line">⚡ Mode Expert activé</span>
+        <span class="status-line">🚀 Génération en cours...</span>
+      </div>
+    </div>
+
+    <!-- Nouvelle ligne avec prompt -->
+    <div class="term-line term-blink">
+      <span class="term-prompt">user@focus</span>
+      <span class="term-path">~</span>
+      <span class="term-dollar">$</span>
+      <span class="cursor-active">▋</span>
+    </div>
   </div>
 </div>
 
 <style>
-  .ia-chat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .chat-msg {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .avatar {
-    font-size: 1rem;
-  }
-
-  .msg {
-    font-size: 0.625rem;
-    color: var(--text-secondary);
-    background: var(--bg-input);
-    padding: 0.375rem 0.625rem;
-    border-radius: 0.5rem;
-    line-height: 1.4;
-  }
-
-  .msg-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .typing {
-    display: flex;
-    gap: 0.1875rem;
-  }
-
-  .typing span {
-    width: 0.25rem;
-    height: 0.25rem;
-    background: var(--gold);
-    border-radius: 50%;
-    animation: typingDot 1.4s infinite;
-  }
-
-  .typing span:nth-child(2) { animation-delay: 0.2s; }
-  .typing span:nth-child(3) { animation-delay: 0.4s; }
-
-  @keyframes typingDot {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
-  }
-
-  .ia-terminal {
-    background: #1e1e1e;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    font-family: var(--font-mono);
+  .ia-terminal-full {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow:
+      0 20px 60px rgba(0,0,0,0.4),
+      inset 0 1px 0 rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    font-family: 'SF Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
     width: 100%;
+    height: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
   }
 
   .term-bar {
     display: flex;
-    gap: 0.25rem;
-    margin-bottom: 0.375rem;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.75rem;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
   .dot {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 0.75rem;
+    height: 0.75rem;
     border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
 
-  .dot.red { background: #ff5f57; }
-  .dot.yellow { background: #ffbd2e; }
-  .dot.green { background: #28c840; }
+  .dot.red {
+    background: #ff5f56;
+    box-shadow: 0 0 10px rgba(255,95,86,0.5);
+  }
+  .dot.yellow {
+    background: #ffbd2e;
+    box-shadow: 0 0 10px rgba(255,189,46,0.5);
+  }
+  .dot.green {
+    background: #27c93f;
+    box-shadow: 0 0 10px rgba(39,201,63,0.5);
+  }
 
-  .term-code {
-    font-size: 0.5rem;
+  .term-title {
+    font-size: 0.6875rem;
+    color: rgba(255,255,255,0.5);
+    margin-left: auto;
+    font-weight: 600;
+  }
+
+  .term-content {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    overflow-y: auto;
+  }
+
+  .term-line {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  .term-prompt {
     color: #10b981;
-    margin: 0;
-    white-space: pre;
-    line-height: 1.4;
+    font-weight: 600;
   }
 
-  .progress {
-    height: 0.25rem;
-    background: var(--bg-input);
-    border-radius: 0.125rem;
+  .term-path {
+    color: #3b82f6;
+    font-weight: 600;
+  }
+
+  .term-dollar {
+    color: rgba(255,255,255,0.9);
+    font-weight: 700;
+  }
+
+  .term-command {
+    color: rgba(255,255,255,0.95);
+    font-weight: 500;
+  }
+
+  .cursor {
+    color: var(--gold);
+    animation: cursorBlink 1s step-end infinite;
+    font-weight: 700;
+  }
+
+  .cursor-active {
+    color: var(--gold);
+    animation: cursorBlink 0.8s step-end infinite;
+    font-weight: 700;
+  }
+
+  @keyframes cursorBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .typing-text {
+    animation: typeIn 2s steps(28) 0.5s both;
     overflow: hidden;
-    margin-top: 0.5rem;
+    white-space: nowrap;
+    width: 0;
   }
 
-  .progress-fill {
-    height: 100%;
-    background: var(--gold);
-    border-radius: 0.125rem;
-    width: 0%;
-    animation: progressFill 3s ease-in-out infinite;
+  @keyframes typeIn {
+    to { width: 100%; }
   }
 
-  @keyframes progressFill {
-    0%, 100% { width: 0%; }
-    50% { width: 87%; }
+  .term-output {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0.5rem 0;
+    animation: fadeIn 0.5s ease 2.5s both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .ascii-art {
+    font-size: 0.5rem;
+    line-height: 1.2;
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(212,175,55,0.5);
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+  }
+
+  @media (min-width: 640px) {
+    .ascii-art {
+      font-size: 0.625rem;
+    }
+  }
+
+  .ascii-art span {
+    display: block;
+    opacity: 0;
+    animation: revealLine 0.2s ease forwards;
+  }
+
+  @keyframes revealLine {
+    to { opacity: 1; }
+  }
+
+  .term-status {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .status-line {
+    font-size: 0.6875rem;
+    color: #10b981;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    opacity: 0;
+    animation: statusAppear 0.3s ease forwards;
+  }
+
+  .status-line:nth-child(1) { animation-delay: 4.6s; }
+  .status-line:nth-child(2) { animation-delay: 4.9s; }
+  .status-line:nth-child(3) { animation-delay: 5.2s; }
+  .status-line:nth-child(4) { animation-delay: 5.5s; color: var(--gold); }
+  .status-line:nth-child(5) { animation-delay: 5.8s; color: #10b981; }
+
+  @keyframes statusAppear {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .term-blink {
+    animation: terminalPulse 1.5s ease-in-out 3.5s both;
+  }
+
+  @keyframes terminalPulse {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+
+  /* Animation de scan qui passe sur le terminal */
+  .ia-terminal-full::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(212,175,55,0.3) 50%,
+      transparent 100%
+    );
+    animation: scanLine 4s linear infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes scanLine {
+    from { transform: translateY(0); }
+    to { transform: translateY(300px); }
+  }
+
+  /* Effet de grain subtil */
+  .ia-terminal-full::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.15) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(0,0,0,0.15) 3px
+      );
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  /* Light mode */
+  :global(.light) .ia-terminal-full {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-color: rgba(0,0,0,0.1);
+  }
+
+  :global(.light) .term-bar {
+    background: rgba(0,0,0,0.05);
+    border-bottom-color: rgba(0,0,0,0.08);
+  }
+
+  :global(.light) .term-title {
+    color: rgba(0,0,0,0.5);
+  }
+
+  :global(.light) .term-prompt,
+  :global(.light) .status-line {
+    color: #059669;
+  }
+
+  :global(.light) .term-path {
+    color: #2563eb;
+  }
+
+  :global(.light) .term-dollar,
+  :global(.light) .term-command {
+    color: rgba(0,0,0,0.9);
+  }
+
+  :global(.light) .ascii-art {
+    color: var(--gold-dark);
+    text-shadow: 0 0 10px rgba(212,175,55,0.3);
   }
 </style>

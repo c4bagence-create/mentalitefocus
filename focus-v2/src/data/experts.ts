@@ -31,9 +31,9 @@ export const experts: Expert[] = [
   },
   {
     id: 'ia',
-    role: 'Automatisation',
-    name: 'EXPERT IA',
-    description: 'Scripts IA. Automatisation complète. Agents autonomes 24/7.',
+    role: 'IA & Automatisation',
+    name: 'INTELLIGENCE ARTIFICIELLE',
+    description: 'GPT-4, Claude, Gemini. Agents autonomes. Automatisation totale.',
     type: 'ia'
   },
   {
