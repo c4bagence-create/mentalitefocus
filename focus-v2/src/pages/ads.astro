@@ -243,6 +243,12 @@ const adsCanonical = "https://mentalitefocus.com/ads";
 
       console.log('🔍 Newsletter signup initiated:', email);
 
+      try {
+        localStorage.setItem('focus_user_email', email);
+      } catch (storageError) {
+        console.warn('LocalStorage not available for email capture:', storageError);
+      }
+
       // Google Analytics
       if (typeof gtag !== 'undefined') {
         gtag('event', 'generate_lead', {
@@ -269,15 +275,6 @@ const adsCanonical = "https://mentalitefocus.com/ads";
           user_email: email
         });
         console.log('✅ Snapchat - SIGN_UP tracked (Newsletter ADS)');
-      }
-
-      if (typeof window.ttq !== 'undefined') {
-        window.ttq.track('Subscribe', {
-          content_type: 'newsletter',
-          value: 0,
-          currency: 'EUR'
-        });
-        console.log('✅ TikTok - Subscribe tracked (Newsletter ADS)');
       }
 
       // Klaviyo tracking
@@ -345,15 +342,6 @@ const adsCanonical = "https://mentalitefocus.com/ads";
         snaptr('track', 'START_CHECKOUT', {
           price: 9.90,
           currency: 'EUR'
-        });
-      }
-
-      if (typeof window.ttq !== 'undefined') {
-        window.ttq.track('InitiateCheckout', {
-          value: 9.90,
-          currency: 'EUR',
-          content_type: 'product',
-          'content_name': 'Focus Business Membership - ADS'
         });
       }
 

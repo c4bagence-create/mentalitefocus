@@ -379,6 +379,12 @@ import DiscordSection from '../components/DiscordSection.astro';
           klaviyoSubmit?.classList.add('loading');
 
           try {
+            try {
+              localStorage.setItem('focus_user_email', email);
+            } catch (storageError) {
+              console.warn('LocalStorage not available for email capture:', storageError);
+            }
+
             // Klaviyo Identify & Track (nouvelle API avec proxy)
             if (typeof window.klaviyo !== 'undefined') {
               // Identify the user
@@ -431,15 +437,6 @@ import DiscordSection from '../components/DiscordSection.astro';
               console.log('✅ Snapchat - SIGN_UP tracked');
             }
 
-            // Track with TikTok Pixel
-            if (typeof ttq !== 'undefined') {
-              ttq.track('Subscribe', {
-                'content_type': 'newsletter',
-                'description': 'Newsletter Footer Signup'
-              });
-              console.log('✅ TikTok - Subscribe tracked');
-            }
-
           } catch (error) {
             console.error('Newsletter signup error:', error);
           }
@@ -457,6 +454,8 @@ import DiscordSection from '../components/DiscordSection.astro';
         '.premium-cta',           // CTAs entre sections
         '.card-btn',              // Pricing CTAs
         '.price-tag',             // Hero CTA
+        '[href*="checkout"]',     // Checkout links
+        '[href*="espace.mentalitefocus"]',
         '[href*="stripe"]',       // Stripe links
         '[href*="discord"]',      // Discord links
         'a[href="#pricing"]',     // Links to pricing
@@ -470,6 +469,9 @@ import DiscordSection from '../components/DiscordSection.astro';
           const ctaText = cta.textContent?.trim() || 'Unknown CTA';
           const ctaHref = cta.getAttribute('href') || '';
           const sectionId = cta.closest('section')?.id || 'unknown';
+          const isCheckoutLink = ctaHref.includes('/checkout')
+            || ctaHref.includes('espace.mentalitefocus')
+            || ctaHref.includes('stripe');
 
           // Klaviyo Track
           if (typeof _learnq !== 'undefined') {
@@ -484,7 +486,7 @@ import DiscordSection from '../components/DiscordSection.astro';
 
           // Google Analytics Track
           if (typeof gtag !== 'undefined') {
-            if (ctaHref.includes('stripe') || ctaHref.includes('espace.mentalitefocus')) {
+            if (isCheckoutLink) {
               gtag('event', 'begin_checkout', {
                 'currency': 'EUR',
                 'value': 9.90,
@@ -510,12 +512,22 @@ import DiscordSection from '../components/DiscordSection.astro';
               cta_text: ctaText.substring(0, 50),
               section: sectionId
             });
+            if (isCheckoutLink) {
+              fbq('track', 'InitiateCheckout', {
+                value: 9.9,
+                currency: 'EUR',
+                content_name: 'Focus Business Subscription',
+                content_type: 'product',
+                content_ids: ['focus-premium'],
+                num_items: 1
+              });
+            }
           }
 
           // Snapchat Pixel Track
           if (typeof snaptr !== 'undefined') {
             // Si c'est un lien Stripe = InitiateCheckout
-            if (ctaHref.includes('stripe')) {
+            if (isCheckoutLink) {
               snaptr('track', 'START_CHECKOUT', {
                 'currency': 'EUR',
                 'price': 9.90,
@@ -525,24 +537,6 @@ import DiscordSection from '../components/DiscordSection.astro';
               snaptr('track', 'VIEW_CONTENT', {
                 'content_type': 'cta_click',
                 'item_category': sectionId
-              });
-            }
-          }
-
-          // TikTok Pixel Track
-          if (typeof ttq !== 'undefined') {
-            // Si c'est un lien Stripe = InitiateCheckout
-            if (ctaHref.includes('stripe')) {
-              ttq.track('InitiateCheckout', {
-                'value': 9.90,
-                'currency': 'EUR',
-                'content_type': 'product',
-                'content_name': 'Focus Business Membership'
-              });
-            } else {
-              ttq.track('ClickButton', {
-                'content_type': 'cta',
-                'content_name': ctaText.substring(0, 50)
               });
             }
           }
