@@ -387,6 +387,12 @@ import DiscordSection from '../components/DiscordSection.astro';
                 '$source': 'Focus Website Footer'
               }]);
 
+              // Subscribe to Newsletter list
+              window.klaviyo.push(['subscribe', {
+                'email': email,
+                'list': 'UxpEGn'
+              }]);
+
               // Track the signup event
               window.klaviyo.push(['track', 'Newsletter Signup', {
                 'source': 'Footer Form',
@@ -394,7 +400,7 @@ import DiscordSection from '../components/DiscordSection.astro';
                 'timestamp': new Date().toISOString()
               }]);
 
-              console.log('✅ Klaviyo - Newsletter Signup tracked');
+              console.log('✅ Klaviyo - Newsletter Signup + List Subscribe tracked');
             }
 
             // Show success

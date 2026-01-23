@@ -285,18 +285,26 @@ const adsCanonical = "https://mentalitefocus.com/ads";
         window._learnq.push(['identify', {
           '$email': email
         }]);
+        window._learnq.push(['subscribe', {
+          'email': email,
+          'list': 'UxpEGn'
+        }]);
         window._learnq.push(['track', 'Newsletter Signup', {
           'Source': 'Footer Newsletter ADS',
           'Email': email
         }]);
-        console.log('✅ Klaviyo (_learnq) - Newsletter Signup tracked (ADS)');
+        console.log('✅ Klaviyo (_learnq) - Newsletter Signup + List Subscribe tracked (ADS)');
       } else if (typeof window.klaviyo !== 'undefined') {
         window.klaviyo.push(['identify', { '$email': email }]);
+        window.klaviyo.push(['subscribe', {
+          'email': email,
+          'list': 'UxpEGn'
+        }]);
         window.klaviyo.push(['track', 'Newsletter Signup', {
           'Source': 'Footer Newsletter ADS',
           'Email': email
         }]);
-        console.log('✅ Klaviyo (fallback) - Newsletter Signup tracked (ADS)');
+        console.log('✅ Klaviyo (fallback) - Newsletter Signup + List Subscribe tracked (ADS)');
       }
 
       // Success message
