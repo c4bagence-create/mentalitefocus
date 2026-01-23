@@ -62,9 +62,11 @@ const adsCanonical = "https://mentalitefocus.com/ads";
         <span class="subtitle-line"><strong class="text-gold">Les vraies méthodes.</strong></span>
       </p>
 
-      <!-- BANDEAU PRIX - Badge orange -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full text-black font-bold text-sm mb-6" data-animate="fade-up" data-delay="0.7">
-        <span>POUR 10€ / MOIS</span>
+      <!-- BANDEAU PRIX - Même style que page principale -->
+      <div class="price-tag-container">
+        <a href="#pricing" class="price-tag" id="price-tag">
+          <span class="tag-text">POUR 10€ / MOIS</span>
+        </a>
       </div>
 
       <!-- STATS BAR -->
@@ -201,11 +203,11 @@ const adsCanonical = "https://mentalitefocus.com/ads";
 
       <!-- Footer Links -->
       <div class="flex flex-wrap justify-center gap-6 mt-12 text-sm text-muted">
-        <a href="/legal" class="hover:text-primary transition-colors">Mentions légales</a>
+        <a href="/legal.html" class="hover:text-primary transition-colors">Mentions légales</a>
         <span>•</span>
-        <a href="/privacy" class="hover:text-primary transition-colors">Confidentialité</a>
+        <a href="/privacy.html" class="hover:text-primary transition-colors">Confidentialité</a>
         <span>•</span>
-        <a href="/terms" class="hover:text-primary transition-colors">CGV</a>
+        <a href="/terms.html" class="hover:text-primary transition-colors">CGV</a>
       </div>
 
       <!-- Copyright -->
@@ -220,6 +222,16 @@ const adsCanonical = "https://mentalitefocus.com/ads";
 </Layout>
 
 <script>
+  // Price tag animation
+  const priceTag = document.getElementById('price-tag');
+
+  if (priceTag) {
+    // Trigger tag land animation after page load
+    setTimeout(() => {
+      priceTag.classList.add('landed');
+    }, 1200);
+  }
+
   // Newsletter form tracking
   const newsletterForm = document.getElementById('newsletter-form');
   const newsletterEmail = document.getElementById('newsletter-email') as HTMLInputElement;
@@ -370,6 +382,74 @@ const adsCanonical = "https://mentalitefocus.com/ads";
 
     .subtitle-line:not(:last-child)::after {
       content: ' ';
+    }
+  }
+
+  /* ===== PRICE TAG - Simple étiquette qui se pose ===== */
+  .price-tag-container {
+    margin: 1.5rem 0 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .price-tag {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+    color: black;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.25rem;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow:
+      0 15px 40px rgba(245, 158, 11, 0.4),
+      0 0 0 3px rgba(0, 0, 0, 0.1) inset;
+
+    /* Initial - caché en haut */
+    transform: translateY(-80vh) rotate(-8deg);
+    opacity: 0;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .price-tag.landed {
+    animation: tagLand 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes tagLand {
+    0% {
+      transform: translateY(-80vh) rotate(-8deg);
+      opacity: 0;
+    }
+    60% {
+      transform: translateY(5px) rotate(-4deg);
+      opacity: 1;
+    }
+    80% {
+      transform: translateY(-3px) rotate(-2deg);
+    }
+    100% {
+      transform: translateY(0) rotate(-3deg);
+      opacity: 1;
+    }
+  }
+
+  .tag-text {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .price-tag:hover {
+    transform: translateY(-3px) rotate(-3deg) scale(1.05) !important;
+    box-shadow:
+      0 20px 50px rgba(245, 158, 11, 0.5),
+      0 0 0 3px rgba(0, 0, 0, 0.1) inset;
+  }
+
+  @media (min-width: 768px) {
+    .price-tag {
+      padding: 1rem 3rem;
+      font-size: 1.75rem;
     }
   }
 
