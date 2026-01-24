@@ -5,7 +5,7 @@ import HeroCards from '../components/HeroCards.astro';
 import NetworkingSection from '../components/NetworkingSection.astro';
 import ArsenalSection from '../components/ArsenalSection.astro';
 import ExpertsSection from '../components/ExpertsSection.astro';
-import PricingSection from '../components/PricingSection.astro';
+import FreemiumAccessSection from '../components/FreemiumAccessSection.astro';
 import FAQSection from '../components/FAQSection.astro';
 import FloatingBadge from '../components/FloatingBadge.astro';
 import DiscordSection from '../components/DiscordSection.astro';
@@ -101,8 +101,8 @@ import DiscordSection from '../components/DiscordSection.astro';
   <!-- SECTION NETWORKING - Tu n'es plus seul -->
   <NetworkingSection />
   
-  <!-- SECTION PRICING/CTA -->
-  <PricingSection />
+  <!-- SECTION FREEMIUM ACCESS - Carte Argent + Carte Or -->
+  <FreemiumAccessSection />
   
   <!-- SECTION FAQ -->
   <FAQSection />
@@ -425,8 +425,8 @@ import DiscordSection from '../components/DiscordSection.astro';
 
             // Track with Meta Pixel
             if (typeof fbq !== 'undefined') {
-              fbq('track', 'Contact', { content_name: 'Newsletter Subscription' });
-              console.log('✅ Meta - Contact tracked');
+              fbq('track', 'Lead', { content_name: 'Newsletter Footer' });
+              console.log('✅ Meta - Lead tracked');
             }
 
             // Track with Snapchat Pixel
