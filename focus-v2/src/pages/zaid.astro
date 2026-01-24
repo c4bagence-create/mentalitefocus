@@ -1,0 +1,1588 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import HeroCards from '../components/HeroCards.astro';
+import NetworkingSection from '../components/NetworkingSection.astro';
+import ArsenalSection from '../components/ArsenalSection.astro';
+import ExpertsSection from '../components/ExpertsSection.astro';
+import PricingSection from '../components/PricingSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import FloatingBadge from '../components/FloatingBadge.astro';
+import DiscordSection from '../components/DiscordSection.astro';
+---
+
+<Layout title="Focus Business - L'Élite de l'Exécution">
+  <!-- Navbar -->
+  <Navbar />
+  
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="hero">
+    
+    <!-- GLOW OR HERO -->
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-400/5 blur-[200px] rounded-full pointer-events-none z-0"></div>
+    
+    <!-- PARTICLES -->
+    <div class="particle-hero" style="left: 5%; top: 15%; animation-delay: 0s;"></div>
+    <div class="particle-hero" style="left: 15%; top: 40%; animation-delay: 0.5s;"></div>
+    <div class="particle-hero" style="left: 25%; top: 70%; animation-delay: 1s;"></div>
+    <div class="particle-hero" style="left: 35%; top: 25%; animation-delay: 1.5s;"></div>
+    <div class="particle-hero" style="left: 45%; top: 60%; animation-delay: 2s;"></div>
+    <div class="particle-hero" style="left: 55%; top: 35%; animation-delay: 2.5s;"></div>
+    <div class="particle-hero" style="left: 65%; top: 75%; animation-delay: 3s;"></div>
+    <div class="particle-hero" style="left: 75%; top: 20%; animation-delay: 3.5s;"></div>
+    <div class="particle-hero" style="left: 85%; top: 50%; animation-delay: 4s;"></div>
+    <div class="particle-hero" style="left: 95%; top: 65%; animation-delay: 4.5s;"></div>
+    <div class="particle-hero" style="left: 10%; top: 80%; animation-delay: 5s;"></div>
+    <div class="particle-hero" style="left: 90%; top: 30%; animation-delay: 5.5s;"></div>
+    
+    <!-- TEXTE CENTER -->
+    <div class="relative z-20 text-center mb-8 md:mb-16 mt-4 interactive-zone">
+      
+      <!-- BADGE -->
+      <div class="badge mb-6" data-animate="fade-down" data-delay="0.2">
+        <span class="badge-dot"></span>
+        <span>Groupe Business</span>
+      </div>
+      
+      <!-- TITRE -->
+      <h1 class="text-5xl md:text-[8rem] lg:text-[10rem] font-black font-display tracking-tighter leading-[0.9] select-none mb-4" data-animate="zoom-in" data-delay="0.4" data-duration="1">
+        <span class="inline-block text-primary" style="text-shadow: 0 0 60px rgba(255,255,255,0.4), 0 4px 0 rgba(212,175,55,0.3);">TOUS LES</span><br>
+        <span class="text-gradient-gold" style="filter: drop-shadow(0 0 30px rgba(212,175,55,0.5));">BUSINESS.</span>
+      </h1>
+      
+      <!-- SOUS-TITRE -->
+      <p class="hero-subtitle text-muted text-sm md:text-lg mb-6 max-w-lg mx-auto" data-animate="fade-up" data-delay="0.6">
+        <span class="subtitle-line"><strong class="text-primary">Un groupe Discord.</strong></span>
+        <span class="subtitle-line">Tous les business models.</span>
+        <span class="subtitle-line"><strong class="text-gold">Sans bullshit.</strong></span>
+      </p>
+      
+      <!-- BANDEAU PRIX - Simple étiquette qui se pose -->
+      <div class="price-tag-container">
+        <a href="#pricing" class="price-tag" id="price-tag">
+          <span class="tag-text">POUR 10€ / MOIS</span>
+        </a>
+      </div>
+
+      <!-- STATS BAR -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 md:gap-x-12 gap-y-2 mt-3 mx-auto w-fit" data-stagger="0.1">
+        <div class="text-center" data-stagger-item>
+          <div class="text-lg md:text-2xl font-black text-primary leading-none">5</div>
+          <div class="text-[7px] md:text-xs text-muted uppercase">Lives/Sem</div>
+        </div>
+        <div class="text-center" data-stagger-item>
+          <div class="text-lg md:text-2xl font-black text-primary leading-none">1000+</div>
+          <div class="text-[7px] md:text-xs text-muted uppercase">Membres</div>
+        </div>
+        <div class="text-center" data-stagger-item>
+          <div class="text-lg md:text-2xl font-black text-primary leading-none">+10M</div>
+          <div class="text-[7px] md:text-xs text-muted uppercase">CA Généré</div>
+        </div>
+        <div class="text-center" data-stagger-item>
+          <div class="text-lg md:text-2xl font-black text-primary leading-none">24/7</div>
+          <div class="text-[7px] md:text-xs text-muted uppercase">Support</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO CARDS -->
+    <HeroCards />
+  </section>
+  
+  <!-- SECTION ARSENAL - Nos domaines d'expertise -->
+  <ArsenalSection />
+  
+  <!-- SECTION DISCORD - Une communauté vivante & active -->
+  <DiscordSection />
+  
+  <!-- SECTION EXPERTS - Nos experts à votre service -->
+  <ExpertsSection />
+  
+  <!-- SECTION NETWORKING - Tu n'es plus seul -->
+  <NetworkingSection />
+  
+  <!-- SECTION PRICING/CTA -->
+  <PricingSection />
+  
+  <!-- SECTION FAQ -->
+  <FAQSection />
+  
+  <!-- FLOATING BADGE -->
+  <FloatingBadge />
+  
+  <!-- FOOTER -->
+  <footer class="footer-section" id="footer">
+    <!-- Animated Background -->
+    <div class="footer-bg">
+      <div class="footer-gradient"></div>
+      <div class="footer-particles">
+        <span class="fp"></span><span class="fp"></span><span class="fp"></span>
+        <span class="fp"></span><span class="fp"></span><span class="fp"></span>
+        <span class="fp"></span><span class="fp"></span>
+      </div>
+      <div class="footer-grid"></div>
+    </div>
+    
+    <div class="footer-content">
+      <!-- Animated Logo -->
+      <div class="footer-brand" data-animate="fade-right" data-delay="0">
+        <div class="brand-logo">
+          <span class="logo-char" style="--i:0">F</span>
+          <span class="logo-char" style="--i:1">O</span>
+          <span class="logo-char" style="--i:2">C</span>
+          <span class="logo-char" style="--i:3">U</span>
+          <span class="logo-char" style="--i:4">S</span>
+        </div>
+        <p class="footer-tagline">
+          <span class="tag-word">BUSINESS</span>
+          <span class="tag-word">COMMUNITY</span>
+        </p>
+        <p class="footer-desc">Le groupe Discord #1 des entrepreneurs ambitieux.</p>
+        
+        <!-- Stats animés -->
+        <div class="footer-stats">
+          <div class="stat">
+            <span class="stat-value" data-count="1200">0</span>
+            <span class="stat-label">Membres</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" data-count="50">0</span>
+            <span class="stat-label">Experts</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" data-count="24">0</span>
+            <span class="stat-label">Salons</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Newsletter Form Ultra Premium 3D -->
+    <div class="newsletter-section" data-animate="fade-up" data-delay="0.3">
+      <div class="newsletter-container">
+        <!-- Background Effects -->
+        <div class="nl-bg-orbs">
+          <span class="nl-orb nl-orb-1"></span>
+          <span class="nl-orb nl-orb-2"></span>
+          <span class="nl-orb nl-orb-3"></span>
+        </div>
+        <div class="newsletter-glow"></div>
+        <div class="nl-grid"></div>
+
+        <div class="newsletter-content">
+          <div class="newsletter-text">
+            <div class="nl-badge">
+              <span class="nl-badge-dot"></span>
+              <span>Newsletter</span>
+            </div>
+            <h3 class="newsletter-title">
+              <span class="nl-gradient">Sois au courant</span>
+            </h3>
+            <p class="newsletter-desc">
+              Reçois les nouveautés et des ressources de temps en temps.
+              <span class="nl-highlight">Sans engagement.</span>
+            </p>
+          </div>
+          <form class="newsletter-form" id="klaviyo-form">
+            <div class="form-wrapper">
+              <div class="input-container">
+                <div class="input-glow"></div>
+                <div class="input-particles">
+                  <span></span><span></span><span></span>
+                </div>
+                <input
+                  type="email"
+                  id="klaviyo-email"
+                  placeholder="ton@email.com"
+                  required
+                  autocomplete="email"
+                  class="newsletter-input"
+                />
+                <div class="input-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                  </svg>
+                </div>
+                <div class="input-sparkle"></div>
+              </div>
+              <button type="submit" class="newsletter-btn" id="klaviyo-submit">
+                <span class="btn-glow"></span>
+                <span class="btn-text">Accéder gratuitement</span>
+                <span class="btn-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </span>
+                <span class="btn-loader"></span>
+              </button>
+            </div>
+            <div class="form-features">
+              <span class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                </svg>
+                <span>0 spam</span>
+              </span>
+              <span class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                </svg>
+                <span>Désinscription 1 clic</span>
+              </span>
+              <span class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                </svg>
+                <span>+12K inscrits</span>
+              </span>
+            </div>
+          </form>
+        </div>
+        <!-- Success State -->
+        <div class="newsletter-success" id="newsletter-success">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <h4 class="success-title">Bienvenue dans le cercle ! 🎉</h4>
+          <p class="success-text">Vérifie ta boîte mail pour confirmer ton inscription.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <!-- Legal Links -->
+      <div class="footer-legal">
+        <a href="/legal.html" class="legal-link">Mentions légales</a>
+        <span class="legal-separator">•</span>
+        <a href="/privacy.html" class="legal-link">Confidentialité</a>
+        <span class="legal-separator">•</span>
+        <a href="/terms.html" class="legal-link">CGU</a>
+      </div>
+
+      <p class="copyright">
+        <span class="copy-icon">©</span>
+        <span class="copy-year">2026</span>
+        <span class="copy-text">Focus Business Community</span>
+      </p>
+      
+      <!-- Social Links Animés -->
+      <div class="footer-social">
+        <a href="#" class="social-link" aria-label="Discord" style="--i:0">
+          <div class="social-bg"></div>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+          </svg>
+          <span class="social-tooltip">Discord</span>
+        </a>
+        <a href="#" class="social-link" aria-label="Instagram" style="--i:1">
+          <div class="social-bg"></div>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0z"/>
+          </svg>
+          <span class="social-tooltip">Instagram</span>
+        </a>
+        <a href="#" class="social-link" aria-label="TikTok" style="--i:2">
+          <div class="social-bg"></div>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+          </svg>
+          <span class="social-tooltip">TikTok</span>
+        </a>
+        <a href="#" class="social-link" aria-label="YouTube" style="--i:3">
+          <div class="social-bg"></div>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span class="social-tooltip">YouTube</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scroll-top" aria-label="Retour en haut">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+    </button>
+  </footer>
+  
+  <script>
+    // Footer animations
+    document.addEventListener('DOMContentLoaded', () => {
+      // ===== PRICE TAG - Simple animation =====
+      const priceTag = document.getElementById('price-tag');
+      
+      if (priceTag) {
+        // Trigger tag land animation after reading title
+        setTimeout(() => {
+          priceTag.classList.add('landed');
+        }, 1200);
+      }
+
+      // Stats counter animation
+      const observerOptions = { threshold: 0.5 };
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const stats = entry.target.querySelectorAll('[data-count]');
+            stats.forEach(stat => {
+              const target = parseInt(stat.dataset.count);
+              let current = 0;
+              const increment = target / 50;
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                  current = target;
+                  clearInterval(timer);
+                }
+                stat.textContent = Math.floor(current) + (target > 100 ? '+' : '');
+              }, 30);
+            });
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      const footerStats = document.querySelector('.footer-stats');
+      if (footerStats) statsObserver.observe(footerStats);
+      
+      // Scroll to top
+      const scrollTopBtn = document.getElementById('scroll-top');
+      scrollTopBtn?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // ========================================
+      // KLAVIYO INTEGRATION
+      // ========================================
+      
+      // Newsletter Form Submission
+      const klaviyoForm = document.getElementById('klaviyo-form');
+      const klaviyoEmail = document.getElementById('klaviyo-email');
+      const klaviyoSubmit = document.getElementById('klaviyo-submit');
+      const newsletterSuccess = document.getElementById('newsletter-success');
+      const newsletterContainer = document.querySelector('.newsletter-container');
+
+      if (klaviyoForm) {
+        klaviyoForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const email = klaviyoEmail?.value?.trim();
+          if (!email) return;
+
+          // Loading state
+          klaviyoSubmit?.classList.add('loading');
+
+          try {
+            try {
+              localStorage.setItem('focus_user_email', email);
+            } catch (storageError) {
+              console.warn('LocalStorage not available for email capture:', storageError);
+            }
+
+            // Klaviyo Identify & Track (nouvelle API avec proxy)
+            if (typeof window.klaviyo !== 'undefined') {
+              // Identify the user
+              window.klaviyo.push(['identify', {
+                '$email': email,
+                '$source': 'Focus Website Footer'
+              }]);
+
+              // Subscribe to Newsletter list
+              window.klaviyo.push(['subscribe', {
+                'email': email,
+                'list': 'UxpEGn'
+              }]);
+
+              // Track the signup event
+              window.klaviyo.push(['track', 'Newsletter Signup', {
+                'source': 'Footer Form',
+                'page': window.location.href,
+                'timestamp': new Date().toISOString()
+              }]);
+
+              console.log('✅ Klaviyo - Newsletter Signup + List Subscribe tracked');
+            }
+
+            // Show success
+            newsletterContainer?.classList.add('submitted');
+            newsletterSuccess?.classList.add('show');
+
+            // Google Analytics
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'generate_lead', {
+                'currency': 'EUR',
+                'value': 0,
+                'lead_source': 'newsletter_footer'
+              });
+              console.log('✅ Google Analytics - Lead tracked');
+            }
+
+            // Track with Meta Pixel
+            if (typeof fbq !== 'undefined') {
+              fbq('track', 'Contact', { content_name: 'Newsletter Subscription' });
+              console.log('✅ Meta - Contact tracked');
+            }
+
+            // Track with Snapchat Pixel
+            if (typeof snaptr !== 'undefined') {
+              snaptr('track', 'SIGN_UP', {
+                'sign_up_method': 'newsletter'
+              });
+              console.log('✅ Snapchat - SIGN_UP tracked');
+            }
+
+          } catch (error) {
+            console.error('Newsletter signup error:', error);
+          }
+
+          klaviyoSubmit?.classList.remove('loading');
+        });
+      }
+
+      // ========================================
+      // CTA CLICK TRACKING
+      // ========================================
+      
+      // Track all CTA clicks
+      const ctaSelectors = [
+        '.premium-cta',           // CTAs entre sections
+        '.card-btn',              // Pricing CTAs
+        '.price-tag',             // Hero CTA
+        '[href*="checkout"]',     // Checkout links
+        '[href*="espace.mentalitefocus"]',
+        '[href*="stripe"]',       // Stripe links
+        '[href*="discord"]',      // Discord links
+        'a[href="#pricing"]',     // Links to pricing
+        'a[href="#premium-card"]' // Direct card links
+      ];
+
+      const allCTAs = document.querySelectorAll(ctaSelectors.join(', '));
+      
+      allCTAs.forEach(cta => {
+        cta.addEventListener('click', () => {
+          const ctaText = cta.textContent?.trim() || 'Unknown CTA';
+          const ctaHref = cta.getAttribute('href') || '';
+          const sectionId = cta.closest('section')?.id || 'unknown';
+          const isCheckoutLink = ctaHref.includes('/checkout')
+            || ctaHref.includes('espace.mentalitefocus')
+            || ctaHref.includes('stripe');
+
+          // Klaviyo Track
+          if (typeof _learnq !== 'undefined') {
+            _learnq.push(['track', 'CTA Clicked', {
+              'cta_text': ctaText.substring(0, 50),
+              'cta_href': ctaHref,
+              'section': sectionId,
+              'page': window.location.href,
+              'timestamp': new Date().toISOString()
+            }]);
+          }
+
+          // Google Analytics Track
+          if (typeof gtag !== 'undefined') {
+            if (isCheckoutLink) {
+              gtag('event', 'begin_checkout', {
+                'currency': 'EUR',
+                'value': 9.90,
+                'items': [{
+                  'item_name': 'Focus Business Membership',
+                  'item_category': 'Subscription',
+                  'price': 9.90,
+                  'quantity': 1
+                }]
+              });
+            } else {
+              gtag('event', 'cta_click', {
+                'cta_name': ctaText.substring(0, 50),
+                'cta_location': sectionId,
+                'cta_url': ctaHref
+              });
+            }
+          }
+
+          // Meta Pixel Track
+          if (typeof fbq !== 'undefined') {
+            fbq('trackCustom', 'CTAClick', {
+              cta_text: ctaText.substring(0, 50),
+              section: sectionId
+            });
+            if (isCheckoutLink) {
+              fbq('track', 'InitiateCheckout', {
+                value: 9.9,
+                currency: 'EUR',
+                content_name: 'Focus Business Subscription',
+                content_type: 'product',
+                content_ids: ['focus-premium'],
+                num_items: 1
+              });
+            }
+          }
+
+          // Snapchat Pixel Track
+          if (typeof snaptr !== 'undefined') {
+            // Si c'est un lien Stripe = InitiateCheckout
+            if (isCheckoutLink) {
+              snaptr('track', 'START_CHECKOUT', {
+                'currency': 'EUR',
+                'price': 9.90,
+                'item_category': 'Focus Business Membership'
+              });
+            } else {
+              snaptr('track', 'VIEW_CONTENT', {
+                'content_type': 'cta_click',
+                'item_category': sectionId
+              });
+            }
+          }
+
+          console.log('📊 CTA Tracked:', ctaText.substring(0, 30), '| Section:', sectionId);
+        });
+      });
+
+      // ========================================
+      // SECTION VIEWS TRACKING
+      // ========================================
+
+      // Track all important sections
+      const sectionsToTrack = ['hero', 'discord', 'arsenal', 'experts', 'networking', 'pricing', 'faq'];
+
+      sectionsToTrack.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                // Google Analytics
+                if (typeof gtag !== 'undefined') {
+                  gtag('event', 'section_view', {
+                    'section_name': sectionId,
+                    'engagement_type': 'scroll'
+                  });
+                }
+
+                // Klaviyo (keep existing for pricing)
+                if (sectionId === 'pricing' && typeof _learnq !== 'undefined') {
+                  _learnq.push(['track', 'Viewed Pricing', {
+                    'page': window.location.href
+                  }]);
+                }
+
+                // Meta Pixel (keep existing for pricing)
+                if (sectionId === 'pricing' && typeof fbq !== 'undefined') {
+                  fbq('track', 'ViewContent', { content_name: 'Pricing Section' });
+                }
+
+                // Snapchat (keep existing for pricing)
+                if (sectionId === 'pricing' && typeof snaptr !== 'undefined') {
+                  snaptr('track', 'VIEW_CONTENT', {
+                    'content_type': 'pricing',
+                    'item_category': 'Focus Business Membership'
+                  });
+                }
+
+                console.log('📊 Section Viewed:', sectionId);
+                sectionObserver.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.3 });
+
+          sectionObserver.observe(section);
+        }
+      });
+
+      // ========================================
+      // SCROLL DEPTH TRACKING
+      // ========================================
+
+      let scrollMilestones = { '25': false, '50': false, '75': false, '100': false };
+      window.addEventListener('scroll', () => {
+        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+
+        Object.keys(scrollMilestones).forEach(milestone => {
+          if (scrollPercent >= parseInt(milestone) && !scrollMilestones[milestone]) {
+            scrollMilestones[milestone] = true;
+
+            // Google Analytics
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'scroll', {
+                'percent_scrolled': parseInt(milestone)
+              });
+            }
+
+            // Klaviyo
+            if (typeof _learnq !== 'undefined') {
+              _learnq.push(['track', 'Scroll Depth', {
+                'depth': milestone + '%',
+                'page': window.location.href
+              }]);
+            }
+
+            console.log('📊 Scroll Depth:', milestone + '%');
+          }
+        });
+      }, { passive: true });
+
+      // ========================================
+      // SOCIAL LINKS TRACKING
+      // ========================================
+
+      document.querySelectorAll('.social-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const platform = link.getAttribute('aria-label') || 'Unknown';
+
+          // Google Analytics
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'social_click', {
+              'social_network': platform.toLowerCase(),
+              'link_location': 'footer'
+            });
+          }
+
+          console.log('📊 Social Click:', platform);
+        });
+      });
+
+      // ========================================
+      // ENGAGEMENT TIME TRACKING
+      // ========================================
+
+      let engagementStartTime = Date.now();
+      let isEngaged = true;
+
+      // Track when user leaves/returns
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          isEngaged = false;
+          const engagementTime = Math.floor((Date.now() - engagementStartTime) / 1000);
+
+          // Google Analytics
+          if (typeof gtag !== 'undefined' && engagementTime > 10) {
+            gtag('event', 'user_engagement', {
+              'engagement_time_msec': engagementTime * 1000
+            });
+          }
+        } else {
+          engagementStartTime = Date.now();
+          isEngaged = true;
+        }
+      });
+
+      // Track engagement every 30 seconds
+      setInterval(() => {
+        if (isEngaged && !document.hidden) {
+          const engagementTime = Math.floor((Date.now() - engagementStartTime) / 1000);
+
+          if (engagementTime >= 30 && typeof gtag !== 'undefined') {
+            gtag('event', 'user_engagement', {
+              'engagement_time_msec': engagementTime * 1000
+            });
+            engagementStartTime = Date.now(); // Reset
+          }
+        }
+      }, 30000);
+
+      // ========================================
+      // FORM FOCUS TRACKING
+      // ========================================
+
+      const newsletterInput = document.getElementById('klaviyo-email');
+      if (newsletterInput) {
+        newsletterInput.addEventListener('focus', () => {
+          // Google Analytics
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_start', {
+              'form_name': 'newsletter',
+              'form_location': 'footer'
+            });
+          }
+          console.log('📊 Newsletter Form Started');
+        });
+      }
+
+    });
+  </script>
+</Layout>
+
+<style>
+  /* Hero section - full viewport with relative positioning for cards */
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 16px 0;
+    overflow: visible;
+    margin-bottom: -120px;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-section {
+      padding-top: 60px;
+      min-height: 100svh;
+      margin-bottom: -80px;
+    }
+  }
+  
+  /* Hero specific styles */
+  .interactive-zone {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 15;
+  }
+  
+  .bandeau {
+    animation-delay: 0.8s;
+  }
+
+  /* Hero subtitle - 3 lignes sur mobile */
+  .hero-subtitle {
+    text-align: center;
+  }
+
+  .subtitle-line {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .subtitle-line {
+      display: inline;
+    }
+
+    .subtitle-line:not(:last-child)::after {
+      content: ' ';
+    }
+  }
+
+  /* ===== PRICE TAG - Simple étiquette qui se pose ===== */
+  .price-tag-container {
+    margin: 1.5rem 0 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .price-tag {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+    color: black;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.25rem;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 
+      0 15px 40px rgba(245, 158, 11, 0.4),
+      0 0 0 3px rgba(0, 0, 0, 0.1) inset;
+    
+    /* Initial - caché en haut */
+    transform: translateY(-80vh) rotate(-8deg);
+    opacity: 0;
+    
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .price-tag.landed {
+    animation: tagLand 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes tagLand {
+    0% {
+      transform: translateY(-80vh) rotate(-8deg);
+      opacity: 0;
+    }
+    60% {
+      transform: translateY(5px) rotate(-4deg);
+      opacity: 1;
+    }
+    80% {
+      transform: translateY(-3px) rotate(-2deg);
+    }
+    100% {
+      transform: translateY(0) rotate(-3deg);
+      opacity: 1;
+    }
+  }
+
+  .tag-text {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .price-tag:hover {
+    transform: translateY(-3px) rotate(-3deg) scale(1.05) !important;
+    box-shadow: 
+      0 20px 50px rgba(245, 158, 11, 0.5),
+      0 0 0 3px rgba(0, 0, 0, 0.1) inset;
+  }
+
+  @media (min-width: 768px) {
+    .price-tag {
+      padding: 1rem 3rem;
+      font-size: 1.75rem;
+    }
+  }
+  
+  /* Light mode adjustments */
+  :global(.light) .text-primary {
+    text-shadow: none !important;
+  }
+  
+  :global(.light) h1 span:first-child {
+    text-shadow: 0 0 60px rgba(0,0,0,0.1), 0 4px 0 rgba(184,134,11,0.2) !important;
+  }
+
+  /* ===== FOOTER - Ultra Animated ===== */
+  .footer-section {
+    position: relative;
+    padding: 5rem 1.5rem 2rem;
+    background: var(--bg-page);
+    overflow: hidden;
+  }
+
+  /* Background Effects */
+  .footer-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .footer-gradient {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse, var(--gold-glow) 0%, transparent 70%);
+    filter: blur(100px);
+    opacity: 0.2;
+    animation: footerGlow 4s ease-in-out infinite;
+  }
+
+  @keyframes footerGlow {
+    0%, 100% { opacity: 0.15; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.25; transform: translateX(-50%) scale(1.1); }
+  }
+
+  .footer-particles {
+    position: absolute;
+    inset: 0;
+  }
+
+  .fp {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: fpFloat 6s ease-in-out infinite;
+  }
+
+  .fp:nth-child(1) { left: 5%; top: 20%; animation-delay: 0s; }
+  .fp:nth-child(2) { left: 15%; top: 60%; animation-delay: 0.5s; }
+  .fp:nth-child(3) { left: 30%; top: 30%; animation-delay: 1s; }
+  .fp:nth-child(4) { left: 50%; top: 70%; animation-delay: 1.5s; }
+  .fp:nth-child(5) { left: 70%; top: 25%; animation-delay: 2s; }
+  .fp:nth-child(6) { left: 85%; top: 55%; animation-delay: 2.5s; }
+  .fp:nth-child(7) { left: 95%; top: 40%; animation-delay: 3s; }
+  .fp:nth-child(8) { left: 40%; top: 80%; animation-delay: 3.5s; }
+
+  @keyframes fpFloat {
+    0%, 100% { opacity: 0; transform: translateY(0) scale(0.5); }
+    50% { opacity: 0.6; transform: translateY(-30px) scale(1); }
+  }
+
+  .footer-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Brand Section */
+  .footer-brand {
+    text-align: center;
+  }
+
+  .brand-logo {
+    display: flex;
+    justify-content: center;
+    gap: 0.125rem;
+  }
+
+  .logo-char {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 40px var(--gold-glow);
+    animation: logoFloat 3s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.1s);
+  }
+
+  @keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .footer-tagline {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .tag-word {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    animation: tagPulse 2s ease-in-out infinite;
+  }
+
+  .tag-word:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes tagPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  .footer-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 auto 1.5rem;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  /* Stats */
+  .footer-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+
+  /* Legal Links */
+  .footer-legal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .legal-link {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .legal-link:hover {
+    color: var(--gold);
+  }
+
+  .legal-separator {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  /* ===== NEWSLETTER SECTION - Premium sobre incrusté ===== */
+  .newsletter-section {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .newsletter-container {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: 16px;
+    padding: 2.5rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
+  }
+
+  .newsletter-container:hover {
+    border-color: var(--gold);
+    box-shadow: var(--shadow-gold);
+  }
+
+  /* Background Orbs - Masqués pour style sobre */
+  .nl-bg-orbs {
+    display: none;
+  }
+
+  .nl-orb {
+    display: none;
+  }
+
+  /* Rotating Glow - Masqué pour style sobre */
+  .newsletter-glow {
+    display: none;
+  }
+
+  /* Grid Pattern - Masqué pour style sobre */
+  .nl-grid {
+    display: none;
+  }
+
+  .newsletter-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .newsletter-text {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  /* Badge - Style sobre */
+  .nl-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--gold-bg);
+    border: 1px solid var(--border-medium);
+    border-radius: 9999px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+
+  .nl-badge-dot {
+    width: 0.4375rem;
+    height: 0.4375rem;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.9;
+  }
+
+  .newsletter-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .nl-icon {
+    display: none;
+  }
+
+  .nl-gradient {
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .newsletter-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .newsletter-desc strong {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  .nl-highlight {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  @media (min-width: 540px) {
+    .form-wrapper {
+      flex-direction: row;
+    }
+  }
+
+  .input-container {
+    position: relative;
+    flex: 1;
+  }
+
+  .input-glow {
+    display: none;
+    z-index: -1;
+  }
+
+  @keyframes inputGlowMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .input-container:focus-within .input-glow {
+    opacity: 1;
+  }
+
+  .newsletter-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 2.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 0.75rem;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  .newsletter-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .newsletter-input:focus {
+    border-color: var(--gold);
+    background: var(--bg-elevated);
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+    pointer-events: none;
+  }
+
+  .input-container:focus-within .input-icon {
+    color: var(--gold);
+  }
+
+  /* Input Particles - Masqués pour style sobre */
+  .input-particles {
+    display: none;
+  }
+
+  @keyframes particleFloat {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0; }
+    25% { opacity: 1; }
+    50% { transform: translateY(-10px) scale(1.2); opacity: 0.8; }
+    75% { opacity: 0.6; }
+  }
+
+  /* Input Sparkle - Masqué pour style sobre */
+  .input-sparkle {
+    display: none;
+  }
+
+  /* Newsletter Button - Style sobre */
+  .newsletter-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 0.9375rem 1.75rem;
+    background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
+    border: none;
+    border-radius: 8px;
+    color: #000000;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    box-shadow:
+      0 4px 12px rgba(212, 175, 55, 0.25),
+      inset 0 0.5px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  .btn-glow {
+    display: none;
+  }
+
+  .newsletter-btn::before {
+    display: none;
+  }
+
+  .newsletter-btn:hover {
+    background: linear-gradient(135deg, #e0bb47 0%, #d4af37 100%);
+    box-shadow:
+      0 6px 16px rgba(212, 175, 55, 0.3),
+      inset 0 0.5px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-icon {
+    display: flex;
+    width: 1.125rem;
+    height: 1.125rem;
+    transition: transform 0.3s ease;
+  }
+
+  .newsletter-btn:hover .btn-icon {
+    transform: translateX(4px);
+  }
+
+  .btn-loader {
+    display: none;
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-top-color: black;
+    border-radius: 50%;
+    animation: btnSpin 0.8s linear infinite;
+  }
+
+  @keyframes btnSpin {
+    to { transform: rotate(360deg); }
+  }
+
+  .newsletter-btn.loading .btn-text,
+  .newsletter-btn.loading .btn-icon,
+  .newsletter-btn.loading .btn-glow {
+    display: none;
+  }
+
+  .newsletter-btn.loading .btn-loader {
+    display: block;
+  }
+
+  /* Form Features */
+  .form-features {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .feature-item svg {
+    width: 1rem;
+    height: 1rem;
+    color: #10B981;
+    flex-shrink: 0;
+  }
+
+  /* Success State */
+  .newsletter-success {
+    display: none;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .newsletter-success.show {
+    display: block;
+    animation: successIn 0.5s ease forwards;
+  }
+
+  @keyframes successIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .success-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0 auto 1rem;
+    background: linear-gradient(135deg, var(--gold), #B8860B);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    animation: successBounce 0.6s ease;
+  }
+
+  @keyframes successBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  .success-icon svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .success-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+  }
+
+  .success-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .newsletter-container.submitted .newsletter-content {
+    display: none;
+  }
+
+  /* Footer Bottom */
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .copyright {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .copy-icon {
+    color: var(--gold);
+    animation: copyPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes copyPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .copy-year {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  /* Social Links */
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .social-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 0.75rem;
+    color: var(--text-secondary);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+    animation: socialIn 0.5s ease forwards;
+    animation-delay: calc(var(--i) * 0.1s);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  @keyframes socialIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .social-link svg {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+
+  .social-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .social-link:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 30px var(--gold-glow);
+  }
+
+  .social-link:hover .social-bg {
+    transform: translateY(0);
+  }
+
+  .social-link:hover svg {
+    color: black;
+    transform: scale(1.1);
+  }
+
+  .social-tooltip {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    padding: 0.375rem 0.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: 0.375rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  .social-link:hover .social-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Scroll to Top */
+  .scroll-top {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    animation: scrollTopPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollTopPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3); }
+    50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+  }
+
+  .scroll-top svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .scroll-top:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: black;
+    transform: translateY(-3px);
+  }
+
+  .scroll-top:hover svg {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .scroll-top {
+      bottom: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+</style>
