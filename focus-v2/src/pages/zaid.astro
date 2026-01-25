@@ -98,11 +98,11 @@ import DiscordSection from '../components/DiscordSection.astro';
   <!-- SECTION EXPERTS - Nos experts à votre service -->
   <ExpertsSection />
   
-  <!-- SECTION NETWORKING - Tu n'es plus seul -->
-  <NetworkingSection />
-  
   <!-- SECTION PRICING/CTA -->
   <PricingSection />
+  
+  <!-- SECTION NETWORKING - Tu n'es plus seul -->
+  <NetworkingSection />
   
   <!-- SECTION FAQ -->
   <FAQSection />
@@ -844,8 +844,10 @@ import DiscordSection from '../components/DiscordSection.astro';
   .footer-section {
     position: relative;
     padding: 5rem 1.5rem 2rem;
-    background: var(--bg-page);
+    background: var(--bg-card);
     overflow: hidden;
+    border-top: 1px solid var(--border-medium);
+    box-shadow: 0 -10px 50px rgba(0, 0, 0, 0.5);
   }
 
   /* Background Effects */
