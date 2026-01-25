@@ -844,10 +844,17 @@ import DiscordSection from '../components/DiscordSection.astro';
   .footer-section {
     position: relative;
     padding: 5rem 1.5rem 2rem;
-    background: var(--bg-card);
+    background: #121212; /* Distinct Anthracite */
     overflow: hidden;
-    border-top: 1px solid var(--border-medium);
-    box-shadow: 0 -10px 50px rgba(0, 0, 0, 0.5);
+    border-top: 2px solid var(--border-medium);
+    box-shadow: 0 -30px 100px rgba(0, 0, 0, 0.9);
+  }
+
+  /* Light Mode Specific Footer */
+  :global(.light) .footer-section {
+    background: #e5e7eb; /* Stronger grey for light mode */
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -15px 50px rgba(0, 0, 0, 0.1);
   }
 
   /* Background Effects */
