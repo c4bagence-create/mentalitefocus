@@ -1,0 +1,49 @@
+name: Build static site
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "focus-v2/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci --prefix focus-v2
+
+      - name: Build Astro
+        run: npm run build --prefix focus-v2
+
+      - name: Sync dist to root
+        run: |
+          rsync -a --delete focus-v2/dist/_astro/ _astro/
+          rsync -a --delete focus-v2/dist/ads/ ads/
+          rsync -a --delete focus-v2/dist/freemium/ freemium/
+          rsync -a --delete focus-v2/dist/zaid/ zaid/
+          rsync -a --delete focus-v2/dist/images/ images/
+          cp focus-v2/dist/index.html index.html
+          cp focus-v2/dist/favicon.svg favicon.svg
+
+      - name: Commit build output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git status --porcelain | grep -q .; then
+            git add -A
+            git commit -m "chore: sync astro build [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
