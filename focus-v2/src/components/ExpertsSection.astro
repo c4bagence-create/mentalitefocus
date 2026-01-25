@@ -398,6 +398,10 @@ import IACard from './cards/IACard.astro';
 
   <!-- Mobile Slider - Réutilise les visuels desktop -->
   <div class="experts-slider">
+    <!-- Navigation Arrows -->
+    <button class="slider-nav prev" aria-label="Précédent" id="slider-prev">←</button>
+    <button class="slider-nav next" aria-label="Suivant" id="slider-next">→</button>
+
     <div class="slider-track" id="experts-track-mobile">
       {experts.map((expert, idx) => (
         <article class={`slide-card slide-${expert.type}`}>
@@ -668,7 +672,7 @@ import IACard from './cards/IACard.astro';
   <!-- CTA -->
   <div class="section-cta">
     <AnimatedCTA 
-      href="#pricing"
+      href="#offre-unique"
       label="Accès"
       title="Consulter les experts"
       subtitle="8 domaines • 10€/mois"
@@ -2541,6 +2545,62 @@ import IACard from './cards/IACard.astro';
     display: flex;
     justify-content: center;
   }
+  /* Mobile Slider Navigation */
+  .slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--border-light);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (hover: hover) {
+    .slider-nav:hover {
+      background: var(--gold);
+      color: black;
+    }
+  }
+
+  .slider-nav:active {
+    transform: translateY(-50%) scale(0.9);
+    background: var(--gold);
+    color: black;
+    border-color: var(--gold);
+    box-shadow: 0 0 15px var(--gold-glow);
+  }
+
+  @media (hover: hover) {
+    .slider-nav:hover {
+      background: var(--gold);
+      color: black;
+    }
+  }
+
+  .slider-nav:active {
+    background: var(--gold);
+    color: black;
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .slider-nav.prev { left: 0.5rem; }
+  .slider-nav.next { right: 0.5rem; }
+
+  @media (min-width: 768px) {
+    .slider-nav { display: none; }
+  }
 </style>
 
 <script>
@@ -2710,5 +2770,22 @@ import IACard from './cards/IACard.astro';
       setTimeout(animateAutoSale, 2000);
       createInterval(animateAutoSale, 10000);
     });
+
+    // Mobile Slider Navigation
+    const track = document.getElementById('experts-track-mobile');
+    const prevBtn = document.getElementById('slider-prev');
+    const nextBtn = document.getElementById('slider-next');
+
+    if (track && prevBtn && nextBtn) {
+      const scrollAmount = 300; 
+
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+    }
   });
 </script>
