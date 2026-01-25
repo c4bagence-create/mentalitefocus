@@ -19,7 +19,7 @@ jobs:
           node-version: "20"
 
       - name: Install dependencies
-        run: npm ci --prefix focus-v2
+        run: npm install --prefix focus-v2
 
       - name: Build Astro
         run: npm run build --prefix focus-v2
